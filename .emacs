@@ -9,7 +9,7 @@
 (load "~/.emacs.d/rs_settings/rect")
 (load "~/.emacs.d/rs_settings/org")
 (load "~/.emacs.d/rs_settings/spelling")
-;; (load "~/.emacs.d/rs_settings/python_stuff")
+(load "~/.emacs.d/rs_settings/python_stuff")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load in external packages
