@@ -1,0 +1,129 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun May  8 16:26:17 2011
+;; Desktop file format version 206
+;; Emacs version 23.3.1
+
+;; Global section:
+(setq tabbar-desktop-saved-tabsets '(("pymacs.py" "*scratch*" "xmmbcs.tex" "clusters.bib" ".emacs" "global.el" "network.el")))
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("tramp" "physpar" "stellar p" " 4 " "four " "cappe" "ig:mosaic" "fig:018opt" "018g" "red seq" "bruzua" "bc03" "011gr" "riz" "rizgri" "011"))
+(setq regexp-search-ring nil)
+(setq register-alist '((48 . "\\documentclass[traditabstract]{aa}\n\\documentclass[structabstract,referee]{aa}\n%\\documentclass[structabstract]{aa}")))
+(setq file-name-history '("~/.ido.last" "~/.emacs.d/rs_settings/" "~/data1/lab/py/nltk/test.txt" "~/data1/lab/py/nltk/org.test" "~/.emacs.d/plugins/color-theme-6.6.0/themes/color-theme-library.el" "~/data1/lab/py/nltk/pymacs.py" "~/Dropbox/xmmbcs_v1/xmmbcs.tex" "~/Dropbox/xmmbcs_v1/clusters.bib" "~/.emacs.d/rs_settings/network.el" "~/.emacs.d/rs_settings/global.el" "~/.emacs" "~/.ido.last" "~/data1/lab/py/nltk/test.txt" "~/data1/lab/py/nltk/org.test" "~/.emacs.d/plugins/color-theme-6.6.0/themes/color-theme-library.el" "~/data1/lab/py/nltk/pymacs.py" "~/Dropbox/xmmbcs_v1/xmmbcs.tex" "~/Dropbox/xmmbcs_v1/clusters.bib" "~/.emacs.d/rs_settings/network.el" "~/.emacs" "~/.emacs.d/rs_settings/global.el" "~/.ido.last" "~/data1/lab/py/nltk/test.txt" "~/data1/lab/py/nltk/org.test" "~/.emacs.d/plugins/color-theme-6.6.0/themes/color-theme-library.el" "~/data1/lab/py/nltk/pymacs.py" "~/Dropbox/xmmbcs_v1/xmmbcs.tex" "~/Dropbox/xmmbcs_v1/clusters.bib" "~/.emacs.d/rs_settings/network.el" "~/.emacs.d/rs_settings/global.el" "~/.emacs"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/Users/rsuhada/.emacs.d/rs_settings/global.el"
+  "global.el"
+  'emacs-lisp-mode
+  '(linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode)
+  791
+  '(977 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode)
+  483
+  '(345 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/.emacs.d/rs_settings/network.el"
+  "network.el"
+  'emacs-lisp-mode
+  '(linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode)
+  92
+  '(104 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/Dropbox/xmmbcs_v1/clusters.bib"
+  "clusters.bib"
+  'bibtex-mode
+  '(linum-mode TeX-PDF-mode)
+  237532
+  '(237511 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (TeX-master . t)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/Dropbox/xmmbcs_v1/xmmbcs.tex"
+  "xmmbcs.tex"
+  'latex-mode
+  '(auto-fill-mode smart-spacing-mode linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode bib-cite-minor-mode reftex-mode flyspell-mode)
+  1922
+  '(74 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/Library/Application Support/Aquamacs Emacs/scratch buffer"
+  "*scratch*"
+  'text-mode
+  '(auto-fill-mode visual-line-mode smart-spacing-mode linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode flyspell-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/data1/lab/py/nltk/pymacs.py"
+  "pymacs.py"
+  'python-mode
+  '(linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode)
+  1155
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/.emacs.d/plugins/color-theme-6.6.0/themes/color-theme-library.el"
+  "color-theme-library.el"
+  'emacs-lisp-mode
+  '(linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode)
+  799438
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/data1/lab/py/nltk/org.test"
+  "org.test"
+  'org-mode
+  '(auto-fill-mode smart-spacing-mode linum-mode rainbow-delimiters-mode TeX-PDF-mode)
+  634
+  '(68 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/rsuhada/data1/lab/py/nltk/test.txt"
+  "test.txt"
+  'text-mode
+  '(auto-fill-mode smart-spacing-mode linum-mode yas/minor-mode rainbow-delimiters-mode TeX-PDF-mode flyspell-mode)
+  1369
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix) (truncate-lines)))
+

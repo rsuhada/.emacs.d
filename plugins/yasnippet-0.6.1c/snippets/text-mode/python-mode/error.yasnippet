@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: error
+# contributor: Robert Suhada
+# --
+$0plt.errorbar(t, s, f, fmt='o')       # vertical symmetric
+plt.errorbar(t, s, None, f, fmt='o')       # horizontal symmetric
+plt.errorbar(t, s, e, f, fmt='o')          # both symmetric
+plt.errorbar(t, s, [e,g], [f,h], fmt='--o')  # both asymmetric
+plt.errorbar(t, s, [e,g], f, fmt='o', ecolor='g')      # both mixed
+plt.errorbar(t, s, e, [f,h], fmt='o')      # both mixed
+plt.errorbar(t, s, [e,g], fmt='o')         # vertical asymmetric
+plt.errorbar(t, s, yerr=e, fmt='o')        # named
+plt.errorbar(t, s, xerr=f, fmt='o')        # named

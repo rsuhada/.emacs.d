@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: fitso
+# contributor: Robert Suhada
+# --
+fname = '$1'
+hdu = pyfits.open(fname)
+dat = hdu[1].data
+colinfo = hdu[1].columns.info()
+print colinfo
+
+$2 = dat.field('$3')
+$0

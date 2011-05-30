@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: hist
+# contributor: Robert Suhada
+# --
+(num_in_bin, bin_edges, patches) = plt.hist(
+    $0,                            # input var
+    bins=10,                    # num of bins or array((1,2,3,4))
+    range=None,
+    facecolor="blue",
+    edgecolor="blue",
+    alpha=1.0,
+    label=r"hist",               # '__nolegend__'
+    histtype="bar",            # [ 'bar' | 'barstacked' | 'step' | 'stepfilled' ]
+    rwidth=1.0,                 # relative width of bars wrt binsize
+    align="mid",                # ['left' 'mid' 'right' ]
+    fill=True,
+    linewidth=1.0,             # linewidth=1
+    linestyle='solid',          # ['solid' | 'dashed' | 'dashdot' | 'dotted']
+    orientation="vertical",    # [ 'horizontal' | 'vertical' ]
+    hatch=None,               # [ '/' | '\' | '|' | '-' | '+' | 'x' | 'o' | 'O' | '.' | '*' ]
+    normed=False,
+    cumulative=False,
+    bottom=None                # for stacked hist
+    )
