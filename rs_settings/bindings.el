@@ -1,7 +1,7 @@
 ;; mac disable and use the command as the meta key
 (setq mac-command-modifier 'meta) ;; Sets the command (Apple) key as Meta
-(osx-key-mode -1)
-(setq x-select-enable-clipboard t)
+;; (osx-key-mode -1)
+;; (setq x-select-enable-clipboard t)
 
 ;; Repeat
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
@@ -44,9 +44,13 @@
 (global-unset-key (kbd "C-;"))
 
 
+;; function keys
+(global-unset-key [f5])
 
-
-
-
-
-
+(global-set-key [f1]  'replace-string)
+(global-set-key [f2]  'replace-regexp)
+(global-set-key [f3]  'rgrep)
+(global-set-key [f9]  'start-kbd-macro)
+(global-set-key [f10]  'end-kbd-macro)
+(global-set-key [f11] 'occur)
+(global-set-key [f12] 'help)

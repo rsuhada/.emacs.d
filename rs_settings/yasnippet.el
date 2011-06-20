@@ -3,6 +3,8 @@
 (require 'dropdown-list)
 
 (yas/global-mode 1)
+(add-hook 'shell-script-mode-hook 'yas/minor-mode-on)
+
 
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 
@@ -14,4 +16,3 @@
 (add-hook 'yas/minor-mode-hook
           (lambda () (define-key yas/minor-mode-map
                        (kbd "TAB") 'smart-tab))) ; was yas/expand
-

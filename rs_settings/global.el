@@ -93,6 +93,13 @@
 (setq next-line-add-newlines t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; recent file
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 35)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Use command as the meta key
 ; (setq ns-command-modifier (quote meta))

@@ -50,6 +50,17 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; anything
+(add-to-list 'load-path "/Users/rsuhada/.emacs.d/plugins/anything-config")
+    (require 'anything-startup)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; run server: for chrome
+(require 'edit-server)
+(edit-server-start)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rectangular
 ;; (require 'rect-mark) - doesn't work?
 
