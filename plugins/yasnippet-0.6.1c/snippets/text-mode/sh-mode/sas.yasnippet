@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: sas
+# contributor: Robert Suhada
+# --
+######################################################################
+# sas setup
+export SAS_DIR="$1/Users/rsuhada/data1/sw/sas.10.0.0/xmmsas_20100423_1803"
+export SAS_PATH="$2/Users/rsuhada/data1/sw/sas.10.0.0/xmmsas_20100423_1803"
+export SAS_CCFPATH="$3/xmm/ccf/"
+export SAS_MEMORY_MODEL=high
+export SAS_VERBOSITY=4
+
+export SAS_ODF=\`ls -1 \${PWD}/\${obsid}/odf/*SUM.SAS\`
+export SAS_CCF=\${PWD}/\${obsid}/odf/ccf.cif
+
+sasversion
+
+$0
