@@ -41,7 +41,7 @@
 (global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
 ;; (global-unset-key (kbd "M-h"))
 (global-set-key (kbd "C-;") 'mark-paragraph)  ; was aquamacs switching meta and command - wtf would this have a shortcut
-(global-unset-key (kbd "C-;"))
+;; (global-unset-key (kbd "C-;"))
 
 
 ;; function keys
