@@ -61,7 +61,7 @@
 (autoload 'pymacs-load "pymacs" nil t)
 
 (eval-after-load "pymacs"
-  '(add-to-list 'pymacs-load-path /Users/rsuhada/data1/sw/Pymacs"))
+  '(add-to-list 'pymacs-load-path ~/data1/sw/Pymacs"))
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport t)
 
@@ -80,5 +80,5 @@
 ;; (setq ropemacs-enable-autoimport t)
 
 ;; (eval-after-load "pymacs"
-;;   '(add-to-list 'pymacs-load-path /Users/rsuhada/data1/sw/Pymacs"))
+;;   '(add-to-list 'pymacs-load-path ~/data1/sw/Pymacs"))
 

@@ -51,7 +51,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
-(add-to-list 'load-path "/Users/rsuhada/.emacs.d/plugins/anything-config")
+(add-to-list 'load-path "~/.emacs.d/plugins/anything-config")
     (require 'anything-startup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -67,9 +67,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete - works for bash but not for python - kills yasnippet
-;; (add-to-list 'load-path "/Users/rsuhada/.emacs.d/plugins/auto-complete-1.3.1/")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1/")
 ;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "/Users/rsuhada/.emacs.d/plugins/auto-complete-1.3.1//ac-dict")
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1//ac-dict")
 ;; (ac-config-default)
 
 

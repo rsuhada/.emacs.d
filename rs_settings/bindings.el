@@ -45,12 +45,12 @@
 
 
 ;; function keys
-(global-unset-key [f5])
+;; (global-unset-key [f5])
 
 (global-set-key [f1]  'replace-string)
 (global-set-key [f2]  'replace-regexp)
 (global-set-key [f3]  'rgrep)
 (global-set-key [f9]  'start-kbd-macro)
-(global-set-key [f10]  'end-kbd-macro)
+(global-set-key [f10] 'end-kbd-macro)
 (global-set-key [f11] 'occur)
 (global-set-key [f12] 'help)
