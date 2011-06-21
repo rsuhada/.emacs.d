@@ -7,5 +7,6 @@ Place in:
 ~/.emacs
 
 Works for:
+Emacs 23.3.1 on Mac
 Aquamacs on Emacs 23.3.1
 Emacs 23.3 on dst01/04 
