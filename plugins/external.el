@@ -51,7 +51,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
-(add-to-list 'load-path "~/.emacs.d/plugins/anything-config")
+(add-to-list 'load-path "~/.emacs.d/plugins/anything-configs")
     (require 'anything-startup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
