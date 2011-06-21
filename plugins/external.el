@@ -51,8 +51,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
-(add-to-list 'load-path "~/.emacs.d/plugins/anything-configs")
-    (require 'anything-startup)
+;; (add-to-list 'load-path "~/.emacs.d/plugins/anything-configs")
+;;    (require 'anything-startup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; run server: for chrome
