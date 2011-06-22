@@ -34,8 +34,6 @@
 ;;                           "/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/rope-0.9.3-py2.6.egg/rope"
 ;;                           "/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/site-packages/ropemacs-0.6-py2.6.egg/ropemacs"))
 
-
-
 ;; (add-to-list 'load-path "~/.emacs.d/auto-complete-1.3.1")
 ;; (autoload 'python-mode "python-mode" "Python Mode." t)
 ;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
@@ -51,6 +49,10 @@
 
 ;; (require 'auto-complete)
 ;; (global-auto-complete-mode t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; parts auto-written by custom set
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -58,6 +60,9 @@
   ;; If there is more than one, they won't work right.
  '(longlines-auto-wrap t)
  '(longlines-wrap-follows-window-size t))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; font for mac
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
