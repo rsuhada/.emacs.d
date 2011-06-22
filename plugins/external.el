@@ -48,7 +48,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
-;; (require 'autopair)
+(require 'autopair)
+(add-hook 'sh-mode-hook 'autopair-mode)
 ;; (add-hook 'emacs-lisp-mode-common-hook #'(lambda () (autopair-mode)))
 ;; (autopair-global-mode) ;; enable autopair in all buffers
 ;; (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))

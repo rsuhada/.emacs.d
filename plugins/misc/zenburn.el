@@ -313,10 +313,10 @@ static char *gnus-pointer[] = {
           '(fringe ((t (:inherit zenburn-highlight-subtle))))
           '(header-line ((t (:inherit zenburn-highlight-damp
                                       :box (:color "#2e3330" :line-width 2)))))
-          '(mode-line ((t (:foreground "#acbc90" :background "#1e2320"
+          '(mode-line ((t (:foreground "#849a5d" :background "#2f3321"
                                        :box (:color "#1e2320" :line-width 2)))))
-          '(mode-line-inactive ((t (:background "#2e3330" :foreground "#88b090"
-                                                :box (:color "#2e3330" :line-width 2)))))
+          '(mode-line-inactive ((t (:background "#12140d" :foreground "#5f7043"
+                                                :box (:color "#5f7f5f" :line-width 2)))))
           `(minibuffer-prompt ((t (:foreground ,zenburn-yellow))))
           `(Buffer-menu-buffer ((t (:inherit zenburn-primary-1))))
 
