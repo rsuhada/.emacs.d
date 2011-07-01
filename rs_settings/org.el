@@ -10,8 +10,8 @@
 (setq org-log-done t)
 
 ;; my agendas
-(setq org-agenda-files (list "~/org/agenda-work.org"
-                             "~/org/agenda-read.org"
+(setq org-agenda-files (list "~/Dropbox/org/agenda-work.org"
+                             "~/Dropbox/org/agenda-read.org"
                              ;; "~/org/home.org"
 ))
 
