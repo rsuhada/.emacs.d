@@ -44,13 +44,59 @@
 ;; (global-unset-key (kbd "C-;"))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; better word-at-point search
+;; http://sachachua.com/blog/2008/07/emacs-keyboard-shortcuts-for-navigating-code/
+
+(defun sacha/isearch-yank-current-word ()
+  "Pull current word from buffer into search string."
+  (interactive)
+  (save-excursion
+    (skip-syntax-backward "w_")
+    (isearch-yank-internal
+     (lambda ()
+       (skip-syntax-forward "w_")
+       (point)))))
+(define-key isearch-mode-map (kbd "C-x") 'sacha/isearch-yank-current-word)
+
+(defun sacha/search-word-backward ()
+  "Find the previous occurrence of the current word."
+  (interactive)
+  (let ((cur (point)))
+    (skip-syntax-backward "w_")
+    (goto-char
+     (if (re-search-backward (concat "\\_<" (current-word) "\\_>") nil t)
+	 (match-beginning 0)
+       cur))))
+
+(defun sacha/search-word-forward ()
+  "Find the next occurrance of the current word."
+  (interactive)
+  (let ((cur (point)))
+    (skip-syntax-forward "w_")
+    (goto-char
+     (if (re-search-forward (concat "\\_<" (current-word) "\\_>") nil t)
+	 (match-beginning 0)
+       cur))))
+(global-set-key '[M-up] 'sacha/search-word-backward)
+(global-set-key '[M-down] 'sacha/search-word-forward)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
+(global-set-key [f1]   'smex)
+(global-set-key [S-f1] 'help)
+(global-set-key [f2]   'replace-string)
+(global-set-key [S-f2] 'replace-regexp)
+(global-set-key [f5]   'rgrep)
+(global-set-key [f6]   'occur)
+(global-set-key [f7]   'bookmark-set)
+(global-set-key [f8]   'bookmark-jump)
+(global-set-key [f9]   'bookmark-bmenu-list)
 
-(global-set-key [f1]  'replace-string)
-(global-set-key [f2]  'replace-regexp)
-(global-set-key [f3]  'rgrep)
-(global-set-key [f9]  'start-kbd-macro)
-(global-set-key [f10] 'end-kbd-macro)
-(global-set-key [f11] 'occur)
-(global-set-key [f12] 'help)
+
+;; Defaults f3 - record macro, f4 - end macro/reply
+;; (global-set-key [f9]   'start-kbd-macro)
+;; (global-set-key [f10]  'end-kbd-macro)
+
+
