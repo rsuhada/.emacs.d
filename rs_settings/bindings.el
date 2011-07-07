@@ -30,20 +30,6 @@
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
 
-(let ((map (make-sparse-keymap)))
-  (define-key map "\C-l" 'ido-restrict-to-matches))
-
-
-;; flyspell binds
-(global-unset-key (kbd "C-\\")) ; was set-input-method
-(global-set-key (kbd "C-\\") 'flyspell-auto-correct-word)  ; was M-\t = alt-tab
-
-;; set the -h instead of backspace
-(global-set-key "\C-h" 'backward-delete-char-untabify)
-(define-key isearch-mode-map "\C-h" 'isearch-delete-char)
-
-(global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
-;; (global-unset-key (kbd "M-h"))
 (global-set-key (kbd "C-;") 'mark-paragraph)  ; was aquamacs switching meta and command - wtf would this have a shortcut
 ;; (global-unset-key (kbd "C-;"))
 
@@ -109,6 +95,31 @@
   (switch-to-buffer (other-buffer)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; better basic movement - ErgoEmacs + my ideas
+
+;; Single char cursor movement. (assuming you are on qwerty)
+(global-set-key (kbd "M-j") 'backward-char) ;indent-new-comment-line
+(global-set-key (kbd "M-l") 'forward-char)  ;downcase-word
+(global-set-key (kbd "M-i") 'previous-line) ;tab-to-tab-stop
+(global-set-key (kbd "M-k") 'next-line)     ;command kill-sentence
+;; (global-set-key (kbd "M-SPC") 'set-mark-command)
+
+;; kicking the habit
+(global-unset-key (kbd "C-b")) ; backward-char
+(global-unset-key (kbd "C-f")) ; forward-char
+(global-unset-key (kbd "C-p")) ; previous-line
+(global-unset-key (kbd "C-n")) ; next-line
+;; (global-unset-key (kbd "C-SPC")) ; set-mark-command
+
+;; set the -h instead of backspace
+(global-set-key "\C-h" 'backward-delete-char-untabify)
+(define-key isearch-mode-map "\C-h" 'isearch-delete-char)
+
+(global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
+;; (global-unset-key (kbd "M-h"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
 (global-set-key [f1]   'save-buffer)
@@ -125,7 +136,9 @@
 
 
 
-;; Defaults f3 - record macro, f4 - end macro/reply
+
+
+;; defaults f3 - record macro, f4 - end macro/reply
 ;; (global-set-key [f9]   'start-kbd-macro)
 ;; (global-set-key [f10]  'end-kbd-macro)
 
