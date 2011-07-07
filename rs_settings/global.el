@@ -102,6 +102,26 @@
 (setq recentf-max-menu-items 35)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; unique file names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward
+      uniquify-separator ":")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; frame title
+;; (setq frame-title-format '("Emacs @ " system-name ": %b %+%+ %f"))
+(setq frame-title-format '("%f"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; cursor shape
+(setq-default cursor-type 'bar)         ; defult: box
+
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; move newline ads newline
 ;; (setq next-line-add-newlines t)

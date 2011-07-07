@@ -10,7 +10,8 @@
 (global-set-key (kbd "C-'") 'match-paren)
 
 ;; ibuffer > list-buffers
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
 (global-set-key (kbd "M-3") 'split-window-horizontally) ; was dgit-argument
@@ -28,6 +29,9 @@
 (global-unset-key (kbd "C-x 1")) ; was delete-other-windows
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
+
+(let ((map (make-sparse-keymap)))
+  (define-key map "\C-l" 'ido-restrict-to-matches))
 
 
 ;; flyspell binds
@@ -81,18 +85,44 @@
 (global-set-key '[M-up] 'sacha/search-word-backward)
 (global-set-key '[M-down] 'sacha/search-word-forward)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; commenting a single line
+;; http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
+(defun comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command.
+        If no region is selected and current line is not blank and we are not at the end of the line,
+        then comment current line.
+        Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'comment-dwim-line)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; buffer flipping
+(defun switch-to-previous-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
-(global-set-key [f1]   'smex)
+(global-set-key [f1]   'save-buffer)
 (global-set-key [S-f1] 'help)
 (global-set-key [f2]   'replace-string)
-(global-set-key [S-f2] 'replace-regexp)
+(global-set-key [M-f2] 'replace-regexp)
 (global-set-key [f5]   'rgrep)
 (global-set-key [f6]   'occur)
 (global-set-key [f7]   'bookmark-set)
 (global-set-key [f8]   'bookmark-jump)
 (global-set-key [f9]   'bookmark-bmenu-list)
+(global-set-key [f12]  'switch-to-previous-buffer)
+
+
 
 
 ;; Defaults f3 - record macro, f4 - end macro/reply
