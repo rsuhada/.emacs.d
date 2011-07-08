@@ -14,15 +14,18 @@
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
-(global-set-key (kbd "M-3") 'split-window-horizontally) ; was dgit-argument
+(global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
 (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
 (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
 (global-set-key (kbd "M-o") 'other-window) ; was facemenu-keymap
+
 ;; Replace dired's M-o
 (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-o") 'other-window))) ; was dired-omit-mode
+
 ;; Replace ibuffer's M-o
 (add-hook 'ibuffer-mode-hook (lambda () (define-key ibuffer-mode-map (kbd "M-o") 'other-window))) ; was ibuffer-visit-buffer-1-window
+
 ;; To help Unlearn C-x 0, 1, 2, o
 (global-unset-key (kbd "C-x 3")) ; was split-window-horizontally
 (global-unset-key (kbd "C-x 2")) ; was split-window-vertically
@@ -30,9 +33,20 @@
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
 
-(global-set-key (kbd "C-;") 'mark-paragraph)  ; was aquamacs switching meta and command - wtf would this have a shortcut
-;; (global-unset-key (kbd "C-;"))
+(global-set-key (kbd "C-;") 'mark-paragraph)
+(setq flyspell-auto-correct-binding "C-~") ; flyspell messed w C-;
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fixing ido restrict matches
+(add-hook 'ido-setup-hook 'ido-my-keys)
+
+(defun ido-my-keys ()
+;;  "Add my keybindings for ido."
+(define-key ido-completion-map (kbd "C-SPC") nil)
+(define-key ido-completion-map (kbd "C-@") nil)
+(define-key ido-completion-map (kbd "C-0") 'ido-restrict-to-matches)
+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better word-at-point search
@@ -76,10 +90,11 @@
 ;; commenting a single line
 ;; http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
 (defun comment-dwim-line (&optional arg)
-  "Replacement for the comment-dwim command.
-        If no region is selected and current line is not blank and we are not at the end of the line,
-        then comment current line.
-        Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+"Replacement for the comment-dwim command.  If no region is selected
+and current line is not blank and we are not at the end of the
+line, then comment current line.  Replaces default behaviour
+of comment-dwim, when it inserts comment at the end of the
+line."
   (interactive "*P")
   (comment-normalize-vars)
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
@@ -111,6 +126,10 @@
 (global-unset-key (kbd "C-n")) ; next-line
 ;; (global-unset-key (kbd "C-SPC")) ; set-mark-command
 
+;; how to use the freed bindings:
+(global-set-key (kbd "C-f") 'find-file) ; ido
+
+
 ;; set the -h instead of backspace
 (global-set-key "\C-h" 'backward-delete-char-untabify)
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char)
@@ -122,7 +141,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
-(global-set-key [f1]   'save-buffer)
+(global-set-key [f1]   'smex)
 (global-set-key [S-f1] 'help)
 (global-set-key [f2]   'replace-string)
 (global-set-key [M-f2] 'replace-regexp)
