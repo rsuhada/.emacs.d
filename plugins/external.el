@@ -79,6 +79,26 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; autocomplete
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/auto-complete-1.3.1/")
+
+(require 'auto-complete-config)
+(ac-flyspell-workaround)                ; has to be in this line otherwise does not work
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1/ac-dict")
+(ac-config-default)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; replece scroll bar
+(if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
+  (progn
+    (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
+    (scroll-bar-mode -1))                   ;; turn off the scrollbar
+  (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
+  (set-scroll-bar-mode 'right))             ;; ... on the right
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rectangular
 ;; (require 'rect-mark) - doesn't work?
 
@@ -116,3 +136,4 @@
 ;;     (list "latex" (list "-file-line-error-style" file-name)))
 
 ;; (setq flymake-gui-warnings-enabled nil)
+

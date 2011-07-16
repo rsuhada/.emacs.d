@@ -37,6 +37,10 @@
 (setq flyspell-auto-correct-binding "C-~") ; flyspell messed w C-;
 
 
+;; setting mark should be less is clumsy
+(global-set-key (kbd "M-ESC") 'cua-set-mark)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fixing ido restrict matches
 (add-hook 'ido-setup-hook 'ido-my-keys)
@@ -136,6 +140,10 @@ line."
 
 (global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
 ;; (global-unset-key (kbd "M-h"))
+
+;; more movement improvement
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

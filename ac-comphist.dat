@@ -1,0 +1,26 @@
+((("background-color" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("isearch" .
+   [0 0 0 1 0 2 0])
+  ("Auto" .
+   [0 0 0 1])
+  ("spectra" .
+   [0 0 0 0 0 1 0])
+  ("spec" .
+   [0 0 0 2])
+  ("require-final-newline" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("projectionVolume" .
+   [0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0])
+  ("do" .
+   [1 0])
+  ("doDeprojection" .
+   [0 0 0 1 0 0 0 1 0 0 0 0 0 0])
+  ("require" .
+   [0 0 0 1 0 0 0])
+  ("region" .
+   [1 0 0 1 0 0])
+  ("modes" .
+   [0 0 0 0 1])
+  ("mode-line-buffer-id" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])))
