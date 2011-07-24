@@ -42,7 +42,8 @@
 (add-hook 'sh-mode-hook 'rainbow-delimiters-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; select/copy/cut/paste whole line if no selection
+;; select/copy
+;; /cut/paste whole line if no selection
 ;; (require 'whole-line-or-region)
 (load "tellicopy")
 
@@ -90,13 +91,25 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; replece scroll bar
+;; replace scroll bar
 (if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
   (progn
     (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
     (scroll-bar-mode -1))                   ;; turn off the scrollbar
-  (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar...
+  (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar
   (set-scroll-bar-mode 'right))             ;; ... on the right
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ace-jump
+(require 'ace-jump-mode)
+;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; "C-u C-c SPC" ==> ace-jump-char-mode
+;; "C-u C-u C-c SPC" ==> ace-jump-line-mode
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; browsing kill ring
+(require 'browse-kill-ring)
+(browse-kill-ring-default-keybindings)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rectangular

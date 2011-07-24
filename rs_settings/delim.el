@@ -4,7 +4,7 @@
 ;; make rainbow color delims:: see external.el
 
 (defun electric-pair ()
-  "Insert character pair without sournding spaces"
+  "Insert character pair without sounding spaces"
   (interactive)
   (let (parens-require-spaces)
     (insert-pair)))
@@ -45,7 +45,7 @@
 (add-hook 'text-mode-hook
      (lambda ()
       (define-key text-mode-map "\"" 'electric-pair)
-      (define-key text-mode-map "\'" 'electric-pair)
+      ;; (define-key text-mode-map "\'" 'electric-pair)
       (define-key text-mode-map "(" 'electric-pair)
       (define-key text-mode-map "[" 'electric-pair)
       (define-key text-mode-map "{" 'electric-pair)))
@@ -53,7 +53,7 @@
 (add-hook 'org-mode-hook
      (lambda ()
       (define-key org-mode-map "\"" 'electric-pair)
-      (define-key org-mode-map "\'" 'electric-pair)
+      ;; (define-key org-mode-map "\'" 'electric-pair)
       (define-key org-mode-map "(" 'electric-pair)
       (define-key org-mode-map "[" 'electric-pair)
       (define-key org-mode-map "{" 'electric-pair)))

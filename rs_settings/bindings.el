@@ -132,6 +132,8 @@ line."
 
 ;; how to use the freed bindings:
 (global-set-key (kbd "C-f") 'find-file) ; ido
+(global-set-key (kbd "C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-p") 'kill-whole-line)
 
 
 ;; set the -h instead of backspace
@@ -149,7 +151,7 @@ line."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
-(global-set-key [f1]   'smex)
+(global-set-key [f1]   'ace-jump-char-mode)           ;smex
 (global-set-key [S-f1] 'help)
 (global-set-key [f2]   'replace-string)
 (global-set-key [M-f2] 'replace-regexp)

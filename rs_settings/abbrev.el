@@ -12,5 +12,7 @@
 
 (dolist (hook '(erc-mode-hook
                 emacs-lisp-mode-hook
-                text-mode-hook))
+                text-mode-hook
+                latex-mode-hook
+))
 (add-hook hook (lambda () (abbrev-mode 1))))

@@ -32,6 +32,13 @@
 ;; (require 'ipython)
 
 
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+(require 'ipython)
+(setq py-python-command-args '("-pylab" "-colors" "LightBG"))
+;; (add-to-list 'load-path “~/.emacs.d/plugins/misc”)
+;; (require 'ipython)
+(setq python-command "ipython")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; try 1
 (autoload 'python-mode "python-mode" "Python Mode." t)
