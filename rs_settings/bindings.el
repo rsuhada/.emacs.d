@@ -152,6 +152,7 @@ line."
 ;; function keys
 ;; (global-unset-key [f5])
 (global-set-key [f1]   'ace-jump-char-mode)           ;smex
+(global-set-key [M-f1] 'ace-jump-line-mode)
 (global-set-key [S-f1] 'help)
 (global-set-key [f2]   'replace-string)
 (global-set-key [M-f2] 'replace-regexp)
