@@ -19,9 +19,6 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
-    ("Cc" "Cluster" nil 0)
-    ("Ccs" "Clusters" nil 0)
-    ("a" "and" nil 3)
     ("aa" "and" nil 1)
     ("abbout" "about" nil 0)
     ("abotu" "about" nil 0)
@@ -355,6 +352,7 @@
     ("effecient" "efficient" nil 0)
     ("efort" "effort" nil 0)
     ("eforts" "efforts" nil 0)
+    ("eg" "e.g." nil 0)
     ("ehr" "her" nil 0)
     ("eligable" "eligible" nil 0)
     ("emacs" "Emacs" nil 0)
@@ -485,11 +483,12 @@
     ("hvae" "have" nil 0)
     ("hvaing" "having" nil 0)
     ("hwich" "which" nil 0)
-    ("i" "I" nil 0)
+    ("i" "I" nil 7)
     ("idae" "idea" nil 0)
     ("idaes" "ideas" nil 0)
     ("identifiy" "identify" nil 0)
     ("identofy" "identify" nil 0)
+    ("ie" "i.e." nil 0)
     ("ihs" "his" nil 0)
     ("imediate" "immediate" nil 0)
     ("imediatly" "immediately" nil 0)
@@ -848,7 +847,7 @@
     ("suprisingly" "surprisingly" nil 0)
     ("swiming" "swimming" nil 0)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 1)
+    ("t" "the" nil 2)
     ("tahn" "than" nil 0)
     ("taht" "that" nil 0)
     ("talekd" "talked" nil 0)
@@ -973,6 +972,9 @@
     ("wrod" "word" nil 0)
     ("wroet" "wrote" nil 0)
     ("wroking" "working" nil 0)
+    ("wrt" "with respect to" nil 0)
+    ("atm" "at the moment" nil 0)
+    ("asap" "as soon as possible" nil 0)
     ("wtih" "with" nil 0)
     ("wuould" "would" nil 0)
     ("ww" "with" nil 1)
@@ -995,6 +997,8 @@
     ("zzs" "redshifts" nil 0)
    ))
 
+(define-abbrev-table 'grep-mode-abbrev-table '())
+
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
@@ -1015,6 +1019,8 @@
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
 (define-abbrev-table 'python-mode-abbrev-table '())
+
+(define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
 (define-abbrev-table 'sh-mode-abbrev-table '())
 

@@ -76,6 +76,10 @@
 (setq transient-mark-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; text mode will be default
+(setq default-major-mode 'text-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; add smooth scrolling
 
 ;; this didn't quite work

@@ -88,7 +88,22 @@
 (ac-flyspell-workaround)                ; has to be in this line otherwise does not work
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
+(global-auto-complete-mode t)
+(add-to-list 'ac-modes 'text-mode)
+(setq ac-auto-show-menu 0.5)            ;set time in seconds
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; at the moment not functioning...
+(require 'ac-python)
+(require 'ac-math)
+
+(add-to-list 'ac-modes 'latex-mode)
+(defun ac-latex-mode-setup ()
+  (setq ac-sources
+        (append '(ac-source-math-latex ac-source-latex-commands  ac-source-math-unicode)
+                ac-sources))
+  )
+(add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; replace scroll bar
