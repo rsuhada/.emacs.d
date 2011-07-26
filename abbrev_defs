@@ -19,6 +19,14 @@
 
 (define-abbrev-table 'global-abbrev-table
   '(
+    ("pb" "probability" nil 0)
+    ("pbs" "probabilities" nil 0)
+    ("frac" "fraction" nil 0)
+    ("fracs" "fractions" nil 0)
+    ("poining" "pointing" nil 0)
+    ("poiniting" "pointing" nil 0)
+    ("poinings" "pointings" nil 0)
+    ("poinitings" "pointings" nil 0)
     ("aa" "and" nil 1)
     ("abbout" "about" nil 0)
     ("abotu" "about" nil 0)

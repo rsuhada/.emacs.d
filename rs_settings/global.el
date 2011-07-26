@@ -60,16 +60,8 @@
       vc-follow-symlinks        t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; set monospace font: for mac andale mono looks good
-;; (set-default-font "-apple-bitstream vera sans mono-medium-r-normal--0-0-0-0-m-0-mac-roman")
-
-;; (set-face-attribute 'default nil :height 130)
-;; (and window-system
-;;      (create-fontset-from-fontset-spec
-;;       (concat
-;;        "-apple-monaco-medium-r-normal--13-*-*-*-*-*-fontset-monaco,"
-;;        "ascii:-apple-monaco-medium-r-normal--13-100-*-*-m-100-mac-roman"))
-;;      )
+;; zsh mode
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; set transient mark mode (needed for hippie-expand/smart tab)
@@ -78,6 +70,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; text mode will be default
 (setq default-major-mode 'text-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; isearch tweaks
+(add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
+(defun my-goto-match-beginning ()
+  (when isearch-forward (goto-char isearch-other-end)))
+(defadvice isearch-exit (after my-goto-match-beginning activate)
+  "Go to beginning of match."
+  (when isearch-forward (goto-char isearch-other-end)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; add smooth scrolling

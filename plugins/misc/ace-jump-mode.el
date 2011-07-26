@@ -86,6 +86,7 @@
     (nconc minor-mode-alist
           (list '(ace-jump-mode ace-jump-mode))))
 
+
 ;; custoize variable
 (defvar ace-jump-word-mode-use-query-char t
   "If we need to ask for the query char before enter `ace-jump-word-mode'")
@@ -426,6 +427,7 @@ You can constrol whether use the case sensitive via
 (defun ace-jump-move ()
   "move cursor based on user input"
   (interactive)
+  (push-mark)
   (let* ((index (let ((ret (position (aref (this-command-keys) 0)
                                      ace-jump-mode-move-keys)))
                   (if ret ret (length ace-jump-mode-move-keys))))
