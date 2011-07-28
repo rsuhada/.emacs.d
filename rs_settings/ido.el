@@ -15,10 +15,25 @@
 ;; ignore these guys, typing full will open them anyway or C-a makes them visible
 (setq
   ido-ignore-files
-  '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.fits" "\\.fcat" "\\.fz")
+  '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz")
 )
 
 (setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".bib" ".txt" ".log" ".list" ".notes" ".readme" ".org" ".emacs" ".html" ".aux"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fixing ido restrict matches
+(add-hook 'ido-setup-hook 'ido-my-keys)
+
+(defun ido-my-keys ()
+;;  "Add my keybindings for ido."
+(define-key ido-completion-map (kbd "C-SPC") nil)
+(define-key ido-completion-map (kbd "C-@") nil)
+(define-key ido-completion-map (kbd "C-0") 'ido-restrict-to-matches)
+)
+
+
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -42,17 +42,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fixing ido restrict matches
-(add-hook 'ido-setup-hook 'ido-my-keys)
-
-(defun ido-my-keys ()
-;;  "Add my keybindings for ido."
-(define-key ido-completion-map (kbd "C-SPC") nil)
-(define-key ido-completion-map (kbd "C-@") nil)
-(define-key ido-completion-map (kbd "C-0") 'ido-restrict-to-matches)
-)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better word-at-point search
 ;; http://sachachua.com/blog/2008/07/emacs-keyboard-shortcuts-for-navigating-code/
 
@@ -151,17 +140,19 @@ line."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
-(global-set-key [f1]   'ace-jump-char-mode)           ;smex
-(global-set-key [M-f1] 'ace-jump-line-mode)
-(global-set-key [S-f1] 'help)
-(global-set-key [f2]   'replace-string)
-(global-set-key [M-f2] 'replace-regexp)
-(global-set-key [f5]   'rgrep)
-(global-set-key [f6]   'occur)
-(global-set-key [f7]   'bookmark-set)
-(global-set-key [f8]   'bookmark-jump)
-(global-set-key [f9]   'bookmark-bmenu-list)
-(global-set-key [f12]  'switch-to-previous-buffer)
+(global-set-key [f1]    'ace-jump-char-mode)           ;smex
+(global-set-key [M-f1]  'ace-jump-line-mode)
+(global-set-key [S-f1]  'help)
+(global-set-key [f2]    'replace-string)
+(global-set-key [M-f2]  'replace-regexp)
+(global-set-key [f5]    'rgrep)
+(global-set-key [f6]    'occur)
+(global-set-key [f7]    'bookmark-set)
+(global-set-key [f8]    'bookmark-jump)
+(global-set-key [f9]    'bookmark-bmenu-list)
+(global-set-key [f10]   'orgtaby)
+(global-set-key [S-f10] 'orguntaby)
+(global-set-key [f12]   'switch-to-previous-buffer)
 
 
 
