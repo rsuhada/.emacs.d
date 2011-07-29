@@ -1,6 +1,7 @@
 (load "~/.emacs.d/rs_settings/global")
 (load "~/.emacs.d/rs_settings/defun")
 (load "~/.emacs.d/rs_settings/env")
+(load "~/.emacs.d/rs_settings/macros")
 (load "~/.emacs.d/rs_settings/bindings")
 (load "~/.emacs.d/rs_settings/ido")
 (load "~/.emacs.d/rs_settings/tab")

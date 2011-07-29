@@ -7,6 +7,8 @@
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
@@ -161,6 +163,7 @@
     ("beutiful" "beautiful" nil 0)
     ("bg" "background" nil 0)
     ("bgs" "backgrounds" nil 0)
+    ("bh" "BH" nil 0)
     ("blase" "blase" nil 0)
     ("boxs" "boxes" nil 0)
     ("brodcast" "broadcast" nil 0)
@@ -316,12 +319,14 @@
     ("didnt" "did not" nil 0)
     ("difefrent" "different" nil 0)
     ("diferences" "differences" nil 0)
+    ("diff" "difference" nil 0)
     ("differance" "difference" nil 0)
     ("differances" "differences" nil 0)
     ("differant" "different" nil 0)
     ("differemt" "different" nil 0)
     ("differnt" "different" nil 0)
     ("diffrent" "different" nil 0)
+    ("diffs" "differences" nil 0)
     ("directer" "director" nil 0)
     ("directers" "directors" nil 0)
     ("directiosn" "direction" nil 0)
@@ -366,6 +371,8 @@
     ("entree" "entree" nil 0)
     ("equippment" "equipment" nil 0)
     ("equivalant" "equivalent" nil 0)
+    ("err" "error" nil 0)
+    ("errs" "errors" nil 0)
     ("esle" "else" nil 0)
     ("especally" "especially" nil 0)
     ("especialyl" "especially" nil 0)
@@ -814,6 +821,7 @@
     ("sincerly" "sincerely" nil 0)
     ("sitll" "still" nil 0)
     ("smae" "same" nil 0)
+    ("smbh" "SMBH" nil 0)
     ("smoe" "some" nil 0)
     ("soem" "some" nil 0)
     ("sohw" "show" nil 0)
@@ -922,7 +930,9 @@
     ("truely" "truly" nil 0)
     ("truley" "truly" nil 0)
     ("tryed" "tried" nil 0)
+    ("tt" "this" nil 1)
     ("tthe" "the" nil 0)
+    ("ttt" "these" nil 2)
     ("tyhat" "that" nil 0)
     ("tyhe" "the" nil 0)
     ("udnerstand" "understand" nil 0)
@@ -1039,6 +1049,8 @@
 (define-abbrev-table 'slitex-mode-abbrev-table '())
 
 (define-abbrev-table 'snippet-mode-abbrev-table '())
+
+(define-abbrev-table 'solitaire-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
