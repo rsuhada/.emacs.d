@@ -90,7 +90,14 @@
 (ac-config-default)
 (global-auto-complete-mode t)
 (add-to-list 'ac-modes 'text-mode)
+(add-to-list 'ac-modes 'org-mode)
 (setq ac-auto-show-menu 0.9)            ;set time in seconds
+(setq ac-ignore-case nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; anything
+(add-to-list 'load-path "~/.emacs.d/plugins/anything-config/")
+(require 'anything-startup)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; at the moment not functioning...

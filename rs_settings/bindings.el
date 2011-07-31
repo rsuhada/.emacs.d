@@ -123,7 +123,7 @@ line."
 (global-set-key (kbd "C-f") 'find-file) ; ido
 (global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-p") 'kill-whole-line)
-
+(global-set-key (kbd "C-n") 'anything)
 
 ;; set the -h instead of backspace
 (global-set-key "\C-h" 'backward-delete-char-untabify)
@@ -142,17 +142,18 @@ line."
 ;; (global-unset-key [f5])
 (global-set-key [f1]    'ace-jump-char-mode)           ;smex
 (global-set-key [M-f1]  'ace-jump-line-mode)
-(global-set-key [S-f1]  'help)
+(global-set-key [S-f1]  'ace-jump-word-mode)
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)
 (global-set-key [f5]    'rgrep)
 (global-set-key [f6]    'occur)
-(global-set-key [f7]    'bookmark-set)
-(global-set-key [f8]    'bookmark-jump)
-(global-set-key [f9]    'bookmark-bmenu-list)
+(global-set-key [f7]    'bookmark-bmenu-list)
+(global-set-key [M-f7]  'bookmark-set)
+(global-set-key [S-f7]  'bookmark-jump)
 (global-set-key [f10]   'orgtaby)
 (global-set-key [S-f10] 'orguntaby)
 (global-set-key [f12]   'switch-to-previous-buffer)
+(global-set-key [S-f12] 'help)
 
 
 
