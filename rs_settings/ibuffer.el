@@ -16,6 +16,8 @@
                          (mode . Emacs-Lisp-Mode)))
 ))))
 
+;; (setq switch-to-buffer-ignore '("^emacsclient$"))
+
 (add-hook 'ibuffer-mode-hook
           (lambda ()
             (ibuffer-switch-to-saved-filter-groups "default")))

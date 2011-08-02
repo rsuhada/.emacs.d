@@ -18,7 +18,7 @@
   '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz")
 )
 
-(setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".bib" ".txt" ".log" ".list" ".notes" ".readme" ".org" ".emacs" ".html" ".aux"))
+(setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".txt" ".bib" ".list" ".notes" ".readme" ".org" ".log" ".emacs" ".html" ".aux"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

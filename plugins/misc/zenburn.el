@@ -968,6 +968,27 @@ static char *gnus-pointer[] = {
           '(mew-face-eof-message ((t (:inherit zenburn-green))))
           '(mew-face-eof-part ((t (:inherit zenburn-yellow))))
 
+          ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+          ;; rainbow-delimiters color, rs
+          '(rainbow-delimiters-depth-1-face  ((t (:inherit zenburn-orange))))
+          '(rainbow-delimiters-depth-2-face  ((t (:inherit zenburn-yellow))))
+          '(rainbow-delimiters-depth-3-face  ((t (:inherit zenburn-green-1))))
+          '(rainbow-delimiters-depth-4-face  ((t (:inherit zenburn-green+2))))
+          '(rainbow-delimiters-depth-5-face  ((t (:inherit zenburn-blue+1))))
+          '(rainbow-delimiters-depth-6-face  ((t (:inherit zenburn-blue-1))))
+          '(rainbow-delimiters-depth-7-face  ((t (:inherit zenburn-blue-2))))
+          '(rainbow-delimiters-depth-8-face  ((t (:inherit zenburn-blue-3))))
+          '(rainbow-delimiters-depth-9-face  ((t (:inherit zenburn-blue-4))))
+          '(rainbow-delimiters-depth-10-face ((t (:inherit zenburn-blue-5))))
+          '(rainbow-delimiters-depth-11-face ((t (:inherit zenburn-yellow))))
+          '(rainbow-delimiters-depth-12-face ((t (:inherit zenburn-yellow-2))))
+
+
+
+
+
+
+
           '(nav-face-heading ((t (:inherit zenburn-yellow))))
           '(nav-face-button-num ((t (:inherit zenburn-cyan))))
           '(nav-face-dir ((t (:inherit zenburn-green))))

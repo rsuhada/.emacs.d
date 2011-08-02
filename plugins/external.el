@@ -96,8 +96,57 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
-(add-to-list 'load-path "~/.emacs.d/plugins/anything-config/")
-(require 'anything-startup)
+;; (add-to-list 'load-path "~/.emacs.d/plugins/anything-config/")
+;; (require 'anything-startup)
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; my mini-setup
+;; (setq anything-sources
+;;       '(;; anything-c-source-buffers+
+;;         ;; anything-c-source-recentf
+;;         ;; anything-c-source-files-in-current-dir+
+;;         anything-c-source-bookmarks
+;;         ;; anything-c-source-kill-ring
+;;         anything-c-source-buffer-not-found
+;;         anything-c-source-define-global-abbrev
+;;         anything-c-source-define-mode-abbrev
+;;         ))
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; reddit setup
+;; (setq anything-for-files-prefered-list
+;;   '(anything-c-source-ffap-line
+;;     anything-c-source-ffap-guesser
+;;     anything-c-source-filelist
+;;     anything-c-source-buffers+
+;;     anything-c-source-recentf
+;;     anything-c-source-bookmarks
+;;     anything-c-source-file-cache
+;;     anything-c-source-files-in-current-dir+
+;;     ;; anything-c-source-locate
+;; ))
+;; (setq anything-sources
+;;   '(anything-c-source-ffap-line
+;;     anything-c-source-ffap-guesser
+;;     anything-c-source-files-in-all-dired
+;;     anything-c-source-filelist
+;;     ;; anything-c-source-locate
+;;     anything-c-source-recentf
+;;     anything-c-source-file-name-history
+;;     ;; anything-c-source-buffers
+;;     anything-c-source-emacs-commands
+;;     ;; anything-c-source-buffers
+;;     ;; anything-c-source-buffer-not-found
+;;     ;; anything-c-source-info-pages
+;;     ;; anything-c-source-info-elisp
+;;     ;; anything-cscope-db-directory
+;;     ;; anything-c-source-cscope-c-cymbol
+;;     ;; anything-c-source-cscope-global-definition
+;;     ;; anything-c-source-cscope-called-function
+;;     ;; anything-c-source-cscope-calling-this-function
+;;     ;; anything-c-source-cscope-text-string
+;;     ))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; at the moment not functioning...
