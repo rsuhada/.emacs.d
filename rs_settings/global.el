@@ -238,3 +238,22 @@
 
 ; Don't show the startup screen
 ; (setq inhibit-startup-message t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; redefine zap-to-char to zap-up-to-char
+
+(defadvice zap-to-char (after my-zap-to-char-advice (arg char) activate)
+  "Kill up to the ARG'th occurence of CHAR, and leave CHAR. If
+  you are deleting forward, the CHAR is replaced and the point is
+  put before CHAR"
+  (insert char)
+  (if (< 0 arg) (forward-char -1)))
+
+
+;; FIXME: inserts an additional character
+(defun zap-copy-up-to-char (arg char)
+  "Zap to a character, but save instead of kill."
+  (interactive "p\ncZap to char: ")
+  (save-excursion
+    (zap-to-char arg char)
+    (yank)))

@@ -99,6 +99,29 @@
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/anything-config/")
 ;; (require 'anything-startup)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; hungry-delete - doesn't seem very useful at the moment
+(require 'hungry-delete)
+(add-hook 'python-mode-hook 'hungry-delete-mode)
+(add-hook 'text-mode-hook 'hungry-delete-mode)
+(add-hook 'latex-mode-hook 'hungry-delete-mode)
+(add-hook 'emacs-lisp-mode-hook 'hungry-delete-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; command frequency
+(setq-default command-frequency-table-file "~/.emacs.d/plugins/misc/frequencies")
+(require 'command-frequency)
+(command-frequency-table-load)
+(command-frequency-mode 1)
+(command-frequency-autosave-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; counter
+(autoload 'counter "counter" nil t)
+(global-set-key "\C-cc" 'counter)
+
+
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; my mini-setup
 ;; (setq anything-sources

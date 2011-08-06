@@ -34,8 +34,8 @@
 (global-unset-key (kbd "C-x o")) ; was other-window
 
 (global-set-key (kbd "C-;") 'mark-paragraph)
-(setq flyspell-auto-correct-binding "C-~") ; flyspell messed w C-;
-
+(setq flyspell-auto-correct-previous-word "C-~") ; flyspell messed w C-;
+(global-set-key (kbd "C-\`") 'flyspell-auto-correct-previous-word)
 
 ;; setting mark should be less is clumsy
 (global-set-key (kbd "M-ESC") 'cua-set-mark)
@@ -135,6 +135,9 @@ line."
 ;; more movement improvement
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "M-Z") 'zap-copy-up-to-char)
+
+;; (global-set-key (kbd "M-z") 'hungry-delete-backward)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
