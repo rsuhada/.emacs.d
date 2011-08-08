@@ -55,14 +55,14 @@ continuations."
       `(let ((limit (or ,limit (point-max))))
          (while (progn
                   ;; skip-syntax-* doesn't count \n as whitespace..
-                  (skip-chars-forward " \t\n\r\f\v" limit)
+                  (skip-chars-forward " \t\r\f\v" limit)
                   (when (and (eq (char-after) ?\\)
                              (< (point) limit))
                     (forward-char)
                     (or (eolp)
                         (progn (backward-char) nil))))))
     '(while (progn
-              (skip-chars-forward " \t\n\r\f\v")
+              (skip-chars-forward " \t\r\f\v")
               (when (eq (char-after) ?\\)
                 (forward-char)
                 (or (eolp)
@@ -75,14 +75,14 @@ continuations."
   (if limit
       `(let ((limit (or ,limit (point-min))))
          (while (progn
-                  ;; skip-syntax-* doesn't count \n as whitespace..
-                  (skip-chars-backward " \t\n\r\f\v" limit)
+                  ;; skip-syntax-* doesn't count  as whitespace..
+                  (skip-chars-backward " \t\r\f\v" limit)
                   (and (eolp)
                        (eq (char-before) ?\\)
                        (> (point) limit)))
            (backward-char)))
     '(while (progn
-              (skip-chars-backward " \t\n\r\f\v")
+              (skip-chars-backward " \t\r\f\v")
               (and (eolp)
                    (eq (char-before) ?\\)))
        (backward-char))))

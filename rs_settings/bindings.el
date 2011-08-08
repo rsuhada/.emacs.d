@@ -144,24 +144,28 @@ line."
 ;; function keys
 ;; (global-unset-key [f5])
 (global-set-key [f1]    'ace-jump-char-mode)           ;smex
-(global-set-key [M-f1]  'ace-jump-line-mode)
 (global-set-key [S-f1]  'ace-jump-word-mode)
+(global-set-key [M-f1]  'ace-jump-line-mode)
+
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)
+
 (global-set-key [f5]    'rgrep)
 (global-set-key [f6]    'occur)
+
 (global-set-key [f7]    'bookmark-bmenu-list)
-(global-set-key [M-f7]  'bookmark-set)
-(global-set-key [S-f7]  'bookmark-jump)
-(global-set-key [f10]   'orgtaby)
-(global-set-key [S-f10] 'orguntaby)
+(global-set-key [S-f7]  'bookmark-set)
+(global-set-key [M-f7]  'bookmark-jump)
+
+(global-set-key [f10] 'rm-set-mark)
+(global-set-key [S-f10] 'rm-kill-ring-save)
+(global-set-key [M-f10] 'rm-kill-region)
+
+(global-set-key [f11]   'orgtaby)
+(global-set-key [S-f11] 'orguntaby)
+
 (global-set-key [f12]   'switch-to-previous-buffer)
 (global-set-key [S-f12] 'help)
-
-
-
-
-
 
 ;; defaults f3 - record macro, f4 - end macro/reply
 ;; (global-set-key [f9]   'start-kbd-macro)

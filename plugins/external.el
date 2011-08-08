@@ -37,9 +37,11 @@
 (require 'rainbow-delimiters)
 (add-hook 'python-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'text-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'latex-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'sh-mode-hook 'rainbow-delimiters-mode)
+
+(add-hook 'latex-mode-hook '(lambda ()
+                             (rainbow-delimiters-mode 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; select/copy
@@ -102,10 +104,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hungry-delete - doesn't seem very useful at the moment
 (require 'hungry-delete)
-(add-hook 'python-mode-hook 'hungry-delete-mode)
-(add-hook 'text-mode-hook 'hungry-delete-mode)
-(add-hook 'latex-mode-hook 'hungry-delete-mode)
+
+(add-hook 'sh-mode-hook 'hungry-delete-mode)
 (add-hook 'emacs-lisp-mode-hook 'hungry-delete-mode)
+(add-hook 'text-mode-hook 'hungry-delete-mode)
+(add-hook 'latex-mode-hook '(lambda ()
+                             (hungry-delete-mode 1)))
+
+;; (add-hook 'python-mode-hook '(lambda () ;; in python doesn't work - but likely it's better
+;; (hungry-delete-mode 1)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; command frequency
@@ -204,11 +212,6 @@
 ;; browsing kill ring
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; rectangular
-;; (require 'rect-mark) - doesn't work?
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete - works for bash but not for python - kills yasnippet

@@ -29,7 +29,7 @@
 (add-hook 'emacs-lisp-mode-hook
      (lambda ()
       (define-key emacs-lisp-mode-map "\"" 'electric-pair)
-      (define-key emacs-lisp-mode-map "\'" 'electric-pair)
+      ;; (define-key emacs-lisp-mode-map "\'" 'electric-pair)
       (define-key emacs-lisp-mode-map "(" 'electric-pair)
       (define-key emacs-lisp-mode-map "[" 'electric-pair)
       (define-key emacs-lisp-mode-map "{" 'electric-pair)))

@@ -257,3 +257,4 @@
   (save-excursion
     (zap-to-char arg char)
     (yank)))
+
