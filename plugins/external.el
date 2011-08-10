@@ -115,6 +115,10 @@
 ;; (hungry-delete-mode 1)))
 
 
+(add-hook 'counter-post-insert-hook '(lambda ()
+                             (newline))) ; or: newline-and-indent
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; command frequency
 (setq-default command-frequency-table-file "~/.emacs.d/plugins/misc/frequencies")
@@ -128,6 +132,13 @@
 ;; counter
 (autoload 'counter "counter" nil t)
 (global-set-key "\C-cc" 'counter)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; dot-mode (repeat complex commands)
+(autoload 'dot-mode "dot-mode" nil t) ; vi `.' command emulation
+(global-set-key [(control ?.)] (lambda () (interactive) (dot-mode 1)
+                                 (message "Dot mode activated.")))
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

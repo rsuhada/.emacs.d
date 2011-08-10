@@ -378,7 +378,7 @@ If desired, this function can be invoked noninteractively from Lisp."
                        (ask "Increment or function (default %S): "
                             counter-step
                             'counter-step-history)
-                       (ask "Format (default %S): "
+                       (ask "(d decimal | 04x 0 pad | e exp. | 15e space pad | .2f real | g e or f | s str | use \"\", can prepend spaces: Format (default %S): "
                             ;; ?? Try using minibuffer-help-form here
                             counter-format
                             'counter-format-history))))

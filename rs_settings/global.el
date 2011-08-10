@@ -103,7 +103,7 @@
 ;; recent file
 (require 'recentf)
 (recentf-mode 1)
-(setq recentf-max-menu-items 200)
+(setq recentf-max-menu-items 500)
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -113,6 +113,7 @@
     (message "Aborting")))
 
 (global-set-key "\C-x\ \C-r" 'ido-recentf-open)
+
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
