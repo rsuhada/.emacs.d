@@ -1,7 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load in external modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; here you'll find simple .el extensions
 (add-to-list 'load-path
               "~/.emacs.d/plugins/misc")
@@ -51,8 +50,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
-(require 'autopair)
-(add-hook 'sh-mode-hook 'autopair-mode)
+;; (require 'autopair)
+;; (add-hook 'sh-mode-hook 'autopair-mode)
 ;; (add-hook 'emacs-lisp-mode-common-hook #'(lambda () (autopair-mode)))
 ;; (autopair-global-mode) ;; enable autopair in all buffers
 ;; (add-hook 'c-mode-common-hook #'(lambda () (autopair-mode)))
@@ -72,7 +71,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smex - ido support for M-x
-
 (require 'smex)
 (smex-initialize)
 ;; Bind some keys:
@@ -93,7 +91,8 @@
 (global-auto-complete-mode t)
 (add-to-list 'ac-modes 'text-mode)
 (add-to-list 'ac-modes 'org-mode)
-(setq ac-auto-show-menu 0.9)            ;set time in seconds
+(add-to-list 'ac-modes 'sh-mode)
+(setq ac-auto-show-menu 1.1)            ;set time in seconds
 (setq ac-ignore-case nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -115,10 +114,6 @@
 ;; (hungry-delete-mode 1)))
 
 
-(add-hook 'counter-post-insert-hook '(lambda ()
-                             (newline))) ; or: newline-and-indent
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; command frequency
 (setq-default command-frequency-table-file "~/.emacs.d/plugins/misc/frequencies")
@@ -133,12 +128,18 @@
 (autoload 'counter "counter" nil t)
 (global-set-key "\C-cc" 'counter)
 
+(add-hook 'counter-post-insert-hook '(lambda ()
+                             (newline))) ; or: newline-and-indent
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dot-mode (repeat complex commands)
-(autoload 'dot-mode "dot-mode" nil t) ; vi `.' command emulation
-(global-set-key [(control ?.)] (lambda () (interactive) (dot-mode 1)
-                                 (message "Dot mode activated.")))
+
+:; (autoload 'dot-mode "dot-mode" nil t) ; vi `.' command emulation
+;; (global-set-key [(control ?.)] (lambda () (interactive) (dot-mode 1)
+                                 ;; (message "Dot mode activated.")))
+
+(require 'dot-mode)
+(add-hook 'find-file-hooks 'dot-mode-on)
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

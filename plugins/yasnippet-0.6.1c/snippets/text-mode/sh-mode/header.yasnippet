@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: header
+# contributor: Robert Suhada
+# --
+#!/bin/bash
+
+######################################################################
+# help
+if [[ \$# -lt 1 ]]
+then
+	echo "$1"
+	echo
+    echo "Parameters:"
+    echo "$2"
+    echo ""
+    echo "Syntax:"
+	echo "$3"
+    echo
+    exit 1
+fi
+
+######################################################################
+# main
+$4

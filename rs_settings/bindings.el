@@ -37,9 +37,15 @@
 (setq flyspell-auto-correct-previous-word "C-~") ; flyspell messed w C-;
 (global-set-key (kbd "C-\`") 'flyspell-auto-correct-previous-word)
 
-;; setting mark should be less is clumsy
+;; setting mark should be less clumsy
 (global-set-key (kbd "M-ESC") 'cua-set-mark)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; abbrev temporary patch
+(global-set-key (kbd "_") 'protect-underscore)
+(global-set-key (kbd "-") 'protect-dash)
+(global-set-key (kbd "=") 'protect-equal)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better word-at-point search
@@ -119,6 +125,10 @@ line."
 (global-unset-key (kbd "C-n")) ; next-line
 ;; (global-unset-key (kbd "C-SPC")) ; set-mark-command
 
+;; per word movement
+(global-set-key (kbd "C-M-l") 'forward-word)  ; reposition-window
+(global-set-key (kbd "C-M-j") 'backward-word)   ; indent-new-comment-line
+
 ;; how to use the freed bindings:
 (global-set-key (kbd "C-f") 'find-file) ; ido
 (global-set-key (kbd "C-b") 'switch-to-buffer)
@@ -170,5 +180,4 @@ line."
 ;; defaults f3 - record macro, f4 - end macro/reply
 ;; (global-set-key [f9]   'start-kbd-macro)
 ;; (global-set-key [f10]  'end-kbd-macro)
-
 

@@ -1,11 +1,25 @@
 ;;-*-coding: emacs-mule;-*-
 (define-abbrev-table 'Buffer-menu-mode-abbrev-table '())
 
+(define-abbrev-table 'Custom-mode-abbrev-table '())
+
 (define-abbrev-table 'apropos-mode-abbrev-table '())
+
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'browse-kill-ring-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
+
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -1047,9 +1061,15 @@ Robert" nil 3)
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
+(define-abbrev-table 'idl-mode-abbrev-table '())
+
 (define-abbrev-table 'idlwave-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
+
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
@@ -1057,22 +1077,41 @@ Robert" nil 3)
   '(
     ("052" "$0.5-2$~keV" nil 1)
     ("chan" "\\emph{Chandra}" nil 1)
-    ("fig" "Fig.~\\ref{fig" nil 1)
-    ("sect" "Sect.~\\ref{sec" nil 1)
+    ("fig" ["Fig.~\\ref{fig_}" 1 nil nil] expand-abbrev-hook 2)
+    ("sect" ["Sect.~\\ref{sec_}" 1 nil nil] expand-abbrev-hook 2)
     ("sol" "\\odot" nil 1)
-    ("tab" "Table~\\ref{tab" nil 2)
+    ("sout" ["System.out.println(\"\")" 2 nil nil] expand-abbrev-hook 0)
+    ("tab" ["Table~\\ref{tab_}" 1 nil nil] expand-abbrev-hook 1)
     ("xmm" "XMM-\\emph{Newton}" nil 2)
    ))
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
+(define-abbrev-table 'message-mode-abbrev-table '())
+
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'org-mode-abbrev-table '())
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
+
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
+(define-abbrev-table 'proced-mode-abbrev-table '())
+
 (define-abbrev-table 'python-mode-abbrev-table '())
+
+(define-abbrev-table 'rst-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'rst-toc-mode-abbrev-table '())
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
@@ -1094,7 +1133,17 @@ Robert" nil 3)
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
+    ("btw" "by the way" nil 0)
+    ("estim" "estimate" nil 0)
+    ("estims" "estimates" nil 0)
     ("gg" "goglgogglgoglgoglgogglgog" nil 0)
+    ("prog" "program" nil 0)
+    ("progs" "programs" nil 0)
+    ("reg" "region" nil 0)
+    ("regs" "regions" nil 0)
+    ("utd" "up-to-date" nil 0)
+    ("val" "value" nil 0)
+    ("vals" "valuesE" nil 0)
    ))
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())

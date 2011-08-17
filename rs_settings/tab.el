@@ -84,7 +84,7 @@
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; one try at completition - god except it doesn't work w yas
+;; ;; one try at completition - good except it doesn't work w yas
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/misc")
 
 ;; (require 'smart-tab)

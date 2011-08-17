@@ -436,9 +436,11 @@ This must be bound to a button-down mouse event."
   (mapcar (function delete-overlay) rm-overlay-list)
   (mapcar (function kill-local-variable) rm-old-global-variables)
   (mapcar (function kill-local-variable) rm-our-local-variables)
-  (and transient-mark-mode
-       mark-active
-       (deactivate-mark)))
+;;   (and transient-mark-mode
+;;        mark-active
+;;        (deactivate-mark)
+;; )
+)
 
 (provide 'rect-mark)
 

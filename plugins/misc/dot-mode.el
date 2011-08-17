@@ -228,7 +228,7 @@
           (setq minor-mode-map-alist
                 (cons (cons mode map) minor-mode-map-alist)))))
 
-(add-minor-mode 'dot-mode " Dot" dot-mode-map) ;; depends on add-minor-mode
+(add-minor-mode 'dot-mode "" dot-mode-map) ;; depends on add-minor-mode, rs: orig: " Dot"
 
 (defvar dot-mode-global-mode t
   "Should dot-mode share its command buffer between buffers?")
