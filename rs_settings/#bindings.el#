@@ -36,9 +36,6 @@
 (global-set-key (kbd "C-;") 'mark-paragraph)
 (setq flyspell-auto-correct-previous-word "C-~") ; flyspell messed w C-;
 (global-set-key (kbd "C-\`") 'flyspell-auto-correct-previous-word)
-(setq flyspell-auto-correct-word "C-M-~") ; flyspell messed w C-.
-(global-set-key (kbd "C-M-\`") 'flyspell-auto-correct-word)
-
 
 ;; setting mark should be less clumsy
 (global-set-key (kbd "M-ESC") 'cua-set-mark)

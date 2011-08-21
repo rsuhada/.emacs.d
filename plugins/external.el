@@ -114,13 +114,13 @@
 ;; (hungry-delete-mode 1)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; command frequency
-(setq-default command-frequency-table-file "~/.emacs.d/plugins/misc/frequencies")
-(require 'command-frequency)
-(command-frequency-table-load)
-(command-frequency-mode 1)
-(command-frequency-autosave-mode 1)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; command frequency
+;; (setq-default command-frequency-table-file "~/.emacs.d/plugins/misc/frequencies")
+;; (require 'command-frequency)
+;; (command-frequency-table-load)
+;; (command-frequency-mode 1)
+;; (command-frequency-autosave-mode 1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

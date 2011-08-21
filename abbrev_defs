@@ -1057,6 +1057,8 @@ Robert" nil 3)
     ("yuor" "your" nil 0)
     ("zz" "redshift" nil 1)
     ("zzs" "redshifts" nil 2)
+    ("aphys" "astrophysics" nil 0)
+    ("exgal" "extragalactic" nil 0)
    ))
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
