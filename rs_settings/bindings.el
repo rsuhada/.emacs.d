@@ -34,7 +34,7 @@
 (global-unset-key (kbd "C-x o")) ; was other-window
 
 (global-set-key (kbd "C-;") 'mark-paragraph)
-(setq flyspell-auto-correct-previous-word "C-~") ; flyspell messed w C-;
+(setq flyspell-auto-correct-previous-word "C-+") ; flyspell messed w C-;
 (global-set-key (kbd "C-\`") 'flyspell-auto-correct-previous-word)
 (setq flyspell-auto-correct-word "C-M-~") ; flyspell messed w C-.
 (global-set-key (kbd "C-M-\`") 'flyspell-auto-correct-word)
@@ -45,9 +45,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrev temporary patch
-(global-set-key (kbd "_") 'protect-underscore)
-(global-set-key (kbd "-") 'protect-dash)
-(global-set-key (kbd "=") 'protect-equal)
+
+(add-hook 'abbrev-mode-hook
+            (lambda ()
+              (local-set-key (kbd "_") 'protect-underscore)
+              (local-set-key (kbd "-") 'protect-dash)
+              (local-set-key (kbd "=") 'protect-equal)
+))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better word-at-point search
@@ -103,12 +107,24 @@ line."
     (comment-dwim arg)))
 (global-set-key "\M-;" 'comment-dwim-line)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; comment paragraph
+(defun comment-paragraph ()
+  "Comment current region. Shortcut to C-; M-;"
+  (interactive)
+  (mark-paragraph)
+  (comment-dwim-line)
+  )
+
+(global-set-key "\M-'" 'comment-paragraph)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer flipping
 (defun switch-to-previous-buffer ()
   (interactive)
   (switch-to-buffer (other-buffer)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better basic movement - ErgoEmacs + my ideas

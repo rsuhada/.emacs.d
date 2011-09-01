@@ -16,6 +16,8 @@
                          (mode . Emacs-Lisp-Mode)))
 ))))
 
+(setq ibuffer-show-empty-filter-groups nil)
+
 ;; (setq switch-to-buffer-ignore '("^emacsclient$"))
 
 (add-hook 'ibuffer-mode-hook
