@@ -1,0 +1,93 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: plot
+# contributor: Robert Suhada
+# --
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PS env
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+PLOT_TO_FILE=1
+
+if (PLOT_TO_FILE EQ 1) then begin
+
+    ;; register default settings
+    oc=!p.color
+    ot=!p.thick
+    otl=!p.ticklen
+    oth=!p.thick
+
+    oct=!p.charthick
+    oxt=!x.thick
+    oyt=!y.thick
+    chsz = !P.CHARSIZE
+
+    set_plot,'PS'
+    name = $1
+    plot_man_adjust_obj_created=0
+
+    ;; A4 standard small
+    XOFFSET=1.61000
+    XSIZE=17.800
+    YOFFSET=14.65000
+    YSIZE=12.700
+
+    device, filename=name, $
+    /COLOR, $
+    XOFFSET= XOFFSET, $
+    XSIZE  = XSIZE, $
+    YOFFSET= YOFFSET, $
+    YSIZE  = YSIZE, $
+    /helv, /isolatin, $
+    ENCAPSULATED=0, $
+    /PORTRAIT
+
+    ;; adjust default setting to 'publication style'
+    !p.font=0
+    linethickness=3.0
+    !p.charthick=linethickness
+    !p.thick=linethickness
+    !x.thick=linethickness
+    !y.thick=linethickness
+
+    ;; global options
+    !P.CHARSIZE=1.5
+    !P.MULTI=[0, 1, 1]
+    PLOTSYM, 0, 0.6, /FILL
+
+    ;; manual adjust
+    ;; plot_man_adjust_obj_created=1
+    ;; object = Obj_New('FSC_PSConfig', /European, DefaultSetup="Centered (Portrait)")
+    ;; object->GUI
+    ;; keywords = object->GetKeywords(FontType=fonttype)
+    ;; Device, _Extra=keywords
+    ;; Help, keywords, /Structure
+
+endif
+
+; Plot----------------------------------------------------
+
+$0
+
+; Plot----------------------------------------------------
+
+if (PLOT_TO_FILE EQ 1) then begin
+    device, /close
+    set_plot, 'X'
+    ;; set back to default settings
+    !p.font=1
+    !P.Multi = [0, 1, 1]
+    !p.color=oc
+    !p.ticklen=otl
+    !p.charthick=oct
+    !p.thick=oth
+    !x.thick=oxt & !y.thick=oyt
+    !P.CHARSIZE=chsz
+    ENCAPSULATED=0
+    if plot_man_adjust_obj_created EQ 1 then begin
+        Obj_Destroy, object
+        plot_man_adjust_obj_created = 0
+    endif
+endif
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PS env
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

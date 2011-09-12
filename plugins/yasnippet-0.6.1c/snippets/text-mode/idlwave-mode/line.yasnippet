@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: legend
+# contributor: Robert Suhada
+# --
+plot, ${1:x}, ${2:y} $
+, thick=5.0, linestyle=0, color=FSC_COLOR('black') $
+;, /xlog $
+;, /ylog $
+, xrange=[0.0, 1.0], /xstyle $
+, yrange=[0.0, 1.0], /ystyle $
+, xtitle=TexToIDL('$1') $
+, ytitle=TexToIDL('$2') $
+;, title=TexToIDL('title') $
+, charsize=1.35
+$0

@@ -1,0 +1,38 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: pad
+# contributor: Robert Suhada
+# --
+$0
+# setup grids
+ncpus = 28
+zgrid = linspace(0.0, 2.0, 21)
+tgrid = [1.0, 2.0, 4.0 , 10.0]
+bandmin = 0.5
+bandmax = 2.0
+a = 0.3
+
+n_zgrid = len(zgrid)
+n_tgrid = len(tgrid)
+
+tt = time.time()
+
+# create server
+kcorr = pprocess.Map(limit=ncpus, reuse=1)
+p_calc_kcorr = kcorr.manage(pprocess.MakeReusable(calc_kcorr))
+
+# do the calculation
+for j in range(0, n_tgrid):
+    for i in range(0, n_zgrid):
+        p_calc_kcorr(bandmin=bandmin, bandmax=bandmax, z=zgrid[i], t=tgrid[j], a=a)
+
+# get the results
+kcorr = array(kcorr[:])
+#kcorr = kcorr.reshape((n_tgrid, n_zgrid))
+
+print "Time taken:", time.time() - t
+
+# prinout
+for j in range(0, n_tgrid):
+    for i in range(0, n_zgrid):
+        print zgrid[i], tgrid[j], kcorr[i + j*n_zgrid]
