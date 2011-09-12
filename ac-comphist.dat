@@ -1,4 +1,14 @@
-((("ido-complete" .
+((("slovak" .
+   [1 0 0 0 0 0])
+  ("suhada-publications.aux" .
+   [0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("delete-char" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("char" .
+   [1 0 0 0])
+  ("delete" .
+   [1 0 0 0 0 0])
+  ("ido-complete" .
    [0 0 0 0 0 0 0 0 0 0 0 1])
   ("define-key" .
    [1 0 0 0 0 0 0 0 0 0])

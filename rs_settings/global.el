@@ -240,6 +240,15 @@
 ;; (setq next-line-add-newlines t)
 ;; move newline ads newline
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ediff
+(setq ediff-split-window-function (lambda (&optional arg)
+(if (> (frame-width) 70)
+    (split-window-horizontally arg)
+  (split-window-vertically arg))))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Use command as the meta key
@@ -259,11 +268,11 @@
   (if (< 0 arg) (forward-char -1)))
 
 
-;; FIXME: inserts an additional character
+;; inserts an additional character
 (defun zap-copy-up-to-char (arg char)
   "Zap to a character, but save instead of kill."
   (interactive "p\ncZap to char: ")
   (save-excursion
     (zap-to-char arg char)
-    (yank)))
-
+    (yank)
+    (delete-char 1)))

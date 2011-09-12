@@ -127,6 +127,33 @@ line."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; duplicate & comment
+
+(defun djcb-duplicate-line (&optional comment line)
+"Duplicate the line containing the point.
+\nIf COMMENT is non-nil, also comment out the original line.
+If LINE is non-nil, duplicate that line instead."
+(interactive "P")
+(let ((col (current-column)))
+(save-excursion
+(when line
+(goto-line line))
+(let ((line (buffer-substring (point-at-bol) (point-at-eol))))
+(when comment
+(comment-region (point-at-bol) (point-at-eol)))
+(goto-char (point-at-eol))
+(if (eobp)
+(newline)
+(forward-line 1))
+(open-line 1)
+(insert line)))
+(forward-line 1)
+(move-to-column col)))
+
+(global-set-key (kbd "M-[") (lambda()(interactive)(djcb-duplicate-line t)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better basic movement - ErgoEmacs + my ideas
 
 ;; Single char cursor movement. (assuming you are on qwerty)
