@@ -80,6 +80,7 @@
   "Go to beginning of match."
   (when isearch-forward (goto-char isearch-other-end)))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; add smooth scrolling
 

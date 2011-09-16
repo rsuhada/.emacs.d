@@ -65,14 +65,13 @@
                             ("visual" . ?v)
                             ("FLAGGED" . ??))))
 
-
 ;; todo keywords
 ;; (setq org-todo-keywords (quote ((sequence "TODO(t)" "|" "DONE(d!/!)"))))
 (setq org-use-fast-todo-selection t)    ; C-c C-t KEY
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; capture
-(setq org-default-notes-file "~/git/org/refile.org")
+(setq org-default-notes-file "~/Dropbox/org/refile.org")
 
 ;; I use C-M-r to start capture mode
 (global-set-key (kbd "C-M-r") 'org-capture)
@@ -81,17 +80,19 @@
 (setq org-capture-templates
     (quote (("t" "todo" entry (file "~/Dropbox/org/refile.org")
              "* TODO %?\n%U\n%a\n  %i" :empty-lines 1)
-            ("w" "work" entry (file+datetree "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
+            ;; ("w" "work" entry (file+datetree "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
+            ("w" "work" entry (file "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
             ("n" "note" entry (file "~/Dropbox/org/refile.org")
              "* %? :note:\n%U" :empty-lines 1)
             ("i" "idea" entry (file "~/Dropbox/org/refile.org")
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
-            ("p" "personal" entry (file+datetree "~/Dropbox/org/personal.org") "* %?\n%U" :empty-lines 1)
+            ("p" "personal" entry (file "~/Dropbox/org/personal.org") "* %?\n%U" :empty-lines 1)
             ("W" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? :wiki:\n\nTAGS: \n\n%U" :empty-lines 1)
             )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; refile
+
 (setq org-refile-targets (quote ((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5))))
 (setq org-refile-use-outline-path (quote file))
 (setq org-outline-path-complete-in-steps t)

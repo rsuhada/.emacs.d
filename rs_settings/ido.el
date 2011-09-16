@@ -4,6 +4,8 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching is a must have
 (setq ido-enable-last-directory-history t) ; forget latest selected directory names
+(ido-everywhere t)
+
 
 ;; when using ido, the confirmation is rather annoying...
 (setq confirm-nonexistent-file-or-buffer nil)
@@ -15,7 +17,7 @@
 ;; ignore these guys, typing full will open them anyway or C-a makes them visible
 (setq
   ido-ignore-files
-  '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz" "\\.FIT" "\\.fit" "\\.ftab")
+  '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz" "\\.FIT" "\\.fit" "\\.ftab" "\\`CVS/" "\\`#" "\\`.#" "auto-save-list" "\\.rsync-filter" "\\.org-id-locations")
 )
 
 (setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".txt" ".bib" ".list" ".notes" ".readme" ".org" ".log" ".emacs" ".html" ".aux"))
@@ -31,38 +33,3 @@
 (define-key ido-completion-map (kbd "C-@") nil)
 (define-key ido-completion-map (kbd "C-0") 'ido-restrict-to-matches)
 )
-
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; sample code
-
-
-;; ;; ido makes competing buffers and finding files easier
-;; ;; http://www.emacswiki.org/cgi-bin/wiki/InteractivelyDoThings
-;; (require 'ido)
-;; (ido-mode 'both) ;; for buffers and files
-;; (setq
-;;   ido-save-directory-list-file "~/.emacs.d/cache/ido.last"
-
-;;   ido-ignore-buffers ;; ignore these guys
-;;   '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
-
-;;      "^\*compilation" "^\*GTAGS" "^session\.*" "^\*")
-;;   ido-work-directory-list '("~/" "~/Desktop" "~/Documents" "~src")
-;;   ido-case-fold  t                 ; be case-insensitive
-
-;;   ido-enable-last-directory-history t ; remember last used dirs
-;;   ido-max-work-directory-list 30   ; should be enough
-;;   ido-max-work-file-list      50   ; remember many
-;;   ido-use-filename-at-point nil    ; don't use filename at point (annoying)
-;;   ido-use-url-at-point nil         ; don't use url at point (annoying)
-
-;;   ido-enable-flex-matching nil     ; don't try to be too smart
-;;   ido-max-prospects 8              ; don't spam my minibuffer
-;;   ido-confirm-unique-completion t) ; wait for RET, even with unique completion
-
-;; ;; when using ido, the confirmation is rather annoying...
-;;  (setq confirm-nonexistent-file-or-buffer nil)

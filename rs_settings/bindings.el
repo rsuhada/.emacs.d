@@ -120,6 +120,17 @@ line."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; breadcrumb
+(global-set-key [(meta f1)] 'bc-set)
+(global-set-key [(meta left)] 'bc-previous)
+(global-set-key [(meta right)] 'bc-next)
+;; (global-set-key [(meta left)] 'bc-local-previous)
+;; (global-set-key [(meta right)] 'bc-local-next)
+;; (global-set-key [(control c)(j)] 'bc-goto-current)
+(global-set-key [(control x)(meta j)] 'bc-list)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer flipping
 (defun switch-to-previous-buffer ()
   (interactive)
@@ -200,7 +211,7 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-unset-key [f5])
 (global-set-key [f1]    'ace-jump-char-mode)           ;smex
 (global-set-key [S-f1]  'ace-jump-word-mode)
-(global-set-key [M-f1]  'ace-jump-line-mode)
+;; (global-set-key [M-f1]  'ace-jump-line-mode)
 
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)

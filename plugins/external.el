@@ -50,6 +50,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
+
 ;; (require 'autopair)
 ;; (add-hook 'sh-mode-hook 'autopair-mode)
 ;; (add-hook 'emacs-lisp-mode-common-hook #'(lambda () (autopair-mode)))
@@ -58,10 +59,6 @@
 ;; (add-hook 'emacs-lisp-mode-hook '(lambda () (setq autopair-dont-activate t)))
 ;; (add-hook 'emacs-lisp-mode-hook 'autopair-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; anything
-;; (add-to-list 'load-path "~/.emacs.d/plugins/anything-configs")
-;;    (require 'anything-startup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; run server: for chrome
@@ -96,22 +93,32 @@
 (setq ac-ignore-case nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; anything
-;; (add-to-list 'load-path "~/.emacs.d/plugins/anything-config/")
-;; (require 'anything-startup)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hungry-delete - doesn't seem very useful at the moment
-(require 'hungry-delete)
 
-(add-hook 'sh-mode-hook 'hungry-delete-mode)
-(add-hook 'emacs-lisp-mode-hook 'hungry-delete-mode)
-(add-hook 'text-mode-hook 'hungry-delete-mode)
-(add-hook 'latex-mode-hook '(lambda ()
-                             (hungry-delete-mode 1)))
+;; (require 'hungry-delete)
+
+;; (add-hook 'sh-mode-hook 'hungry-delete-mode)
+;; (add-hook 'emacs-lisp-mode-hook 'hungry-delete-mode)
+;; (add-hook 'text-mode-hook 'hungry-delete-mode)
+;; (add-hook 'latex-mode-hook '(lambda ()
+;;                              (hungry-delete-mode 1)))
 
 ;; (add-hook 'python-mode-hook '(lambda () ;; in python doesn't work - but likely it's better
 ;; (hungry-delete-mode 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; breadcrumbs
+
+(require 'breadcrumb)
+
+(autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
+(autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
+(autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
+(autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
+(autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
+(autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
+(autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
+(autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -142,8 +149,47 @@
 (add-hook 'find-file-hooks 'dot-mode-on)
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; my mini-setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; my mini-setup
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; anything
+(add-to-list 'load-path "~/.emacs.d/plugins/anything-config")
+;; (require 'anything-config)
+(require 'anything-startup)
+
+
+(setq anything-sources
+   '(
+     anything-c-source-ffap-line
+     anything-c-source-ffap-guesser
+     anything-c-source-buffers
+     anything-c-source-bookmarks
+     anything-c-source-recentf
+     anything-c-source-file-name-history
+     anything-c-source-file-cache
+     ;; anything-c-source-locate
+     anything-c-source-buffer-not-found
+     )
+)
+
+
+;; (defun my-anything ()
+;;   (interactive)
+;;   (anything-other-buffer
+;;    '(
+;;      anything-c-source-ffap-line
+;;      anything-c-source-ffap-guesser
+;;      anything-c-source-buffers
+;;      anything-c-source-recentf
+;;      anything-c-source-file-name-history
+;;      anything-c-source-bookmarks
+;;      anything-c-source-file-cache
+;;      anything-c-source-locate
+;;      anything-c-source-buffer-not-found
+;;      )
+;;     " *my-anything*"))
+
 ;; (setq anything-sources
 ;;       '(;; anything-c-source-buffers+
 ;;         ;; anything-c-source-recentf
