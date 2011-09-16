@@ -154,7 +154,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
-(add-to-list 'load-path "~/.emacs.d/plugins/anything-config")
+(add-to-list 'load-path "~/.emacs.d/plugins/a-c")
 ;; (require 'anything-config)
 (require 'anything-startup)
 
