@@ -19,7 +19,7 @@
             (org-set-local 'yas/trigger-key [tab])
             (define-key yas/keymap [tab] 'yas/next-field-group)
             (auto-fill-mode 1)
-            (flyspell-mode 1)))
+            (flyspell-mode 0)))
 
 ;; Various preferences
 (setq org-log-done t
@@ -49,7 +49,7 @@
                             ("xxl" . ?l)
                             ("coding" . ?c)
                             ("emacs" . ?e)
-                            ("computer" . ?c)
+                            ("computer" . ?C)
                             ("bureaucracy" . ?b)
                             (:endgroup)
                             ("note" . ?n)

@@ -91,6 +91,7 @@
 (add-to-list 'ac-modes 'sh-mode)
 (setq ac-auto-show-menu 1.1)            ;set time in seconds
 (setq ac-ignore-case nil)
+(setq ac-use-comphist nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hungry-delete - doesn't seem very useful at the moment

@@ -187,7 +187,8 @@ If LINE is non-nil, duplicate that line instead."
 
 ;; how to use the freed bindings:
 (global-set-key (kbd "C-f") 'find-file) ; ido
-(global-set-key (kbd "C-b") 'switch-to-buffer)
+;; (global-set-key (kbd "C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-b") 'anything)
 (global-set-key (kbd "C-p") 'kill-whole-line)
 (global-set-key (kbd "C-n") 'anything)
 

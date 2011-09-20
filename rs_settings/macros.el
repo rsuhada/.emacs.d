@@ -9,11 +9,12 @@
    [?\M-< ?\C-s ?# ?\C-d ?\C-x ?h ?\C-c ?| ?\C-x ?\C-s])
 
 (fset 'orguntaby
-   [?\M-< f2 ?| return ?  return ?\M-< ?# ?\C-d ?\C-x ?\C-s])
+   [?\M-x ?r ?e ?p ?l ?a ?c ?e ?- ?s ?t ?r ?i ?n ?g return ?| return return ?\M-< ?# ?\C-x ?\C-s])
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrev temporary patch
+
 (fset 'protect-underscore
    "\C-q_")
 
