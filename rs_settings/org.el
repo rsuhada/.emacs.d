@@ -50,7 +50,7 @@
                             ("coding" . ?c)
                             ("emacs" . ?e)
                             ("computer" . ?C)
-                            ("bureaucracy" . ?b)
+                            ("bash" . ?b)
                             (:endgroup)
                             ("note" . ?n)
                             ("idea" . ?i)

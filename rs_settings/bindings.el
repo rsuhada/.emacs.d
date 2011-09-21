@@ -13,6 +13,9 @@
 (global-set-key (kbd "C-x b") 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
+;; save
+(global-set-key (kbd "C-x s") 'save-buffer) ;; was save-some-buffers
+
 ;; Map the window manipulation keys to meta 0, 1, 2, o
 (global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
 (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument

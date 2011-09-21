@@ -21,6 +21,20 @@
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
 
+(define-abbrev-table 'conf-colon-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-javaprop-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-ppd-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-space-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-unix-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-windows-mode-abbrev-table '())
+
+(define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
+
 (define-abbrev-table 'doctex-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
@@ -333,7 +347,7 @@
     ("documnet" "document" nil 0)
     ("documnets" "documents" nil 0)
     ("doese" "does" nil 0)
-    ("doesnt" "doesn't" nil 0)
+    ("doesnt" "doesn't" nil 1)
     ("doign" "doing" nil 0)
     ("doimg" "doing" nil 0)
     ("doind" "doing" nil 0)
@@ -964,11 +978,15 @@
 
 (define-abbrev-table 'grep-mode-abbrev-table '())
 
+(define-abbrev-table 'html-mode-abbrev-table '())
+
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
 (define-abbrev-table 'idlwave-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-tcl-mode-abbrev-table '())
 
 (define-abbrev-table 'java-mode-abbrev-table '())
 
@@ -978,13 +996,14 @@
   '(
     ("052" "$0.5-2$~keV" nil 1)
     ("chan" "\\emph{Chandra}" nil 1)
+    ("fcgs" "erg s$^{-1}$ cm$^{-2}$" nil 2)
     ("fig" ["Fig.~\\ref{fig_}" 1 nil nil] expand-abbrev-hook 2)
+    ("lcgs" "erg s$^{-1}$" nil 2)
     ("sect" ["Sect.~\\ref{sec_}" 1 nil nil] expand-abbrev-hook 2)
     ("sol" "\\odot" nil 1)
+    ("sout" ["System.out.println(\"\")" 2 nil nil] expand-abbrev-hook 0)
     ("tab" ["Table~\\ref{tab_}" 1 nil nil] expand-abbrev-hook 1)
     ("xmm" "XMM-\\emph{Newton}" nil 2)
-    ("fcgs" "erg s$^{-1}$ cm$^{-2}$" nil 2)
-    ("lcgs" "erg s$^{-1}$" nil 2)
    ))
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
@@ -1011,6 +1030,8 @@
 
 (define-abbrev-table 'select-tags-table-mode-abbrev-table '())
 
+(define-abbrev-table 'sgml-mode-abbrev-table '())
+
 (define-abbrev-table 'sh-mode-abbrev-table '())
 
 (define-abbrev-table 'shell-mode-abbrev-table '())
@@ -1022,6 +1043,8 @@
 (define-abbrev-table 'solitaire-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
+
+(define-abbrev-table 'tcl-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
 
@@ -1038,15 +1061,11 @@
     ("bbn" "BBN" nil 0)
     ("bc" "because" nil 0)
     ("bg" "background" nil 1)
-    ("sim" "simulation" nil 0)
-    ("sims" "simulations" nil 0)
     ("bgs" "backgrounds" nil 0)
-    ("fg" "foreground" nil 1)
-    ("fgs" "foregrounds" nil 0)
     ("bh" "BH" nil 0)
     ("btw" "by the way" nil 0)
-    ("bw" "between" nil 0)
-    ("cat" "catalog" nil 0)
+    ("bw" "between" nil 1)
+    ("cat" "catalog" nil 3)
     ("cats" "catalogs" nil 0)
     ("cc" "cluster" nil 4)
     ("ccs" "clusters" nil 0)
@@ -1054,14 +1073,16 @@
     ("cmb" "CMB" nil 0)
     ("diff" "difference" nil 0)
     ("diffs" "differences" nil 0)
-    ("eg" "e.g." nil 1)
+    ("eg" "e.g." nil 2)
     ("eos" "equation of state" nil 0)
-    ("err" "error" nil 0)
+    ("err" "error" nil 1)
     ("errs" "errors" nil 0)
     ("estim" "estimate" nil 0)
     ("estims" "estimates" nil 0)
     ("evol" "evolution" nil 0)
     ("exgal" "extragalactic" nil 0)
+    ("fg" "foreground" nil 1)
+    ("fgs" "foregrounds" nil 0)
     ("frac" "fraction" nil 0)
     ("fracs" "fractions" nil 0)
     ("freq" "frequency" nil 1)
@@ -1078,13 +1099,15 @@
     ("ims" "images" nil 1)
     ("lss" "LSS" nil 0)
     ("mm" "mass" nil 0)
+    ("mod" "model" nil 0)
+    ("mods" "models" nil 0)
     ("nfw" "NFW" nil 1)
     ("obj" "object" nil 1)
     ("objs" "objects" nil 1)
     ("obs" "observation" nil 0)
     ("obss" "observations" nil 0)
     ("par" "parameter" nil 0)
-    ("pars" "parameters" nil 0)
+    ("pars" "parameters" nil 2)
     ("pb" "probability" nil 1)
     ("pbs" "probabilities" nil 0)
     ("pop" "population" nil 0)
@@ -1106,17 +1129,21 @@
     ("sbd" "somebody" nil 0)
     ("scal" "scaling" nil 0)
     ("sig" "Best wishes,
- Robert" nil 3)
+ Robert" nil 4)
     ("sig1" "Cheers,
  Robert" nil 3)
+    ("sim" "simulation" nil 0)
+    ("sims" "simulations" nil 2)
     ("smbh" "SMBH" nil 0)
     ("smt" "sometime" nil 0)
     ("spt" "SPT" nil 0)
     ("src" "source" nil 0)
     ("srcs" "sources" nil 0)
     ("stg" "something" nil 0)
+    ("sur" "survey" nil 0)
+    ("surs" "surveys" nil 0)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 7)
+    ("t" "the" nil 17)
     ("thnx" "Thank you very much!" nil 3)
     ("tt" "this" nil 2)
     ("ttt" "these" nil 2)
@@ -1128,20 +1155,16 @@
     ("wl" "weak lensing" nil 0)
     ("wo" "without" nil 0)
     ("wrt" "with respect to" nil 5)
+    ("xbcs" "XBCS" nil 0)
     ("xmm" "XMM-Newton" nil 0)
+    ("xmm-bcs" "XMM-BCS" nil 0)
+    ("xmmbcs" "XMM-BCS" nil 0)
     ("xmmlss" "XMM-LSS" nil 0)
     ("xmmxxl" "XMM-XXL" nil 0)
-    ("xmmbcs" "XMM-BCS" nil 0)
-    ("xmm-bcs" "XMM-BCS" nil 0)
-    ("xbcs" "XBCS" nil 0)
     ("xr" "X-ray" nil 2)
     ("xrs" "X-rays" nil 0)
-    ("zz" "redshift" nil 1)
+    ("zz" "redshift" nil 3)
     ("zzs" "redshifts" nil 2)
-    ("sur" "survey" nil 0)
-    ("surs" "surveys" nil 0)
-    ("mod" "model" nil 0)
-    ("mods" "models" nil 0)
    ))
 
 (define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
