@@ -1,12 +1,12 @@
 ;; ibuffer settings
 (setq ibuffer-saved-filter-groups
       (quote (("default"
-               ;; ("dired" (mode . dired-mode))
+               ("esaspi" (filename . "/esaspi/"))
                ("sh" (mode . sh-mode))
                ("python" (mode . python-mode))
                ("idl" (mode . idlwave-mode))
                ("tex" (mode . latex-mode))
-               ("planner" (or
+               ("org" (or
                            (name . "^\\*Calendar\\*$")
                            (name . "^diary$")
                            (mode . org-mode)))
@@ -14,11 +14,13 @@
                          (name . "^\\*scratch\\*$")
                          (name . "^\\*Messages\\*$")
                          (mode . Emacs-Lisp-Mode)))
+               ("dired" (mode . dired-mode))
 ))))
 
 (setq ibuffer-show-empty-filter-groups nil)
 
 ;; (setq switch-to-buffer-ignore '("^emacsclient$"))
+
 
 (add-hook 'ibuffer-mode-hook
           (lambda ()

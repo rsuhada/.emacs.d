@@ -1024,6 +1024,10 @@
 
 (define-abbrev-table 'python-mode-abbrev-table '())
 
+(define-abbrev-table 'reb-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'reb-mode-abbrev-table '())
+
 (define-abbrev-table 'rst-mode-abbrev-table '())
 
 (define-abbrev-table 'rst-toc-mode-abbrev-table '())
@@ -1071,6 +1075,8 @@
     ("ccs" "clusters" nil 0)
     ("chan" "Chandra" nil 0)
     ("cmb" "CMB" nil 0)
+    ("coord" "coordinate" nil 0)
+    ("coords" "coordinates" nil 1)
     ("diff" "difference" nil 0)
     ("diffs" "differences" nil 0)
     ("eg" "e.g." nil 2)
@@ -1083,6 +1089,7 @@
     ("exgal" "extragalactic" nil 0)
     ("fg" "foreground" nil 1)
     ("fgs" "foregrounds" nil 0)
+    ("fors2" "FORS2" nil 0)
     ("frac" "fraction" nil 0)
     ("fracs" "fractions" nil 0)
     ("freq" "frequency" nil 1)
@@ -1150,9 +1157,11 @@
     ("utd" "up-to-date" nil 0)
     ("val" "value" nil 0)
     ("vals" "valuesE" nil 0)
+    ("vlt" "VLT" nil 0)
     ("w" "with" nil 2)
     ("wi" "within" nil 0)
     ("wl" "weak lensing" nil 0)
+    ("wmap" "WMAP" nil 0)
     ("wo" "without" nil 0)
     ("wrt" "with respect to" nil 5)
     ("xbcs" "XBCS" nil 0)
