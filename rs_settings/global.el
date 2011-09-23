@@ -45,15 +45,17 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ivisible backup files
-(setq backup-directory-alist '(("." . "~/.emacs_backups")))
+
+(setq backup-directory-alist '(("." . "~/.emacs-backups")))
+(defvar backup-directory "~/.emacs-backups/")
 
 (setq auto-save-interval 100)
 (setq auto-save-timeout 15)
 (setq make-backup-files         t ;backup my files
       backup-by-copying         t ;don't clobber symlinks
       delete-old-versions       t
-      kept-new-versions         6
-      kept-old-versions         2
+      kept-new-versions         7
+      kept-old-versions         3
       version-control           t ;use versioned backups
       vc-make-backup-files      t ;make backups for cvs projects
       vc-follow-symlinks        t)
@@ -133,7 +135,14 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emerge setting
+
 (setq emerge-diff-options "--ignore-all-space")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; make scripts executable
+
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

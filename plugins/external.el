@@ -133,11 +133,33 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counter
+;; C-u C-c c for setup
+;; C-u 100 C-c c to insert 100 numbers
+
 (autoload 'counter "counter" nil t)
 (global-set-key "\C-cc" 'counter)
 
 (add-hook 'counter-post-insert-hook '(lambda ()
                              (newline))) ; or: newline-and-indent
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; constants
+
+(autoload 'constants-insert "constants" "Insert constants into source." t)
+(autoload 'constants-get "constants" "Get the value of a constant." t)
+(autoload 'constants-replace "constants" "Replace name of a constant." t)
+;; (define-key global-map "\C-cci" 'constants-insert)
+;; (define-key global-map "\C-ccg" 'constants-get)
+;; (define-key global-map "\C-ccr" 'constants-replace)
+(setq constants-unit-system 'SI)   ;  this is the default
+
+;; Use "cc" as the standard variable name for speed of light,
+;; "bk" for Boltzmann's constant, and "hp" for Planck's constant
+(setq constants-rename '(("cc" . "c") ("bk" . "k") ("hp" . "h")))
+
+;; A default list of constants to insert when none are specified
+(setq constants-default-list "cc,bk,hp")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dot-mode (repeat complex commands)
@@ -271,6 +293,13 @@
 ;; browsing kill ring
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; backup-mode
+
+(add-to-list 'load-path "~/.emacs.d/plugins/backups-mode/")
+(require 'backups-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete - works for bash but not for python - kills yasnippet

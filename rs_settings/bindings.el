@@ -199,6 +199,18 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-set-key (kbd "M-[") (lambda()(interactive)(djcb-duplicate-line t)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; select parantheis with C-M-u SPC
+
+(defun backward-up-sexp (arg)
+  (interactive "p")
+  (let ((ppss (syntax-ppss)))
+    (cond ((elt ppss 3)
+           (goto-char (elt ppss 8))
+           (backward-up-sexp (1- arg)))
+          ((backward-up-list arg)))))
+
+(global-set-key [remap backward-up-list] 'backward-up-sexp)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better basic movement - ErgoEmacs + my ideas

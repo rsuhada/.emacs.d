@@ -32,10 +32,17 @@
 ;; (defvar zenburn-bg+1 "#4f4f4f")
 ;; (defvar zenburn-bg+2 "#5f5f5f")
 
-(defvar zenburn-bg "#2b2b2b")
+;; (defvar zenburn-bg "#2b2b2b")
+;; (defvar zenburn-bg+1 "#3f3f3f")
+;; (defvar zenburn-bg+2 "#4f4f4f")
+;; (defvar zenburn-bg-1 "#1a1a1a")
+
+
+(defvar zenburn-bg "#1f1f1f")
 (defvar zenburn-bg+1 "#3f3f3f")
 (defvar zenburn-bg+2 "#4f4f4f")
 (defvar zenburn-bg-1 "#1a1a1a")
+
 
 (defvar zenburn-red+1 "#dca3a3")
 (defvar zenburn-red "#cc9393")
