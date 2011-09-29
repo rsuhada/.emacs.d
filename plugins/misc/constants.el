@@ -111,7 +111,7 @@
 ;;
 ;;
 ;; CUSTOMIZATION
-k;; -------------
+;; -------------
 ;; The following customization variables are available:
 ;;
 ;; constants-unit-system
@@ -315,6 +315,7 @@ are used.  Again, `constants-defaults' contains examples."
                         idlwave-shell-send-command)
     (matlab-mode "%n = %v%t% %d %u" "e" "%p*%v" nil)
     (octave-mode "%n = %v%t# %d %u" "e" "%p*%v" nil)
+    (python-mode "%n = %v%t# %d %u" "e" "%p*%v" nil)
     (perl-mode  "$%n = %v;%t# %d %u" "e" "%p*%v" nil)
     (cperl-mode . perl-mode)
     (emacs-lisp-mode "(%n %v)%t; %d %u" "d" "(* %p %v)" nil) ; for a let form

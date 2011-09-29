@@ -6,10 +6,10 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 ;; bindings
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
+;; (global-set-key "\C-cl" 'org-store-link)
+;; (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
+;; (global-set-key "\C-cb" 'org-iswitchb)
 
 
 ;; Make TAB the yas trigger key in the org-mode-hook and enable flyspell mode and autofill
@@ -37,6 +37,7 @@
                              "~/Dropbox/org/personal.org"
                              "~/Dropbox/org/refile.org"
                              "~/Dropbox/org/emacs.org"
+                             "~/w/notes/spt.org"
 ))
 
 
@@ -87,7 +88,7 @@
             ("i" "idea" entry (file "~/Dropbox/org/refile.org")
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
             ("p" "personal" entry (file "~/Dropbox/org/personal.org") "* %?\n%U" :empty-lines 1)
-            ("W" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? :wiki:\n\nTAGS: \n\n%U" :empty-lines 1)
+            ("W" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? :wiki:\n\n%U" :empty-lines 1)
             )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

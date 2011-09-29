@@ -136,6 +136,7 @@
 ;; C-u C-c c for setup
 ;; C-u 100 C-c c to insert 100 numbers
 
+(global-unset-key (kbd "C-c c")) ; conflicts with org template launcher
 (autoload 'counter "counter" nil t)
 (global-set-key "\C-cc" 'counter)
 
@@ -151,14 +152,14 @@
 ;; (define-key global-map "\C-cci" 'constants-insert)
 ;; (define-key global-map "\C-ccg" 'constants-get)
 ;; (define-key global-map "\C-ccr" 'constants-replace)
-(setq constants-unit-system 'SI)   ;  this is the default
+(setq constants-unit-system 'cgs)   ;  this is the default
 
 ;; Use "cc" as the standard variable name for speed of light,
 ;; "bk" for Boltzmann's constant, and "hp" for Planck's constant
 (setq constants-rename '(("cc" . "c") ("bk" . "k") ("hp" . "h")))
 
 ;; A default list of constants to insert when none are specified
-(setq constants-default-list "cc,bk,hp")
+(setq constants-default-list "cc,bk,hp,Mpc,Msun")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
