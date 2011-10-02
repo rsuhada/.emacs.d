@@ -13,6 +13,7 @@
 (load "~/.emacs.d/rs_settings/ibuffer")
 (load "~/.emacs.d/rs_settings/abbrev.el")
 (load "~/.emacs.d/rs_settings/modes.el")
+(load "~/.emacs.d/rs_settings/latex.el")
 ;; (load "~/.emacs.d/rs_settings/python_stuff")
 ;; (load "~/.emacs.d/rs_settings/idl")
 

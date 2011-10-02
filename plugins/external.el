@@ -192,7 +192,7 @@
      anything-c-source-recentf
      anything-c-source-file-name-history
      anything-c-source-file-cache
-     ;; anything-c-source-locate
+     anything-c-source-locate
      anything-c-source-buffer-not-found
      )
 )

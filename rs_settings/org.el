@@ -82,13 +82,13 @@
     (quote (("t" "todo" entry (file "~/Dropbox/org/refile.org")
              "* TODO %?\n%U\n%a\n  %i" :empty-lines 1)
             ;; ("w" "work" entry (file+datetree "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
-            ("w" "work" entry (file "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
+            ("W" "work" entry (file "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
             ("n" "note" entry (file "~/Dropbox/org/refile.org")
              "* %? :note:\n%U" :empty-lines 1)
             ("i" "idea" entry (file "~/Dropbox/org/refile.org")
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
             ("p" "personal" entry (file "~/Dropbox/org/personal.org") "* %?\n%U" :empty-lines 1)
-            ("W" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? :wiki:\n\n%U" :empty-lines 1)
+            ("w" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? \n\n%U\n######################################################################")
             )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

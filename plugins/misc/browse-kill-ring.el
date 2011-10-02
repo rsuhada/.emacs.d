@@ -285,7 +285,7 @@ the window size chosen by `pop-to-buffer'; MINIMUM defaults to
 		 (cons (integer :tag "Maximum") (integer :tag "Minimum")))
   :group 'browse-kill-ring)
 
-(defcustom browse-kill-ring-separator "-------"
+(defcustom browse-kill-ring-separator "-------\n"
   "The string separating entries in the `separated' style.
 See `browse-kill-ring-display-style'."
   :type 'string

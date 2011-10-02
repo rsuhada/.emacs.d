@@ -14,7 +14,9 @@
 (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
 
 ;; save
-(global-set-key (kbd "C-x s") 'save-buffer) ;; was save-some-buffers
+;; (global-set-key (kbd "C-x s") 'save-buffer) ;; was save-some-buffers
+(global-set-key (kbd "C-x s") 'use-emacs-keys)
+(global-set-key (kbd "C-x C-s") 'use-emacs-keys)
 (global-set-key (kbd "M-s") 'save-buffer) ;; was save-some-buffers
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
