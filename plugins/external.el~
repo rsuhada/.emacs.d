@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+a;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load in external modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; here you'll find simple .el extensions
@@ -51,7 +51,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
 
-;; (require 'autopair)
+(require 'autopair)
+(autopair-global-mode) ;; to enable in all buffers
+
+(add-hook 'text-mode-hook
+          #'(lambda ()
+              (push '(?$ . ?$)
+                    (getf autopair-extra-pairs :code))))
+
+
+(add-hook 'text-mode-hook
+          #'(lambda ()
+              (push '(?< . ?>)
+                    (getf autopair-extra-pairs :code))))
 
 
 
@@ -110,19 +122,19 @@
 ;; (add-hook 'python-mode-hook '(lambda () ;; in python doesn't work - but likely it's better
 ;; (hungry-delete-mode 1)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; breadcrumbs
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; breadcrumbs
 
-(require 'breadcrumb)
+;; (require 'breadcrumb)
 
-(autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
-(autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
-(autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
-(autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
-(autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
-(autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
-(autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
-(autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
+;; (autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
+;; (autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
+;; (autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
+;; (autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
+;; (autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
+;; (autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
+;; (autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
+;; (autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -319,6 +331,8 @@
       version-control           t ;use versioned backups
       vc-make-backup-files      t ;make backups for cvs projects
       vc-follow-symlinks        t)
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete - works for bash but not for python - kills yasnippet
