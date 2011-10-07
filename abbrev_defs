@@ -35,6 +35,8 @@
 
 (define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
 
+(define-abbrev-table 'docTeX-mode-abbrev-table '())
+
 (define-abbrev-table 'doctex-mode-abbrev-table '())
 
 (define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
@@ -994,6 +996,7 @@
 
 (define-abbrev-table 'latex-mode-abbrev-table
   '(
+    ("$" ["$$" 1 nil nil] expand-abbrev-hook 3)
     ("052" "$0.5-2$~keV" nil 1)
     ("aa" "and" nil 11)
     ("act" "ACT" nil 0)

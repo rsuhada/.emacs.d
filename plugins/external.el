@@ -48,11 +48,18 @@
 ;; (require 'whole-line-or-region)
 (load "tellicopy")
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; textmate - autopairing + small tweaks
+
+(require 'textmate)
+(tm/initialize)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
 
 ;; (require 'autopair)
-
+;; (autopair-global-mode) ;; to enable in all buffers
 
 
 ;; (add-hook 'sh-mode-hook 'autopair-mode)
