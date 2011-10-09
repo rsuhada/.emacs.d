@@ -34,7 +34,7 @@
 ;; tangotango
 
 
-(add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0/themes/")
 
 ;; (require 'color-theme)

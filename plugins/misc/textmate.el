@@ -121,7 +121,8 @@ chars are not auto-inserted in major-mode"
   ;; The initial value.
   :init-value nil
   ;; The indicator for the mode line.
-  :lighter " TM"
+  ;; :lighter " TM"
+  :lighter ""
   ;; The minor mode bindings.
   :group 'textmate)
 

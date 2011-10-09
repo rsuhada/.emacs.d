@@ -6,13 +6,17 @@
 (setq ido-enable-last-directory-history t) ; forget latest selected directory names
 (ido-everywhere t)
 
-
 ;; when using ido, the confirmation is rather annoying...
 (setq confirm-nonexistent-file-or-buffer nil)
 
 ;; file at point
 (setq ido-use-filename-at-point 'guess)
 (setq ido-use-url-at-point nil)         ; don't use url at point (annoying)
+
+;; virtual buffers
+(setq ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      )
 
 ;; ignore these guys, typing full will open them anyway or C-a makes them visible
 (setq
