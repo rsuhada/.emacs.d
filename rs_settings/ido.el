@@ -21,10 +21,10 @@
 ;; ignore these guys, typing full will open them anyway or C-a makes them visible
 (setq
   ido-ignore-files
-  '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz" "\\.FIT" "\\.fit" "\\.ftab" "\\`CVS/" "\\`#" "\\`.#" "auto-save-list" "\\.rsync-filter" "\\.org-id-locations")
+  '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz" "\\.FIT" "\\.fak" "\\.im" "\\.fit" "\\.ftab" "\\`CVS/" "\\`#" "\\`.#" "auto-save-list" "\\.rsync-filter" "\\.org-id-locations")
 )
 
-(setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".txt" ".bib" ".list" ".notes" ".readme" ".org" ".log" ".emacs" ".html" ".aux"))
+(setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".txt" ".list" ".notes" ".readme" ".org" ".log" ".bib" ".bst" ".emacs" ".html" ".aux" ".cls" ".sty"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

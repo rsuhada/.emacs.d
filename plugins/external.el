@@ -73,6 +73,9 @@
 (require 'textmate)
 (tm/initialize)
 
+(add-hook 'sh-mode-hook
+          (tm/minor-mode 0))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
 
@@ -138,16 +141,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; breadcrumbs
 
-(require 'breadcrumb)
+;; (require 'breadcrumb)
 
-(autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
-(autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
-(autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
-(autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
-(autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
-(autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
-(autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
-(autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
+;; (autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
+;; (autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
+;; (autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
+;; (autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
+;; (autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
+;; (autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
+;; (autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
+;; (autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
 
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -37,9 +37,9 @@
                              "~/Dropbox/org/personal.org"
                              "~/Dropbox/org/refile.org"
                              "~/Dropbox/org/emacs.org"
+                             "~/Dropbox/org/xxl.org"
                              "~/w/notes/spt.org"
 ))
-
 
 ;; tags
 (setq org-tag-alist (quote ((:startgroup)
@@ -61,7 +61,7 @@
                             ("read" . ?r)
                             ("write" . ?t)
                             ("wiki" . ?W)
-                            ("music" . ?m)
+                            ("mac" . ?m)
                             ("movie" . ?o)
                             ("visual" . ?v)
                             ("FLAGGED" . ??))))

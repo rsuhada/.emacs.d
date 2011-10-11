@@ -53,6 +53,8 @@
 
 (defcustom tm/non-insert-alist '((emacs-lisp-mode . '(?\'))
                                  (lisp-mode . '(?\'))
+                                 (text-mode . '(?\'))
+                                 (org-mode . '(?\'))
                                  (lisp-interaction-mode . '(?\')))
   "The format of this list is '(major-mode . '(chars)) where the given list of
 chars are not auto-inserted in major-mode"
@@ -161,7 +163,8 @@ chars are not auto-inserted in major-mode"
       (forward-char))
      (t
       (tm/pair-close arg)))
-    (indent-according-to-mode)))
+    ;; (indent-according-to-mode)
+    ))
 
 (defun tm/pair-open (arg)
   (interactive "P")
@@ -187,7 +190,8 @@ chars are not auto-inserted in major-mode"
       (skeleton-pair-insert-maybe arg)))
    (t
     (self-insert-command (prefix-numeric-value arg))
-    (indent-according-to-mode))))
+    ;; (indent-according-to-mode)
+    )))
 
 (defun tm/pair-backspace (arg)
   (interactive "p")
@@ -196,6 +200,7 @@ chars are not auto-inserted in major-mode"
       (and (char-after) (delete-char 1)))
   (if (eq tm/backspace-delete-column t)
       (tm/backward-delete-whitespace-to-column)
+      ;; (backward-delete-char)   ;; rs
     (delete-backward-char 1)))
 
 ;; Thanks to Trey Jackson

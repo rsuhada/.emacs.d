@@ -292,6 +292,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; comments - not working atm
 
-(setq comment-start "#")
+(setq comment-start "#"))
 
-
+; (add-hook 'text-mode-hook
+;           (setq comment-start "#"))

@@ -350,6 +350,7 @@ their unicode counterpart"
     (list (latex-escape-regex "Mo") "𝓜")
     (list (latex-escape-regex "Fr") "𝓕")
     (list (latex-escape-regex "gt") ">")
+
     (list (latex-escape-regex "lt") "<")
     (list (latex-escape-regex "from") ":")
     (list (latex-escape-regex "Pow") "𝒫")
