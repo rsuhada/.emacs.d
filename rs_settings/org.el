@@ -17,7 +17,7 @@
           (lambda ()
             (make-variable-buffer-local 'yas/trigger-key)
             (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field-group)
+            (define-key yas/keymap [tab] 'yas/next-field)
             (auto-fill-mode 1)
             (flyspell-mode 0)))
 

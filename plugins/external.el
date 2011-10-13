@@ -349,11 +349,17 @@
       vc-follow-symlinks        t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; prettu latex
+;; pretty latex
 
 (require 'latex-pretty-symbols)
 ;; (autoload 'latex-pretty-symbols "latex-pretty-symbols" "latex-pretty-symbols." t)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; typing
+
+;; (autoload 'typing "The Typing Of Emacs." t)
+;; (require 'typing)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

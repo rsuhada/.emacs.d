@@ -288,9 +288,8 @@
 (require 're-builder)
 (setq reb-re-syntax 'string)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; comments - not working atm
+;; comments
 
 (setq comment-start "#")
 
