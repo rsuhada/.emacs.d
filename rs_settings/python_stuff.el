@@ -32,45 +32,45 @@
 ;; (require 'ipython)
 
 
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(require 'ipython)
-(setq py-python-command-args '("-pylab" "-colors" "LightBG"))
-;; (add-to-list 'load-path “~/.emacs.d/plugins/misc”)
+;; (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 ;; (require 'ipython)
-(setq python-command "ipython")
+;; (setq py-python-command-args '("-pylab" "-colors" "LightBG"))
+;; ;; (add-to-list 'load-path “~/.emacs.d/plugins/misc”)
+;; ;; (require 'ipython)
+;; (setq python-command "ipython")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; try 1
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-(setq interpreter-mode-alist
-      (cons '("python" . python-mode)
-            interpreter-mode-alist)
-      python-mode-hook
-      '(lambda () (progn
-                    (set-variable 'py-indent-offset 4)
-                    (set-variable 'py-smart-indentation nil)
-                    (set-variable 'indent-tabs-mode nil)
-                    ;;(highlight-beyond-fill-column)
-                    (define-key python-mode-map "\C-m" 'newline-and-indent)
-                    (pabbrev-mode)
-                    (abbrev-mode)
-         )
-      )
-)
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; try 1
+;; (autoload 'python-mode "python-mode" "Python Mode." t)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;; (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;; (setq interpreter-mode-alist
+;;       (cons '("python" . python-mode)
+;;             interpreter-mode-alist)
+;;       python-mode-hook
+;;       '(lambda () (progn
+;;                     (set-variable 'py-indent-offset 4)
+;;                     (set-variable 'py-smart-indentation nil)
+;;                     (set-variable 'indent-tabs-mode nil)
+;;                     ;;(highlight-beyond-fill-column)
+;;                     (define-key python-mode-map "\C-m" 'newline-and-indent)
+;;                     (pabbrev-mode)
+;;                     (abbrev-mode)
+;;          )
+;;       )
+;; )
 
-;; pymacs
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
+;; ;; pymacs
+;; (autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
 
-(eval-after-load "pymacs"
-  '(add-to-list 'pymacs-load-path ~/data1/sw/Pymacs"))
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;; (eval-after-load "pymacs"
+;;   '(add-to-list 'pymacs-load-path ~/data1/sw/Pymacs"))
+;; (pymacs-load "ropemacs" "rope-")
+;; (setq ropemacs-enable-autoimport t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; try 2
@@ -89,3 +89,24 @@
 ;; (eval-after-load "pymacs"
 ;;   '(add-to-list 'pymacs-load-path ~/data1/sw/Pymacs"))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; try 3
+
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/misc")
+
+(require 'python-mode)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+(require 'ipython)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; comint
+
+(require 'comint)
+(define-key comint-mode-map (kbd "M-") 'comint-next-input)
+(define-key comint-mode-map (kbd "M-") 'comint-previous-input)
+(define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
+(define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)

@@ -1,6 +1,7 @@
 ;; ibuffer settings
 (setq ibuffer-saved-filter-groups
       (quote (("default"
+               ("kapi" (filename . "/kapi/"))
                ("esaspi" (filename . "/esaspi/"))
                ("sh" (mode . sh-mode))
                ("python" (mode . python-mode))

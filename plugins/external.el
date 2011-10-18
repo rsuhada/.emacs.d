@@ -34,7 +34,7 @@
 ;; tangotango
 
 
-(add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0/themes/")
 
 ;; (require 'color-theme)
@@ -46,6 +46,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zenburn
 
+(add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (require 'zenburn)
 (zenburn)
 
@@ -356,11 +357,22 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; highlight-indentation
+
+(autoload 'highlight-indentation "highlight-indentation" "highlight-indentation" t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; typing
 
-;; (autoload 'typing "The Typing Of Emacs." t)
-;; (require 'typing)
+(autoload 'typing-of-emacs "typing" "The Typing Of Emacs." t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; desktop autosaving and recovery
+
+(require 'desktop-recover)
+(setq desktop-recover-location
+      (desktop-recover-fixdir "$HOME/")) ;; ~/.emacs.d is the default
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete - works for bash but not for python - kills yasnippet
@@ -368,7 +380,6 @@
 ;; (require 'auto-complete-config)
 ;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1//ac-dict")
 ;; (ac-config-default)
-
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
