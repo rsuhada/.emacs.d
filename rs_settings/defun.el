@@ -1,8 +1,14 @@
 ;;; Personal functions
 
-;; Quickly jump back and forth between matching parens/brackets
-(defun match-paren (arg)
-  "Go to the matching parenthesis if on parenthesis."
+(defun goto-match-paren (arg)
+  "Go to the matching  if on (){}[], similar to vi style of % "
   (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))))
+  ;; first, check for "outside of bracket" positions expected by forward-sexp, etc.
+  (cond ((looking-at "[\[\(\{]") (forward-sexp))
+        ((looking-back "[\]\)\}]" 1) (backward-sexp))
+        ;; now, try to succeed from inside of a bracket
+        ((looking-at "[\]\)\}]") (forward-char) (backward-sexp))
+        ((looking-back "[\[\(\{]" 1) (backward-char) (forward-sexp))
+        ;; ((  (and ())         (re-search-forward "[\[\(\{]")    ))
+        (t nil)))
+

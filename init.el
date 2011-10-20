@@ -27,6 +27,15 @@
 ;; run server
 (if (not (server-mode)) (server-start))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; runing shells in mac is oblivious to the shell rc files
+
+(setenv "PATH" "$PATH:/usr/bin/:/utils/ds9/:/utils/p2pp/bin/:/utils/skycat/:~/data1/sw/zhtools/bin:~/data1/sw/misc:~/data1/sw/scripts:~/data1/sw/esaspi:~/data1/sw/esaspi/quick-spec:~/data1/sw/kapi:/usr/local/bin/:~/data1/sw/scripts/:/usr/texbin/")
+
+(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/:/Users/rs/data1/sw/kapi/")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; parts auto-written by custom set
 (custom-set-variables
@@ -35,7 +44,8 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(longlines-auto-wrap t)
- '(longlines-wrap-follows-window-size t))
+ '(longlines-wrap-follows-window-size t)
+ '(py-shell-name "/usr/bin/python"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

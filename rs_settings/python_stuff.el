@@ -90,23 +90,38 @@
 ;;   '(add-to-list 'pymacs-load-path ~/data1/sw/Pymacs"))
 
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; try 3
+
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/plugins/misc")
+
+;; (require 'python-mode)
+;; (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+
+;; (require 'ipython)
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; comint
+
+;; (require 'comint)
+;; (define-key comint-mode-map (kbd "M-") 'comint-next-input)
+;; (define-key comint-mode-map (kbd "M-") 'comint-previous-input)
+;; (define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
+;; (define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; try 3
+;; try 4
 
-(add-to-list 'load-path
-              "~/.emacs.d/plugins/misc")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/python-mode.el-6.0.3/")
+;; (require 'python-mode)
+;; (setq py-shell-name "/usr/bin/python") ;; doesn't do anything
+;; (setq python-python-command "/usr/bin/python")
 
-(require 'python-mode)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+;; ;; (setenv "python" "/usr/bin/python") ;; not working
 
-(require 'ipython)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; comint
-
-(require 'comint)
-(define-key comint-mode-map (kbd "M-") 'comint-next-input)
-(define-key comint-mode-map (kbd "M-") 'comint-previous-input)
-(define-key comint-mode-map [down] 'comint-next-matching-input-from-input)
-(define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)
+;; ;;; A quick & ugly PATH solution to Emacs on Mac OSX
+;; (if (string-equal "darwin" (symbol-name system-type))
+;;     (setenv "PATH" (concat "/usr/bin:" (getenv "PATH"))))

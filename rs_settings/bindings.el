@@ -7,7 +7,7 @@
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
 ;; Find matching parens
-(global-set-key (kbd "C-'") 'match-paren)
+(global-set-key (kbd "C-'") 'goto-match-paren)
 
 ;; ibuffer > list-buffers
 (global-set-key (kbd "C-x b") 'ibuffer)
@@ -159,15 +159,15 @@ line."
 
 (global-set-key "\M-]" 'rs-comment-line-separator-macro)
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; breadcrumb
-;; (global-set-key [(meta f1)] 'bc-set)
-;; (global-set-key [(meta left)] 'bc-previous)
-;; (global-set-key [(meta right)] 'bc-next)
-;; ;; (global-set-key [(meta left)] 'bc-local-previous)
-;; ;; (global-set-key [(meta right)] 'bc-local-next)
-;; ;; (global-set-key [(control c)(j)] 'bc-goto-current)
-;; (global-set-key [(control x)(meta j)] 'bc-list)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; breadcrumb
+(global-set-key [(meta f1)] 'bc-set)
+(global-set-key [(meta left)] 'bc-previous)
+(global-set-key [(meta right)] 'bc-next)
+;; (global-set-key [(meta left)] 'bc-local-previous)
+;; (global-set-key [(meta right)] 'bc-local-next)
+;; (global-set-key [(control c)(j)] 'bc-goto-current)
+(global-set-key [(control x)(meta j)] 'bc-list)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

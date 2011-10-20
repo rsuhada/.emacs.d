@@ -102,7 +102,7 @@ regardless of where in the line point is when the TAB command is used."
   :type 'boolean
   :group 'python)
 
-(defcustom py-python-command "python"
+(defcustom py-python-command "/usr/bin/python"
   "*Shell command used to start Python interpreter."
   :type 'string
   :group 'python)
@@ -352,8 +352,8 @@ buffer is prepended to come up with a file name.")
   :tag "Pychecker Command Args")
 
 (defvar py-shell-alist
-  '(("jython" . 'jython)
-    ("python" . 'cpython))
+  '(("/usr/bin/python" . 'jython)
+    ("/usr/bin/python" . 'cpython))
   "*Alist of interpreters and python shells. Used by `py-choose-shell'
 to select the appropriate python interpreter mode for a file.")
 
