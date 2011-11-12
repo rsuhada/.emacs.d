@@ -31,6 +31,12 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; simple and works very well except in org mode...
+
+;; (setq tab-always-indent 'complete)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hippie expand.  Groovy vans with tie-dyes.
 
 (setq hippie-expand-try-functions-list
@@ -82,12 +88,11 @@
 (global-set-key (kbd "TAB") 'smart-tab)
 
 
+;; ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; ;; one try at completition - good except it doesn't work w yas
+;; ;; (add-to-list 'load-path "~/.emacs.d/plugins/misc")
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; one try at completition - good except it doesn't work w yas
-;; (add-to-list 'load-path "~/.emacs.d/plugins/misc")
-
-;; (require 'smart-tab)
-;; (global-smart-tab-mode 1)
+;; ;; (require 'smart-tab)
+;; ;; (global-smart-tab-mode 1)
 
 

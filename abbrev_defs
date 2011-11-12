@@ -5,15 +5,21 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table '())
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'browse-kill-ring-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table '())
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
 
-(define-abbrev-table 'c-mode-abbrev-table '())
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -34,6 +40,8 @@
 (define-abbrev-table 'conf-windows-mode-abbrev-table '())
 
 (define-abbrev-table 'conf-xdefaults-mode-abbrev-table '())
+
+(define-abbrev-table 'desktop-recover-mode-abbrev-table '())
 
 (define-abbrev-table 'docTeX-mode-abbrev-table '())
 
@@ -177,7 +185,7 @@
     ("benifit" "benefit" nil 0)
     ("benifits" "benefits" nil 0)
     ("betwen" "between" nil 0)
-    ("beutiful" "beautiful" nil 0)
+    ("beutiful" "beautiful" nil 1)
     ("blase" "blase" nil 0)
     ("boxs" "boxes" nil 0)
     ("brodcast" "broadcast" nil 0)
@@ -349,7 +357,7 @@
     ("documnet" "document" nil 0)
     ("documnets" "documents" nil 0)
     ("doese" "does" nil 0)
-    ("doesnt" "doesn't" nil 1)
+    ("doesnt" "doesn't" nil 3)
     ("doign" "doing" nil 0)
     ("doimg" "doing" nil 0)
     ("doind" "doing" nil 0)
@@ -453,7 +461,7 @@
     ("hapened" "happened" nil 0)
     ("hapening" "happening" nil 0)
     ("hapens" "happens" nil 0)
-    ("happend" "happened" nil 0)
+    ("happend" "happened" nil 2)
     ("hasbeen" "has been" nil 0)
     ("hasnt" "hasn't" nil 0)
     ("havebeen" "have been" nil 0)
@@ -712,6 +720,7 @@
     ("questoin" "question" nil 0)
     ("quetion" "question" nil 0)
     ("quetions" "questions" nil 0)
+    ("qwe" "ok i see global abbrev" nil 3)
     ("raidus" "radius" nil 0)
     ("realyl" "really" nil 0)
     ("reccomend" "recommend" nil 0)
@@ -737,7 +746,7 @@
     ("reloacted" "relocated" nil 0)
     ("reltaed" "related" nil 0)
     ("reluctent" "reluctant" nil 0)
-    ("remeber" "remember" nil 0)
+    ("remeber" "remember" nil 1)
     ("reommend" "recommend" nil 0)
     ("representativs" "representatives" nil 0)
     ("representives" "representatives" nil 0)
@@ -839,7 +848,7 @@
     ("suppossed" "supposed" nil 0)
     ("suprise" "surprise" nil 0)
     ("suprised" "surprised" nil 0)
-    ("suprisingly" "surprisingly" nil 0)
+    ("suprisingly" "surprisingly" nil 1)
     ("swiming" "swimming" nil 0)
     ("tahn" "than" nil 0)
     ("taht" "that" nil 0)
@@ -990,7 +999,9 @@
 
 (define-abbrev-table 'inferior-tcl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table '())
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
@@ -1132,13 +1143,17 @@
 
 (define-abbrev-table 'message-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table '())
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'org-mode-abbrev-table '())
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table '())
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -1170,6 +1185,8 @@
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
+(define-abbrev-table 'tar-mode-abbrev-table '())
+
 (define-abbrev-table 'tcl-mode-abbrev-table '())
 
 (define-abbrev-table 'tex-mode-abbrev-table '())
@@ -1178,30 +1195,30 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("aa" "and" nil 3)
+    ("aa" "and" nil 10)
     ("act" "ACT" nil 0)
-    ("agn" "AGN" nil 0)
+    ("agn" "AGN" nil 2)
     ("aphys" "astrophysics" nil 0)
     ("asap" "as soon as possible" nil 0)
     ("atm" "at the moment" nil 1)
     ("bbn" "BBN" nil 0)
-    ("bc" "because" nil 0)
+    ("bc" "because" nil 2)
     ("bg" "background" nil 1)
     ("bgs" "backgrounds" nil 0)
-    ("bh" "BH" nil 0)
-    ("btw" "by the way" nil 0)
-    ("bw" "between" nil 1)
+    ("bh" "BH" nil 9)
+    ("btw" "by the way" nil 1)
+    ("bw" "between" nil 2)
     ("cat" "catalog" nil 3)
     ("cats" "catalogs" nil 0)
-    ("cc" "cluster" nil 5)
-    ("ccs" "clusters" nil 0)
+    ("cc" "cluster" nil 7)
+    ("ccs" "clusters" nil 1)
     ("chan" "Chandra" nil 0)
     ("cmb" "CMB" nil 0)
     ("coord" "coordinate" nil 0)
     ("coords" "coordinates" nil 1)
     ("diff" "difference" nil 0)
     ("diffs" "differences" nil 0)
-    ("eg" "e.g." nil 2)
+    ("eg" "e.g." nil 4)
     ("eos" "equation of state" nil 0)
     ("err" "error" nil 1)
     ("errs" "errors" nil 0)
@@ -1218,12 +1235,12 @@
     ("freqs" "frequencies" nil 0)
     ("funct" "function" nil 0)
     ("functs" "functions" nil 0)
-    ("gal" "galaxy" nil 1)
-    ("gals" "galaxies" nil 0)
+    ("gal" "galaxy" nil 3)
+    ("gals" "galaxies" nil 4)
     ("histo" "histogram" nil 1)
     ("histos" "histograms" nil 0)
     ("hse" "hydrostatic equilibrium" nil 0)
-    ("ie" "i.e." nil 1)
+    ("ie" "i.e." nil 4)
     ("im" "image" nil 1)
     ("ims" "images" nil 1)
     ("lss" "LSS" nil 0)
@@ -1247,7 +1264,7 @@
     ("progs" "programs" nil 0)
     ("pz" "photo-z" nil 1)
     ("pzs" "photo-zs" nil 1)
-    ("r" "are" nil 2)
+    ("r" "are" nil 4)
     ("reg" "region" nil 0)
     ("regs" "regions" nil 0)
     ("rel" "relation" nil 0)
@@ -1263,7 +1280,7 @@
  Robert" nil 3)
     ("sim" "simulation" nil 0)
     ("sims" "simulations" nil 2)
-    ("smbh" "SMBH" nil 0)
+    ("smbh" "SMBH" nil 2)
     ("smt" "sometime" nil 0)
     ("spt" "SPT" nil 0)
     ("src" "source" nil 0)
@@ -1272,15 +1289,15 @@
     ("sur" "survey" nil 0)
     ("surs" "surveys" nil 0)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 17)
+    ("t" "the" nil 69)
     ("thnx" "Thank you very much!" nil 3)
-    ("tt" "this" nil 2)
+    ("tt" "this" nil 3)
     ("ttt" "these" nil 2)
     ("utd" "up-to-date" nil 0)
     ("val" "value" nil 0)
     ("vals" "valuesE" nil 0)
     ("vlt" "VLT" nil 0)
-    ("w" "with" nil 2)
+    ("w" "with" nil 15)
     ("wi" "within" nil 0)
     ("wl" "weak lensing" nil 0)
     ("wmap" "WMAP" nil 0)

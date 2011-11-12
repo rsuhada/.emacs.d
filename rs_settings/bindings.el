@@ -6,6 +6,16 @@
 ;; Repeat
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
+;; tweak for motion
+
+(defun back-to-indentation-or-beginning ()
+  (interactive)
+  (if (= (point) (save-excursion (back-to-indentation) (point)))
+      (beginning-of-line)
+    (back-to-indentation)))
+
+(global-set-key (kbd "C-a") 'back-to-indentation-or-beginning) ;; was move-beginning-of-line
+
 ;; Find matching parens
 (global-set-key (kbd "C-'") 'goto-match-paren)
 
@@ -242,7 +252,7 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key (kbd "C-b") 'switch-to-buffer)
 (global-set-key (kbd "C-b") 'anything)
 ;; (global-set-key (kbd "C-p") 'kill-whole-line)  ; unecessary after C-w moded to kill-region-or-line
-(global-set-key (kbd "C-n") 'anything)
+(global-set-key (kbd "C-n") 'ace-jump-char-mode)
 
 ;; set the -h instead of backspace
 (global-set-key "\C-h" 'backward-delete-char-untabify)
@@ -272,9 +282,11 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [f5]    'rgrep)
 (global-set-key [f6]    'occur)
 
-(global-set-key [f7]    'bookmark-bmenu-list)
-(global-set-key [S-f7]  'bookmark-set)
-(global-set-key [M-f7]  'bookmark-jump)
+(global-set-key [f7]   'bookmark-set)
+(global-set-key [S-f7] 'bookmark-bmenu-list)
+(global-set-key [M-f7] 'bookmark-jump)
+
+(global-set-key [f8]   'unexpand-abbrev)
 
 (global-set-key [f10] 'rm-set-mark)
 (global-set-key [S-f10] 'rm-kill-ring-save)
@@ -289,4 +301,19 @@ If LINE is non-nil, duplicate that line instead."
 ;; defaults f3 - record macro, f4 - end macro/reply
 ;; (global-set-key [f9]   'start-kbd-macro)
 ;; (global-set-key [f10]  'end-kbd-macro)
+
+
+
+;; (dolist (command '(yank yank-pop))
+;;   (eval `(defadvice ,command (after indent-region activate)
+;;            (and (not current-prefix-arg)
+;;                 (member major-mode '(emacs-lisp-mode lisp-mode
+;;                                                      clojure-mode    scheme-mode
+;;                                                      haskell-mode    ruby-mode
+;;                                                      rspec-mode      python-mode
+;;                                                      c-mode          c++-mode
+;;                                                      objc-mode       latex-mode
+;;                                                      plain-tex-mode))
+;;                 (let ((mark-even-if-inactive transient-mark-mode))
+;;                   (indent-region (region-beginning) (region-end) nil))))))
 

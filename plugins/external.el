@@ -53,10 +53,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; raninbow delims
 (require 'rainbow-delimiters)
-(add-hook 'python-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'text-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'sh-mode-hook 'rainbow-delimiters-mode)
+
+(add-hook 'text-mode-hook '(lambda ()
+                             (rainbow-delimiters-mode 1)))
+
+(add-hook 'python-mode-hook '(lambda ()
+                             (rainbow-delimiters-mode 1)))
+
+(add-hook 'sh-mode-hook '(lambda ()
+                             (rainbow-delimiters-mode 1)))
 
 (add-hook 'latex-mode-hook '(lambda ()
                              (rainbow-delimiters-mode 1)))
@@ -75,7 +80,7 @@
 (tm/initialize)
 
 (add-hook 'sh-mode-hook
-          (tm/minor-mode 0))            ; "disable" to make it work
+          (tm/minor-mode 0))            ; "disable" to make it work - conflicts with internal skeletons
 
 (add-hook 'python-mode-hook
           (tm/minor-mode 1))            ; "enable" to make it work
@@ -352,11 +357,11 @@
       vc-make-backup-files      t ;make backups for cvs projects
       vc-follow-symlinks        t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; pretty latex
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; pretty latex - gets in the way at the moment
 
-(require 'latex-pretty-symbols)
-;; (autoload 'latex-pretty-symbols "latex-pretty-symbols" "latex-pretty-symbols." t)
+;; (require 'latex-pretty-symbols)
+;; ;; (autoload 'latex-pretty-symbols "latex-pretty-symbols" "latex-pretty-symbols." t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -376,6 +381,16 @@
 (require 'desktop-recover)
 (setq desktop-recover-location
       (desktop-recover-fixdir "$HOME/")) ;; ~/.emacs.d is the default
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; evaling math in buffers
+
+(autoload 'macro-math-eval-and-round-region "macro-math" "macro-math" t)
+(autoload 'macro-math-eval-region "macro-math" "macro-math" t)
+
+;; (global-set-key "\C-x~" 'macro-math-eval-and-round-region)
+;; (global-set-key "\C-x=" 'macro-math-eval-region)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete - works for bash but not for python - kills yasnippet
@@ -410,3 +425,22 @@
 
 ;; (setq flymake-gui-warnings-enabled nil)
 
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; smart-tab
+
+;; (require 'smart-tab)
+;; (global-smart-tab-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; undo tree
+
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; evil
+
+;; (add-to-list 'load-path "~/.emacs.d/plugins/evil")
+;; (require 'evil)
+;; (evil-mode 0)

@@ -39,3 +39,4 @@
 
 (fset 'rs-comment-line-separator-macro
    "\C-u70\273\C-j")
+   ;; "\C-u70\273")
