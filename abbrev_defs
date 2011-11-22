@@ -5,21 +5,15 @@
 
 (define-abbrev-table 'apropos-mode-abbrev-table '())
 
-(define-abbrev-table 'awk-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'awk-mode-abbrev-table '())
 
 (define-abbrev-table 'browse-kill-ring-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'browse-kill-ring-mode-abbrev-table '())
 
-(define-abbrev-table 'c++-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c++-mode-abbrev-table '())
 
-(define-abbrev-table 'c-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'c-mode-abbrev-table '())
 
 (define-abbrev-table 'calendar-mode-abbrev-table '())
 
@@ -999,9 +993,7 @@
 
 (define-abbrev-table 'inferior-tcl-mode-abbrev-table '())
 
-(define-abbrev-table 'java-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'java-mode-abbrev-table '())
 
 (define-abbrev-table 'jython-mode-abbrev-table '())
 
@@ -1009,22 +1001,23 @@
   '(
     ("$" ["$$" 1 nil nil] expand-abbrev-hook 3)
     ("052" "$0.5-2$~keV" nil 1)
-    ("aa" "and" nil 11)
+    ("aa" "and" nil 13)
     ("act" "ACT" nil 0)
     ("agn" "AGN" nil 2)
+    ("aper" "aperture" nil 1)
     ("aphys" "astrophysics" nil 0)
     ("asap" "as soon as possible" nil 0)
     ("atm" "at the moment" nil 1)
     ("bbn" "BBN" nil 0)
     ("bc" "because" nil 0)
-    ("bg" "background" nil 1)
+    ("bg" "background" nil 4)
     ("bgs" "backgrounds" nil 0)
     ("bh" "BH" nil 0)
     ("btw" "by the way" nil 0)
     ("bw" "between" nil 3)
     ("cat" "catalog" nil 3)
     ("cats" "catalogs" nil 0)
-    ("cc" "cluster" nil 14)
+    ("cc" "cluster" nil 17)
     ("ccs" "clusters" nil 20)
     ("chan" "\\emph{Chandra}" nil 3)
     ("cmb" "CMB" nil 0)
@@ -1044,7 +1037,7 @@
     ("fcgs" "erg s$^{-1}$ cm$^{-2}$" nil 2)
     ("fg" "foreground" nil 1)
     ("fgs" "foregrounds" nil 0)
-    ("fig" ["Fig.~\\ref{fig_}" 1 nil nil] expand-abbrev-hook 2)
+    ("fig" ["Fig.~\\ref{fig_}" 1 nil nil] expand-abbrev-hook 4)
     ("fors2" "FORS2" nil 0)
     ("frac" "fraction" nil 0)
     ("fracs" "fractions" nil 0)
@@ -1071,7 +1064,7 @@
     ("obs" "observation" nil 1)
     ("obss" "observations" nil 0)
     ("par" "parameter" nil 0)
-    ("pars" "parameters" nil 4)
+    ("pars" "parameters" nil 5)
     ("pb" "probability" nil 1)
     ("pbs" "probabilities" nil 0)
     ("pop" "population" nil 1)
@@ -1082,9 +1075,9 @@
     ("progs" "programs" nil 0)
     ("pz" "photo-z" nil 1)
     ("pzs" "photo-zs" nil 1)
-    ("r" "are" nil 3)
-    ("reg" "region" nil 0)
-    ("regs" "regions" nil 0)
+    ("r" "are" nil 8)
+    ("reg" "region" nil 1)
+    ("regs" "regions" nil 1)
     ("rel" "relation" nil 0)
     ("rels" "relations" nil 2)
     ("resid" "residual" nil 0)
@@ -1092,7 +1085,7 @@
     ("sas" "SAS" nil 0)
     ("sbd" "somebody" nil 0)
     ("scal" "scaling" nil 2)
-    ("sect" ["Sect.~\\ref{sec_}" 1 nil nil] expand-abbrev-hook 2)
+    ("sect" ["Sect.~\\ref{sec_}" 1 nil nil] expand-abbrev-hook 3)
     ("sig" "Best wishes,
  Robert" nil 4)
     ("sig1" "Cheers,
@@ -1104,15 +1097,15 @@
     ("sol" "\\odot" nil 1)
     ("sout" ["System.out.println(\"\")" 2 nil nil] expand-abbrev-hook 0)
     ("spt" "SPT" nil 8)
-    ("src" "source" nil 0)
+    ("src" "source" nil 1)
     ("srcs" "sources" nil 0)
-    ("ss" "self-similar" nil 123456791)
+    ("ss" "self-similar" nil 123456792)
     ("ssly" "self-similarily" nil 123456790)
     ("stg" "something" nil 0)
     ("sur" "survey" nil 0)
     ("surs" "surveys" nil 0)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 95)
+    ("t" "the" nil 114)
     ("tab" ["Table~\\ref{tab_}" 1 nil nil] expand-abbrev-hook 3)
     ("thnx" "Thank you very much!" nil 3)
     ("tt" "this" nil 6)
@@ -1121,8 +1114,8 @@
     ("val" "value" nil 0)
     ("vals" "valuesE" nil 0)
     ("vlt" "VLT" nil 0)
-    ("w" "with" nil 13)
-    ("wi" "within" nil 0)
+    ("w" "with" nil 16)
+    ("wi" "within" nil 1)
     ("wl" "weak lensing" nil 0)
     ("wmap" "WMAP" nil 0)
     ("wo" "without" nil 1)
@@ -1133,7 +1126,7 @@
     ("xmmbcs" "XMM-BCS" nil 0)
     ("xmmlss" "XMM-LSS" nil 0)
     ("xmmxxl" "XMM-XXL" nil 0)
-    ("xr" "X-ray" nil 4)
+    ("xr" "X-ray" nil 5)
     ("xrs" "X-rays" nil 0)
     ("zz" "redshift" nil 7)
     ("zzs" "redshifts" nil 2)
@@ -1141,19 +1134,29 @@
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
+(define-abbrev-table 'makefile-automake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-bsdmake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-gmake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-imake-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-makepp-mode-abbrev-table '())
+
+(define-abbrev-table 'makefile-mode-abbrev-table '())
+
 (define-abbrev-table 'message-mode-abbrev-table '())
 
-(define-abbrev-table 'objc-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'objc-mode-abbrev-table '())
 
 (define-abbrev-table 'org-mode-abbrev-table '())
 
 (define-abbrev-table 'outline-mode-abbrev-table '())
 
-(define-abbrev-table 'pike-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'perl-mode-abbrev-table '())
+
+(define-abbrev-table 'pike-mode-abbrev-table '())
 
 (define-abbrev-table 'plain-tex-mode-abbrev-table '())
 
@@ -1195,14 +1198,14 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("aa" "and" nil 10)
+    ("aa" "and" nil 15)
     ("act" "ACT" nil 0)
     ("agn" "AGN" nil 2)
     ("aphys" "astrophysics" nil 0)
     ("asap" "as soon as possible" nil 0)
     ("atm" "at the moment" nil 1)
     ("bbn" "BBN" nil 0)
-    ("bc" "because" nil 2)
+    ("bc" "because" nil 3)
     ("bg" "background" nil 1)
     ("bgs" "backgrounds" nil 0)
     ("bh" "BH" nil 9)
@@ -1218,8 +1221,8 @@
     ("coords" "coordinates" nil 1)
     ("diff" "difference" nil 0)
     ("diffs" "differences" nil 0)
-    ("eg" "e.g." nil 4)
-    ("eos" "equation of state" nil 0)
+    ("eg" "e.g." nil 6)
+    ("eos" "equation of state" nil 1)
     ("err" "error" nil 1)
     ("errs" "errors" nil 0)
     ("estim" "estimate" nil 0)
@@ -1235,8 +1238,10 @@
     ("freqs" "frequencies" nil 0)
     ("funct" "function" nil 0)
     ("functs" "functions" nil 0)
-    ("gal" "galaxy" nil 3)
+    ("gal" "galaxy" nil 4)
     ("gals" "galaxies" nil 4)
+    ("gw" "gravitational wave" nil 4)
+    ("gws" "gravitational waves" nil 4)
     ("histo" "histogram" nil 1)
     ("histos" "histograms" nil 0)
     ("hse" "hydrostatic equilibrium" nil 0)
@@ -1248,9 +1253,11 @@
     ("mod" "model" nil 0)
     ("mods" "models" nil 0)
     ("nfw" "NFW" nil 1)
+    ("ns" "neutron star" nil 1)
+    ("nss" "neutron stars" nil 0)
     ("obj" "object" nil 1)
     ("objs" "objects" nil 1)
-    ("obs" "observation" nil 0)
+    ("obs" "observation" nil 1)
     ("obss" "observations" nil 0)
     ("par" "parameter" nil 0)
     ("pars" "parameters" nil 2)
@@ -1264,7 +1271,7 @@
     ("progs" "programs" nil 0)
     ("pz" "photo-z" nil 1)
     ("pzs" "photo-zs" nil 1)
-    ("r" "are" nil 4)
+    ("r" "are" nil 8)
     ("reg" "region" nil 0)
     ("regs" "regions" nil 0)
     ("rel" "relation" nil 0)
@@ -1289,7 +1296,7 @@
     ("sur" "survey" nil 0)
     ("surs" "surveys" nil 0)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 69)
+    ("t" "the" nil 106)
     ("thnx" "Thank you very much!" nil 3)
     ("tt" "this" nil 3)
     ("ttt" "these" nil 2)
@@ -1297,11 +1304,11 @@
     ("val" "value" nil 0)
     ("vals" "valuesE" nil 0)
     ("vlt" "VLT" nil 0)
-    ("w" "with" nil 15)
+    ("w" "with" nil 17)
     ("wi" "within" nil 0)
     ("wl" "weak lensing" nil 0)
     ("wmap" "WMAP" nil 0)
-    ("wo" "without" nil 0)
+    ("wo" "without" nil 1)
     ("wrt" "with respect to" nil 5)
     ("xbcs" "XBCS" nil 0)
     ("xmm" "XMM-Newton" nil 0)

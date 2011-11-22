@@ -286,7 +286,7 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [S-f7] 'bookmark-bmenu-list)
 (global-set-key [M-f7] 'bookmark-jump)
 
-(global-set-key [f8]   'unexpand-abbrev)
+(global-set-key [f9]   'unexpand-abbrev)
 
 (global-set-key [f10] 'rm-set-mark)
 (global-set-key [S-f10] 'rm-kill-ring-save)
