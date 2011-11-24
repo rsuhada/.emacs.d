@@ -445,16 +445,41 @@
 ;; (require 'evil)
 ;; (evil-mode 0)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; multiple-selection
 
-;; (require 'inline-string-rectangle)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; rectangle edit
+
 (autoload 'inline-string-rectangle "inline-string-rectangle" "Inline string rectangle" t)
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; multiple-selection
 
-;; (require 'mark-more-like-this)
+
+;; (defun rs/mark-multi-next ()
+;;   (interactive)
+;;         (if (not (region-active-p))
+;;         (set-mark)
+;;         (forward-word)
+;;         (mark-next-like-this)))
+
 (autoload 'mark-previous-like-this "mark-more-like-this" "mark-previous-like-this" t)
 (autoload 'mark-next-like-this "mark-more-like-this" "mark-next-like-this" t)
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
+;; (global-set-key (kbd "C->") 'rs/mark-multi-next)
+
+
+(defun back-to-indentation-or-beginning ()
+  (interactive)
+  (if (= (point) (save-excursion (back-to-indentation) (point) ))
+      (beginning-of-line)
+    (back-to-indentation)))
+
+
+(defun rs/mark-multi-next ()
+  (interactive)
+        (if (not (region-active-p))
+        (set-mark)
+        (forward-word)
+        (mark-next-like-this)))
