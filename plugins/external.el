@@ -150,7 +150,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; breadcrumbs
 
-(require 'breadcrumb)
+;; (require 'breadcrumb)
 
 (autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
 (autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
@@ -444,3 +444,17 @@
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/evil")
 ;; (require 'evil)
 ;; (evil-mode 0)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; multiple-selection
+
+;; (require 'inline-string-rectangle)
+(autoload 'inline-string-rectangle "inline-string-rectangle" "Inline string rectangle" t)
+(global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+
+
+;; (require 'mark-more-like-this)
+(autoload 'mark-previous-like-this "mark-more-like-this" "mark-previous-like-this" t)
+(autoload 'mark-next-like-this "mark-more-like-this" "mark-next-like-this" t)
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)

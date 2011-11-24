@@ -127,7 +127,7 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "\C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
+;; (global-set-key (kbd "C-M-r") 'isearch-backward)
 
 
 ;; Activate occur easily inside isearch
@@ -286,16 +286,17 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [S-f7] 'bookmark-bmenu-list)
 (global-set-key [M-f7] 'bookmark-jump)
 
-(global-set-key [f9]   'unexpand-abbrev)
+(global-set-key [f9]   'switch-to-previous-buffer)
+(global-set-key [f10]   'unexpand-abbrev)
 
-(global-set-key [f10] 'rm-set-mark)
-(global-set-key [S-f10] 'rm-kill-ring-save)
-(global-set-key [M-f10] 'rm-kill-region)
+;; (global-set-key [f10] 'rm-set-mark)
+;; (global-set-key [S-f10] 'rm-kill-ring-save)
+;; (global-set-key [M-f10] 'rm-kill-region)
 
 (global-set-key [f11]   'orgtaby)
 (global-set-key [S-f11] 'orguntaby)
 
-(global-set-key [f12]   'switch-to-previous-buffer)
+;; (global-set-key [f12]   'switch-to-previous-buffer)
 (global-set-key [S-f12] 'help)
 
 ;; defaults f3 - record macro, f4 - end macro/reply
