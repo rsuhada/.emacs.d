@@ -73,7 +73,7 @@
 
 (global-set-key "\C-cv" 'save-version)
 (global-set-key "\C-cb" 'list-backups)
-(global-set-key "\C-ck" 'kill-buffer-prompt)
+;; (global-set-key "\C-ck" 'kill-buffer-prompt)
 
 ;;; utilities
 (defun filter (condp lst)

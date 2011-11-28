@@ -469,17 +469,17 @@
 (global-set-key (kbd "C->") 'mark-next-like-this)
 ;; (global-set-key (kbd "C->") 'rs/mark-multi-next)
 
-
-(defun back-to-indentation-or-beginning ()
-  (interactive)
-  (if (= (point) (save-excursion (back-to-indentation) (point) ))
-      (beginning-of-line)
-    (back-to-indentation)))
-
-
+;; FIXME
 (defun rs/mark-multi-next ()
   (interactive)
         (if (not (region-active-p))
-        (set-mark)
+        (set-mark-command)
         (forward-word)
         (mark-next-like-this)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ess
+
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/ess-5.14/lisp/")
+(require 'ess-site)
