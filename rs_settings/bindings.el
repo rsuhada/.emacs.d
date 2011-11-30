@@ -357,6 +357,7 @@ If LINE is non-nil, duplicate that line instead."
               (end-of-visible-line))
             (point)))))
 
-(global-set-key (kbd "C-c k") 'copy-line) ; C-u - C-c k copies backward
+(global-set-key "\C-ck" 'copy-line) ; C-u - C-c k copies backward
+
 
 

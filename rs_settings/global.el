@@ -307,3 +307,28 @@
 
 (setq comment-start "#")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; abbrevs for comments
+
+;; FIXME: won't work for inline comments
+;; expand function for languages with
+(defun hash-comment-mode-abbrev-expand-function (expand)
+  (if (not (save-excursion (back-to-indentation) (eq (char-after) ?#)))
+      ;; Performs normal expansion.
+      (funcall expand)
+    ;; We're inside a comment: use the text-mode abbrevs.
+    (let ((local-abbrev-table text-mode-abbrev-table))
+      (funcall expand))))
+
+;; hooks
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (add-hook 'abbrev-expand-functions
+                        'hash-comment-mode-abbrev-expand-function
+                        nil t)))
+
+(add-hook 'sh-mode-hook
+          #'(lambda ()
+              (add-hook 'abbrev-expand-functions
+                        'hash-comment-mode-abbrev-expand-function
+                        nil t)))

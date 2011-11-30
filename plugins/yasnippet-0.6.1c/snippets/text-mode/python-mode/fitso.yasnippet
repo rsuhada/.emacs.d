@@ -5,7 +5,8 @@
 # --
 fname = '$1'
 hdu = pyfits.open(fname)
-dat = hdu[1].data
+dat = hdu[0].data
+hdr = hdu[0].data
 colinfo = hdu[1].columns.info()
 print colinfo
 

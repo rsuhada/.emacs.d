@@ -41,7 +41,7 @@
 (defvar zenburn-bg "#1f1f1f")
 (defvar zenburn-bg+1 "#3f3f3f")
 (defvar zenburn-bg+2 "#4f4f4f")
-(defvar zenburn-bg-1 "#1a1a1a")
+(defvar zenburn-bg-1 "#121212")
 
 
 (defvar zenburn-red+1 "#dca3a3")
@@ -72,7 +72,7 @@
 
 (eval-after-load 'term
   '(setq ansi-term-color-vector
-         (vector 'unspecified zenburn-bg
+         (vector 'unspecified zenburn-bg-1
                  zenburn-red zenburn-green
                  zenburn-yellow zenburn-blue+1
                  zenburn-magenta zenburn-cyan
