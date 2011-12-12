@@ -519,3 +519,9 @@
  (if (not filename)
 	(message "Buffer '%s' is not visiting a file!" name)
  (progn 	(copy-file filename newname 1) 	(delete-file filename) 	(set-visited-file-name newname)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; markdown mode
+
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+ (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))

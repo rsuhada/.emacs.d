@@ -987,7 +987,9 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'idlwave-mode-abbrev-table '())
+(define-abbrev-table 'idlwave-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
@@ -1162,7 +1164,10 @@
 
 (define-abbrev-table 'proced-mode-abbrev-table '())
 
-(define-abbrev-table 'python-mode-abbrev-table '())
+(define-abbrev-table 'python-mode-abbrev-table
+  '(
+    ("lims" "limits" nil 0)
+   ))
 
 (define-abbrev-table 'reb-lisp-mode-abbrev-table '())
 
@@ -1198,7 +1203,8 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("aa" "and" nil 21)
+    ("aa" "and" nil 26)
+    ("accel" "acceleration" nil 1)
     ("act" "ACT" nil 0)
     ("agn" "AGN" nil 2)
     ("aper" "aperture" nil 0)
@@ -1206,7 +1212,7 @@
     ("asap" "as soon as possible" nil 0)
     ("atm" "at the moment" nil 2)
     ("bbn" "BBN" nil 1)
-    ("bc" "because" nil 6)
+    ("bc" "because" nil 9)
     ("bg" "background" nil 4)
     ("bgs" "backgrounds" nil 0)
     ("bh" "BH" nil 14)
@@ -1214,10 +1220,10 @@
     ("bw" "between" nil 3)
     ("cat" "catalog" nil 3)
     ("cats" "catalogs" nil 0)
-    ("cc" "cluster" nil 10)
+    ("cc" "cluster" nil 11)
     ("ccs" "clusters" nil 1)
     ("chan" "Chandra" nil 0)
-    ("cmb" "CMB" nil 0)
+    ("cmb" "CMB" nil 1)
     ("coord" "coordinate" nil 0)
     ("coords" "coordinates" nil 1)
     ("diff" "difference" nil 0)
@@ -1242,16 +1248,16 @@
     ("funct" "function" nil 0)
     ("functs" "functions" nil 0)
     ("gal" "galaxy" nil 4)
-    ("gals" "galaxies" nil 4)
+    ("gals" "galaxies" nil 5)
     ("gw" "gravitational wave" nil 4)
     ("gws" "gravitational waves" nil 4)
     ("histo" "histogram" nil 1)
     ("histos" "histograms" nil 0)
     ("hse" "hydrostatic equilibrium" nil 0)
     ("ie" "i.e." nil 4)
-    ("im" "image" nil 1)
+    ("im" "image" nil 2)
     ("ims" "images" nil 1)
-    ("lss" "LSS" nil 1)
+    ("lss" "LSS" nil 2)
     ("mm" "mass" nil 0)
     ("mod" "model" nil 0)
     ("mods" "models" nil 0)
@@ -1260,10 +1266,10 @@
     ("nss" "neutron stars" nil 0)
     ("obj" "object" nil 1)
     ("objs" "objects" nil 1)
-    ("obs" "observation" nil 1)
+    ("obs" "observation" nil 3)
     ("obss" "observations" nil 0)
     ("par" "parameter" nil 2)
-    ("pars" "parameters" nil 2)
+    ("pars" "parameters" nil 3)
     ("pb" "probability" nil 1)
     ("pbs" "probabilities" nil 0)
     ("pop" "population" nil 0)
@@ -1274,14 +1280,14 @@
     ("progs" "programs" nil 0)
     ("pz" "photo-z" nil 2)
     ("pzs" "photo-zs" nil 1)
-    ("r" "are" nil 14)
+    ("r" "are" nil 15)
     ("reg" "region" nil 1)
     ("regs" "regions" nil 0)
     ("rel" "relation" nil 0)
     ("rels" "relations" nil 0)
     ("resid" "residual" nil 0)
     ("resids" "residuals" nil 0)
-    ("sas" "SAS" nil 0)
+    ("sas" "SAS" nil 1)
     ("sbd" "somebody" nil 0)
     ("scal" "scaling" nil 0)
     ("sig" "Best wishes,
@@ -1292,7 +1298,7 @@
     ("sims" "simulations" nil 2)
     ("smbh" "SMBH" nil 2)
     ("smt" "sometime" nil 0)
-    ("spt" "SPT" nil 0)
+    ("spt" "SPT" nil 1)
     ("src" "source" nil 0)
     ("srcs" "sources" nil 0)
     ("stg" "something" nil 0)
@@ -1300,15 +1306,15 @@
     ("surs" "surveys" nil 0)
     ("susy" "SUSY" nil 4)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 164)
+    ("t" "the" nil 184)
     ("thnx" "Thank you very much!" nil 3)
-    ("tt" "this" nil 4)
-    ("ttt" "these" nil 2)
+    ("tt" "this" nil 6)
+    ("ttt" "these" nil 3)
     ("utd" "up-to-date" nil 0)
     ("val" "value" nil 0)
     ("vals" "valuesE" nil 0)
     ("vlt" "VLT" nil 0)
-    ("w" "with" nil 23)
+    ("w" "with" nil 28)
     ("wi" "within" nil 0)
     ("wl" "weak lensing" nil 2)
     ("wmap" "WMAP" nil 0)

@@ -24,7 +24,7 @@
   '("\\` "  "\\.pdf" "\\.dvi" "\\.ps" "\\.eps" "\\.jpg" "\\.png" "\\.fits" "\\.fcat" "\\.fz" "\\.FIT" "\\.fak" "\\.im" "\\.fit" "\\.ftab" "\\`CVS/" "\\`#" "\\`.#" "auto-save-list" "\\.rsync-filter" "\\.org-id-locations")
 )
 
-(setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".txt" ".list" ".notes" ".readme" ".org" ".log" ".bib" ".bst" ".emacs" ".html" ".aux" ".cls" ".sty"))
+(setq ido-file-extensions-order '( ".sh" ".py" ".pro" ".cat" ".tab" ".dat" ".tex" ".txt" ".list" ".notes" ".readme" ".org" ".log" ".bib" ".bst" ".emacs" ".html" ".aux" ".cls" ".sty" ".gz" ".gzip" ".tar" ".zip" ".rar"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
