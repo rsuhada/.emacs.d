@@ -60,6 +60,7 @@
 (add-hook 'python-mode-hook '(lambda ()
                              (rainbow-delimiters-mode 1)))
 
+(setq sh-mode-hook t)
 (add-hook 'sh-mode-hook '(lambda ()
                              (rainbow-delimiters-mode 1)))
 
@@ -69,12 +70,14 @@
 (add-hook 'emacs-lisp-mode-hook '(lambda ()
                              (rainbow-delimiters-mode 1)))
 
+(add-hook 'ess-mode-hook '(lambda ()
+                             (rainbow-delimiters-mode 1)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; select/copy
 ;; /cut/paste whole line if no selection
 ;; (require 'whole-line-or-region)
 (load "tellicopy")
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; textmate - autopairing + small tweaks
@@ -132,6 +135,7 @@
 (add-to-list 'ac-modes 'text-mode)
 (add-to-list 'ac-modes 'org-mode)
 (add-to-list 'ac-modes 'sh-mode)
+(add-to-list 'ac-modes 'ess-mode)
 (setq ac-auto-show-menu 1.1)            ;set time in seconds
 (setq ac-ignore-case nil)
 (setq ac-use-comphist nil)
@@ -485,9 +489,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ess
 
-;; (add-to-list 'load-path
-;;               "~/.emacs.d/plugins/ess-5.14/lisp/")
-;; (require 'ess-site)
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/ess-5.14/lisp/")
+(require 'ess-site)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; from steve yegge
@@ -525,3 +529,26 @@
 
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
  (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; evernote
+
+(add-to-list 'exec-path "/usr/local/Cellar/ruby/1.9.2-p290/bin/")
+(setenv "PATH" (concat "/usr/local/Cellar/ruby/1.9.2-p290/bin/" (getenv "PATH")))
+(add-to-list 'load-path "~/.emacs.d/plugins/evernote-mode-0_41/")
+(require 'evernote-mode)
+(setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
+(global-set-key "\C-cec" 'evernote-create-note)
+(global-set-key "\C-ceo" 'evernote-open-note)
+(global-set-key "\C-ces" 'evernote-search-notes)
+(global-set-key "\C-ceS" 'evernote-do-saved-search)
+(global-set-key "\C-cew" 'evernote-write-note)
+(global-set-key "\C-cep" 'evernote-post-region)
+(global-set-key "\C-ceb" 'evernote-browser)
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; doesn't work
+;; (add-hook evernote-mode-hook
+;;             (lambda ()
+;;               (local-set-key (kbd "\M-s") 'evernote-save-note)
+;; ))

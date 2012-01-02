@@ -15,6 +15,7 @@
                 text-mode-hook
                 latex-mode-hook
                 python-mode-hook
+                ess-mode-hook
 ))
 (add-hook hook (lambda () (abbrev-mode 1))))
 

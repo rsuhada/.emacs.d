@@ -6,6 +6,7 @@
 ;; Repeat
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
+
 ;; tweak for motion
 (defun back-to-indentation-or-beginning ()
   (interactive)
@@ -14,6 +15,13 @@
     (back-to-indentation)))
 
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning) ;; was move-beginning-of-line
+
+;; (defun move-end-of-line-or-next-line ()
+;;   (interactive)
+;;   (if (eolp)
+;;       (next-line)
+;;       (move-end-of-line nil)))
+;; (global-set-key "\C-e" 'move-end-of-line-or-next-line) ; was move-end-of-line
 
 ;; Find matching parens
 (global-set-key (kbd "C-'") 'goto-match-paren)
@@ -304,7 +312,6 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key [f10]  'end-kbd-macro)
 
 
-
 ;; (dolist (command '(yank yank-pop))
 ;;   (eval `(defadvice ,command (after indent-region activate)
 ;;            (and (not current-prefix-arg)
@@ -355,9 +362,6 @@ If LINE is non-nil, duplicate that line instead."
      (point)
      (progn (if arg (forward-visible-line arg)
               (end-of-visible-line))
-            (point)))))
+            (1-(point))))))
 
 (global-set-key "\C-ck" 'copy-line) ; C-u - C-c k copies backward
-
-
-
