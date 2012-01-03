@@ -6,6 +6,7 @@
                ("sh" (mode . sh-mode))
                ("python" (mode . python-mode))
                ("c" (mode . c-mode))
+               ("r" (mode . ess-mode))
                ("fortran" (mode . fortran-mode))
                ("idl" (mode . idlwave-mode))
                ("tex" (mode . latex-mode))

@@ -43,7 +43,6 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zsh mode
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
@@ -327,7 +326,15 @@
                         'hash-comment-mode-abbrev-expand-function
                         nil t)))
 
+;; FIXME: not working
 (add-hook 'sh-mode-hook
+          #'(lambda ()
+              (add-hook 'abbrev-expand-functions
+                        'hash-comment-mode-abbrev-expand-function
+                        nil t)))
+
+;; FIXME: not working
+(add-hook 'ess-mode-hook
           #'(lambda ()
               (add-hook 'abbrev-expand-functions
                         'hash-comment-mode-abbrev-expand-function
