@@ -265,6 +265,8 @@ If LINE is non-nil, duplicate that line instead."
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char)
 
 (global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
+(global-set-key (kbd "M-H") 'backward-kill-sexp)  ; was mark-defun (only relevant for lisp)
+(global-set-key (kbd "M-D") 'kill-sexp)  ; was mark-paragraph
 ;; (global-unset-key (kbd "M-h"))
 
 ;; more movement improvement
@@ -365,3 +367,11 @@ If LINE is non-nil, duplicate that line instead."
             (1-(point))))))
 
 (global-set-key "\C-ck" 'copy-line) ; C-u - C-c k copies backward
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; anything tweaks
+
+(define-key anything-map (kbd "M-k") 'anything-next-line)
+(define-key anything-map (kbd "M-i") 'anything-previous-line)
+(define-key anything-map (kbd "M-l") 'anything-next-source)
+(define-key anything-map (kbd "M-j") 'anything-previous-source)
