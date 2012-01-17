@@ -327,7 +327,7 @@
                         nil t)))
 
 ;; FIXME: not working
-(add-hook 'sh-mode-hook
+(add-hook 'shell-script-mode-hook
           #'(lambda ()
               (add-hook 'abbrev-expand-functions
                         'hash-comment-mode-abbrev-expand-function

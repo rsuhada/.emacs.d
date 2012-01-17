@@ -6,6 +6,7 @@
 ;; Repeat
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
+
 ;; tweak for motion
 (defun back-to-indentation-or-beginning ()
   (interactive)
@@ -14,6 +15,13 @@
     (back-to-indentation)))
 
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning) ;; was move-beginning-of-line
+
+;; (defun move-end-of-line-or-next-line ()
+;;   (interactive)
+;;   (if (eolp)
+;;       (next-line)
+;;       (move-end-of-line nil)))
+;; (global-set-key "\C-e" 'move-end-of-line-or-next-line) ; was move-end-of-line
 
 ;; Find matching parens
 (global-set-key (kbd "C-'") 'goto-match-paren)
@@ -57,7 +65,6 @@
 
 ;; setting mark should be less clumsy
 (global-set-key (kbd "M-ESC") 'cua-set-mark)
-(global-set-key (kbd "M-ESC") 'set-mark-command)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrev temporary patch
@@ -258,6 +265,8 @@ If LINE is non-nil, duplicate that line instead."
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char)
 
 (global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
+(global-set-key (kbd "M-H") 'backward-kill-sexp)  ; was mark-defun (only relevant for lisp)
+(global-set-key (kbd "M-D") 'kill-sexp)  ; was mark-paragraph
 ;; (global-unset-key (kbd "M-h"))
 
 ;; more movement improvement
@@ -303,7 +312,6 @@ If LINE is non-nil, duplicate that line instead."
 ;; defaults f3 - record macro, f4 - end macro/reply
 ;; (global-set-key [f9]   'start-kbd-macro)
 ;; (global-set-key [f10]  'end-kbd-macro)
-
 
 
 ;; (dolist (command '(yank yank-pop))
@@ -356,8 +364,14 @@ If LINE is non-nil, duplicate that line instead."
      (point)
      (progn (if arg (forward-visible-line arg)
               (end-of-visible-line))
-            (point)))))
+            (1-(point))))))
 
-(global-set-key (kbd "C-c k") 'copy-line) ; C-u - C-c k copies backward
+(global-set-key "\C-ck" 'copy-line) ; C-u - C-c k copies backward
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; anything tweaks
 
+(define-key anything-map (kbd "M-k") 'anything-next-line)
+(define-key anything-map (kbd "M-i") 'anything-previous-line)
+(define-key anything-map (kbd "M-l") 'anything-next-source)
+(define-key anything-map (kbd "M-j") 'anything-previous-source)

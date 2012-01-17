@@ -46,7 +46,8 @@
  '(longlines-auto-wrap t)
  '(longlines-wrap-follows-window-size t)
  '(py-shell-name "/usr/bin/python")
- '(sh-mode-hook t))
+ ;; '(sh-mode-hook t)
+)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

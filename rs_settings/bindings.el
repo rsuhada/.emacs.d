@@ -366,12 +366,4 @@ If LINE is non-nil, duplicate that line instead."
               (end-of-visible-line))
             (1-(point))))))
 
-(global-set-key "\C-ck" 'copy-line) ; C-u - C-c k copies backward
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; anything tweaks
-
-(define-key anything-map (kbd "M-k") 'anything-next-line)
-(define-key anything-map (kbd "M-i") 'anything-previous-line)
-(define-key anything-map (kbd "M-l") 'anything-next-source)
-(define-key anything-map (kbd "M-j") 'anything-previous-source)
+(global-set-key (kbd "C-c C-k") 'copy-line) ; C-u - C-c k copies backward

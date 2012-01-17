@@ -60,8 +60,7 @@
 (add-hook 'python-mode-hook '(lambda ()
                              (rainbow-delimiters-mode 1)))
 
-(setq sh-mode-hook t)
-(add-hook 'sh-mode-hook '(lambda ()
+(add-hook 'sh-mode-hook (lambda ()
                              (rainbow-delimiters-mode 1)))
 
 (add-hook 'latex-mode-hook '(lambda ()
@@ -71,6 +70,9 @@
                              (rainbow-delimiters-mode 1)))
 
 (add-hook 'ess-mode-hook '(lambda ()
+                             (rainbow-delimiters-mode 1)))
+
+(add-hook 'shell-script-mode-hook (lambda ()
                              (rainbow-delimiters-mode 1)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -244,6 +246,13 @@
      )
 )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; anything tweaks
+
+(define-key anything-map (kbd "M-k") 'anything-next-line)
+(define-key anything-map (kbd "M-i") 'anything-previous-line)
+(define-key anything-map (kbd "M-l") 'anything-next-source)
+(define-key anything-map (kbd "M-j") 'anything-previous-source)
 
 ;; (defun my-anything ()
 ;;   (interactive)
@@ -389,6 +398,7 @@
 (setq desktop-recover-location
       (desktop-recover-fixdir "$HOME/")) ;; ~/.emacs.d is the default
 
+(setq desktop-recover-auto-save-count 0)    ; measured in autosave cycles
 (setq desktop-recover-save-period 1)    ; measured in autosave cycles
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -453,7 +463,6 @@
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/evil")
 ;; (require 'evil)
 ;; (evil-mode 0)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rectangle edit
@@ -552,3 +561,33 @@
 ;;             (lambda ()
 ;;               (local-set-key (kbd "\M-s") 'evernote-save-note)
 ;; ))
+
+
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-save files - not working auto-saves only once per session...
+
+;; (require 'real-auto-save)
+;; (add-hook 'text-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'sh-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'python-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'org-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'ess-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'markdown-mode-hook 'turn-on-real-auto-save)
+;; (add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save);
+; (setq real-auto-save-interval 5) ;; in seconds
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; essh.el FIXME: check the s-enter verision from ess
+
+(require 'essh)                                                    ;;
+(defun essh-sh-hook ()                                             ;;
+  (define-key sh-mode-map "\C-c\C-r" 'pipe-region-to-shell)        ;;
+  (define-key sh-mode-map "\C-c\C-b" 'pipe-buffer-to-shell)        ;;
+  (define-key sh-mode-map "\C-c\C-j" 'pipe-line-to-shell)          ;;
+  (define-key sh-mode-map "\C-c\C-n" 'pipe-line-to-shell-and-step) ;;
+  (define-key sh-mode-map "\C-c\C-f" 'pipe-function-to-shell)      ;;
+  (define-key sh-mode-map "\C-c\C-d" 'shell-cd-current-directory)) ;;
+(add-hook 'sh-mode-hook 'essh-sh-hook)                             ;;
