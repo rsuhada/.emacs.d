@@ -13,7 +13,6 @@
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
-;; (add-hook 'sh-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
@@ -72,26 +71,11 @@
 (add-hook 'ess-mode-hook '(lambda ()
                              (rainbow-delimiters-mode 1)))
 
-(add-hook 'shell-script-mode-hook (lambda ()
-                             (rainbow-delimiters-mode 1)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; select/copy
 ;; /cut/paste whole line if no selection
 ;; (require 'whole-line-or-region)
 (load "tellicopy")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; textmate - autopairing + small tweaks
-
-(require 'textmate)
-(tm/initialize)
-
-(add-hook 'sh-mode-hook
-          (tm/minor-mode 0))            ; "disable" to make it work - conflicts with internal skeletons
-
-(add-hook 'python-mode-hook
-          (tm/minor-mode 1))            ; "enable" to make it work
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autopair
@@ -126,6 +110,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autocomplete
+
 (add-to-list 'load-path
               "~/.emacs.d/plugins/auto-complete-1.3.1/")
 
@@ -591,3 +576,27 @@
   (define-key sh-mode-map "\C-c\C-f" 'pipe-function-to-shell)      ;;
   (define-key sh-mode-map "\C-c\C-d" 'shell-cd-current-directory)) ;;
 (add-hook 'sh-mode-hook 'essh-sh-hook)                             ;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; shell
+
+;; Use Emacs terminfo, not system terminfo
+(setq system-uses-terminfo nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; textmate - autopairing + small tweaks
+;; - buggy and conflicting with sh-mode
+
+;; (require 'textmate)
+;; (tm/initialize)
+
+;; (add-hook 'sh-mode-hook
+;;            (tm/minor-mode 0))            ; "disable" to make it work - conflicts with internal skeletons
+
+;; (add-hook 'python-mode-hook
+;;           (tm/minor-mode 1))            ; "enable" to make it work
+
+
+
+
+

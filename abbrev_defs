@@ -37,6 +37,10 @@
 
 (define-abbrev-table 'desktop-recover-mode-abbrev-table '())
 
+(define-abbrev-table 'diary-fancy-display-mode-abbrev-table '())
+
+(define-abbrev-table 'diary-mode-abbrev-table '())
+
 (define-abbrev-table 'docTeX-mode-abbrev-table '())
 
 (define-abbrev-table 'doctex-mode-abbrev-table '())
@@ -1191,7 +1195,10 @@
 
 (define-abbrev-table 'sgml-mode-abbrev-table '())
 
-(define-abbrev-table 'sh-mode-abbrev-table '())
+(define-abbrev-table 'sh-mode-abbrev-table
+  '(
+    ("ehco" "echo" nil 1)
+   ))
 
 (define-abbrev-table 'shell-mode-abbrev-table '())
 
@@ -1238,6 +1245,7 @@
     ("coords" "coordinates" nil 2)
     ("diff" "difference" nil 1)
     ("diffs" "differences" nil 0)
+    ("dm" "DM" nil 2)
     ("eg" "e.g." nil 10)
     ("eos" "equation of state" nil 1)
     ("err" "error" nil 2)
@@ -1293,13 +1301,13 @@
     ("pz" "photo-z" nil 2)
     ("pzs" "photo-zs" nil 1)
     ("r" "are" nil 25)
-    ("reg" "region" nil 1)
+    ("reg" "region" nil 2)
     ("regs" "regions" nil 1)
     ("rel" "relation" nil 0)
     ("rels" "relations" nil 0)
     ("resid" "residual" nil 0)
     ("resids" "residuals" nil 0)
-    ("sas" "SAS" nil 2)
+    ("sas" "SAS" nil 3)
     ("sbd" "somebody" nil 0)
     ("scal" "scaling" nil 0)
     ("sig" "Best wishes,

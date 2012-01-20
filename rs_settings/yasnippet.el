@@ -3,7 +3,7 @@
 (require 'dropdown-list)
 
 (yas/global-mode 1)
-(add-hook 'shell-script-mode-hook 'yas/minor-mode-on)
+;; (add-hook 'shell-script-mode-hook 'yas/minor-mode-on)
 
 
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")

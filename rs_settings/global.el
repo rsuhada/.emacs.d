@@ -326,12 +326,12 @@
                         'hash-comment-mode-abbrev-expand-function
                         nil t)))
 
-;; FIXME: not working
-(add-hook 'shell-script-mode-hook
-          #'(lambda ()
-              (add-hook 'abbrev-expand-functions
-                        'hash-comment-mode-abbrev-expand-function
-                        nil t)))
+;; ;; FIXME: not working
+;; (add-hook 'shell-script-mode-hook
+;;           #'(lambda ()
+;;               (add-hook 'abbrev-expand-functions
+;;                         'hash-comment-mode-abbrev-expand-function
+;;                         nil t)))
 
 ;; FIXME: not working
 (add-hook 'ess-mode-hook
@@ -339,3 +339,17 @@
               (add-hook 'abbrev-expand-functions
                         'hash-comment-mode-abbrev-expand-function
                         nil t)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto pair paren/quotes - currently supperior to electric pair ans also to
+;; textmate-mode
+
+;; enable skeleton-pair insert globally
+(setq skeleton-pair t)
+(setq skeleton-pair-on-word t) ; apply skeleton trick even in front of a word.
+(global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+

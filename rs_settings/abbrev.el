@@ -15,6 +15,7 @@
                 text-mode-hook
                 latex-mode-hook
                 python-mode-hook
+                sh-mode-hook
                 ess-mode-hook
 ))
 (add-hook hook (lambda () (abbrev-mode 1))))
@@ -36,3 +37,8 @@
                         'python-mode-abbrev-expand-function
                         nil t)))
 
+(add-hook 'sh-mode-hook
+          #'(lambda ()
+              (add-hook 'abbrev-expand-functions
+                        'python-mode-abbrev-expand-function
+                        nil t)))
