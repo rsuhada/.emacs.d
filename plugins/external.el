@@ -383,7 +383,7 @@
 (setq desktop-recover-location
       (desktop-recover-fixdir "$HOME/")) ;; ~/.emacs.d is the default
 
-(setq desktop-recover-auto-save-count 0)    ; measured in autosave cycles
+;; (setq desktop-recover-auto-save-count 0)    ; measured in autosave cycles
 (setq desktop-recover-save-period 1)    ; measured in autosave cycles
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -547,9 +547,11 @@
 ;;               (local-set-key (kbd "\M-s") 'evernote-save-note)
 ;; ))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; volatile highhlight - 50/50 whether this is helpful
 
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
+;; (require 'volatile-highlights)
+;; (volatile-highlights-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-save files - not working auto-saves only once per session...
@@ -577,11 +579,6 @@
   (define-key sh-mode-map "\C-c\C-d" 'shell-cd-current-directory)) ;;
 (add-hook 'sh-mode-hook 'essh-sh-hook)                             ;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; shell
-
-;; Use Emacs terminfo, not system terminfo
-(setq system-uses-terminfo nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; textmate - autopairing + small tweaks
@@ -596,7 +593,14 @@
 ;; (add-hook 'python-mode-hook
 ;;           (tm/minor-mode 1))            ; "enable" to make it work
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sunrise commander
 
+;; (require 'sunrise-commander)
+;; (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; jump to last edit place
 
-
+(require 'goto-last-change)
+(global-set-key "\C-p" 'goto-last-change)

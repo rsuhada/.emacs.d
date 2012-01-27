@@ -19,8 +19,16 @@
 (desktop-save-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Gotta see matching parens
+;; higlhlight parens
+
 (show-paren-mode t)
+(setq show-paren-delay 0)           ; how long to wait?
+(setq show-paren-style 'expression) ; alternatives are 'parenthesis' and 'mixed'
+;; (set-face-background 'show-paren-match-face "#333")
+;; (set-face-foreground 'show-paren-match-face "#eee")
+
+(set-face-attribute 'show-paren-match-face t
+        :weight 'bold :underline nil :overline nil :slant 'normal)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Trailing whitespace is unnecessary
@@ -346,10 +354,23 @@
 
 ;; enable skeleton-pair insert globally
 (setq skeleton-pair t)
-(setq skeleton-pair-on-word t) ; apply skeleton trick even in front of a word.
+(setq skeleton-pair-on-word 0) ; apply skeleton trick even in front of a word.
 (global-set-key (kbd "(")  'skeleton-pair-insert-maybe)
 (global-set-key (kbd "[")  'skeleton-pair-insert-maybe)
 (global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; shell
+
+;; Use Emacs terminfo, not system terminfo (corrects garbage
+;; characters)
+(setq system-uses-terminfo nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; dired settings
+
+(eval-after-load "dired-aux"
+  '(add-to-list 'dired-compress-file-suffixes
+                '("\\.zip\\'" ".zip" "unzip")))
