@@ -68,6 +68,12 @@
 
 ;; todo keywords
 ;; (setq org-todo-keywords (quote ((sequence "TODO(t)" "|" "DONE(d!/!)"))))
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "|" "WAITING(w)")
+        (sequence "|" "CANCELED(c)")))
+
 (setq org-use-fast-todo-selection t)    ; C-c C-t KEY
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -88,7 +94,7 @@
             ("i" "idea" entry (file "~/Dropbox/org/refile.org")
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
             ("p" "personal" entry (file "~/Dropbox/org/personal.org") "* %?\n%U" :empty-lines 1)
-            ("w" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? \n\n\n\n\n\n\n\n\n\n%U\n######################################################################")
+            ("w" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? \n\n%U\n######################################################################")
             )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

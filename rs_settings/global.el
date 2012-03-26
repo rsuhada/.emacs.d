@@ -52,6 +52,12 @@
 (tool-bar-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; no scratch blurb
+
+;; Disable startup message in scratch buffer
+(setq-default initial-scratch-message nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zsh mode
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
 

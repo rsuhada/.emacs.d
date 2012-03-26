@@ -123,7 +123,7 @@
 (add-to-list 'ac-modes 'org-mode)
 (add-to-list 'ac-modes 'sh-mode)
 (add-to-list 'ac-modes 'ess-mode)
-(setq ac-auto-show-menu 1.1)            ;set time in seconds
+(setq ac-auto-show-menu 0.9)            ;set time in seconds
 (setq ac-ignore-case nil)
 (setq ac-use-comphist nil)
 
@@ -604,3 +604,26 @@
 
 (require 'goto-last-change)
 (global-set-key "\C-p" 'goto-last-change)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; extend-region
+
+(add-to-list 'load-path "~/.emacs.d/plugins/expand-region/")
+(require 'expand-region)
+
+(global-set-key (kbd "M-@") 'er/expand-region)
+(global-set-key (kbd "C-M-@") 'er/contract-region) ; was: mark-sexp
+(global-set-key (kbd "C-@") 'mark-word)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; deft
+
+(autoload 'deft "deft.el" "Deft mode" t)
+(setq deft-extension "org")
+(setq deft-directory "~/org/")
+(setq deft-text-mode 'org-mode)
+(setq deft-use-filename-as-title t)
+(setq deft-auto-save-interval 5.0)
+(setq deft-time-format " %H:%M %d-%m-%Y")
+(global-set-key [f8] 'deft)

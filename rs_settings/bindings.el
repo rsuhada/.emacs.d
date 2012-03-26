@@ -6,7 +6,6 @@
 ;; Repeat
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
-
 ;; tweak for motion
 (defun back-to-indentation-or-beginning ()
   (interactive)
@@ -286,15 +285,23 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [S-f1]  'ace-jump-word-mode)
 ;; (global-set-key [M-f1]  'ace-jump-line-mode)
 
+(global-set-key [f1]   'er/expand-region)
+(global-set-key [M-f1] 'er/contract-region)
+(global-set-key [C-M-f1] 'mark-word)
+
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)
 
 (global-set-key [f5]    'rgrep)
 (global-set-key [f6]    'occur)
 
-(global-set-key [f7]   'bookmark-set)
-(global-set-key [S-f7] 'bookmark-bmenu-list)
-(global-set-key [M-f7] 'bookmark-jump)
+;; (global-set-key [f7]   'bookmark-set)
+;; (global-set-key [S-f7] 'bookmark-bmenu-list)
+;; (global-set-key [M-f7] 'bookmark-jump)
+
+;; (global-set-key [f7]   'er/expand-region)
+;; (global-set-key [M-f7] 'er/contract-region)
+;; (global-set-key [C-M-f7] 'mark-word)
 
 (global-set-key [f9]   'switch-to-previous-buffer)
 (global-set-key [f10]   'unexpand-abbrev)
@@ -303,8 +310,8 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key [S-f10] 'rm-kill-ring-save)
 ;; (global-set-key [M-f10] 'rm-kill-region)
 
-(global-set-key [f11]   'orgtaby)
-(global-set-key [S-f11] 'orguntaby)
+;; (global-set-key [f11]   'orgtaby)
+;; (global-set-key [S-f11] 'orguntaby)
 
 ;; (global-set-key [f12]   'switch-to-previous-buffer)
 (global-set-key [S-f12] 'help)
@@ -367,3 +374,46 @@ If LINE is non-nil, duplicate that line instead."
             (1-(point))))))
 
 (global-set-key (kbd "C-c C-k") 'copy-line) ; C-u - C-c k copies backward
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; misc. mode fixes (for broken bindings)
+
+(defun idl-save-binding-fix ()
+"removing the M-s binding. originally: idlwave-edit-in-idlde"
+  (local-set-key (kbd "M-s") 'save-buffer))
+
+(add-hook 'idlwave-mode-hook 'idl-save-binding-fix)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; open line
+
+;; Behave like vi's o command
+(defun open-next-line (arg)
+  "Move to the next line and then opens a line.
+    See also `newline-and-indent'."
+  (interactive "p")
+  (end-of-line)
+  (open-line arg)
+  (next-line 1)
+  (when newline-and-indent
+    (indent-according-to-mode)))
+
+;; Behave like vi's O command
+(defun open-previous-line (arg)
+  "Open a new line before the current one.
+     See also `newline-and-indent'."
+  (interactive "p")
+  (beginning-of-line)
+  (open-line arg)
+  (when newline-and-indent
+    (indent-according-to-mode)))
+
+;; Autoindent open-*-lines
+(defvar newline-and-indent t
+  "Modify the behavior of the open-*-line functions to cause them to autoindent.")
+
+;; (global-set-key (kbd "M-o") 'open-previous-line)
+;; (global-set-key (kbd "C-o") 'open-next-line)
+
+(global-set-key [S-return]   'open-next-line)
+(global-set-key [M-S-return] 'open-previous-line)
