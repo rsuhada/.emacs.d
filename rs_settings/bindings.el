@@ -174,23 +174,21 @@ line."
 
 (global-set-key "\M-]" 'rs-comment-line-separator-macro)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; breadcrumb
-(global-set-key [(meta f1)] 'bc-set)
-(global-set-key [(meta left)] 'bc-previous)
-(global-set-key [(meta right)] 'bc-next)
-;; (global-set-key [(meta left)] 'bc-local-previous)
-;; (global-set-key [(meta right)] 'bc-local-next)
-;; (global-set-key [(control c)(j)] 'bc-goto-current)
-(global-set-key [(control x)(meta j)] 'bc-list)
-
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; breadcrumb
+;; (global-set-key [(meta f1)] 'bc-set)
+;; (global-set-key [(meta left)] 'bc-previous)
+;; (global-set-key [(meta right)] 'bc-next)
+;; ;; (global-set-key [(meta left)] 'bc-local-previous)
+;; ;; (global-set-key [(meta right)] 'bc-local-next)
+;; ;; (global-set-key [(control c)(j)] 'bc-goto-current)
+;; (global-set-key [(control x)(meta j)] 'bc-list)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; buffer flipping
 (defun switch-to-previous-buffer ()
   (interactive)
   (switch-to-buffer (other-buffer)))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; duplicate & comment
@@ -286,8 +284,8 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key [M-f1]  'ace-jump-line-mode)
 
 (global-set-key [f1]   'er/expand-region)
-(global-set-key [M-f1] 'er/contract-region)
-(global-set-key [C-M-f1] 'mark-word)
+(global-set-key [S-f1] 'er/contract-region)
+(global-set-key [M-f1] 'mark-word)
 
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)
@@ -303,6 +301,7 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key [M-f7] 'er/contract-region)
 ;; (global-set-key [C-M-f7] 'mark-word)
 
+;; (global-set-key [f8] 'deft)
 (global-set-key [f9]   'switch-to-previous-buffer)
 (global-set-key [f10]   'unexpand-abbrev)
 
@@ -314,6 +313,8 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key [S-f11] 'orguntaby)
 
 ;; (global-set-key [f12]   'switch-to-previous-buffer)
+
+(global-set-key [f12] 'deft)
 (global-set-key [S-f12] 'help)
 
 ;; defaults f3 - record macro, f4 - end macro/reply

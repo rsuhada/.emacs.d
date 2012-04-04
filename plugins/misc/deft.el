@@ -793,7 +793,7 @@ Otherwise, quick create a new file."
     ;; Miscellaneous
     (define-key map (kbd "C-c C-g") 'deft-refresh)
     (define-key map (kbd "C-c C-q") 'quit-window)
-    (define-key map (kbd "<f8>") 'quit-window) ; rs
+    (define-key map (kbd "<f12>") 'quit-window) ; rs
     ;; Widgets
     (define-key map [down-mouse-1] 'widget-button-click)
     (define-key map [down-mouse-2] 'widget-button-click)

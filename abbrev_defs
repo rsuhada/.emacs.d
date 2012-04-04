@@ -1005,9 +1005,7 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
-(define-abbrev-table 'idlwave-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'idlwave-mode-abbrev-table '())
 
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 

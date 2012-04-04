@@ -145,16 +145,15 @@
 ;; breadcrumbs
 
 ;; (require 'breadcrumb)
-
-(autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
-(autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
-(autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
-(autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
-(autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
-(autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
-(autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
-(autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
-(bc-clear)                              ; clear breadcrumbs
+;; (autoload 'bc-set "breadcrumb" "Set bookmark in current point." t)
+;; (autoload 'bc-previous "breadcrumb" "Go to previous bookmark." t)
+;; (autoload 'bc-next "breadcrumb" "Go to next bookmark." t)
+;; (autoload 'bc-local-previous "breadcrumb" "Go to previous local bookmark." t)
+;; (autoload 'bc-local-next "breadcrumb" "Go to next local bookmark."       t)
+;; (autoload 'bc-goto-current "breadcrumb" "Go to the current bookmark."      t)
+;; (autoload 'bc-list "breadcrumb" "List all bookmarks in menu mode." t)
+;; (autoload 'bc-clear "breadcrumb" "Clear all bookmarks." t)
+;; (bc-clear)                              ; clear breadcrumbs
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; command frequency
@@ -384,7 +383,9 @@
       (desktop-recover-fixdir "$HOME/")) ;; ~/.emacs.d is the default
 
 ;; (setq desktop-recover-auto-save-count 0)    ; measured in autosave cycles
-(setq desktop-recover-save-period 1)    ; measured in autosave cycles
+(setq desktop-recover-save-period 1)    ; measured in autosave cycles - doesn't work?
+
+(run-with-idle-timer 100.0 t 'desktop-save-in-desktop-dir) ; if idle for 5s save?
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evaling math in buffers
@@ -569,7 +570,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; essh.el FIXME: check the s-enter verision from ess
 
-(require 'essh)                                                    ;;
+;; (require 'essh)                                                    ;;
+(autoload 'essh "essh.el" "R mode" t)
 (defun essh-sh-hook ()                                             ;;
   (define-key sh-mode-map "\C-c\C-r" 'pipe-region-to-shell)        ;;
   (define-key sh-mode-map "\C-c\C-b" 'pipe-buffer-to-shell)        ;;
@@ -626,4 +628,126 @@
 (setq deft-use-filename-as-title t)
 (setq deft-auto-save-interval 5.0)
 (setq deft-time-format " %H:%M %d-%m-%Y")
-(global-set-key [f8] 'deft)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; rotate-text
+;; FIXME: move to own file
+
+(defvar rotate-text-rotations
+  '(("true" "false")
+    ("yes" "no")
+    ("0" "1")
+    ("pn" "m1" "m2")
+    ("width" "height")
+    ("left" "top" "right" "bottom")
+    ("start" "end")
+    ("red" "orange" "yellow" "green" "blue" "indigo" "violet")
+    ("zero" "one" "two"))
+  "List of text rotation sets.")
+
+(defun rotate-region (beg end)
+  "Rotate all matches in `rotate-text-rotations' between point and mark."
+  (interactive "r")
+  (let ((regexp (rotate-convert-rotations-to-regexp
+		 rotate-text-rotations))
+	(end-mark (copy-marker end)))
+    (save-excursion
+      (goto-char beg)
+      (while (re-search-forward regexp (marker-position end-mark) t)
+	(let* ((found (match-string 0))
+	       (replace (rotate-next found)))
+	  (replace-match replace))))))
+
+(defun rotate-string (string &optional rotations)
+  "Rotate all matches in STRING using associations in ROTATIONS.
+If ROTATIONS are not given it defaults to `rotate-text-rotations'."
+  (let ((regexp (rotate-convert-rotations-to-regexp
+		 (or rotations rotate-text-rotations)))
+	(start 0))
+    (while (string-match regexp string start)
+      (let* ((found (match-string 0 string))
+	     (replace (rotate-next
+		       found
+		       (or rotations rotate-text-rotations))))
+	(setq start (+ (match-end 0)
+		       (- (length replace) (length found))))
+	(setq string (replace-match replace nil t string))))
+    string))
+
+(defun rotate-next (string &optional rotations)
+  "Return the next element after STRING in ROTATIONS."
+  (let ((rots (rotate-get-rotations-for
+	       string
+	       (or rotations rotate-text-rotations))))
+    (if (> (length rots) 1)
+	(error (format "Ambiguous rotation for %s" string))
+      (if (< (length rots) 1)
+	  ;; If we get this far, this should not occur:
+	  (error (format "Unknown rotation for %s" string))
+	(let ((occurs-in-rots (member string (car rots))))
+	  (if (null occurs-in-rots)
+	      ;; If we get this far, this should *never* occur:
+	      (error (format "Unknown rotation for %s" string))
+	  (if (null (cdr occurs-in-rots))
+	      (caar rots)
+	    (cadr occurs-in-rots))))))))
+
+(defun rotate-get-rotations-for (string &optional rotations)
+  "Return the string rotations for STRING in ROTATIONS."
+  (remq nil (mapcar (lambda (rot) (if (member string rot) rot))
+		    (or rotations rotate-text-rotations))))
+
+(defun rotate-convert-rotations-to-regexp (rotations)
+  (regexp-opt (rotate-flatten-list rotations)))
+
+(defun rotate-flatten-list (list-of-lists)
+  "Flatten LIST-OF-LISTS to a single list.
+Example:
+  (rotate-flatten-list '((a b c) (1 ((2 3)))))
+    => (a b c 1 2 3)"
+  (if (null list-of-lists)
+      list-of-lists
+    (if (listp list-of-lists)
+	(append (rotate-flatten-list (car list-of-lists))
+		(rotate-flatten-list (cdr list-of-lists)))
+      (list list-of-lists))))
+
+(defun rotate-word-at-point ()
+  "Rotate word at point based on sets in `rotate-text-rotations'."
+  (interactive)
+  (let ((bounds (bounds-of-thing-at-point 'word))
+        (opoint (point)))
+    (when (consp bounds)
+      (let ((beg (car bounds))
+            (end (copy-marker (cdr bounds))))
+        (rotate-region beg end)
+        (goto-char (if (> opoint end) end opoint))))))
+
+;; (global-set-key "\C-c/" 'rotate-word-at-point)
+(global-set-key "\M-m" 'rotate-word-at-point)
+
+;; (defun indent-or-rotate ()
+;;   "If point is at end of a word, then else indent the line."
+;;   (interactive)
+;;   (if (looking-at "\\>")
+;;       (rotate-region (save-excursion (forward-word -1) (point))
+;; 		     (point))
+;;     (indent-for-tab-command)))
+
+;; (local-set-key [tab] 'indent-or-rotate)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; w3m - not working at the moment
+
+;; (setq w3m-command "/usr/local/bin/w3m")
+
+;; (add-to-list 'load-path "~/.emacs.d/plugins/emacs-w3m")
+;; ; default
+;; ;; (setq browse-url-browser-function 'w3m-browse-url)
+
+;; (require 'w3m-load)
+;; (setq w3m-default-display-inline-images t)
+;; (setq w3m-use-cookies t)
+;; (setq w3m-follow-redirection 3)
+;; (setq w3m-home-page "http://google.com")
