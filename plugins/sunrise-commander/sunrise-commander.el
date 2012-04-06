@@ -1,13 +1,13 @@
 ;;; sunrise-commander.el --- two-pane file manager for Emacs based on Dired and inspired by MC
 
-;; Copyright (C) 2007-2011 José Alfredo Romero Latouche.
+;; Copyright (C) 2007-2012 José Alfredo Romero Latouche.
 
 ;; Author: José Alfredo Romero L. <escherdragon@gmail.com>
 ;;	Štěpán Němec <stepnem@gmail.com>
 ;; Maintainer: José Alfredo Romero L. <escherdragon@gmail.com>
 ;; Created: 24 Sep 2007
 ;; Version: 5
-;; RCS Version: $Rev: 408 $
+;; RCS Version: $Rev: 415 $
 ;; Keywords: files, dired, midnight commander, norton, orthodox
 ;; URL: http://www.emacswiki.org/emacs/sunrise-commander.el
 ;; Compatibility: GNU Emacs 22+
@@ -331,6 +331,19 @@ mode."
   :group 'sunrise
   :type 'boolean)
 
+(defcustom sr-attributes-display-mask nil
+  "Contols hiding/transforming columns with `sr-toggle-attributes'.
+If set, its value must be a list of symbols, one for each
+attributes column. If the symbol is nil, then the corresponding
+column will be hidden, and if it's not nil then the column will
+be left untouched. The symbol may also be the name of a function
+that takes one string argument and evaluates to a different
+string -- in this case this function will be used to transform
+the contents of the corresponding column and its result will be
+displayed instead."
+  :group 'sunrise
+  :type '(repeat symbol))
+
 (defcustom sr-fuzzy-negation-character ?!
   "Character to use for negating patterns when fuzzy-narrowing a pane."
   :group 'sunrise
@@ -586,6 +599,7 @@ The following keybindings are available:
         C-c C-f ....... execute Find-dired in Sunrise VIRTUAL mode
         C-c C-n ....... execute find-Name-dired in Sunrise VIRTUAL mode
         C-c C-g ....... execute find-Grep-dired in Sunrise VIRTUAL mode
+        C-u C-c C-g ... execute find-Grep-dired with additional grep options
         C-c C-l ....... execute Locate in Sunrise VIRTUAL mode
         C-c C-r ....... browse list of Recently visited files (requires recentf)
         C-c C-c ....... [after find, locate or recent] dismiss virtual buffer
@@ -680,7 +694,8 @@ automatically:
        %% - inserts a single % sign.
 "
   :group 'sunrise
-  (rename-buffer (concat (buffer-name) " (Sunrise)") t)
+  (unless (string-match "\\(Sunrise\\)" (buffer-name))
+    (rename-buffer (concat (buffer-name) " (Sunrise)") t))
   (set-keymap-parent sr-mode-map dired-mode-map)
   (sr-highlight)
   (dired-omit-mode dired-omit-mode)
@@ -699,7 +714,8 @@ automatically:
 
   (make-local-variable 'revert-buffer-function)
   (setq revert-buffer-function 'sr-revert-buffer)
-
+ 
+  (set (make-local-variable 'buffer-quit-function) 'sr-quit)
   (set (make-local-variable 'sr-show-file-attributes) sr-show-file-attributes)
 
   (make-local-variable 'hl-line-sticky-flag)
@@ -726,7 +742,8 @@ automatically:
 
   (make-local-variable 'revert-buffer-function)
   (setq revert-buffer-function 'sr-revert-buffer)
-
+ 
+  (set (make-local-variable 'buffer-quit-function) 'sr-quit)
   (set (make-local-variable 'sr-show-file-attributes) sr-show-file-attributes)
 
   (make-local-variable 'hl-line-sticky-flag)
@@ -919,33 +936,37 @@ immediately loaded, but only if `sr-autoload-extensions' is not nil."
 
 (defadvice dired-find-buffer-nocreate
   (before sr-advice-findbuffer (dirname &optional mode))
-  "A hack to avoid some Dired mode quirks."
+  "A hack to avoid some Dired mode quirks in the Sunrise Commander."
   (if (sr-equal-dirs sr-dired-directory dirname)
       (setq mode 'sr-mode)))
 ;; ^--- activated by sr-within macro
 
 (defadvice dired-dwim-target-directory
   (around sr-advice-dwim-target ())
-  "Tweak the target directory guessing mechanism."
-  (if (eq (selected-frame) sr-current-frame)
+  "Tweak the target directory guessing mechanism when Sunrise Commander is on."
+  (if (and sr-running (eq (selected-frame) sr-current-frame))
       (setq ad-return-value sr-other-directory)
     ad-do-it))
 (ad-activate 'dired-dwim-target-directory)
 
 (defadvice other-window
   (around sr-advice-other-window (count &optional all-frames))
-  "Selects the correct (selected) pane when switching from other windows."
-  (let ((from-window (selected-window)))
-    ad-do-it
-    (when sr-running
-      (unless (member from-window (list sr-left-window sr-right-window))
-        (if (member (selected-window) (list sr-left-window sr-right-window))
-            (sr-select-window sr-selected-window))))))
+  "Select the correct Sunrise Commander pane when switching from other windows."
+  (if (or (not sr-running) sr-ediff-on)
+      ad-do-it
+    (let ((from (selected-window)))
+      ad-do-it
+      (unless (memq from (list sr-left-window sr-right-window))
+        ;; switching from outside
+        (sr-select-window sr-selected-window))
+      (when (eq (selected-window) (sr-other 'window))
+        ;; switching from the other pane
+        (sr-change-window)))))
 (ad-activate 'other-window)
 
 (defadvice use-hard-newlines
   (around sr-advice-use-hard-newlines (&optional arg insert))
-  "Stop pestering me with questions whether I want hard lines, just guess."
+  "Stop asking if I want hard lines the in Sunrise Commander, just guess."
   (if (memq major-mode '(sr-mode sr-virtual-mode))
       (let ((inhibit-read-only t))
         (setq insert 'guess)
@@ -955,7 +976,8 @@ immediately loaded, but only if `sr-autoload-extensions' is not nil."
 
 (defadvice dired-insert-set-properties
   (after sr-advice-dired-insert-set-properties (beg end))
-  "Manage hidden attributes in files added externally (e.g. from find-dired)"
+  "Manage hidden attributes in files added externally (e.g. from find-dired) to
+the Sunrise Commander."
   (when (memq major-mode '(sr-mode sr-virtual-mode))
     (sr-display-attributes beg end sr-show-file-attributes)))
 (ad-activate 'dired-insert-set-properties)
@@ -1172,7 +1194,7 @@ these values uses the default, ie. $HOME."
       (unless (eq my-frame (window-frame (selected-window)))
         (select-frame my-frame)
         (sunrise left-directory right-directory filename)))))
-
+ 
 ;;;###autoload
 (defun sr-dired (&optional target switches)
   "Visit the given target (file or directory) in `sr-mode'."
@@ -1184,7 +1206,7 @@ these values uses the default, ie. $HOME."
          (directory (if file (file-name-directory target) target))
          (dired-omit-mode (if sr-show-hidden-files -1 1))
          (sr-listing-switches (or switches sr-listing-switches)))
-    (unless (file-readable-p directory)
+    (unless (file-readable-p directory) 
       (error "%s is not readable!" (sr-directory-name-proper directory)))
     (unless sr-running (sunrise))
     (sr-select-window sr-selected-window)
@@ -1284,6 +1306,12 @@ buffer or window."
   (sr-select-window sr-selected-window)
   (sr-restore-panes-width)
   (run-hooks 'sr-start-hook))
+
+(defun sr-restore-prior-configuration ()
+  "Restore the configuration stored in `sr-prior-window-configuration' if any."
+  (set-window-configuration sr-prior-window-configuration)
+  (if (buffer-live-p sr-restore-buffer)
+      (set-buffer sr-restore-buffer)))
 
 (defun sr-lock-window (frame)
   "Resize the left Sunrise pane to have the \"right\" size."
@@ -1405,11 +1433,7 @@ With optional argument REVERT, executes `revert-buffer' on the passive buffer."
             (progn
               (sr-select-viewer-window)
               (delete-other-windows))
-          (progn
-            ;;restore previous window setup
-            (set-window-configuration sr-prior-window-configuration)
-            (if (buffer-live-p sr-restore-buffer)
-                (set-buffer sr-restore-buffer))))
+          (sr-restore-prior-configuration))
         (sr-bury-panes)
         (setq buffer-read-only nil)
         (run-hooks 'sr-quit-hook)
@@ -2100,6 +2124,33 @@ Kills any other buffer opened previously the same way."
             (if (eq (current-buffer) other-window-scroll-buffer)
                 (setq other-window-scroll-buffer  nil))))
 
+(defun sr-mask-attributes (beg end)
+  "Manage the hiding of attributes in region from BEG to END.
+Selective hiding of specific attributes can be controlled by customizing the
+`sr-attributes-display-mask' variable."
+  (let ((cursor beg) props)
+    (flet ((sr-make-display-props
+            (display-function-or-flag)
+            (cond ((functionp display-function-or-flag)
+                   `(display
+                     ,(apply display-function-or-flag
+                             (list (buffer-substring cursor (1- (point)))))))
+                  ((null display-function-or-flag) '(invisible t))
+                  (t nil))))
+      (if sr-attributes-display-mask
+          (block block 
+            (mapc (lambda (do-display)
+                    (search-forward-regexp "\\w")
+                    (search-forward-regexp "\\s-")
+                    (setq props (sr-make-display-props do-display))
+                    (when props 
+                      (add-text-properties cursor (point) props))
+                    (setq cursor (point))
+                    (if (>= (point) end) (return-from block)))
+                  sr-attributes-display-mask))
+        (unless (>= cursor end)
+          (add-text-properties cursor end '(invisible t)))))))
+
 (defun sr-display-attributes (beg end visiblep)
   "Manage the display of file attributes in the region from BEG to END.
 if VISIBLEP is nil then shows file attributes in region, otherwise hides them."
@@ -2113,9 +2164,10 @@ if VISIBLEP is nil then shows file attributes in region, otherwise hides them."
       (while (and next (< next end))
         (beginning-of-line)
         (forward-char 2)
-        (if visiblep
-            (remove-text-properties (point) next '(invisible t))
-          (add-text-properties (point) next '(invisible t)))
+        (if (not visiblep)
+            (sr-mask-attributes (point) next)
+          (remove-text-properties (point) next '(invisible t))
+          (remove-text-properties (point) next '(display)))
         (forward-line 1)
         (setq next (dired-move-to-filename))))))
 
@@ -2632,30 +2684,25 @@ See `dired-make-relative-symlink'."
 (defun sr-do-rename ()
   "Move selected files and directories recursively from one pane to the other."
   (interactive)
-  (if (sr-virtual-target)
-      (error "Cannot move files to a VIRTUAL buffer, try (C)opying instead"))
-  (let* ((selected-items (dired-get-marked-files nil))
-         (files-count (length selected-items))
-         (target sr-other-directory) progress)
-    (if (> files-count 0)
-        (if (sr-equal-dirs default-directory sr-other-directory)
-            (dired-do-rename)
-          (when (sr-ask "Move" target selected-items #'y-or-n-p)
-            (let ((names (mapcar #'file-name-nondirectory selected-items))
-                  (inhibit-read-only t))
-              (with-current-buffer (sr-other 'buffer)
-                (setq progress
-                      (sr-make-progress-reporter
-                       "renaming" (length selected-items)))
-                (sr-move-files selected-items default-directory progress)
-                (revert-buffer)
-                (dired-mark-remembered
-                 (mapcar (lambda (x) (cons (expand-file-name x) ?R)) names)))
-              (if (window-live-p (sr-other 'window))
-                  (sr-in-other (sr-focus-filename (car names)))))
-            (revert-buffer)
-            (sr-progress-reporter-done progress)))
-      (message "Sunrise: Empty selection. Nothing done."))))
+  (when (sr-virtual-target)
+    (error "Cannot move files to a VIRTUAL buffer, try (C)opying instead"))
+  (if (sr-equal-dirs default-directory sr-other-directory)
+      (dired-do-rename)
+    (let ((marked (dired-get-marked-files)))
+      (when (sr-ask "Move" sr-other-directory marked #'y-or-n-p)
+        (let ((names (mapcar #'file-name-nondirectory marked))
+              (progress (sr-make-progress-reporter "renaming" (length marked)))
+              (inhibit-read-only t))
+          (sr-in-other
+           (progn
+             (sr-move-files marked default-directory progress)
+             (revert-buffer)
+             (when (eq major-mode 'sr-mode)
+               (dired-mark-remembered
+                (mapcar (lambda (x) (cons (expand-file-name x) ?R)) names))
+               (sr-focus-filename (car names)))))
+          (sr-progress-reporter-done progress))
+        (revert-buffer)))))
 
 (defun sr-do-delete ()
   "Remove selected files from the file system."
@@ -2724,13 +2771,14 @@ are not copied."
         (inhibit-read-only t))
     (with-current-buffer (sr-other 'buffer)
       (sr-clone-files items target clone-op progress))
-    (if (window-live-p (sr-other 'window))
-        (sr-in-other
-         (progn
-           (revert-buffer)
+    (when (window-live-p (sr-other 'window))
+      (sr-in-other
+       (progn
+         (revert-buffer)
+         (when (memq major-mode '(sr-mode sr-virtual-mode))
            (dired-mark-remembered
             (mapcar (lambda (x) (cons (expand-file-name x) mark-char)) names))
-           (sr-focus-filename (car names)))))))
+           (sr-focus-filename (car names))))))))
 
 (defun sr-clone-files (file-paths target-dir clone-op progress &optional do-overwrite)
   "Clone all files in FILE-PATHS to TARGET-DIR using CLONE-OP to clone the files.
@@ -2782,6 +2830,14 @@ IN-DIR/D => TO-DIR/D using CLONE-OP to clone the files."
       (make-directory (concat to-dir d)))
     (sr-clone-files file-paths-in-d (concat to-dir d) clone-op progress do-overwrite)))
 
+(defsubst sr-move-op (file target target-dir progress do-overwrite)
+  "Helper function used by `sr-move-files' to rename files and directories."
+  (condition-case nil
+      (dired-rename-file file target do-overwrite)
+    (error
+     (sr-clone-directory file "" target-dir 'copy-file progress do-overwrite)
+     (dired-delete-file file 'always))))
+
 (defun sr-move-files (file-path-list target-dir progress &optional do-overwrite)
   "Move all files in FILE-PATH-LIST (list of full paths) to TARGET-DIR."
   (mapc
@@ -2795,10 +2851,8 @@ IN-DIR/D => TO-DIR/D using CLONE-OP to clone the files."
               (if (file-exists-p target)
                   (when (or (eq do-overwrite 'ALWAYS)
                             (setq do-overwrite (sr-ask-overwrite target)))
-                    (sr-clone-directory f "" target-dir 'copy-file progress
-                                        do-overwrite)
-                    (dired-delete-file f 'always))
-                (dired-rename-file f target do-overwrite))))
+                    (sr-move-op f target target-dir progress do-overwrite))
+                (sr-move-op f target target-dir progress do-overwrite))))
         (let* ((name (file-name-nondirectory f))
                (target-file (concat target-dir name)))
           ;; (message "Renaming: %s => %s" f target-file)
@@ -3132,15 +3186,22 @@ as its first argument."
   (sr-find-apply 'find-name-dired pattern))
 
 (defun sr-find-grep (pattern)
-  "Run `find-grep-dired' passing the current directory as first parameter."
+  "Run `find-grep-dired' passing the current directory as first
+parameter. Called with prefix asks for additional grep options."
   (interactive "sFind files containing pattern: ")
-  (sr-find-apply 'find-grep-dired pattern))
+  (let ((find-grep-options
+         (if current-prefix-arg
+             (concat find-grep-options
+                     " "
+                     (read-string "Additional Grep Options: "))
+         find-grep-options)))
+    (sr-find-apply 'find-grep-dired pattern)))
 
 (defadvice find-dired-sentinel
   (after sr-advice-find-dired-sentinel (proc state))
-  "Automatically rename the *Find* buffer after every find
-operation and replace the status line if the find operation was
-made only inside subdirs."
+  "Automatically rename the *Find* buffer after every find operation in the
+Sunrise Commander and replace the status line if the find operation was made
+only inside subdirs."
   (when (eq 'sr-virtual-mode major-mode)
     (rename-uniquely)
     (let* ((find-items (and (boundp 'sr-find-items) (symbol-value 'sr-find-items)))
@@ -3164,9 +3225,9 @@ made only inside subdirs."
 
 (defadvice find-dired-filter
   (around sr-advice-find-dired-filter (proc string))
-  "Disable the \"non-foolproof\" padding mechanism in
-`find-dired-filter' that breaks Dired when using ls options that
-omit some columns (like g or G)."
+  "Disable the \"non-foolproof\" padding mechanism in `find-dired-filter' that
+breaks Dired when using ls options that omit some columns (like g or G). Defined
+by the Sunrise Commander."
   (if (and (eq 'sr-virtual-mode major-mode)
            (or (string-match "g" sr-virtual-listing-switches)
                (string-match "G" sr-virtual-listing-switches)))
@@ -3635,8 +3696,7 @@ See `sr-term' for a description of the arguments."
       (sr-term-line-mode))
     (when cd
       (term-send-raw-string
-       (concat "cd " (shell-quote-wildcard-pattern dir) "
-")))))
+       (concat "cd " (shell-quote-wildcard-pattern dir) "")))))
 
 (defun sr-term-eshell (&optional cd newterm)
   "Implementation of `sr-term' when using `eshell'."
@@ -3867,7 +3927,7 @@ by `sr-clex-start'."
   :group 'sunrise)
 
 (defadvice term-sentinel (around sr-advice-term-sentinel (proc msg) activate)
-  "Take care of killing Sunrise terminal buffers on exit."
+  "Take care of killing Sunrise Commander terminal buffers on exit."
   (if (and (or sr-term-char-minor-mode sr-term-line-minor-mode)
            sr-terminal-kill-buffer-on-exit
            (memq (process-status proc) '(signal exit)))

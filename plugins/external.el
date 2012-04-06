@@ -298,8 +298,7 @@
 ;;     ;; anything-c-source-cscope-global-definition
 ;;     ;; anything-c-source-cscope-called-function
 ;;     ;; anything-c-source-cscope-calling-this-function
-;;     ;; anything-c-source-cscope-text-string
-;;     ))
+;;     ;; anything-c-source-cscope-text-stribg))
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; at the moment not functioning...
@@ -486,7 +485,8 @@
 
 (add-to-list 'load-path
               "~/.emacs.d/plugins/ess-5.14/lisp/")
-(require 'ess-site)
+(autoload 'ess-site "ess-site.el" "ESS mode" t)
+;; (require 'ess-site)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; from steve yegge
@@ -598,8 +598,38 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; sunrise commander
 
-;; (require 'sunrise-commander)
-;; (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
+(add-to-list 'load-path "~/.emacs.d/plugins/sunrise-commander/")
+(require 'sunrise-commander)
+(require 'sunrise-x-buttons)
+
+
+(add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
+
+(defun sr-browse-file (&optional file)
+  "Display the selected file with the default appication."
+  (interactive)
+  (setq file (or file (dired-get-filename)))
+  (save-selected-window
+    (sr-select-viewer-window)
+    (let ((buff (current-buffer))
+	  (fname (if (file-directory-p file)
+		     file
+		   (file-name-nondirectory file)))
+	  (app (cond
+		((eq system-type 'darwin)	"open %s")
+		((eq system-type 'windows-nt)	"open %s")
+		(t				"xdg-open %s"))))
+      (start-process-shell-command "open" nil (format app file))
+      (unless (eq buff (current-buffer))
+        (sr-scrollable-viewer (current-buffer)))
+      (message "Opening \"%s\" ..." fname))))
+
+(setq sr-attributes-display-mask '(nil nil nil nil t t t))
+(add-hook 'sr-refresh-hook 'sr-toggle-attributes)
+
+;; (add-hook 'sr-start-hook 'sr-toggle-attributes)
+;; (add-hook 'sr-refresh-hook 'sr-sticky-isearch-forward)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; jump to last edit place
@@ -621,13 +651,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; deft
 
-(autoload 'deft "deft.el" "Deft mode" t)
-(setq deft-extension "org")
-(setq deft-directory "~/org/")
-(setq deft-text-mode 'org-mode)
-(setq deft-use-filename-as-title t)
-(setq deft-auto-save-interval 5.0)
-(setq deft-time-format " %H:%M %d-%m-%Y")
+;; (autoload 'deft "deft.el" "Deft mode" t)
+;; (setq deft-extension "org")
+;; (setq deft-directory "~/org/")
+;; (setq deft-text-mode 'org-mode)
+;; (setq deft-use-filename-as-title t)
+;; (setq deft-auto-save-interval 5.0)
+;; (setq deft-time-format " %H:%M %d-%m-%Y")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rotate-text
