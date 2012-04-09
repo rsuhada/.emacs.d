@@ -72,4 +72,9 @@
 (fset 'rs-latex-comment
    [return return return return ?\M-i ?\M-i ?\C-u ?7 ?0 ?% ?\M-w return ?\M-\; ?\C-/ ?% ?  ?R ?S return ?% return ?\C-y ?\M-i ? ])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; mark line (temporary solution)
+
+(fset 'rs-macro/mark-line
+   [?\C-a ?\C-a M-escape ?\C-e])
 

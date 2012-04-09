@@ -285,7 +285,8 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-set-key [f1]   'er/expand-region)
 (global-set-key [S-f1] 'er/contract-region)
-(global-set-key [M-f1] 'mark-word)
+(global-set-key [C-f1] 'mark-word)
+(global-set-key [M-f1] 'rs-macro/mark-line)
 
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)
@@ -419,3 +420,20 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-set-key [S-return]   'open-next-line)
 (global-set-key [M-S-return] 'open-previous-line)
+
+
+;; mark line
+;; FIXME not working
+;; (defun mark-line (arg)
+;;   "Mark current line"
+;;   (interactive "p")
+;;   (save-excursion
+;;   ;; (beginning-of-line)
+;;     (line-beginning-position)
+;;   (push-mark
+;;      (if (and (eq last-command this-command) (mark t))
+;; 	 (goto-char (mark)))
+;;      ;; (end-of-line)
+;;     (line-end-position)
+;;      (point))
+;;    nil t))

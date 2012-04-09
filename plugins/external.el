@@ -483,9 +483,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ess
 
-(add-to-list 'load-path
-              "~/.emacs.d/plugins/ess-5.14/lisp/")
-(autoload 'ess-site "ess-site.el" "ESS mode" t)
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/plugins/ess-5.14/lisp/")
+;; (autoload 'ess-site "ess-site.el" "ESS mode" t)
 ;; (require 'ess-site)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -601,7 +601,8 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/sunrise-commander/")
 (require 'sunrise-commander)
 (require 'sunrise-x-buttons)
-
+(require 'sunrise-x-mirror)
+(require 'sunrise-x-modeline)
 
 (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 
@@ -624,8 +625,27 @@
         (sr-scrollable-viewer (current-buffer)))
       (message "Opening \"%s\" ..." fname))))
 
+;; variables
+(setq sr-right-directory "~/")
+(setq sr-left-directory "~/Downloads/")
+
 (setq sr-attributes-display-mask '(nil nil nil nil t t t))
-(add-hook 'sr-refresh-hook 'sr-toggle-attributes)
+(add-hook 'sr-init-hook 'sr-toggle-attributes)
+
+;; keys
+
+(define-key sr-mode-map "n"           'sr-goto-dir)
+(define-key sr-mode-map "m"           'sr-fuzzy-narrow)
+(define-key sr-mode-map "j"           'sr-dired-prev-subdir)
+;; (define-key sr-mode-map "k"           'sr-scroll-up)
+(define-key sr-mode-map "k"           'next-line)
+;; (define-key sr-mode-map "i"           'sr-scroll-down) ; originally : dired-do-kill-line
+(define-key sr-mode-map "i"           'previous-line) ; originally : dired-do-kill-lines
+(define-key sr-mode-map "l"           'sr-advertised-find-file)
+(define-key sr-mode-map "\C-j"        'sr-advertised-find-file)
+(define-key sr-mode-map "\C-s"        'sr-sticky-isearch-forward)
+(define-key sr-mode-map "\C-cs"        'sr-interactive-sort)
+(define-key sr-mode-map "f"           'sr-fuzzy-narrow)
 
 ;; (add-hook 'sr-start-hook 'sr-toggle-attributes)
 ;; (add-hook 'sr-refresh-hook 'sr-sticky-isearch-forward)

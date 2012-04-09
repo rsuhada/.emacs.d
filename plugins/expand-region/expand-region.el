@@ -370,6 +370,7 @@
                            er/mark-outside-quotes
                            er/mark-inside-pairs
                            er/mark-outside-pairs
+                           rs-macro/mark-line ;FIXME
                            mark-paragraph))
 
 ;; The magic expand-region method
