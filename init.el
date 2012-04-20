@@ -1,8 +1,8 @@
+(load "~/.emacs.d/rs_settings/bindings")
 (load "~/.emacs.d/rs_settings/global")
 (load "~/.emacs.d/rs_settings/defun")
 (load "~/.emacs.d/rs_settings/env")
 (load "~/.emacs.d/rs_settings/macros")
-(load "~/.emacs.d/rs_settings/bindings")
 (load "~/.emacs.d/rs_settings/ido")
 (load "~/.emacs.d/rs_settings/tab")
 (load "~/.emacs.d/rs_settings/rect")
@@ -11,6 +11,7 @@
 (load "~/.emacs.d/rs_settings/abbrev.el")
 (load "~/.emacs.d/rs_settings/modes.el")
 (load "~/.emacs.d/rs_settings/python_stuff")
+
 
 ;; (load "~/.emacs.d/rs_settings/network")  ;; FIXME
 ;; (load "~/.emacs.d/rs_settings/delim")  ;; better solution: textmate-mode
@@ -24,14 +25,14 @@
 (load "~/.emacs.d/plugins/external")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; has to come *after external*
+(load "~/.emacs.d/rs_settings/terminal")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; run server
 (if (not (server-mode)) (server-start))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; runing shells in mac is oblivious to the shell rc files
-
-(setenv "PATH" "$PATH:/bin/:/usr/bin/:/utils/ds9/:/utils/p2pp/bin/:/utils/skycat/:~/data1/sw/zhtools/bin:~/data1/sw/misc:~/data1/sw/scripts:~/data1/sw/esaspi:~/data1/sw/esaspi/quick-spec:~/data1/sw/kapi:/usr/local/bin/:~/data1/sw/scripts/:/usr/texbin/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; parts auto-written by custom set
@@ -42,8 +43,7 @@
   ;; If there is more than one, they won't work right.
  '(longlines-auto-wrap t)
  '(longlines-wrap-follows-window-size t)
- '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample"))))
- '(py-shell-name "/usr/bin/python"))
+ '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample")))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

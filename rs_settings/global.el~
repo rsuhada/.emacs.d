@@ -368,13 +368,6 @@
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; shell
-
-;; Use Emacs terminfo, not system terminfo (corrects garbage
-;; characters)
-(setq system-uses-terminfo nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired settings
 
 (eval-after-load "dired-aux"
@@ -408,22 +401,85 @@
     (url-hexify-string (if mark-active
          (buffer-substring (region-beginning) (region-end))
        (read-string "Google: "))))))
+(global-set-key (kbd "C-c g") 'google)
 
 (require 'webjump)
-;; (global-set-key [f2] 'webjump)
+(global-set-key (kbd "C-c j") 'webjump)
+
+;; (setq webjump-sites
+;;       (append '(
+;;   ("Wikipedia" .
+;;      [simple-query "en.wikipedia.org" "en.wikipedia.org/w/index.php?title=Special:&search=" ""])
+;;   ("stackoverflow" .
+;;      [simple-query "stackoverflow.com" "stackoverflow.com/search?q=" ""])
+;;   ("Reddit Search" .
+;;    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
+;;   ("Google Image Search" .
+;;    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
+;;   ("Flickr Search" .
+;;    [simple-query "www.flickr.com" "flickr.com/search/?q=" ""])
+;;   )
+;;        webjump-sample-sites))
+
+
 (setq webjump-sites
-      (append '(
+      '(
+  ("Wikipedia" .
+     [simple-query "en.wikipedia.org" "en.wikipedia.org/w/index.php?title=Special:&search=" ""])
+  ("stackoverflow" .
+     [simple-query "stackoverflow.com" "stackoverflow.com/search?q=" ""])
   ("Reddit Search" .
    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
-;; ("wiki" .
-;;    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
-  ("Google Image Search" .
+  ("Emacs Wiki" .
+     [simple-query "www.emacswiki.org"
+		   "www.emacswiki.org/cgi-bin/wiki/" ""])
+  ("Google" .
+     [simple-query "www.google.com"
+		   "www.google.com/search?q=" ""])
+  ("gi Google Image Search" .
    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
   ("Flickr Search" .
    [simple-query "www.flickr.com" "flickr.com/search/?q=" ""])
   )
-       webjump-sample-sites))
+       webjump-sample-sites)
 
-(setq webjump-sites
-   (append '(("stackoverflow" . "www.stackoverflow.com"))
-      webjump-sample-sites)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python path
+
+(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; terminal fix
+
+
+;; Use Emacs terminfo, not system terminfo (corrects garbage
+;; characters)
+(setq system-uses-terminfo nil)
+
+(setq explicit-shell-file-name  "/bin/zsh")
+(setq shell-file-name "zsh")
+
+(defun term-send-function-key ()
+  (interactive)
+  (let* ((char last-input-event)
+         (output (cdr (assoc char term-function-key-alist))))
+    (term-send-raw-string output)))
+
+(defconst term-function-key-alist '((f1 . "\^[OP")
+                                    (f2 . "\^[OQ")
+                                    (f3 . "\^[OR")
+                                    (f4 . "\^[OS")
+                                    (f5 . "\^[[15~")
+                                    (f6 . "\^[[17~")
+                                    (f7 . "\^[[18~")
+                                    (f8 . "\^[[19~")
+                                    (f9 . "\^[[20~")
+                                    (f10 . "\^[[21~")
+                                    (f11 . "\^[[23~")
+                                    (f12 . "\^[[24~")))
+
+(dolist (spec term-function-key-alist)
+  (define-key term-raw-map
+    (read-kbd-macro (format "<%s>" (car spec)))
+    'term-send-function-key))

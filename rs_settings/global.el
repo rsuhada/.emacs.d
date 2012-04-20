@@ -368,13 +368,6 @@
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; shell
-
-;; Use Emacs terminfo, not system terminfo (corrects garbage
-;; characters)
-(setq system-uses-terminfo nil)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired settings
 
 (eval-after-load "dired-aux"
@@ -454,3 +447,5 @@
 ;; python path
 
 (setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:")
+
+
