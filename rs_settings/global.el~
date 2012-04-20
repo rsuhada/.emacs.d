@@ -408,49 +408,22 @@
     (url-hexify-string (if mark-active
          (buffer-substring (region-beginning) (region-end))
        (read-string "Google: "))))))
-(global-set-key (kbd "C-c g") 'google)
 
 (require 'webjump)
-(global-set-key (kbd "C-c j") 'webjump)
-
-;; (setq webjump-sites
-;;       (append '(
-;;   ("Wikipedia" .
-;;      [simple-query "en.wikipedia.org" "en.wikipedia.org/w/index.php?title=Special:&search=" ""])
-;;   ("stackoverflow" .
-;;      [simple-query "stackoverflow.com" "stackoverflow.com/search?q=" ""])
-;;   ("Reddit Search" .
-;;    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
-;;   ("Google Image Search" .
-;;    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
-;;   ("Flickr Search" .
-;;    [simple-query "www.flickr.com" "flickr.com/search/?q=" ""])
-;;   )
-;;        webjump-sample-sites))
-
-
+;; (global-set-key [f2] 'webjump)
 (setq webjump-sites
-      '(
-  ("Wikipedia" .
-     [simple-query "en.wikipedia.org" "en.wikipedia.org/w/index.php?title=Special:&search=" ""])
-  ("stackoverflow" .
-     [simple-query "stackoverflow.com" "stackoverflow.com/search?q=" ""])
+      (append '(
   ("Reddit Search" .
    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
-  ("Emacs Wiki" .
-     [simple-query "www.emacswiki.org"
-		   "www.emacswiki.org/cgi-bin/wiki/" ""])
-  ("Google" .
-     [simple-query "www.google.com"
-		   "www.google.com/search?q=" ""])
-  ("gi Google Image Search" .
+;; ("wiki" .
+;;    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
+  ("Google Image Search" .
    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
   ("Flickr Search" .
    [simple-query "www.flickr.com" "flickr.com/search/?q=" ""])
   )
-       webjump-sample-sites)
+       webjump-sample-sites))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; python path
-
-(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:")
+(setq webjump-sites
+   (append '(("stackoverflow" . "www.stackoverflow.com"))
+      webjump-sample-sites)

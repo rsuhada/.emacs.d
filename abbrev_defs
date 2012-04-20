@@ -1167,6 +1167,10 @@
 
 (define-abbrev-table 'markdown-mode-abbrev-table '())
 
+(define-abbrev-table 'mediawiki-draft-mode-abbrev-table '())
+
+(define-abbrev-table 'mediawiki-mode-abbrev-table '())
+
 (define-abbrev-table 'message-mode-abbrev-table '())
 
 (define-abbrev-table 'objc-mode-abbrev-table '())
@@ -1220,9 +1224,13 @@
 
 (define-abbrev-table 'special-mode-abbrev-table '())
 
-(define-abbrev-table 'sql-mode-abbrev-table
-  '(
-   ))
+(define-abbrev-table 'sql-mode-abbrev-table '())
+
+(define-abbrev-table 'sr-buttons-mode-abbrev-table '())
+
+(define-abbrev-table 'sr-mode-abbrev-table '())
+
+(define-abbrev-table 'sr-virtual-mode-abbrev-table '())
 
 (define-abbrev-table 'tar-mode-abbrev-table '())
 
@@ -1234,7 +1242,7 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("aa" "and" nil 105)
+    ("aa" "and" nil 109)
     ("abund" "abundance" nil 0)
     ("abunds" "abundances" nil 0)
     ("accel" "acceleration" nil 1)
@@ -1270,7 +1278,7 @@
     ("est" "estimate" nil 2)
     ("estim" "estimate" nil 0)
     ("estims" "estimates" nil 0)
-    ("etc" "etc." nil 19)
+    ("etc" "etc." nil 21)
     ("evol" "evolution" nil 1)
     ("exgal" "extragalactic" nil 0)
     ("fg" "foreground" nil 1)
@@ -1291,10 +1299,11 @@
     ("hse" "hydrostatic equilibrium" nil 1)
     ("hst" "HST" nil 2)
     ("ie" "i.e." nil 12)
-    ("im" "image" nil 9)
+    ("im" "image" nil 12)
     ("ims" "images" nil 1)
     ("inbw" "inbetween" nil 0)
     ("lss" "LSS" nil 10)
+    ("mcmc" "MCMC" nil 2)
     ("mm" "mass" nil 0)
     ("mod" "model" nil 0)
     ("mods" "models" nil 0)
@@ -1306,7 +1315,7 @@
     ("obs" "observation" nil 5)
     ("obss" "observations" nil 0)
     ("par" "parameter" nil 5)
-    ("pars" "parameters" nil 6)
+    ("pars" "parameters" nil 7)
     ("pb" "probability" nil 2)
     ("pbs" "probabilities" nil 0)
     ("pop" "population" nil 0)
@@ -1318,7 +1327,7 @@
     ("psf" "PSF" nil 1)
     ("pz" "photo-z" nil 2)
     ("pzs" "photo-zs" nil 1)
-    ("r" "are" nil 48)
+    ("r" "are" nil 50)
     ("reg" "region" nil 2)
     ("regs" "regions" nil 1)
     ("rel" "relation" nil 1)
@@ -1337,17 +1346,17 @@
     ("sims" "simulations" nil 15)
     ("smbh" "SMBH" nil 5)
     ("smt" "sometime" nil 0)
-    ("spt" "SPT" nil 7)
-    ("src" "source" nil 1)
+    ("spt" "SPT" nil 9)
+    ("src" "source" nil 2)
     ("srcs" "sources" nil 0)
     ("stg" "something" nil 0)
     ("sur" "survey" nil 0)
     ("surs" "surveys" nil 0)
     ("susy" "SUSY" nil 4)
     ("sze" "SZE" nil 0)
-    ("t" "the" nil 427)
+    ("t" "the" nil 450)
     ("thnx" "Thank you very much!" nil 3)
-    ("tt" "this" nil 40)
+    ("tt" "this" nil 41)
     ("ttt" "these" nil 6)
     ("utd" "up-to-date" nil 0)
     ("val" "value" nil 0)
@@ -1355,7 +1364,7 @@
     ("var" "variable" nil 1)
     ("vars" "variables" nil 0)
     ("vlt" "VLT" nil 2)
-    ("w" "with" nil 74)
+    ("w" "with" nil 78)
     ("wi" "within" nil 6)
     ("wl" "weak lensing" nil 10)
     ("wmap" "WMAP" nil 0)
@@ -1369,7 +1378,7 @@
     ("xmmxxl" "XMM-XXL" nil 0)
     ("xr" "X-ray" nil 11)
     ("xrs" "X-rays" nil 0)
-    ("xxl" "XXL" nil 18)
+    ("xxl" "XXL" nil 19)
     ("zz" "redshift" nil 5)
     ("zzs" "redshifts" nil 2)
    ))

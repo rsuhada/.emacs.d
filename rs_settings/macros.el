@@ -78,3 +78,8 @@
 (fset 'rs-macro/mark-line
    [?\C-a ?\C-a M-escape ?\C-e])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; macro for book list
+
+(fset 'rs-macro/ebook
+   [?\M-< ?\C-\; ?\C-d ?\C-d M-f2 ?: ?: ?. ?* return return ?\M-< ?\M-s ?\M-k ?\M-k ?\M-k])

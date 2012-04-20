@@ -285,7 +285,7 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-set-key [f1]   'er/expand-region)
 (global-set-key [S-f1] 'er/contract-region)
-(global-set-key [C-f1] 'mark-word)
+(global-set-key [C-M-f1] 'mark-word)
 (global-set-key [M-f1] 'rs-macro/mark-line)
 
 (global-set-key [f2]    'replace-string)
@@ -363,7 +363,7 @@ If LINE is non-nil, duplicate that line instead."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; copy to end of line-spacing
 
-(defun copy-line (&optional arg)
+(defun copy-end-line (&optional arg)
   "Copy to the kill ring from point to the end of the current line.
     With a prefix argument, copy that many lines from point. Negative
     arguments copy lines backward. With zero argument, copies the
@@ -376,7 +376,7 @@ If LINE is non-nil, duplicate that line instead."
               (end-of-visible-line))
             (1-(point))))))
 
-(global-set-key (kbd "C-c C-k") 'copy-line) ; C-u - C-c k copies backward
+(global-set-key (kbd "C-c k") 'copy-end-line) ; C-u - C-c k copies backward
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; misc. mode fixes (for broken bindings)

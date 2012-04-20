@@ -325,6 +325,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ace-jump
 (require 'ace-jump-mode)
+
+;; (setq ace-jump-mode-move-keys (loop for i from (?a ?s) collect i))
+
 ;; (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;; "C-u C-c SPC" ==> ace-jump-char-mode
 ;; "C-u C-u C-c SPC" ==> ace-jump-line-mode
@@ -565,7 +568,7 @@
 ;; (add-hook 'ess-mode-hook 'turn-on-real-auto-save)
 ;; (add-hook 'markdown-mode-hook 'turn-on-real-auto-save)
 ;; (add-hook 'emacs-lisp-mode-hook 'turn-on-real-auto-save);
-; (setq real-auto-save-interval 5) ;; in seconds
+;; (setq real-auto-save-interval 1) ;; in seconds
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; essh.el FIXME: check the s-enter verision from ess
@@ -635,7 +638,7 @@
 ;; keys
 
 (define-key sr-mode-map "n"           'sr-goto-dir)
-(define-key sr-mode-map "m"           'sr-fuzzy-narrow)
+(define-key sr-mode-map "\C-n"           'sr-fuzzy-narrow)
 (define-key sr-mode-map "j"           'sr-dired-prev-subdir)
 ;; (define-key sr-mode-map "k"           'sr-scroll-up)
 (define-key sr-mode-map "k"           'next-line)
@@ -656,6 +659,7 @@
 
 (require 'goto-last-change)
 (global-set-key "\C-p" 'goto-last-change)
+(global-set-key "\C-\M-p" 'pop-global-mark)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; extend-region
@@ -801,3 +805,35 @@ Example:
 ;; (setq w3m-use-cookies t)
 ;; (setq w3m-follow-redirection 3)
 ;; (setq w3m-home-page "http://google.com")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; mediawiki
+
+;; M-x customize-variable RET mediawiki-site-alist RET Set up the
+;; information for any sites. If you don’t wish to store your
+;; password, you can leave it blank and you’ll be prompted.  C-x C-s
+;; M-x mediawiki-site RET {your site name} RET You should now be
+;; editting the default page. If you didn’t specify one, you are now
+;; logged in.  M-x mediawiki-open RET Main Page RET # for example
+
+(add-to-list 'load-path "~/.emacs.d/plugins/")
+(require 'mediawiki)
+
+;; org-mediawiki not working
+;; (require 'org-mediawiki)
+;; (add-to-list 'load-path "~/install/git/org-mode/EXPERIMENTAL/")
+;; (add-to-list 'load-path "~/.emacs.d/plugins/org-7.7/")
+
+;; setup the credentials
+;; (abbrev-table-put mediawiki-mode-abbrev-table :parents (list text-mode-abbrev-table))
+;; (setq mediawiki-site-alist '(("Wikipedia" "http://en.wikipedia.org/w" "" "" "Main Page")
+;;                              ("WikEmacs" "http://wikemacs.org/w/" "" "" "Main Page")))
+
+;; ;; Emacs users care more for WikEmacs than Wikipedia :-)
+;; (setq mediawiki-site-default "WikEmacs")*
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; saaxy -> hermes
+
+(add-to-list 'load-path "~/.emacs.d/plugins/hermes/")
+(require 'hermes)
