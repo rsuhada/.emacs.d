@@ -37,10 +37,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight current line
 (global-hl-line-mode 1)
-;; To customize the background color
-(set-face-background 'hl-line "#330")
-(set-face-foreground 'highlight nil)
-(set-face-foreground 'hl-line nil)
+
+;; undelrine instead of highlighting
+(set-face-attribute hl-line-face nil :underline t)
+
+;; ;; To customize the background color
+;; (set-face-background 'hl-line "#330")
+;; (set-face-foreground 'highlight nil)
+;; (set-face-foreground 'hl-line nil)
+
+;; alternative
+;; (require 'hl-line+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; "y or n" instead of "yes or no"
@@ -266,6 +273,8 @@
     (split-window-horizontally arg)
   (split-window-vertically arg))))
 
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -413,7 +422,7 @@
 ;;   ("stackoverflow" .
 ;;      [simple-query "stackoverflow.com" "stackoverflow.com/search?q=" ""])
 ;;   ("Reddit Search" .
-;;    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
+;;    [simple-query "www.reddit.com" "http://www.reddit.com/searccs"])
 ;;   ("Google Image Search" .
 ;;    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
 ;;   ("Flickr Search" .

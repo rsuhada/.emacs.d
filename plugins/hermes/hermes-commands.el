@@ -135,7 +135,7 @@
 
 (defun hermes-aux-say (args arglist)
   "Says something with the festival process."
-  (festival-say args)
+  (say args)
   args)
 
 ;;;;;;;;;

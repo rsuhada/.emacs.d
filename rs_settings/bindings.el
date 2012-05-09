@@ -124,6 +124,7 @@
 (global-set-key '[left] 'use-emacs-keys)
 (global-set-key '[right] 'use-emacs-keys)
 
+(global-set-key (kbd "\C-x \C-h") 'mark-whole-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; search
@@ -279,14 +280,19 @@ If LINE is non-nil, duplicate that line instead."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 ;; (global-unset-key [f5])
-(global-set-key [f1]    'ace-jump-char-mode)           ;smex
-(global-set-key [S-f1]  'ace-jump-word-mode)
+;; (global-set-key [f1]    'ace-jump-char-mode)           ;smex
+;; (global-set-key [S-f1]  'ace-jump-word-mode)
 ;; (global-set-key [M-f1]  'ace-jump-line-mode)
 
 (global-set-key [f1]   'er/expand-region)
 (global-set-key [S-f1] 'er/contract-region)
 (global-set-key [C-M-f1] 'mark-word)
 (global-set-key [M-f1] 'rs-macro/mark-line)
+
+(global-set-key (kbd "M-m")   'er/expand-region)
+(global-set-key (kbd "M-M")   'er/contract-region)
+(global-set-key (kbd "C-M-m")   'rs-macro/mark-line)
+
 
 (global-set-key [f2]    'replace-string)
 (global-set-key [M-f2]  'replace-regexp)

@@ -32,8 +32,6 @@
 ;; run server
 (if (not (server-mode)) (server-start))
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; parts auto-written by custom set
 (custom-set-variables

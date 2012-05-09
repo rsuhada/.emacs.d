@@ -778,7 +778,7 @@ Example:
         (goto-char (if (> opoint end) end opoint))))))
 
 ;; (global-set-key "\C-c/" 'rotate-word-at-point)
-(global-set-key "\M-m" 'rotate-word-at-point)
+(global-set-key "\C-\M-]" 'rotate-word-at-point)
 
 ;; (defun indent-or-rotate ()
 ;;   "If point is at end of a word, then else indent the line."
@@ -787,9 +787,6 @@ Example:
 ;;       (rotate-region (save-excursion (forward-word -1) (point))
 ;; 		     (point))
 ;;     (indent-for-tab-command)))
-
-;; (local-set-key [tab] 'indent-or-rotate)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; w3m - not working at the moment
@@ -837,3 +834,10 @@ Example:
 
 (add-to-list 'load-path "~/.emacs.d/plugins/hermes/")
 (require 'hermes)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; yaml mode
+
+(add-to-list 'load-path "~/.emacs.d/plugins/yaml/")
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))

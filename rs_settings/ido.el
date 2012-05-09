@@ -28,6 +28,11 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ido has a pingging bug, this should fix it
+
+(setq ffap-machine-p-known 'reject)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fixing ido restrict matches
 (add-hook 'ido-setup-hook 'ido-my-keys)
 
