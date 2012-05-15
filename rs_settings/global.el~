@@ -8,6 +8,40 @@
 (setq column-number-mode  t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; current line in the left border - from stackowerflow
+
+;; FIXME: could be refactored wo hl-line for my purposes
+(defface my-linum-hl
+  `((t :inherit linum :background ,(face-background "#dca3a3" nil t)))
+  "Face for the current line number."
+  :group 'linum)
+
+(defvar my-linum-format-string "%3d")
+
+(add-hook 'linum-before-numbering-hook 'my-linum-get-format-string)
+
+(defun my-linum-get-format-string ()
+  (let* ((width (1+ (length (number-to-string
+                             (count-lines (point-min) (point-max))))))
+         (format (concat "%" (number-to-string width) "d")))
+    (setq my-linum-format-string format)))
+
+(defvar my-linum-current-line-number 0)
+
+(setq linum-format 'my-linum-format)
+
+(defun my-linum-format (line-number)
+  (propertize (format my-linum-format-string line-number) 'face
+              (if (eq line-number my-linum-current-line-number)
+                  'my-linum-hl
+                'linum)))
+
+(defadvice linum-update (around my-linum-update)
+  (let ((my-linum-current-line-number (line-number-at-pos)))
+    ad-do-it))
+(ad-activate 'linum-update)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autosave sessions
 (setq desktop-dirname             "~/"
       desktop-base-file-name      ".emacs.desktop"
@@ -37,10 +71,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight current line
 (global-hl-line-mode 1)
-;; To customize the background color
-(set-face-background 'hl-line "#330")
-(set-face-foreground 'highlight nil)
-(set-face-foreground 'hl-line nil)
+
+;; undelrine instead of highlighting
+(set-face-attribute hl-line-face nil :underline t)
+
+;; ;; To customize the background color
+;; (set-face-background 'hl-line "#330")
+;; (set-face-foreground 'highlight nil)
+;; (set-face-foreground 'hl-line nil)
+
+;; alternative
+;; (require 'hl-line+)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; "y or n" instead of "yes or no"
@@ -261,10 +302,17 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff
+
+;; ignore whitespace
+(custom-set-variables
+ '(ediff-diff-options "-w"))
+
 (setq ediff-split-window-function (lambda (&optional arg)
 (if (> (frame-width) 70)
     (split-window-horizontally arg)
   (split-window-vertically arg))))
+
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -413,7 +461,7 @@
 ;;   ("stackoverflow" .
 ;;      [simple-query "stackoverflow.com" "stackoverflow.com/search?q=" ""])
 ;;   ("Reddit Search" .
-;;    [simple-query "www.reddit.com" "http://www.reddit.com/search?q=" ""])
+;;    [simple-query "www.reddit.com" "http://www.reddit.com/searccs"])
 ;;   ("Google Image Search" .
 ;;    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
 ;;   ("Flickr Search" .
@@ -450,36 +498,28 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; terminal fix
+;; irc
+
+;; (erc :server "irc.freenode.net" :port 6667 :nick "rs")
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "#emacs" "#wiki")))
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-input-line-position -2)
+
+(provide 'erc-nick-colors)
+
+(define-minor-mode ncm-mode "" nil
+  (:eval
+   (let ((ops 0)
+         (voices 0)
+         (members 0))
+     (maphash (lambda (key value)
+                (when (erc-channel-user-op-p key)
+                  (setq ops (1+ ops)))
+                (when (erc-channel-user-voice-p key)
+                  (setq voices (1+ voices)))
+                (setq members (1+ members)))
+              erc-channel-users)
+     (format " %S/%S/%S" ops voices members))))
 
 
-;; Use Emacs terminfo, not system terminfo (corrects garbage
-;; characters)
-(setq system-uses-terminfo nil)
-
-(setq explicit-shell-file-name  "/bin/zsh")
-(setq shell-file-name "zsh")
-
-(defun term-send-function-key ()
-  (interactive)
-  (let* ((char last-input-event)
-         (output (cdr (assoc char term-function-key-alist))))
-    (term-send-raw-string output)))
-
-(defconst term-function-key-alist '((f1 . "\^[OP")
-                                    (f2 . "\^[OQ")
-                                    (f3 . "\^[OR")
-                                    (f4 . "\^[OS")
-                                    (f5 . "\^[[15~")
-                                    (f6 . "\^[[17~")
-                                    (f7 . "\^[[18~")
-                                    (f8 . "\^[[19~")
-                                    (f9 . "\^[[20~")
-                                    (f10 . "\^[[21~")
-                                    (f11 . "\^[[23~")
-                                    (f12 . "\^[[24~")))
-
-(dolist (spec term-function-key-alist)
-  (define-key term-raw-map
-    (read-kbd-macro (format "<%s>" (car spec)))
-    'term-send-function-key))

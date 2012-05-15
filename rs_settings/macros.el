@@ -83,3 +83,12 @@
 
 (fset 'rs-macro/ebook
    [?\M-< ?\C-\; ?\C-d ?\C-d M-f2 ?: ?: ?. ?* return return ?\M-< ?\M-s ?\M-k ?\M-k ?\M-k])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; options on of
+
+(fset 'rs-macro/opt-off
+   [f2 ?= ?1 return ?= ?0 return ?\M-s])
+
+(fset 'rs-macro/opt-on
+   [f2 ?= ?0 return ?= ?1 return ?\M-s])

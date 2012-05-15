@@ -8,6 +8,41 @@
 (setq column-number-mode  t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; current line in the left border - from stackowerflow
+
+;; FIXME: could be refactored wo hl-line for my purposes
+(require 'hl-line)
+(defface my-linum-hl
+  `((t :inherit linum :background ,(face-background 'hl-line nil t)))
+  "Face for the current line number."
+  :group 'linum)
+
+(defvar my-linum-format-string "%3d")
+
+(add-hook 'linum-before-numbering-hook 'my-linum-get-format-string)
+
+(defun my-linum-get-format-string ()
+  (let* ((width (1+ (length (number-to-string
+                             (count-lines (point-min) (point-max))))))
+         (format (concat "%" (number-to-string width) "d")))
+    (setq my-linum-format-string format)))
+
+(defvar my-linum-current-line-number 0)
+
+(setq linum-format 'my-linum-format)
+
+(defun my-linum-format (line-number)
+  (propertize (format my-linum-format-string line-number) 'face
+              (if (eq line-number my-linum-current-line-number)
+                  'my-linum-hl
+                'linum)))
+
+(defadvice linum-update (around my-linum-update)
+  (let ((my-linum-current-line-number (line-number-at-pos)))
+    ad-do-it))
+(ad-activate 'linum-update)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; autosave sessions
 (setq desktop-dirname             "~/"
       desktop-base-file-name      ".emacs.desktop"
@@ -268,6 +303,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ediff
+
+;; ignore whitespace
+(custom-set-variables
+ '(ediff-diff-options "-w"))
+
 (setq ediff-split-window-function (lambda (&optional arg)
 (if (> (frame-width) 70)
     (split-window-horizontally arg)
@@ -456,5 +496,31 @@
 ;; python path
 
 (setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; irc
+
+;; (erc :server "irc.freenode.net" :port 6667 :nick "rs")
+(setq erc-autojoin-channels-alist
+          '(("freenode.net" "#emacs" "#wiki")))
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-input-line-position -2)
+
+(provide 'erc-nick-colors)
+
+(define-minor-mode ncm-mode "" nil
+  (:eval
+   (let ((ops 0)
+         (voices 0)
+         (members 0))
+     (maphash (lambda (key value)
+                (when (erc-channel-user-op-p key)
+                  (setq ops (1+ ops)))
+                (when (erc-channel-user-voice-p key)
+                  (setq voices (1+ voices)))
+                (setq members (1+ members)))
+              erc-channel-users)
+     (format " %S/%S/%S" ops voices members))))
 
 

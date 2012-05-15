@@ -12,7 +12,7 @@
 (load "~/.emacs.d/rs_settings/modes.el")
 (load "~/.emacs.d/rs_settings/python_stuff")
 
-
+;; (load "~/.emacs.d/rs_settings/scratch")
 ;; (load "~/.emacs.d/rs_settings/network")  ;; FIXME
 ;; (load "~/.emacs.d/rs_settings/delim")  ;; better solution: textmate-mode
 ;; (load "~/.emacs.d/rs_settings/spelling") ;; is anoying atm
@@ -39,6 +39,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(ediff-diff-options "-w")
  '(longlines-auto-wrap t)
  '(longlines-wrap-follows-window-size t)
  '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample")))))
@@ -59,7 +60,8 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono")))))
+ '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono"))))
+ '(my-linum-hl ((t (:inherit linum :background "#8c5353")))))
 (put 'ido-exit-minibuffer 'disabled nil)
 
 ;; (custom-set-faces
