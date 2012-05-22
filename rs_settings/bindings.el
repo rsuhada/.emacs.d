@@ -191,6 +191,24 @@ line."
   (interactive)
   (switch-to-buffer (other-buffer)))
 
+(defun next-user-buffer ()
+  "Switch to the next user buffer.
+User buffers are those whose name does not start with *."
+  (interactive)
+  (next-buffer)
+  (let ((i 0))
+    (while (and (string-match "^*" (buffer-name)) (< i 50))
+      (setq i (1+ i)) (next-buffer) )))
+
+(defun previous-user-buffer ()
+  "Switch to the previous user buffer.
+User buffers are those whose name does not start with *."
+  (interactive)
+  (previous-buffer)
+  (let ((i 0))
+    (while (and (string-match "^*" (buffer-name)) (< i 50))
+      (setq i (1+ i)) (previous-buffer) )))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; duplicate & comment
 
@@ -310,6 +328,8 @@ If LINE is non-nil, duplicate that line instead."
 
 ;; (global-set-key [f8] 'deft)
 (global-set-key [f9]   'switch-to-previous-buffer)
+(global-set-key [C-f9]   'next-user-buffer)
+(global-set-key [C-M-f9]   'previous-user-buffer)
 (global-set-key [f10]   'unexpand-abbrev)
 
 ;; (global-set-key [f10] 'rm-set-mark)
@@ -383,6 +403,19 @@ If LINE is non-nil, duplicate that line instead."
             (1-(point))))))
 
 (global-set-key (kbd "C-c k") 'copy-end-line) ; C-u - C-c k copies backward
+
+
+(defun kill-line-backward ()
+  "Kill text between the beginning of the line to the cursor position.
+If there's no text, delete the previous line ending."
+  (interactive)
+  (if (looking-back "\n")
+      (delete-char -1)
+    (kill-line 0)
+    )
+  )
+
+(global-set-key (kbd "C-c u") 'kill-line-backward) ; C-u - C-c k copies backward
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; misc. mode fixes (for broken bindings)
