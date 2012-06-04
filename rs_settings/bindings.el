@@ -404,18 +404,18 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-set-key (kbd "C-c k") 'copy-end-line) ; C-u - C-c k copies backward
 
+;;
+;; (defun kill-line-backward ()
+;;   "Kill text between the beginning of the line to the cursor position.
+;; If there's no text, delete the previous line ending."
+;;   (interactive)
+;;   (if (looking-back "\n")
+;;       (delete-char -1)
+;;     (kill-line 0)
+;;     )
+;;   )
 
-(defun kill-line-backward ()
-  "Kill text between the beginning of the line to the cursor position.
-If there's no text, delete the previous line ending."
-  (interactive)
-  (if (looking-back "\n")
-      (delete-char -1)
-    (kill-line 0)
-    )
-  )
-
-(global-set-key (kbd "C-c u") 'kill-line-backward) ; C-u - C-c k copies backward
+;; (global-set-key (kbd "C-c u") 'kill-line-backward) ; C-u - C-c k copies backward better: C-0 C-k (builtin)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; misc. mode fixes (for broken bindings)

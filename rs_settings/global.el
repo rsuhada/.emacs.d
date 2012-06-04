@@ -71,10 +71,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight current line
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 
 ;; undelrine instead of highlighting
-(set-face-attribute hl-line-face nil :underline t)
+;; (set-face-attribute hl-line-face nil :underline t)
 
 ;; ;; To customize the background color
 ;; (set-face-background 'hl-line "#330")
