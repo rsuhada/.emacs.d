@@ -172,8 +172,8 @@ line."
   )
 
 (global-set-key "\M-'" 'comment-paragraph)
-
 (global-set-key "\M-]" 'rs-comment-line-separator-macro)
+;; (global-set-key (kbd "M-RET") 'rs-macro/new-item)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; breadcrumb

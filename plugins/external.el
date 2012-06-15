@@ -659,9 +659,9 @@
 
 (require 'goto-last-change)
 (global-set-key "\C-p" 'goto-last-change)
-;; (global-set-key "\C-\M-p" 'pop-global-mark)
+(global-set-key "\C-\M-p" 'pop-global-mark)
 
-(global-set-key "\C-p" 'mark-set-command)
+;; (global-set-key "\C-p" 'mark-set-command)
 (require 'marker-visit)
 (global-set-key "\C-\M-p" 'marker-visit-prev)
 (global-set-key "\C-\M-n" 'marker-visit-next) ;was forward-list

@@ -33,13 +33,15 @@
       org-tags-column 50)
 
 ;; my agendas
-(setq org-agenda-files (list "~/Dropbox/org/work.org"
-                             "~/Dropbox/org/personal.org"
-                             "~/Dropbox/org/refile.org"
-                             "~/Dropbox/org/emacs.org"
-                             "~/Dropbox/org/xxl.org"
-                             "~/w/notes/spt.org"
-))
+(setq org-agenda-files (list
+                        "~/Dropbox/org/job.org"
+                        ;; "~/Dropbox/org/work.org"
+                        ;; "~/Dropbox/org/personal.org"
+                        ;; "~/Dropbox/org/refile.org"
+                        ;; "~/Dropbox/org/emacs.org"
+                        ;; "~/Dropbox/org/xxl.org"
+                        ;; "~/w/notes/spt.org"
+                        ))
 
 ;; tags
 (setq org-tag-alist (quote ((:startgroup)

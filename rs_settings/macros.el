@@ -92,3 +92,6 @@
 
 (fset 'rs-macro/opt-on
    [f2 ?= ?0 return ?= ?1 return ?\M-s])
+
+(fset 'rs-macro/new-item
+   "\C-j- ")
