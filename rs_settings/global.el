@@ -71,15 +71,16 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; highlight current line
-;; (global-hl-line-mode 1)
+(global-hl-line-mode 1)
 
 ;; undelrine instead of highlighting
 ;; (set-face-attribute hl-line-face nil :underline t)
 
 ;; ;; To customize the background color
-;; (set-face-background 'hl-line "#330")
-;; (set-face-foreground 'highlight nil)
-;; (set-face-foreground 'hl-line nil)
+;; (set-face-background 'hl-line "#330")   ; original yellow
+(set-face-background 'hl-line "#212121")   ; very subtle zenburn to be used with fringe line marker
+(set-face-foreground 'highlight nil)
+(set-face-foreground 'hl-line nil)
 
 ;; alternative
 ;; (require 'hl-line+)
@@ -495,8 +496,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python path
 
-(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:")
-
+(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/sb/:")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc

@@ -27,7 +27,8 @@
 
 ;; ibuffer > list-buffers
 (global-set-key (kbd "C-x b") 'ibuffer)
-(global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+;; (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; save
 ;; (global-set-key (kbd "C-x s") 'save-buffer) ;; was save-some-buffers
@@ -64,6 +65,9 @@
 
 ;; setting mark should be less clumsy
 (global-set-key (kbd "M-ESC") 'cua-set-mark)
+
+(global-set-key (kbd "M-SPC") 'cua-set-mark) ; was just-one-space
+(global-set-key (kbd "C-c SPC") 'just-one-space) ; was just-one-space
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrev temporary patch
