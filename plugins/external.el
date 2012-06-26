@@ -846,3 +846,14 @@ Example:
 (add-to-list 'load-path "~/.emacs.d/plugins/yaml/")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; tomathino - pomodoro
+;; (add-to-list 'load-path "~/.emacs.d/plugins/tomatinho")
+;; (require 'tomatinho)
+;; (global-set-key [C-f12]   'tomatinho)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; pomodoro
+(require 'pomodoro)
+(global-set-key [C-f12]   'pomodoro)

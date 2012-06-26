@@ -4,12 +4,17 @@
                ("kapi" (filename . "/kapi/"))
                ("esaspi" (filename . "/esaspi/"))
                ("sh" (mode . sh-mode))
-               ("python" (mode . python-mode))
+               ("python" (or
+                          (name . "^\\*Python\\*")
+                          (mode . python-mode)))
                ("c" (mode . c-mode))
                ("r" (mode . ess-mode))
                ("fortran" (mode . fortran-mode))
                ("idl" (mode . idlwave-mode))
                ("tex" (mode . latex-mode))
+               ("tramp"   (or (filename . "ssh2:")
+                              (name . "tramp")
+                              ))
                ("org" (or
                            (name . "^\\*Calendar\\*$")
                            (name . "^diary$")
@@ -23,6 +28,7 @@
 
 (setq ibuffer-show-empty-filter-groups nil)
 (setq ibuffer-default-sorting-mode 'alphabetic)
+(setq ibuffer-expert t)                 ; no promt on saved files
 
 ;; (setq switch-to-buffer-ignore '("^emacsclient$"))
 

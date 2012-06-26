@@ -524,3 +524,11 @@
      (format " %S/%S/%S" ops voices members))))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; setup windows
+
+(defun rs/window-setup-debuging ()
+  "Prepare windows for debuging"
+  (interactive)
+  (split-window-vertically)
+  (enlarge-window (/ (window-height (next-window)) 2)))
