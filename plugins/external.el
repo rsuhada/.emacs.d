@@ -221,7 +221,8 @@
      anything-c-source-ffap-line
      anything-c-source-ffap-guesser
      anything-c-source-buffers
-     anything-c-source-bookmarks
+     anything-c-source-bm
+     ;; anything-c-source-bookmarks
      anything-c-source-recentf
      anything-c-source-file-name-history
      anything-c-source-file-cache
@@ -531,18 +532,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; evernote
 
-(add-to-list 'exec-path "/usr/local/Cellar/ruby/1.9.2-p290/bin/")
-(setenv "PATH" (concat "/usr/local/Cellar/ruby/1.9.2-p290/bin/" (getenv "PATH")))
-(add-to-list 'load-path "~/.emacs.d/plugins/evernote-mode-0_41/")
-(require 'evernote-mode)
-(setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
-(global-set-key "\C-cec" 'evernote-create-note)
-(global-set-key "\C-ceo" 'evernote-open-note)
-(global-set-key "\C-ces" 'evernote-search-notes)
-(global-set-key "\C-ceS" 'evernote-do-saved-search)
-(global-set-key "\C-cew" 'evernote-write-note)
-(global-set-key "\C-cep" 'evernote-post-region)
-(global-set-key "\C-ceb" 'evernote-browser)
+;; (add-to-list 'exec-path "/usr/local/Cellar/ruby/1.9.2-p290/bin/")
+;; (setenv "PATH" (concat "/usr/local/Cellar/ruby/1.9.2-p290/bin/" (getenv "PATH")))
+;; (add-to-list 'load-path "~/.emacs.d/plugins/evernote-mode-0_41/")
+;; (require 'evernote-mode)
+;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
+;; (global-set-key "\C-cec" 'evernote-create-note)
+;; (global-set-key "\C-ceo" 'evernote-open-note)
+;; (global-set-key "\C-ces" 'evernote-search-notes)
+;; (global-set-key "\C-ceS" 'evernote-do-saved-search)
+;; (global-set-key "\C-cew" 'evernote-write-note)
+;; (global-set-key "\C-cep" 'evernote-post-region)
+;; (global-set-key "\C-ceb" 'evernote-browser)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; doesn't work
@@ -853,7 +854,42 @@ Example:
 ;; (require 'tomatinho)
 ;; (global-set-key [C-f12]   'tomatinho)
 
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; pomodoro
+;; (require 'pomodoro)
+;; (global-set-key [C-f12]   'pomodoro)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; pomodoro
-(require 'pomodoro)
-(global-set-key [C-f12]   'pomodoro)
+;; bookmark-+
+
+;; (add-to-list 'load-path "~/.emacs.d/plugins/bookmark-plus/")
+;; (require 'bookmark+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; bm - visible bookmarks
+(require 'bm)
+
+(setq bm-repository-size nil)
+
+;; subtler marks
+(setq bm-marker 'bm-marker-left)
+(setq bm-highlight-style 'bm-highlight-only-fringe)
+
+;; make bookmarks persistent as default
+(setq-default bm-buffer-persistence t)
+
+;; Loading the repository from file when on start up.
+(add-hook' after-init-hook 'bm-repository-load)
+
+;; Restoring bookmarks when on file find.
+(add-hook 'find-file-hooks 'bm-buffer-restore)
+
+;; Saving bookmark data on killing a buffer
+(add-hook 'kill-buffer-hook 'bm-buffer-save)
+
+;; Saving the repository to file when on exit.
+;; kill-buffer-hook is not called when emacs is killed, so we
+;; must save all bookmarks first.
+(add-hook 'kill-emacs-hook '(lambda nil
+                              (bm-buffer-save-all)
+                              (bm-repository-save)))
