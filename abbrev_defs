@@ -1113,10 +1113,6 @@
     ("sbd" "somebody" nil 0)
     ("scal" "scaling" nil 2)
     ("sect" ["Sect.~\\ref{sec_}" 1 nil nil] expand-abbrev-hook 3)
-    ("sig" "Best wishes,
- Robert" nil 4)
-    ("sig1" "Cheers,
- Robert" nil 3)
     ("sim" "simulation" nil 0)
     ("sims" "simulations" nil 4)
     ("smbh" "SMBH" nil 0)

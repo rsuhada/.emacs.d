@@ -6,6 +6,9 @@
 ;; Repeat
 (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
+;; killing buffers
+(global-set-key (kbd "C-x C-k") 'kill-buffer) ; was kmacro-edit-macro
+
 ;; tweak for motion
 (defun back-to-indentation-or-beginning ()
   (interactive)
@@ -56,7 +59,16 @@
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
 
-(global-set-key (kbd "C-;") 'mark-paragraph)
+;; replacement of mark paragraph - ignore empty line
+(global-set-key (kbd "C-;")(lambda ()
+                    (interactive)
+                    (mark-paragraph)
+                    (if (> (line-number-at-pos) 1)
+                        (next-line))
+                    (beginning-of-line)))
+
+
+;; (global-set-key (kbd "C-;") 'mark-paragraph)
 (setq flyspell-auto-correct-previous-word "C-+") ; flyspell messed w C-;
 (global-set-key (kbd "C-\`") 'flyspell-auto-correct-previous-word)
 (setq flyspell-auto-correct-word "C-M-~") ; flyspell messed w C-.
@@ -148,7 +160,6 @@
 
 ;; Jump to a definition in the current file. (Protip: this is awesome.)
 (global-set-key (kbd "C-x C-i") 'imenu)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; commenting a single line
