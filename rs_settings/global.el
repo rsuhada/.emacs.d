@@ -486,6 +486,7 @@
   ("Google" .
      [simple-query "www.google.com"
 		   "www.google.com/search?q=" ""])
+  ("gm google maps" . [simple-query "maps.google.com" "https://maps.google.com/maps?q=" ""])
   ("gi Google Image Search" .
    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
   ("Flickr Search" .
@@ -531,4 +532,4 @@
   "Prepare windows for debuging"
   (interactive)
   (split-window-vertically)
-  (enlarge-window (/ (window-height (next-window)) 2)))
+  (enlarge-window (round (/ (window-height (next-window)) 3.0))))

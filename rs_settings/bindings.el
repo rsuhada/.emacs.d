@@ -59,16 +59,6 @@
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
 
-;; replacement of mark paragraph - ignore empty line
-(global-set-key (kbd "C-;")(lambda ()
-                    (interactive)
-                    (mark-paragraph)
-                    (if (> (line-number-at-pos) 1)
-                        (next-line))
-                    (beginning-of-line)))
-
-
-;; (global-set-key (kbd "C-;") 'mark-paragraph)
 (setq flyspell-auto-correct-previous-word "C-+") ; flyspell messed w C-;
 (global-set-key (kbd "C-\`") 'flyspell-auto-correct-previous-word)
 (setq flyspell-auto-correct-word "C-M-~") ; flyspell messed w C-.
@@ -312,15 +302,11 @@ If LINE is non-nil, duplicate that line instead."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
-;; (global-unset-key [f5])
-;; (global-set-key [f1]    'ace-jump-char-mode)           ;smex
-;; (global-set-key [S-f1]  'ace-jump-word-mode)
-;; (global-set-key [M-f1]  'ace-jump-line-mode)
 
-(global-set-key [f1]   'er/expand-region)
-(global-set-key [S-f1] 'er/contract-region)
-(global-set-key [C-M-f1] 'mark-word)
-(global-set-key [M-f1] 'rs-macro/mark-line)
+(global-set-key (kbd "<M-f1>") 'bm-toggle)
+(global-set-key (kbd "<f1>")   'bm-next)
+(global-set-key (kbd "<S-f1>") 'bm-previous)
+(global-set-key (kbd "<M-S-f1>") 'bm-show-all)
 
 (global-set-key (kbd "M-m")   'er/expand-region)
 (global-set-key (kbd "M-M")   'er/contract-region)
@@ -337,24 +323,12 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key [S-f7] 'bookmark-bmenu-list)
 ;; (global-set-key [M-f7] 'bookmark-jump)
 
-;; (global-set-key [f7]   'er/expand-region)
-;; (global-set-key [M-f7] 'er/contract-region)
-;; (global-set-key [C-M-f7] 'mark-word)
-
 ;; (global-set-key [f8] 'deft)
 (global-set-key [f9]   'switch-to-previous-buffer)
 (global-set-key [C-f9]   'next-user-buffer)
 (global-set-key [C-M-f9]   'previous-user-buffer)
+
 (global-set-key [f10]   'unexpand-abbrev)
-
-;; (global-set-key [f10] 'rm-set-mark)
-;; (global-set-key [S-f10] 'rm-kill-ring-save)
-;; (global-set-key [M-f10] 'rm-kill-region)
-
-;; (global-set-key [f11]   'orgtaby)
-;; (global-set-key [S-f11] 'orguntaby)
-
-;; (global-set-key [f12]   'switch-to-previous-buffer)
 
 ;; (global-set-key [f12] 'deft)
 (global-set-key [f12] 'sunrise)
@@ -491,3 +465,50 @@ If LINE is non-nil, duplicate that line instead."
 ;;     (line-end-position)
 ;;      (point))
 ;;    nil t))
+
+;; replacement of mark paragraph - ignore empty line
+
+(defun rs-mark-paragraph (&optional arg allow-extend)
+"The original default mark-paragraph, but doesn't mark the first
+empty line. Put point at beginning of this paragraph, mark at
+end.  The paragraph marked is the one that contains point or
+follows point.
+
+With argument ARG, puts mark at end of a following paragraph, so that
+the number of paragraphs marked equals ARG.
+
+If ARG is negative, point is put at end of this paragraph, mark is put
+at beginning of this or a previous paragraph.
+
+Interactively, if this command is repeated
+or (in Transient Mark mode) if the mark is active,
+it marks the next ARG paragraphs after the ones already marked."
+  (interactive "p\np")
+  (unless arg (setq arg 1))
+  (when (zerop arg)
+    (error "Cannot mark zero paragraphs"))
+  (cond ((and allow-extend
+	      (or (and (eq last-command this-command) (mark t))
+		  (and transient-mark-mode mark-active)))
+	 (set-mark
+	  (save-excursion
+	    (goto-char (mark))
+	    (forward-paragraph arg)
+	    (point))))
+	(t
+	 (forward-paragraph arg)
+	 (push-mark nil t t)
+	 (backward-paragraph arg)
+     (if (/= (line-number-at-pos) 1)
+                        (next-line)))))
+
+(global-set-key (kbd "C-;") 'rs-mark-paragraph)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; mouse stuff
+
+(global-set-key (kbd "<left-fringe> <wheel-down>") 'bm-next-mouse)
+(global-set-key (kbd "<left-fringe> <wheel-up>") 'bm-previous-mouse)
+(global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
+
+

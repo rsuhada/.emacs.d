@@ -1,3 +1,8 @@
+;; ;; Turn off mouse interface early in startup to avoid momentary display
+;; (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
+;;     (when (fboundp mode) (funcall mode -1)))
+
+;; load in setups from files
 (load "~/.emacs.d/rs_settings/bindings")
 (load "~/.emacs.d/rs_settings/global")
 (load "~/.emacs.d/rs_settings/defun")
@@ -42,7 +47,8 @@
  '(ediff-diff-options "-w")
  '(longlines-auto-wrap t)
  '(longlines-wrap-follows-window-size t)
- '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample")))))
+ '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample"))))
+ '(pomodoro-break-cycle "b "))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -61,7 +67,9 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono"))))
- '(my-linum-hl ((t (:inherit linum :background "#8c5353")))))
+ '(bm-fringe-persistent-face ((((class color) (background dark)) (:background "#d0bf8f" :foreground "#d0bf8f"))))
+ '(my-linum-hl ((t (:inherit linum :background "#8c5353"))))
+ '(org-level-1 ((t (:foreground "#dfaf8f")))))
 (put 'ido-exit-minibuffer 'disabled nil)
 
 ;; (custom-set-faces

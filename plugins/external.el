@@ -215,21 +215,23 @@
 ;; (require 'anything-config)
 (require 'anything-startup)
 
-
 (setq anything-sources
    '(
      anything-c-source-ffap-line
      anything-c-source-ffap-guesser
      anything-c-source-buffers
+     anything-c-source-imenu
      anything-c-source-bm
-     ;; anything-c-source-bookmarks
      anything-c-source-recentf
      anything-c-source-file-name-history
      anything-c-source-file-cache
+     anything-c-source-files-in-current-dir+
      anything-c-source-locate
-     ;; anything-c-source-buffer-not-found
      )
 )
+
+;; anything-c-source-buffer-not-found
+;; anything-c-source-bookmarks
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything tweaks
@@ -239,21 +241,6 @@
 (define-key anything-map (kbd "M-l") 'anything-next-source)
 (define-key anything-map (kbd "M-j") 'anything-previous-source)
 
-;; (defun my-anything ()
-;;   (interactive)
-;;   (anything-other-buffer
-;;    '(
-;;      anything-c-source-ffap-line
-;;      anything-c-source-ffap-guesser
-;;      anything-c-source-buffers
-;;      anything-c-source-recentf
-;;      anything-c-source-file-name-history
-;;      anything-c-source-bookmarks
-;;      anything-c-source-file-cache
-;;      anything-c-source-locate
-;;      anything-c-source-buffer-not-found
-;;      )
-;;     " *my-anything*"))
 
 ;; (setq anything-sources
 ;;       '(;; anything-c-source-buffers+
@@ -857,7 +844,14 @@ Example:
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; pomodoro
 ;; (require 'pomodoro)
+(require 'pomodoro)
 ;; (global-set-key [C-f12]   'pomodoro)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; pomodoro - kanis version with libnotify
+
+;; (add-to-list 'load-path "~/.emacs.d/plugins/pomodoro/")
+;; (require 'pomodoro)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; bookmark-+
