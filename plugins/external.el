@@ -887,3 +887,28 @@ Example:
 (add-hook 'kill-emacs-hook '(lambda nil
                               (bm-buffer-save-all)
                               (bm-repository-save)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; jabber
+;; adjust this path:
+(add-to-list 'load-path "~/.emacs.d/plugins/emacs-jabber-0.8.91/")
+(require 'jabber-autoloads)
+(require 'ignore.el)
+
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(jabber-auto-reconnect t)
+ '(jabber-avatar-verbose nil)
+ '(jabber-vcard-avatars-retrieve nil)
+ '(jabber-chat-buffer-format "*-jab-%n-*")
+ '(jabber-history-enabled t)
+ '(jabber-mode-line-mode nil)
+ '(jabber-roster-buffer "*-jab-*")
+ '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
+ '(jabber-show-offline-contacts t))
+
+(setq global-mode-string (delete '(t jabber-activity-mode-string) global-mode-string))
+(add-to-list 'global-mode-string jabber-activity-count-in-title-format)
