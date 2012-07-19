@@ -45,6 +45,8 @@
 
 ;; tags
 (setq org-tag-alist (quote ((:startgroup)
+                            ("python" . ?p)
+                            ("bash" . ?b)
                             ("work" . ?w)
                             ("spt" . ?s)
                             ("xbcs" . ?x)
@@ -53,11 +55,9 @@
                             ("coding" . ?c)
                             ("emacs" . ?e)
                             ("computer" . ?C)
-                            ("bash" . ?b)
                             (:endgroup)
                             ("note" . ?n)
                             ("idea" . ?i)
-                            ("personal" . ?p)
                             ("quote" . ?q)
                             ("link" . ?L)
                             ("read" . ?r)

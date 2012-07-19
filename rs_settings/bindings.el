@@ -512,3 +512,86 @@ it marks the next ARG paragraphs after the ones already marked."
 (global-set-key (kbd "<left-fringe> <mouse-1>") 'bm-toggle-mouse)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; chords
+
+;;      (key-chord-define-global ",."     "<>\C-b")
+;;      (key-chord-define-global "hj"     'undo)
+;;      (key-chord-define-global [?h ?j]  'undo)  ; the same
+;;      (key-chord-define-global "jk"     'dabbrev-expand)
+;;      (key-chord-define-global "cv"     'reindent-then-newline-and-indent)
+;;      (key-chord-define-global "4r"     "$")
+;;
+;;      (key-chord-define-global "''"     "`'\C-b")
+;;      (key-chord-define-global ",,"     'indent-for-comment)
+;;      (key-chord-define-global "qq"     "the ")
+;;      (key-chord-define-global "QQ"     "The ")
+;;
+;;      (key-chord-define c++-mode-map ";;"  "\C-e;")
+;;      (key-chord-define c++-mode-map "{}"  "{\n\n}\C-p\t")
+
+
+(add-to-list 'load-path "~/.emacs.d/plugins/misc/")
+(require 'key-chord)
+(key-chord-mode 1)
+
+(setq key-chord-two-keys-delay 0.07)    ;default=0.1
+(setq key-chord-one-key-delay  0.2)    ;default=0.2
+
+(key-chord-define-global "kl"     'forward-word)
+(key-chord-define-global "jk"     'backward-word)
+
+(key-chord-define-global "4r"     "$")
+(key-chord-define-global "5t"     "%")
+(key-chord-define-global "6t"     "^")
+(key-chord-define-global "6y"     "^")
+(key-chord-define-global "7y"     "&")
+(key-chord-define-global "8i"     "*")
+(key-chord-define-global "8u"     "*")
+(key-chord-define-global "9i"     "(")
+(key-chord-define-global "0o"     ")")
+
+(key-chord-define python-mode-map "cc"  'python-send-buffer)
+(key-chord-define-global "qq"     "the ")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; programothesis tips
+
+;; (defmacro set-key-find-file (key file)
+;;   "Defines a shortcut key to open a file."
+;;   (let ((fname (intern (concat "open-" file))))
+;;     `(progn (defun ,fname () (interactive) (find-file ,file))
+;;             (global-set-key (kbd ,key) ',fname))))
+
+;; (set-key-find-file "<f2> e" "~/.emacs")
+;; (set-key-find-file "<f2> g" "~/.gnus.el")
+;; (set-key-find-file "<f2> t" "~/org/todo.org")
+;; (set-key-find-file "<f2> n" "~/org/notes.org")
+;; (set-key-find-file "<f2> f" "~/org/feeds.org")
+;; (set-key-find-file "<f2> z" "~/.zshrc")
+;; (set-key-find-file "<f2> b" "~/.xbindkeysrc")
+;; (set-key-find-file "<f2> r" "~/.Xresources")
+;; (set-key-find-file "<f2> m" "~/.Xmodmap")
+;; (set-key-find-file "<f2> s" "~/.stumpwmrc")
+;; (set-key-find-file "<f2> w" "~/.stump-colors-wombat")
+;; (set-key-find-file "<f2> c" "~/.conkerorrc/conkerorrc.js")
+
+;; (bind "<f5> a" org-toggle-archive-tag)
+;; (bind "<f5> b" org-ido-switchb)
+;; (bind "<f5> i" org-clock-in)
+;; (bind "<f5> o" org-clock-out)
+;; (bind "<f5> r" org-refile)
+;; (bind "<f5> f" org-occur)
+;; ;(bind "<f5> r" org-remember)
+;; (bind "<f5> v" org-archive-subtree)
+;; (bind "<f5> t" my-org-todo)
+;; (bind "<f5> w" widen)
+;; (bind "<f5> u" org-feed-update-all)
+;; ;;-----------------------------------------------------------------------------
+;; ;; F6: Emacs functions
+;; ;;-----------------------------------------------------------------------------
+;; (bind "<f6> t" 'visit-tags-table)
+;; (bind "<f6> h" 'jao-toggle-selective-display)
+;; (bind "<f6> h" 'hs-org/minor-mode)
+;; (bind "<f6> d" 'color-theme-wombat+)
+;; (bind "<f6> l" 'color-theme-active)
+;; (bind "<f6> n" 'linum-mode)

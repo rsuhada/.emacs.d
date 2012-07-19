@@ -682,9 +682,12 @@
 
 (defvar rotate-text-rotations
   '(("true" "false")
+    ("True" "False")
     ("yes" "no")
+    ("Yes" "No")
     ("0" "1")
     ("pn" "m1" "m2")
+    ("PN" "M1" "M2")
     ("width" "height")
     ("left" "top" "right" "bottom")
     ("start" "end")
@@ -893,14 +896,14 @@ Example:
 ;; adjust this path:
 (add-to-list 'load-path "~/.emacs.d/plugins/emacs-jabber-0.8.91/")
 (require 'jabber-autoloads)
-(require 'ignore.el)
+(load "~/.emacs.d/rs_settings/ignore.el")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(jabber-auto-reconnect t)
+ '(jabber-auto-reconnect nil)
  '(jabber-avatar-verbose nil)
  '(jabber-vcard-avatars-retrieve nil)
  '(jabber-chat-buffer-format "*-jab-%n-*")
@@ -910,5 +913,11 @@ Example:
  '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
  '(jabber-show-offline-contacts t))
 
-(setq global-mode-string (delete '(t jabber-activity-mode-string) global-mode-string))
-(add-to-list 'global-mode-string jabber-activity-count-in-title-format)
+
+(defun adjust-jabber-mode-line ()
+  (setq global-mode-string (delete '(t jabber-activity-mode-string) global-mode-string))
+  (add-to-list 'global-mode-string jabber-activity-count-in-title-format))
+
+(add-hook 'jabber-chat-mode-hook 'adjust-jabber-mode-line)
+
+
