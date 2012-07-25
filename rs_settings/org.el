@@ -34,8 +34,8 @@
 
 ;; my agendas
 (setq org-agenda-files (list
+                        "~/Dropbox/org/work.org"
                         "~/Dropbox/org/job.org"
-                        ;; "~/Dropbox/org/work.org"
                         ;; "~/Dropbox/org/personal.org"
                         ;; "~/Dropbox/org/refile.org"
                         ;; "~/Dropbox/org/emacs.org"
@@ -85,18 +85,22 @@
 ;; I use C-M-r to start capture mode
 (global-set-key (kbd "C-M-r") 'org-capture)
 
+;; quick todo
+(define-key global-map "\C-ct"
+        (lambda () (interactive) (org-capture nil "t")))
+
 ;; Capture templates
 (setq org-capture-templates
-    (quote (("t" "todo" entry (file "~/Dropbox/org/refile.org")
-             "* TODO %?\n%U\n%a\n  %i" :empty-lines 1)
-            ;; ("w" "work" entry (file+datetree "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
+    (quote (("t" "todo" entry (file+headline "~/Dropbox/org/work.org" "agenda")
+             "* TODO %?" :prepend :empty-lines 1)
+            ;; ("W" "work" entry (file+datetree "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
             ("W" "work" entry (file "~/Dropbox/org/work.org") "* %?\n%U" :empty-lines 1)
             ("n" "note" entry (file "~/Dropbox/org/refile.org")
              "* %? :note:\n%U" :empty-lines 1)
             ("i" "idea" entry (file "~/Dropbox/org/refile.org")
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
             ("p" "personal" entry (file "~/Dropbox/org/personal.org") "* %?\n%U" :empty-lines 1)
-            ("w" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? \n\n%U\n######################################################################")
+            ("w" "wiki" entry (file "~/Dropbox/org/wiki.org") "* %? \n%U\n######################################################################")
             )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -105,83 +109,6 @@
 (setq org-refile-targets (quote ((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5))))
 (setq org-refile-use-outline-path (quote file))
 (setq org-outline-path-complete-in-steps t)
-
-
-;; (defvar org-journal-file "~/Dropbox/org/journal.org"
-;;   "Path to OrgMode journal file.")
-;; (defvar org-journal-date-format "%Y-%m-%d"
-;;   "Date format string for journal headings.")
-
-;; (defun org-journal-entry ()
-;;   "Create a new diary entry for today or append to an existing one."
-;;   (interactive)
-;;   (switch-to-buffer (find-file org-journal-file))
-;;   (widen)
-;;   (let ((today (format-time-string org-journal-date-format)))
-;;     (beginning-of-buffer)
-;;     (unless (org-goto-local-search-headings today nil t)
-;;       ((lambda ()
-;;          (org-insert-heading)
-;;          (insert today)
-;;          (insert "\n\n  \n"))))
-;;     (beginning-of-buffer)
-;;     (org-show-entry)
-;;     (org-narrow-to-subtree)
-;;     (end-of-buffer)
-;;     (backward-char 2)
-;;     (unless (= (current-column) 2)
-;;       (insert "\n\n  "))))
-
-;; (global-set-key (kbd "C-c j") 'org-journal-entry)
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; diary setup
-;; (require 'diary-lib)
-;; (add-hook 'diary-display-hook 'fancy-diary-display)
-
-;; (custom-set-variables
-;;  '(diary-file "~/Dropbox/org/diary.org"))
-
-;; ;;; bindings for org mode
-
-;; ;; The latest version of yasnippets doesn't play well with Org-mode, the
-;; ;; following function allows these two to play nicely together
-
-;; (require 'org-install)
-;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-;; (define-key global-map "\C-cl" 'org-store-link)
-;; (define-key global-map "\C-ca" 'org-agenda)
-;; (setq org-log-done t)
-
-;; ;; my agendas
-;; (setq org-agenda-files (list "~/Dropbox/org/agenda-work.org"
-;;                              "~/Dropbox/org/agenda-read.org"
-;;                              ;; "~/org/home.org"
-;; ))
-
-
-
-;;   (defun yas/org-very-safe-expand ()
-;;     (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-
-;;   (add-hook 'org-mode-hook
-;;             (lambda ()
-;;               (local-set-key "\M-\C-n" 'outline-next-visible-heading)
-;;               (local-set-key "\M-\C-p" 'outline-previous-visible-heading)
-;;               (local-set-key "\M-\C-u" 'outline-up-heading)
-;;               ;; table
-;;               (local-set-key "\M-\C-w" 'org-table-copy-region)
-;;               (local-set-key "\M-\C-y" 'org-table-paste-rectangle)
-;;               (local-set-key "\M-\C-l" 'org-table-sort-lines)
-;;               ;; display images
-;;               (local-set-key "\M-I" 'org-toggle-iimage-in-org)
-;;               ;; yasnippet (using the new org-cycle hooks)
-;;               (make-variable-buffer-local 'yas/trigger-key)
-;;               (setq yas/trigger-key [tab])
-;;               (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
-;;               (define-key yas/keymap [tab] 'yas/next-field)
-;;               ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; solving the paragraph problem: solution from phils of stackoverflow

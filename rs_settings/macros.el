@@ -95,3 +95,11 @@
 
 (fset 'rs-macro/new-item
    "\C-j- ")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; for talks
+
+(fset 'rs/macro-new-item
+   "\C-e\M-q\C-m\C-m- ")
+
+

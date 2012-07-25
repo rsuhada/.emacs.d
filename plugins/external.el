@@ -921,3 +921,55 @@ Example:
 (add-hook 'jabber-chat-mode-hook 'adjust-jabber-mode-line)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; chords
+
+;;      (key-chord-define-global ",."     "<>\C-b")
+;;      (key-chord-define-global "hj"     'undo)
+;;      (key-chord-define-global [?h ?j]  'undo)  ; the same
+;;      (key-chord-define-global "jk"     'dabbrev-expand)
+;;      (key-chord-define-global "cv"     'reindent-then-newline-and-indent)
+;;      (key-chord-define-global "4r"     "$")
+;;
+;;      (key-chord-define-global "''"     "`'\C-b")
+;;      (key-chord-define-global ",,"     'indent-for-comment)
+;;      (key-chord-define-global "qq"     "the ")
+;;      (key-chord-define-global "QQ"     "The ")
+;;
+;;      (key-chord-define c++-mode-map ";;"  "\C-e;")
+;;      (key-chord-define c++-mode-map "{}"  "{\n\n}\C-p\t")
+
+
+(add-to-list 'load-path "~/.emacs.d/plugins/misc/")
+(require 'key-chord)
+(key-chord-mode 1)
+
+(setq key-chord-two-keys-delay 0.07)    ;default=0.1
+(setq key-chord-one-key-delay  0.2)    ;default=0.2
+
+(key-chord-define-global "kl"     'forward-word)
+(key-chord-define-global "jk"     'backward-word)
+
+(key-chord-define-global "4r"     "$")
+(key-chord-define-global "5t"     "%")
+(key-chord-define-global "6t"     "^")
+(key-chord-define-global "6y"     "^")
+(key-chord-define-global "7y"     "&")
+(key-chord-define-global "8i"     "*")
+(key-chord-define-global "8u"     "*")
+(key-chord-define-global "9i"     "(")
+(key-chord-define-global "0o"     ")")
+
+(key-chord-define-global "qw" 'rs-macro/mark-line)
+
+;; mode specific maps can't be in bindings because they require
+;; preloaded libs
+
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (key-chord-define python-mode-map "cc"  'python-send-buffer)))
+
+
+(key-chord-define org-mode-map "cc"  'org-capture-finalize) ;; doesn't work
+
+(key-chord-define-global "ii" 'rs/macro-new-item)
