@@ -148,6 +148,10 @@
   scroll-conservatively 10000
   scroll-preserve-screen-position 1)
 
+;; mouse scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed t)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; kill the bell
 (setq ring-bell-function 'ignore)

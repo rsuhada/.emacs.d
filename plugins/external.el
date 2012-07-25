@@ -649,10 +649,11 @@
 (global-set-key "\C-p" 'goto-last-change)
 (global-set-key "\C-\M-p" 'pop-global-mark)
 
-;; (global-set-key "\C-p" 'mark-set-command)
-(require 'marker-visit)
-(global-set-key "\C-\M-p" 'marker-visit-prev)
-(global-set-key "\C-\M-n" 'marker-visit-next) ;was forward-list
+;; ;; npt very useful atm
+;; ;; (global-set-key "\C-p" 'mark-set-command)
+;; (require 'marker-visit)
+;; (global-set-key "\C-\M-p" 'marker-visit-prev)
+;; (global-set-key "\C-\M-n" 'marker-visit-next) ;was forward-list
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; extend-region
@@ -919,6 +920,16 @@ Example:
   (add-to-list 'global-mode-string jabber-activity-count-in-title-format))
 
 (add-hook 'jabber-chat-mode-hook 'adjust-jabber-mode-line)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; unscroll
+
+(require 'atim-unscroll)
+(atim-unscroll-global-mode)
+
+(global-set-key (kbd "C-M-p") 'atim-unscroll-up)
+(global-set-key (kbd "C-M-n") 'atim-unscroll-down)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
