@@ -89,6 +89,10 @@
 (define-key global-map "\C-ct"
         (lambda () (interactive) (org-capture nil "t")))
 
+;; quick todo
+(define-key global-map "\C-cw"
+        (lambda () (interactive) (org-capture nil "w")))
+
 ;; Capture templates
 (setq org-capture-templates
     (quote (("t" "todo" entry (file+headline "~/Dropbox/org/work.org" "agenda")

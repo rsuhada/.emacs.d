@@ -921,7 +921,6 @@ Example:
 
 (add-hook 'jabber-chat-mode-hook 'adjust-jabber-mode-line)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; unscroll
 
@@ -949,7 +948,6 @@ Example:
 ;;
 ;;      (key-chord-define c++-mode-map ";;"  "\C-e;")
 ;;      (key-chord-define c++-mode-map "{}"  "{\n\n}\C-p\t")
-
 
 (add-to-list 'load-path "~/.emacs.d/plugins/misc/")
 (require 'key-chord)

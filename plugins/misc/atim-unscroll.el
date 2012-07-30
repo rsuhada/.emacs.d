@@ -218,7 +218,8 @@ by going down in the unscroll ring"
   ;; The initial value.
   :init-value nil
   ;; The indicator for the mode line.
-  :lighter " uscrl"
+  ;; :lighter " uscrl"
+  :lighter ""
   ;; group
   :group 'atim-unscroll
   ;; The minor mode bindings.
