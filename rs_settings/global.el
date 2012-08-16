@@ -555,3 +555,9 @@
 (setq display-time-string-forms
       '((propertize (concat " " 24-hours ":" minutes " ")
                     'face 'egoge-display-time)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; tramp settings
+
+(setq tramp-verbose 1)                  ; 0 - silent, 1 - errors, 3 -
+                                        ; default, 10 - debug

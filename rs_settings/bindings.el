@@ -119,6 +119,27 @@
 (global-set-key '[M-down] 'sacha/search-word-forward)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; defmacro cmd - some sort of simplified macro wrapping?
+
+(defmacro cmd (name &rest body)
+  "declare an interactive command without all the boilerplate"
+  `(defun ,name ()
+     ,(if (stringp (car body)) (car body))
+     ;; tried (let (documented (stringp (first body))) but didn't know gensym
+     ;; and couldn't get it to work. should be possible
+     (interactive)
+     ,@(if (stringp (car body)) (cdr `,body) body)))
+
+;; search in other window
+(cmd isearch-other-window
+     ;; thank you leo2007!
+     (save-selected-window
+       (other-window 1)
+       (isearch-forward)))
+
+(global-set-key (kbd "C-c s") 'isearch-other-window)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; help me unlearn arrorw
 
 (defun use-emacs-keys () (interactive)
@@ -150,6 +171,30 @@
 
 ;; Jump to a definition in the current file. (Protip: this is awesome.)
 (global-set-key (kbd "C-x C-i") 'imenu)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; occur
+
+(defun occur-mode-clean-buffer ()
+  "Removes all commentary from the *Occur* buffer, leaving the
+ unadorned lines."
+  (interactive)
+  (if (get-buffer "*Occur*")
+      (save-excursion
+        (set-buffer (get-buffer "*Occur*"))
+        (goto-char (point-min))
+        (toggle-read-only 0)
+        (if (looking-at "^[0-9]+ lines matching \"")
+            (kill-line 1))
+        (while (re-search-forward "^[ \t]*[0-9]+:"
+                                  (point-max)
+                                  t)
+          (replace-match "")
+          (forward-line 1)))
+    (message "There is no buffer named \"*Occur*\".")))
+
+(define-key occur-mode-map (kbd "C-c C-o") 'occur-mode-clean-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; commenting a single line

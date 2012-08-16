@@ -561,8 +561,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; essh.el FIXME: check the s-enter verision from ess
 
-;; (require 'essh)                                                    ;;
-(autoload 'essh "essh.el" "R mode" t)
+(require 'essh)                                                    ;;
+;; (autoload 'essh "essh.el" "R mode" t)
 (defun essh-sh-hook ()                                             ;;
   (define-key sh-mode-map "\C-c\C-r" 'pipe-region-to-shell)        ;;
   (define-key sh-mode-map "\C-c\C-b" 'pipe-buffer-to-shell)        ;;
@@ -981,4 +981,6 @@ Example:
 
 (key-chord-define org-mode-map "cc"  'org-capture-finalize) ;; doesn't work
 
-(key-chord-define-global "ii" 'rs/macro-new-item)
+(key-chord-define-global "kk" 'rs/macro-new-item)
+
+
