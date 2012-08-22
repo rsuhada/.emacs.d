@@ -364,9 +364,8 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [f5]    'rgrep)
 (global-set-key [f6]    'occur)
 
-;; (global-set-key [f7]   'bookmark-set)
-;; (global-set-key [S-f7] 'bookmark-bmenu-list)
-;; (global-set-key [M-f7] 'bookmark-jump)
+(global-set-key [f7]   'next-error)
+(global-set-key [M-f7] 'previous-error)
 
 ;; (global-set-key [f8] 'deft)
 (global-set-key [f9]   'switch-to-previous-buffer)

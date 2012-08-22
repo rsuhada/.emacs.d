@@ -45,9 +45,19 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(ediff-diff-options "-w")
+ '(jabber-auto-reconnect nil)
+ '(jabber-avatar-verbose nil)
+ '(jabber-chat-buffer-format "*-jab-%n-*")
+ '(jabber-history-enabled t)
+ '(jabber-mode-line-mode nil)
+ '(jabber-roster-buffer "*-jab-*")
+ '(jabber-roster-line-format " %c %-25n %u %-8s (%r)")
+ '(jabber-show-offline-contacts t)
+ '(jabber-vcard-avatars-retrieve nil)
  '(longlines-auto-wrap t)
  '(longlines-wrap-follows-window-size t)
  '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample"))))
+ '(minimap-window-location (quote left))
  '(pomodoro-break-cycle "b "))
 
 

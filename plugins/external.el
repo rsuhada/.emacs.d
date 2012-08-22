@@ -984,3 +984,41 @@ Example:
 (key-chord-define-global "kk" 'rs/macro-new-item)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; minimap
+
+;; (require 'minimap)
+;; (autoload 'minimap "minimap.el" "Minimap mode" t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; etags
+
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/plugins/eproject")
+;; (require 'eproject)
+;; (require 'etags-select)
+
+;; (defun build-ctags ()
+;;   (interactive)
+;;   (message "building project tags")
+;;   (let ((root (eproject-root)))
+;;     (shell-command
+;;      (format "%s" path-to-pytags)))
+;;   (visit-project-tags)
+;;   (message "tags built successfully"))
+
+;; (defun visit-project-tags ()
+;;   (interactive)
+;;   (let ((tags-file (concat (eproject-root) "TAGS")))
+;;     (visit-tags-table tags-file)
+;;     (message (concat "Loaded " tags-file))))
+
+;; (defun hbin-find-tag ()
+;;   "Borrow from http://mattbriggs.net/blog/2012/03/18/awesome-emacs-plugins-ctags/"
+;;   (interactive)
+;;   (if (file-exists-p (concat (eproject-root) "TAGS"))
+;;       (visit-project-tags)
+;;     (build-ctags))
+;;   (etags-select-find-tag-at-point))
+
+;; (global-set-key (kbd "M-.") 'hbin-find-tag)
