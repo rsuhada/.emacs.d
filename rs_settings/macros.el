@@ -99,13 +99,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for talks
 
-(fset 'rs/macro-new-item
+(fset 'rs-macro/new-item
    "\C-e\M-q\C-m\C-m- ")
-
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; remove occur markup
 
 (fset 'rs/macro-unoccur
    [?\C-k ?\C-k M-f2 ?^ ?  ?+ ?\[ ?0 ?- ?9 ?\C-e ?+ ?: return return ?\M-<])
+

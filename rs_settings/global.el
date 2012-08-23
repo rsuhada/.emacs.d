@@ -605,3 +605,11 @@
    (format "%s" path-to-pytags))
   (let ((tags-revert-without-query t))  ; don't query, revert silently
     (visit-tags-table default-directory nil)))
+
+;; auto jump
+(global-set-key (kbd "C-x C-M-1") 'find-tag) ; bind to some unused placeholder
+(global-set-key (kbd "C-x C-M-2") 'find-tag-other-window) ; bind to some unused placeholder
+(global-set-key (kbd "M-.") (kbd "C-x C-M-1 <return>"))
+(global-set-key (kbd "C-c M-.") (kbd "C-x C-M-2 <return>"))
+
+

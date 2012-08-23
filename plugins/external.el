@@ -205,7 +205,6 @@
 (require 'dot-mode)
 (add-hook 'find-file-hooks 'dot-mode-on)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; my mini-setup
 
@@ -221,6 +220,7 @@
      anything-c-source-ffap-guesser
      anything-c-source-buffers
      anything-c-source-imenu
+     anything-c-source-etags-select
      anything-c-source-bm
      anything-c-source-recentf
      anything-c-source-file-name-history
@@ -997,6 +997,7 @@ Example:
 ;;               "~/.emacs.d/plugins/eproject")
 ;; (require 'eproject)
 ;; (require 'etags-select)
+;; (require 'eproject-extras)
 
 ;; (defun build-ctags ()
 ;;   (interactive)
@@ -1006,6 +1007,34 @@ Example:
 ;;      (format "%s" path-to-pytags)))
 ;;   (visit-project-tags)
 ;;   (message "tags built successfully"))
+
+
+;; (defun build-ctags ()
+;;   (interactive)
+;;   (message "building project tags")
+;;   (let ((root (eproject-root)))
+;;     (shell-command
+;;      (concat "/usr/local/Cellar/ctags/5.8/bin/ctags -e -R --exclude=.git -f " root "TAGS " root)))
+;;   (visit-project-tags)
+;;   (message "tags built successfully"))
+
+;; (defun visit-project-tags ()
+;;   (interactive)
+;;   (let ((tags-file (concat (eproject-root) "TAGS")))
+;;     (visit-tags-table tags-file)
+;;     (message (concat "Loaded " tags-file))))
+
+;; (defun hbin-find-tag ()
+;;   "Borrow from http://mattbriggs.net/blog/2012/03/18/awesome-emacs-plugins-ctags/"
+;;   (interactive)
+;;   (if (file-exists-p (concat (eproject-root) "TAGS"))
+;;       (visit-project-tags)
+;;     (build-ctags))
+;;   (etags-select-find-tag-at-point))
+
+;; (global-set-key (kbd "M-.") 'hbin-find-tag)
+
+;; (global-set-key (kbd "M-.") 'etags-select-find-tag-at-point)
 
 ;; (defun visit-project-tags ()
 ;;   (interactive)
