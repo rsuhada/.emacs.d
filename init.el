@@ -34,8 +34,18 @@
 (load "~/.emacs.d/rs_settings/terminal")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; run server
-(if (not (server-mode)) (server-start))
+;; vim keys
+;; (load "~/.emacs.d/rs_settings/vim_keys.el")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; theme
+(load "~/.emacs.d/rs_settings/theme.el")
+
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; run server
+;; (if (not (server-mode)) (server-start))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; parts auto-written by custom set
@@ -78,7 +88,7 @@
   ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono"))))
  '(bm-fringe-persistent-face ((((class color) (background dark)) (:background "#d0bf8f" :foreground "#d0bf8f"))))
- '(my-linum-hl ((t (:inherit linum :background "#8c5353"))))
+ '(my-linum-hl ((t (:inherit linum :background "#259185"))))
  '(org-level-1 ((t (:foreground "#dfaf8f")))))
 (put 'ido-exit-minibuffer 'disabled nil)
 

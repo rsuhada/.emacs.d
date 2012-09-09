@@ -307,6 +307,17 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key (kbd "M-i") 'previous-line) ;tab-to-tab-stop
 (global-set-key (kbd "M-k") 'next-line)     ;command kill-sentence
 ;; (global-set-key (kbd "M-SPC") 'set-mark-command)
+(global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
+
+;; ;; vim style - problem: it breaks things in buffer/anything etc...
+;; (global-set-key (kbd "M-h") 'backward-char) ;indent-new-comment-line
+;; (global-set-key (kbd "M-l") 'forward-char)  ;downcase-word
+;; (global-set-key (kbd "M-k") 'previous-line) ;tab-to-tab-stop
+;; (global-set-key (kbd "M-j") 'next-line)     ;command kill-sentence
+;; (global-set-key (kbd "M-i") 'use-emacs-keys)
+;; (global-set-key (kbd "S-<backspace>") 'backward-kill-word)
+;; ;; (global-set-key (kbd "M-SPC") 'set-mark-command)
+
 
 ;; kicking the habit
 (global-unset-key (kbd "C-b")) ; backward-char
@@ -330,7 +341,6 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key "\C-h" 'backward-delete-char-untabify)
 (define-key isearch-mode-map "\C-h" 'isearch-delete-char)
 
-(global-set-key (kbd "M-h") 'backward-kill-word)  ; was mark-paragraph
 (global-set-key (kbd "M-H") 'backward-kill-sexp)  ; was mark-defun (only relevant for lisp)
 (global-set-key (kbd "M-D") 'kill-sexp)  ; was mark-paragraph
 ;; (global-unset-key (kbd "M-h"))

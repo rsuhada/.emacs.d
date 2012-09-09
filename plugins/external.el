@@ -43,13 +43,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; zenburn
-
-(add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
-(require 'zenburn)
-(zenburn)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; raninbow delims
 (require 'rainbow-delimiters)
 

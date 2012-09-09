@@ -8,9 +8,14 @@
 (setq column-number-mode  t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; current line in the left border - from stackowerflow
+;; color current line in the left border - from stackowerflow
 
 ;; FIXME: could be refactored wo hl-line for my purposes
+
+;; If the foreground and background don't match nicely, you can assign a
+;; foreground colour explicitly with M-x customize-face RET my-linum-hl
+;; RET
+
 (require 'hl-line)
 (defface my-linum-hl
   `((t :inherit linum :background ,(face-background 'hl-line nil t)))
@@ -27,7 +32,7 @@
          (format (concat "%" (number-to-string width) "d")))
     (setq my-linum-format-string format)))
 
-(defvar my-linum-current-line-number 0)
+(defvar my-linum-current-line-number 1)
 
 (setq linum-format 'my-linum-format)
 
@@ -78,7 +83,6 @@
 
 ;; ;; To customize the background color
 ;; (set-face-background 'hl-line "#330")   ; original yellow
-(set-face-background 'hl-line "#212121")   ; very subtle zenburn to be used with fringe line marker
 (set-face-foreground 'highlight nil)
 (set-face-foreground 'hl-line nil)
 
@@ -186,7 +190,7 @@
 ;; cursor shape
 
 (setq-default cursor-type 'bar)         ; defult: box
-(set-cursor-color "brown3")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emerge setting
@@ -501,7 +505,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python path
 
-(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/sb/:")
+(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/sb/:/Users/rs/data1/sw/esaspi/py/test/:")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc
