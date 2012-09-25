@@ -682,3 +682,11 @@ If `case-replace' is nil, do not alter case of replacement text."
 (global-set-key (kbd "C-x r <f2>") 'my-replace-string-rectangle)
 (global-set-key (kbd "C-x r <M-f2>") 'my-replace-regexp-rectangle)
 
+
+(defun rs/switch-to-python-shell ()
+  "Show an existing buffer called \"*ansi-term*\" if one exists, otherwise
+call function ansi-term interactively."
+  (interactive)
+  (let ((existing-buffer (get-buffer "*Python*")))
+         (switch-to-buffer existing-buffer)))
+(global-set-key [M-f12] 'rs/switch-to-python-shell)

@@ -949,8 +949,8 @@ Example:
 (setq key-chord-two-keys-delay 0.07)    ;default=0.1
 (setq key-chord-one-key-delay  0.2)    ;default=0.2
 
-(key-chord-define-global "kl"     'forward-word)
-(key-chord-define-global "jk"     'backward-word)
+;; (key-chord-define-global "kl"     'forward-word)
+;; (key-chord-define-global "jk"     'backward-word)
 
 (key-chord-define-global "4r"     "$")
 (key-chord-define-global "5t"     "%")
@@ -961,6 +961,7 @@ Example:
 (key-chord-define-global "8u"     "*")
 (key-chord-define-global "9i"     "(")
 (key-chord-define-global "0o"     ")")
+(key-chord-define-global "p-"     "_")
 
 (key-chord-define-global "qw" 'rs-macro/mark-line)
 
@@ -974,7 +975,7 @@ Example:
 
 (key-chord-define org-mode-map "cc"  'org-capture-finalize) ;; doesn't work
 
-(key-chord-define-global "kk" 'rs/macro-new-item)
+(key-chord-define-global "kk" 'rs-macro/new-item)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1044,3 +1045,9 @@ Example:
 ;;   (etags-select-find-tag-at-point))
 
 ;; (global-set-key (kbd "M-.") 'hbin-find-tag)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; awk-it
+
+(require 'awk-it)

@@ -46,6 +46,10 @@
 ;; (set-face-background 'hl-line "#0a2832")   ; very subtle zenburn to be used with fringe line marker
 (set-face-background 'hl-line "#081F26")   ; very subtle zenburn to be used with fringe line marker
 
-(set-cursor-color "brown3")
 (setq my-linum-hl "#5859b7")
-;; my-linum-hl : #259185    (cyan) - set via customize
+
+(set-cursor-color "brown3")
+
+;; stuff needing manual tweaking via customize face:
+;; my-linum-hl : #259185    (cyan)
+;; org-todo: backgrond switch off, foreground red

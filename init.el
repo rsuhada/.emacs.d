@@ -37,12 +37,6 @@
 ;; vim keys
 ;; (load "~/.emacs.d/rs_settings/vim_keys.el")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; theme
-(load "~/.emacs.d/rs_settings/theme.el")
-
-
-
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;; run server
 ;; (if (not (server-mode)) (server-start))
@@ -89,8 +83,16 @@
  '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono"))))
  '(bm-fringe-persistent-face ((((class color) (background dark)) (:background "#d0bf8f" :foreground "#d0bf8f"))))
  '(my-linum-hl ((t (:inherit linum :background "#259185"))))
- '(org-level-1 ((t (:foreground "#dfaf8f")))))
+ '(org-level-1 ((t (:foreground "#dfaf8f"))))
+ '(org-todo ((t (:foreground "03181F")))))
 (put 'ido-exit-minibuffer 'disabled nil)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; theme
+(load "~/.emacs.d/rs_settings/theme.el")
+
+
 
 ;; (custom-set-faces
 ;;   ;; custom-set-faces was added by Custom.
