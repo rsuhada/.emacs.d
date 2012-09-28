@@ -917,6 +917,7 @@
     ("tkae" "take" nil 0)
     ("tkaes" "takes" nil 0)
     ("tkaing" "taking" nil 0)
+    ("tlak" "talk" nil 0)
     ("tlaking" "talking" nil 0)
     ("todya" "today" nil 0)
     ("togehter" "together" nil 0)
@@ -1249,7 +1250,7 @@
 
 (define-abbrev-table 'text-mode-abbrev-table
   '(
-    ("aa" "and" nil 280)
+    ("aa" "and" nil 281)
     ("abund" "abundance" nil 0)
     ("abunds" "abundances" nil 0)
     ("accel" "acceleration" nil 1)
@@ -1327,7 +1328,7 @@
     ("nss" "neutron stars" nil 0)
     ("obj" "object" nil 2)
     ("objs" "objects" nil 1)
-    ("obs" "observation" nil 12)
+    ("obs" "observation" nil 13)
     ("obss" "observations" nil 0)
     ("par" "parameter" nil 5)
     ("pars" "parameters" nil 7)

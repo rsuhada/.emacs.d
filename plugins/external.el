@@ -440,8 +440,8 @@
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; multiple-selection
-
+;; multiple-selection - this is not needed anymore if multi-cursors is
+;; used
 
 ;; (defun rs/mark-multi-next ()
 ;;   (interactive)
@@ -450,19 +450,38 @@
 ;;         (forward-word)
 ;;         (mark-next-like-this)))
 
-(autoload 'mark-previous-like-this "mark-more-like-this" "mark-previous-like-this" t)
-(autoload 'mark-next-like-this "mark-more-like-this" "mark-next-like-this" t)
-(global-set-key (kbd "C-<") 'mark-previous-like-this)
-(global-set-key (kbd "C->") 'mark-next-like-this)
-;; (global-set-key (kbd "C->") 'rs/mark-multi-next)
+;; (autoload 'mark-previous-like-this "mark-more-like-this" "mark-previous-like-this" t)
+;; (autoload 'mark-next-like-this "mark-more-like-this" "mark-next-like-this" t)
+;; (global-set-key (kbd "C-<") 'mark-previous-like-this)
+;; (global-set-key (kbd "C->") 'mark-next-like-this)
+;; ;; (global-set-key (kbd "C->") 'rs/mark-multi-next)
 
-;; FIXME
-(defun rs/mark-multi-next ()
-  (interactive)
-        (if (not (region-active-p))
-        (set-mark-command)
-        (forward-word)
-        (mark-next-like-this)))
+;; ;; FIXME
+;; (defun rs/mark-multi-next ()
+;;   (interactive)
+;;         (if (not (region-active-p))
+;;         (set-mark-command)
+;;         (forward-word)
+;;         (mark-next-like-this)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; multiple-cursor
+
+(add-to-list 'load-path
+             "~/.emacs.d/plugins/multiple-cursors")
+
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-o C-S-o") 'mc/edit-lines)
+(global-set-key (kbd "C-S-o C-e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-S-o C-a") 'mc/edit-beginnings-of-lines)
+
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c >") 'mc/mark-all-like-this)
+
+;; Rectangular region mode
+(global-set-key (kbd "S-SPC") 'set-rectangular-region-anchor)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ess
@@ -820,7 +839,7 @@ Example:
 ;; (setq mediawiki-site-default "WikEmacs")*
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; saaxy -> hermes
+;; sahow are you everything al rig or not axy -> hermes
 
 (add-to-list 'load-path "~/.emacs.d/plugins/hermes/")
 (require 'hermes)

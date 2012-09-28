@@ -66,13 +66,31 @@
 
 
 ;; setting mark should be less clumsy
-(global-set-key (kbd "M-ESC") 'cua-set-mark)
+;; (global-set-key (kbd "M-ESC") 'cua-set-mark)
 
 (global-set-key (kbd "M-SPC") 'cua-set-mark) ; was just-one-space
+;; (global-set-key (kbd "M-SPC") 'set-mark-command) ; was just-one-space
 (global-set-key (kbd "C-c SPC") 'just-one-space) ; was just-one-space
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrev temporary patch
+
+(defun protect-underscore ()
+  (interactive)
+    (insert "_"))
+(defun protect-dash ()
+  (interactive)
+    (insert "-"))
+(defun protect-equal ()
+  (interactive)
+    (insert "="))
+
+;; (fset 'protect-underscore
+;;    "\C-q_")
+;; (fset 'protect-dash
+;;    "\C-q-")
+;; (fset 'protect-equal
+;;    "\C-q=")
 
 (add-hook 'abbrev-mode-hook
             (lambda ()
@@ -80,6 +98,7 @@
               (local-set-key (kbd "-") 'protect-dash)
               (local-set-key (kbd "=") 'protect-equal)
 ))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; better word-at-point search
@@ -162,7 +181,6 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 ;; (global-set-key (kbd "C-M-r") 'isearch-backward)
 
-
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
   (lambda () (interactive)
@@ -171,7 +189,6 @@
 
 ;; Jump to a definition in the current file. (Protip: this is awesome.)
 (global-set-key (kbd "C-x C-i") 'imenu)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; occur
@@ -690,3 +707,5 @@ call function ansi-term interactively."
   (let ((existing-buffer (get-buffer "*Python*")))
          (switch-to-buffer existing-buffer)))
 (global-set-key [M-f12] 'rs/switch-to-python-shell)
+
+

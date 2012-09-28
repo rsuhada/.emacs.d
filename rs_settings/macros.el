@@ -15,16 +15,16 @@
    [?\M-< f2 ?| return ?  return ?\M-< ?# ?\C-d ?\M-w ?\M-s])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; abbrev temporary patch
+;; abbrev temporary patch - deprecated - rewrittent o functions
 
-(fset 'protect-underscore
-   "\C-q_")
+;; (fset 'protect-underscore
+;;    "\C-q_")
 
-(fset 'protect-dash
-   "\C-q-")
+;; (fset 'protect-dash
+;;    "\C-q-")
 
-(fset 'protect-equal
-   "\C-q=")
+;; (fset 'protect-equal
+;;    "\C-q=")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; utility macros
