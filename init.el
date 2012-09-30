@@ -91,7 +91,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; theme
 (load "~/.emacs.d/rs_settings/theme.el")
-
+(set-cursor-color "brown3")
 
 
 ;; (custom-set-faces

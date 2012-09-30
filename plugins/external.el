@@ -169,6 +169,10 @@ ac-source-abbrev
 (add-hook 'emacs-lisp-mode-hook 'my-ac-emacs-lisp-mode)
 (setq ac-dwim nil)
 
+(define-key ac-completing-map "\C-m" nil)
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-m" 'ac-complete)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hungry-delete - doesn't seem very useful at the moment
 
