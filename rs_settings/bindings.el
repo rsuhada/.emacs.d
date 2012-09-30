@@ -66,7 +66,7 @@
 
 
 ;; setting mark should be less clumsy
-;; (global-set-key (kbd "M-ESC") 'cua-set-mark)
+(global-set-key (kbd "M-ESC") 'cua-set-mark)
 
 (global-set-key (kbd "M-SPC") 'cua-set-mark) ; was just-one-space
 ;; (global-set-key (kbd "M-SPC") 'set-mark-command) ; was just-one-space

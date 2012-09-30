@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: sw
+# contributor: Robert Suhada
+# --
+/home/rsuhada/data1/sw/ $1

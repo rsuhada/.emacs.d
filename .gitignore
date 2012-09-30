@@ -9,6 +9,9 @@ ac-comphist.dat
 # !foo.html
 # Ignore objects and archives.
 # *.[oa]
+*.tar
+*.gzip
+*.zip
 # ignore personal info snippets:
 sig.yasnippet
 vizitka.yasnippet

@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: filecheck
+# contributor: Robert Suhada
+# --
+if [[ ! -e ${1:filename} ]]
+then
+    echo -e "\n** error: $1 does not exists here!"
+    echo -e "*** error in \$0\n"
+    cd $startdir
+    exit 1
+fi
+
+$0

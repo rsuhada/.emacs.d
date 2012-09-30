@@ -6,13 +6,23 @@
               "~/.emacs.d/plugins/misc")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; yasnippet
+; yasnippet-0.6.1c
 
 (add-to-list 'load-path
               "~/.emacs.d/plugins/yasnippet-0.6.1c")
 (require 'yasnippet) ;; not yasnippet-bundle
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; yasnippet-git
+
+;; (add-to-list 'load-path
+;;               "~/.emacs.d/plugins/yasnippet")
+
+;;    (require 'yasnippet)
+;;    (yas-global-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color-theme
@@ -108,6 +118,7 @@
               "~/.emacs.d/plugins/auto-complete-1.3.1/")
 
 (require 'auto-complete-config)
+(require 'ac-python)
 (ac-flyspell-workaround)                ; has to be in this line otherwise does not work
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
@@ -116,9 +127,47 @@
 (add-to-list 'ac-modes 'org-mode)
 (add-to-list 'ac-modes 'sh-mode)
 (add-to-list 'ac-modes 'ess-mode)
-(setq ac-auto-show-menu 0.9)            ;set time in seconds
+
+;; auto start after this many characters
+;; (setq ac-auto-start 2)
+(setq ac-auto-show-menu 0.8)            ;set time in seconds
+
+;; stop on save, C-g and:
+(define-key ac-completing-map "\ESC/" 'ac-stop)
+
+;; adaptive case sensitivity - rather not
 (setq ac-ignore-case nil)
-(setq ac-use-comphist nil)
+
+;; consider also frequency
+(setq ac-use-comphist t)
+
+(setq-default ac-sources '(
+ac-source-yasnippet
+ac-source-filename
+ac-source-imenu
+ac-source-words-in-buffer
+ac-source-words-in-same-mode-buffers
+ac-source-dictionary
+ac-source-abbrev
+))
+
+(defun my-ac-emacs-lisp-mode ()
+  (setq ac-sources '(
+ac-source-features                      ;elisp
+ac-source-functions                     ;elisp
+ac-source-variables                     ;elisp
+ac-source-symbols                       ;elisp
+ac-source-yasnippet
+ac-source-filename
+ac-source-imenu
+ac-source-words-in-buffer
+ac-source-words-in-same-mode-buffers
+ac-source-dictionary
+ac-source-abbrev
+)))
+
+(add-hook 'emacs-lisp-mode-hook 'my-ac-emacs-lisp-mode)
+(setq ac-dwim nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hungry-delete - doesn't seem very useful at the moment
@@ -351,7 +400,6 @@
 ;; highlight-indentation
 
 (autoload 'highlight-indentation "highlight-indentation" "highlight-indentation" t)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; typing
@@ -1070,3 +1118,8 @@ Example:
 ;; awk-it
 
 (require 'awk-it)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; wgrep - editable grep buffer
+
+(require 'wgrep)
