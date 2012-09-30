@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: write
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# contributor: Robert Suhada
+# --
+    f = open('$0', 'w')
+
+    for i in range(len(x)):
+        f.write(str(x[i])+'\n')
+        f.write('%f %f\n' % (r, cts_src))
+
+    f.close()

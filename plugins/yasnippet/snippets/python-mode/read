@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: read
+# contributor: Robert Suhada
+# --
+intab = '$0'
+dat=loadtxt(intab, dtype='string', comments='#', delimiter=None, converters=None,
+    skiprows=0, unpack=False,
+    usecols=(0,1)
+    )
+x = double(dat[:,0])
+y = dat[:,1]
+y = y.tolist()
+for i in range(len(y)):
+    y[i] = str(y[i])

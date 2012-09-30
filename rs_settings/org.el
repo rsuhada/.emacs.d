@@ -12,14 +12,27 @@
 ;; (global-set-key "\C-cb" 'org-iswitchb)
 
 
-;; Make TAB the yas trigger key in the org-mode-hook and enable flyspell mode and autofill
-(add-hook 'org-mode-hook
-          (lambda ()
-            (make-variable-buffer-local 'yas/trigger-key)
-            (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field)
-            (auto-fill-mode 1)
-            (flyspell-mode 0)))
+;; ;; Make TAB the yas trigger key in the org-mode-hook and enable flyspell mode and autofill
+;; (add-hook 'org-mode-hook
+;;           (lambda ()
+;;             (make-variable-buffer-local 'yas/trigger-key)
+;;             (org-set-local 'yas/trigger-key [tab])
+;;             (define-key yas/keymap [tab] 'yas/next-field)
+;;             (auto-fill-mode 1)
+;;             (flyspell-mode 0)))
+
+;; (defun iy-tab-noconflict ()
+;;   (let ((command (key-binding [tab]))) ; remember command
+;;     (local-unset-key [tab]) ; unset from (kbd "<tab>")
+;;     (local-set-key (kbd "TAB") command))) ; bind to (kbd "TAB")
+
+
+
+
+;; (add-hook 'ruby-mode-hook 'iy-ac-tab-noconflict)
+;; (add-hook 'markdown-mode-hook 'iy-ac-tab-noconflict)
+;; (add-hook 'org-mode-hook 'iy-ac-tab-noconflict)
+
 
 ;; Various preferences
 (setq org-log-done t

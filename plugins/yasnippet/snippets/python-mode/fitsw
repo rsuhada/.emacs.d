@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: fitsw
+# key: fitsw
+# author: rs
+# --
+hdu = pyfits.PrimaryHDU(${1:array}, ${2:hdr})    # extension - array, header
+hdulist = pyfits.HDUList([hdu])                  # list all extensions here
+hdulist.writeto('${3:file}', clobber=True)
+$0

@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: iplot
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# contributor: Robert Suhada
+# --
+
+# interactive quick plot
+plt.figure()
+plt.ion()
+plt.clf()
+
+plt.plot($1, $2,
+    color='black',
+    linestyle='-',              # -/--/-./:
+    linewidth=1,                # linewidth=1
+    marker='',                  # ./o/*/+/x/^/</>/v/s/p/h/H
+    markerfacecolor='black',
+    markersize=0,               # markersize=6
+    label=r"data"               # '__nolegend__'
+    )
+
+plt.xscale("linear")
+plt.yscale("linear")
+
+plt.show()
+plotPosition="+1100+0"          # large_screen="+1100+0"; lap="+640+0"
+plt.get_current_fig_manager().window.wm_geometry(plotPosition)
+$0

@@ -14,6 +14,9 @@
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 
+;; org-mode fix
+;; the reason was that org-mode distinguieshes between TAB, tab C-i
+(define-key ac-complete-mode-map [tab] 'ac-expand)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; yasnippet-git
@@ -171,10 +174,6 @@ ac-source-abbrev
 (define-key ac-completing-map "\C-m" nil)
 (setq ac-use-menu-map t)
 (define-key ac-menu-map "\C-m" 'ac-complete)
-
-;; org-mode fix
-;; the reason was that org-mode distinguieshes between TAB, tab C-i
-(define-key ac-complete-mode-map [tab] 'ac-expand)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hungry-delete - doesn't seem very useful at the moment

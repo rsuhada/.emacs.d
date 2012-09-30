@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: line
+# contributor: Robert Suhada
+# --
+plt.plot($1, $0,
+    color='black',
+    linestyle='-',              # -/--/:/-.
+    linewidth=1,                # linewidth=1
+    marker='',                  # ./o/*/+/x/^/</>/v/s/p/h/H
+    markerfacecolor='black',
+    markersize=0,               # markersize=6
+    label=r"data"               # '__nolegend__'
+    )

@@ -1,0 +1,3 @@
+# name: regexpFloat
+# --
+matchReal=r"[+-]? *(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?"

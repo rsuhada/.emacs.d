@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: abbrev
+# contributor: Robert Suhada
+# --
+("$1" "$2" nil 0)$0
