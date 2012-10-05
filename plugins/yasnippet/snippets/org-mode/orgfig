@@ -1,6 +1,0 @@
-# name: orgfig
-# --
-
-#+CAPTION: $1
-#+LABEL:   $2
-[[$0]]

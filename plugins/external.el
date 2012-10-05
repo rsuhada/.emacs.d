@@ -1036,6 +1036,8 @@ Example:
 (key-chord-define-global "9i"     "(")
 (key-chord-define-global "0o"     ")")
 (key-chord-define-global "p-"     "_")
+(key-chord-define-global "[;"     "{")
+(key-chord-define-global "]'"     "}")
 
 (key-chord-define-global "qw" 'rs-macro/mark-line)
 

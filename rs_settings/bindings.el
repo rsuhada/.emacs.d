@@ -367,6 +367,9 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "M-Z") 'zap-copy-up-to-char)
 
+(global-unset-key (kbd "M-u")) ; upcase-word
+(global-set-key (kbd "C-c M-u") 'upcase-word)
+
 ;; (global-set-key (kbd "M-z") 'hungry-delete-backward)
 
 ;; (global-set-key (kbd "M-enter") 'org-meta-enter) ;FIXME

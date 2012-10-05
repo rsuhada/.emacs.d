@@ -100,7 +100,7 @@
 ;; for talks
 
 (fset 'rs-macro/new-item
-   "\C-e\M-q\C-m\C-m- ")
+   "\C-e\M-q\C-m- ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; remove occur markup
@@ -108,3 +108,9 @@
 (fset 'rs/macro-unoccur
    [?\C-k ?\C-k M-f2 ?^ ?  ?+ ?\[ ?0 ?- ?9 ?\C-e ?+ ?: return return ?\M-<])
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; have an empty buffer with a single column of numbers, return it's
+;; sum (see modeline + result in clipboard)
+
+(fset 'rs-macro/sum-column
+   [?\C-\; ?\M-x ?o ?r ?g ?t ?b ?l ?- ?m ?o ?d ?e return ?\M-x ?o ?r ?g ?t ?b ?l ?o backspace ?- ?c ?r ?e ?a ?t ?e ?- ?o ?r ?- ?e ?x ?p ?r backspace ?o ?r ?t backspace backspace backspace backspace backspace backspace ?c ?o ?n ?v ?e ?r ?t ?- ?f ?r ?o ?m ?- ?r ?e ?g ?i ?o ?n return ?\C-c ?+])

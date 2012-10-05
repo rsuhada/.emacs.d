@@ -93,7 +93,6 @@
 (load "~/.emacs.d/rs_settings/theme.el")
 (set-cursor-color "brown3")
 
-
 ;; (custom-set-faces
 ;;   ;; custom-set-faces was added by Custom.
 ;;   ;; If you edit it by hand, you could mess it up, so be careful.

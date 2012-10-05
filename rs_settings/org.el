@@ -159,3 +159,4 @@
   (local-set-key [remap backward-paragraph] 'my-org-backward-paragraph))
 
 (add-hook 'org-mode-hook 'my-org-paragraph-overrides)
+(add-hook 'latex-mode-hook 'my-org-paragraph-overrides)

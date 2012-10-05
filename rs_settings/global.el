@@ -105,6 +105,11 @@
 (setq-default initial-scratch-message nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-revert
+
+(global-auto-revert-mode nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zsh mode
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . shell-script-mode))
 
@@ -615,5 +620,23 @@
 (global-set-key (kbd "C-x C-M-2") 'find-tag-other-window) ; bind to some unused placeholder
 (global-set-key (kbd "M-.") (kbd "C-x C-M-1 <return>"))
 (global-set-key (kbd "C-c M-.") (kbd "C-x C-M-2 <return>"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; latex
+
+;; (defun my-tex-mode-hook ()
+;; (local-set-key (kbd "C-c C-c") 'compile))
+;; (add-hook 'LaTeX-mode-hook 'my-tex-mode-hook)
+
+;;  (add-hook 'LaTeX-mode-common-hook
+;;             (lambda ()
+;;               (message "OK")
+;;               (local-set-key (kbd "C-c C-c") 'compile))
+;; )
+
+;; (add-hook 'LaTeX-mode-common-hook
+;;   (lambda ()
+;;     (set (make-local-variable 'compile-command) "./compile_osx.sh")))
 
 
