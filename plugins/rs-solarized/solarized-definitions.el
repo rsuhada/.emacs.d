@@ -210,7 +210,8 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
               (fmt-revbbu `(:weight ,bright-bold :slant normal  :underline ,underline :inverse-video t)))
           `((;; basic
              (default ((t (,@fg-base0 ,@bg-back)))) ; Normal
-             (cursor ((t (,@fg-base03 ,@bg-base0)))) ; Cursor
+             ;; (cursor ((t (,@fg-base03 ,@bg-base0)))) ; Cursor
+             (cursor ((t (,@fg-red ,@bg-base0)))) ; Cursor
              (error ((t (,@fmt-bold ,@fg-red)))) ; Error
              (escape-glyph-face ((t (,@fg-red))))
              (fringe ((t (,@fg-base01 ,@bg-base02))))

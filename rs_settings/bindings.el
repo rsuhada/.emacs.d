@@ -405,7 +405,7 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [f10]   'unexpand-abbrev)
 
 ;; (global-set-key [f12] 'deft)
-(global-set-key [f12] 'sunrise)
+;; (global-set-key [f12] 'sunrise)
 (global-set-key [S-f12] 'help)
 
 ;; defaults f3 - record macro, f4 - end macro/reply

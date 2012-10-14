@@ -129,7 +129,7 @@
 
 ;; auto start after this many characters
 ;; (setq ac-auto-start 2)
-(setq ac-auto-show-menu 0.8)            ;set time in seconds
+(setq ac-auto-show-menu 0.2)            ;set time in seconds
 
 ;; stop on save, C-g and:
 (define-key ac-completing-map "\ESC/" 'ac-stop)
@@ -152,11 +152,11 @@ ac-source-abbrev
 
 (defun my-ac-emacs-lisp-mode ()
   (setq ac-sources '(
+ac-source-yasnippet
 ac-source-features                      ;elisp
 ac-source-functions                     ;elisp
 ac-source-variables                     ;elisp
 ac-source-symbols                       ;elisp
-ac-source-yasnippet
 ac-source-filename
 ac-source-imenu
 ac-source-words-in-buffer
