@@ -44,9 +44,8 @@
 (color-theme-solarized-dark)
 
 ;; (set-face-background 'hl-line "#0a2832")   ; very subtle zenburn to be used with fringe line marker
-(set-face-background 'hl-line "#081F26")   ; very subtle zenburn to be used with fringe line marker
-
-(setq my-linum-hl "#5859b7")
+;; (set-face-background 'hl-line "#081F26")   ; very subtle zenburn to be used with fringe line marker
+;; (setq my-linum-hl "#5859b7")
 
 (set-cursor-color "brown3")
 

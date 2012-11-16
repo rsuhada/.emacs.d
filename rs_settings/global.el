@@ -8,6 +8,24 @@
 (setq column-number-mode  t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; highlight current line
+(global-hl-line-mode 1)
+
+;; undelrine instead of highlighting
+;; (set-face-attribute hl-line-face nil :underline t)
+
+;; ;; To customize the background color
+;; (set-face-background 'hl-line "#330")   ; original yellow
+;; (set-face-background 'hl-line "#0a2832")  ; original blue for solarized
+(set-face-background 'hl-line "#0d3340") ; brighter blue for solarized
+(set-face-foreground 'highlight nil)
+(set-face-foreground 'hl-line nil)
+
+;; alternative
+;; (require 'hl-line+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; color current line in the left border - from stackowerflow
 
 ;; FIXME: could be refactored wo hl-line for my purposes
@@ -75,22 +93,6 @@
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; highlight current line
-(global-hl-line-mode 1)
-
-;; undelrine instead of highlighting
-;; (set-face-attribute hl-line-face nil :underline t)
-
-;; ;; To customize the background color
-;; (set-face-background 'hl-line "#330")   ; original yellow
-(set-face-background 'hl-line "#0a2832")   ; original yellow
-(set-face-foreground 'highlight nil)
-(set-face-foreground 'hl-line nil)
-
-;; alternative
-;; (require 'hl-line+)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -107,8 +109,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-revert
-
-(global-auto-revert-mode nil)
+;; (global-auto-revert-mode nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zsh mode
@@ -148,9 +149,9 @@
 ;; this didn't quite work
 ;; (add-to-list 'load-path
 ;;               "~/.emacs.d/plugins/")
-
 ;; (require 'smooth-scroll)
 ;; (smooth-scroll-mode t)
+
 
 (setq redisplay-dont-pause t
   scroll-margin 1
@@ -161,6 +162,9 @@
 ;; mouse scrolling
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 (setq mouse-wheel-progressive-speed t)
+
+;; faster scrolling?
+;; (setq jit-lock-defer-time 0.05)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; kill the bell
@@ -430,6 +434,7 @@
 (global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "*") 'skeleton-pair-insert-maybe)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired settings
@@ -715,3 +720,26 @@ the dired buffer."
     (goto-char (point-min))
     (while (re-search-forward ".+" nil t)
       (replace-match (downcase (match-string 0)) t))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; vim open line
+
+;; (defun vi-open-line-above ()
+;;   "Insert a newline above the current line and put point at beginning."
+;;   (interactive)
+;;   (unless (bolp)
+;;     (beginning-of-line))
+;;   (newline)
+;;   (forward-line -1)
+;;   (indent-according-to-mode))
+
+;; (defun vi-open-line-below ()
+;;   "Insert a newline below the current line and put point at beginning."
+;;   (interactive)
+;;   (unless (eolp)
+;;     (end-of-line))
+;;   (newline-and-indent))
+
+;; (global-set-key (kbd "C-o") 'vi-open-line-below)
+;; ;; (global-set-key (kbd "C-S-o") 'vi-open-line-above)

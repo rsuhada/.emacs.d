@@ -369,6 +369,7 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-unset-key (kbd "M-u")) ; upcase-word
 (global-set-key (kbd "C-c M-u") 'upcase-word)
+(global-set-key (kbd "M-u") 'join-line)
 
 ;; (global-set-key (kbd "M-z") 'hungry-delete-backward)
 
@@ -403,6 +404,8 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [C-M-f9]   'previous-user-buffer)
 
 (global-set-key [f10]   'unexpand-abbrev)
+
+(global-set-key [M-f11]   'eval-region)
 
 ;; (global-set-key [f12] 'deft)
 ;; (global-set-key [f12] 'sunrise)

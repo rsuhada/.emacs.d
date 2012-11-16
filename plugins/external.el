@@ -14,7 +14,6 @@
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; yasnippet-git
 
@@ -117,7 +116,7 @@
               "~/.emacs.d/plugins/auto-complete-1.3.1/")
 
 (require 'auto-complete-config)
-(require 'ac-python)
+;; (require 'ac-python)     : commented out Wed Nov  7 16:56:04 2012
 (ac-flyspell-workaround)                ; has to be in this line otherwise does not work
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete-1.3.1/ac-dict")
 (ac-config-default)
@@ -143,7 +142,7 @@
 (setq-default ac-sources '(
 ac-source-yasnippet
 ac-source-filename
-ac-source-imenu
+;; ac-source-imenu
 ac-source-words-in-buffer
 ac-source-words-in-same-mode-buffers
 ac-source-dictionary
@@ -251,11 +250,8 @@ ac-source-abbrev
 ;; (global-set-key [(control ?.)] (lambda () (interactive) (dot-mode 1)
                                  ;; (message "Dot mode activated.")))
 
-(require 'dot-mode)
-(add-hook 'find-file-hooks 'dot-mode-on)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; my mini-setup
+;; (require 'dot-mode)
+;; (add-hook 'find-file-hooks 'dot-mode-on)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
@@ -526,7 +522,6 @@ ac-source-abbrev
              "~/.emacs.d/plugins/multiple-cursors")
 
 (require 'multiple-cursors)
-
 (global-set-key (kbd "C-S-o C-S-o") 'mc/edit-lines)
 (global-set-key (kbd "C-S-o C-e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-S-o C-a") 'mc/edit-beginnings-of-lines)
@@ -1044,15 +1039,16 @@ Example:
 ;; mode specific maps can't be in bindings because they require
 ;; preloaded libs
 
-(add-hook 'python-mode-hook
-          #'(lambda ()
-              (key-chord-define python-mode-map "cc"  'python-send-buffer)))
+;; (add-hook 'python-mode-hook
+;;           #'(lambda ()
+;;               (key-chord-define python-mode-map "cc"  'python-send-buffer)))
 
 
-(key-chord-define org-mode-map "cc"  'org-capture-finalize) ;; doesn't work
+;; (key-chord-define org-mode-map "cc"  'org-capture-finalize) ;; doesn't work
 
 (key-chord-define-global "kk" 'rs-macro/new-item)
 
+(key-chord-define-global "fj"     "_")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; minimap

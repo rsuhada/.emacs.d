@@ -167,6 +167,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; velocity
 
-;; (require 'org-velocity)
-;; (setq org-velocity-bucket (expand-file-name "bucket.org" org-directory))
-;; (global-set-key (kbd "C-c n") 'org-velocity)
+(require 'org-velocity)
+(setq org-velocity-bucket (expand-file-name "bucket.org" org-directory))
+(global-set-key (kbd "C-c n") 'org-velocity)

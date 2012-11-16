@@ -93,14 +93,12 @@
 (fset 'rs-macro/opt-on
    [f2 ?= ?0 return ?= ?1 return ?\M-s])
 
-(fset 'rs-macro/new-item
-   "\C-j- ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; for talks
 
 (fset 'rs-macro/new-item
-   "\C-e\M-q\C-m- ")
+   "\C-e\M-q\M-n\C-m-\C-o ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; remove occur markup
