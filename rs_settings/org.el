@@ -160,6 +160,7 @@
 
 (add-hook 'org-mode-hook 'my-org-paragraph-overrides)
 (add-hook 'latex-mode-hook 'my-org-paragraph-overrides)
+(add-hook 'idlwave-mode-hook 'my-org-paragraph-overrides)
 
 ;; syntax highlighting in code blocks
 (setq org-src-fontify-natively t)

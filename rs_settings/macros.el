@@ -12,7 +12,7 @@
 
 ;; FIXME
 (fset 'orguntaby-simple
-   [?\M-< f2 ?| return ?  return ?\M-< ?# ?\C-d ?\M-w ?\M-s])
+   [?\M-< f2 ?| return ?  return ?\M-< ?# ?\C-d ?\M-w ?\C-d ?\C-d ?\M-s])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrev temporary patch - deprecated - rewrittent o functions
@@ -112,3 +112,10 @@
 
 (fset 'rs-macro/sum-column
    [?\C-\; ?\M-x ?o ?r ?g ?t ?b ?l ?- ?m ?o ?d ?e return ?\M-x ?o ?r ?g ?t ?b ?l ?o backspace ?- ?c ?r ?e ?a ?t ?e ?- ?o ?r ?- ?e ?x ?p ?r backspace ?o ?r ?t backspace backspace backspace backspace backspace backspace ?c ?o ?n ?v ?e ?r ?t ?- ?f ?r ?o ?m ?- ?r ?e ?g ?i ?o ?n return ?\C-c ?+])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; remove tex markup
+;; FIXME: work on this
+
+(fset 'rs-macro/detexify
+   [?\M-< f2 ?^ backspace ?& return ?  return ?\M-< f2 ?/ backspace ?\\ ?\\ return return ?\M-< f2 ?$ return return ?\M-< f2 ?\\ ?p ?m return ?  ?  ?  return ?\M-< f2 ?^ ?\{ ?\M-l backspace return ?  ?  return ?\M-< f2 ?\} return return ?\M-< f2 ?_ ?\{ ?\C-d return return ?\M-<])

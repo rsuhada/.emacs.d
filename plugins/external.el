@@ -1048,7 +1048,7 @@ Example:
 
 (key-chord-define-global "kk" 'rs-macro/new-item)
 
-(key-chord-define-global "fj"     "_")
+;; (key-chord-define-global "fj"     "_")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; minimap

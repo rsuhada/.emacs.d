@@ -93,7 +93,6 @@
 (load "~/.emacs.d/rs_settings/theme.el")
 (set-cursor-color "brown3")
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; recursive minibuffer
 

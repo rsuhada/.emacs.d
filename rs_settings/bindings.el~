@@ -372,7 +372,7 @@ If LINE is non-nil, duplicate that line instead."
 ;; (global-set-key (kbd "M-u") 'join-line)
 
 (global-set-key (kbd "M-u") 'protect-underscore)
-;; (define-key isearch-mode-map (kbd "M-u") ')
+(define-key isearch-mode-map (kbd "M-u") ')
 
 ;; (global-set-key (kbd "M-z") 'hungry-delete-backward)
 
@@ -716,11 +716,5 @@ call function ansi-term interactively."
   (let ((existing-buffer (get-buffer "*Python*")))
          (switch-to-buffer existing-buffer)))
 (global-set-key [M-f12] 'rs/switch-to-python-shell)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; hyper-key
-
-(setq ns-function-modifier 'hyper)
 
 

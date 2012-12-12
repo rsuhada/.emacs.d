@@ -1,6 +1,16 @@
 ;; ibuffer settings
 (setq ibuffer-saved-filter-groups
       (quote (("default"
+               ("tramp"   (or (filename . "ssh2:")
+                              (name . "tramp")
+                              ))
+               ("data" (or
+                           (name . ".dat$")
+                           (name . ".cat$")
+                           (name . ".tab$")
+                           (name . ".csv$")
+                           (name . ".table$")
+                           ))
                ("kapi" (filename . "/kapi/"))
                ("esaspi" (filename . "/esaspi/"))
                ("sh" (mode . sh-mode))
@@ -12,9 +22,6 @@
                ("fortran" (mode . fortran-mode))
                ("idl" (mode . idlwave-mode))
                ("tex" (mode . latex-mode))
-               ("tramp"   (or (filename . "ssh2:")
-                              (name . "tramp")
-                              ))
                ("org" (or
                            (name . "^\\*Calendar\\*$")
                            (name . "^diary$")
