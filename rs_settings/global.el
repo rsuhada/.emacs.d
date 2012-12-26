@@ -98,8 +98,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no menu
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+;; (menu-bar-mode -1)
+;; (tool-bar-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no scratch blurb
@@ -126,21 +126,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; isearch tweaks
-(add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
-(defun my-goto-match-beginning ()
-  (when isearch-forward (goto-char isearch-other-end)))
-(defadvice isearch-exit (after my-goto-match-beginning activate)
-  "Go to beginning of match."
-  (when isearch-forward (goto-char isearch-other-end)))
+
+;; (add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
+;; (defun my-goto-match-beginning ()
+;;   (when isearch-forward (goto-char isearch-other-end)))
+;; (defadvice isearch-exit (after my-goto-match-beginning activate)
+;;   "Go to beginning of match."
+;;   (when isearch-forward (goto-char isearch-other-end)))
 
 
-(defadvice isearch-search (after isearch-no-fail activate)
-  (unless isearch-success
-    (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
-    (ad-activate 'isearch-search)
-    (isearch-repeat (if isearch-forward 'forward))
-    (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
-    (ad-activate 'isearch-search)))
+;; (defadvice isearch-search (after isearch-no-fail activate)
+;;   (unless isearch-success
+;;     (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
+;;     (ad-activate 'isearch-search)
+;;     (isearch-repeat (if isearch-forward 'forward))
+;;     (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
+;;     (ad-activate 'isearch-search)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

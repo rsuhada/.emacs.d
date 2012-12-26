@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: ds9screenshot
+# contributor: Robert Suhada
+# --
+$0
+ds9 images/c2c/PNdi_05_20.fits \
+-regions format ds9 \
+-regions system image \
+-regions load detect/cand.reg \
+-regions load detect/ps.fcat.reg \
+-pan to $ra $de wcs fk5 \
+-geometry 1800x1800 \
+-zoom 4 \
+images/c2c/MOScomb_05_20.fits \
+-regions load detect/cand.reg \
+-regions load detect/ps.fcat.reg \
+-pan to $ra $de wcs fk5
+-saveimage png $dir/$dir_overview.png \
+-exit

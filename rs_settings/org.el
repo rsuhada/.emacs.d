@@ -91,6 +91,17 @@
 
 (setq org-use-fast-todo-selection t)    ; C-c C-t KEY
 
+;; ;; headline
+;; (setq org-fontify-done-headline t)
+;; (custom-set-faces
+;;  '(org-done ((t (:foreground "PaleGreen"
+;;                  :weight normal
+;;                  :strike-through t))))
+;;  '(org-headline-done
+;;             ((((class color) (min-colors 16) (background dark))
+;;                (:foreground "LightSalmon" :strike-through t)))))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; capture
 (setq org-default-notes-file "~/org/refile.org")

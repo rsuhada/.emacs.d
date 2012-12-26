@@ -1,6 +1,11 @@
-;; ;; Turn off mouse interface early in startup to avoid momentary display
-;; (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
-;;     (when (fboundp mode) (funcall mode -1)))
+;; Turn off mouse interface early in startup to avoid momentary display
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
+;; No splash screen please ... jeez
+(setq inhibit-startup-message t)
+
 
 ;; load in setups from files
 (load "~/.emacs.d/rs_settings/bindings")
@@ -83,6 +88,8 @@
  '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono"))))
  '(bm-fringe-persistent-face ((((class color) (background dark)) (:background "#d0bf8f" :foreground "#d0bf8f"))))
  '(my-linum-hl ((t (:inherit linum :background "#259185"))))
+ '(org-done ((t (:foreground "#728a05" :inverse-video nil :strike-through t :underline nil :slant normal :weight bold))))
+ '(org-headline-done ((t (:foreground "#728a05" :inverse-video nil :strike-through t :underline nil :slant normal :weight bold))))
  '(org-level-1 ((t (:foreground "#dfaf8f"))))
  '(org-todo ((t (:foreground "03181F")))))
 (put 'ido-exit-minibuffer 'disabled nil)
@@ -91,13 +98,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; theme
 (load "~/.emacs.d/rs_settings/theme.el")
-(set-cursor-color "brown3")
+
+(setq default-frame-alist
+  '((cursor-color . "brown3")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; recursive minibuffer
 
 (setq enable-recursive-minibuffers t)
-
 
 ;; (custom-set-faces
 ;;   ;; custom-set-faces was added by Custom.
@@ -138,3 +146,4 @@
 ;; (setq ipython-command "/usr/local/bin/ipython")
 ;; (setq python-command "ipython")
 ;; (setq py-shell-name "ipython")
+

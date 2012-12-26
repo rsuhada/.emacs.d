@@ -46,6 +46,8 @@
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
 (global-set-key (kbd "M-o") 'other-window) ; was facemenu-keymap
 
+(global-set-key (kbd "M-e") 'rs-macro/mark-line) ; forward-sentence
+
 ;; Replace dired's M-o
 (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-o") 'other-window))) ; was dired-omit-mode
 
@@ -136,6 +138,27 @@
        cur))))
 (global-set-key '[M-up] 'sacha/search-word-backward)
 (global-set-key '[M-down] 'sacha/search-word-forward)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; exiting iserch
+
+(defun isearch-exit-other-end (rbeg rend)
+  "Exit isearch, but at the other end of the search string.
+This is useful when followed by an immediate kill."
+  (interactive "r")
+  (isearch-exit)
+  (goto-char isearch-other-end))
+
+(defun isearch-exit-normal-end (rbeg rend)
+  "Exit isearch, but at the other end of the search string.
+This is useful when followed by an immediate kill."
+  (interactive "r")
+  (isearch-exit))
+
+(define-key isearch-mode-map [(return)] 'isearch-exit-other-end)
+(define-key isearch-mode-map [(control return)] 'isearch-exit-normal-end)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; defmacro cmd - some sort of simplified macro wrapping?
@@ -378,6 +401,13 @@ If LINE is non-nil, duplicate that line instead."
 
 ;; (global-set-key (kbd "M-enter") 'org-meta-enter) ;FIXME
 ;; (global-set-key [?\e (return)] 'org-meta-return)
+
+
+(defun jao-toggle-selective-display ()
+  (interactive)
+  (set-selective-display (if selective-display nil 1)))
+
+(global-set-key [f11] 'jao-toggle-selective-display)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
