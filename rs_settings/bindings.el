@@ -210,6 +210,13 @@ This is useful when followed by an immediate kill."
     (let ((case-fold-search isearch-case-fold-search))
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 
+(define-key isearch-mode-map (kbd "M-u") 'protect-underscore)
+
+(add-hook 'isearch-mode-hook
+          (lambda ()
+           (local-set-key (kbd "M-u") 'protect-underscore)
+          ))
+
 ;; Jump to a definition in the current file. (Protip: this is awesome.)
 (global-set-key (kbd "C-x C-i") 'imenu)
 
@@ -754,3 +761,13 @@ call function ansi-term interactively."
 (setq ns-function-modifier 'hyper)
 
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fix biinds for org
+
+;; (add-hook 'org-mode-hook
+;;           (local-set-key '[M-up] 'sacha/search-word-backward)
+;;           (local-set-key '[M-down] 'sacha/search-word-forward)
+;;           (local-set-key (kbd "C-'") 'goto-match-paren)
+;;           (local-set-key (kbd "M-e") 'rs-macro/mark-line)
+;;           ))

@@ -176,9 +176,31 @@
 ;; syntax highlighting in code blocks
 (setq org-src-fontify-natively t)
 
+(setq org-imenu-depth 4)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; velocity
 
 ;; (require 'org-velocity)
 ;; (setq org-velocity-bucket (expand-file-name "bucket.org" org-directory))
 ;; (global-set-key (kbd "C-c n") 'org-velocity)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; org strike-through
+(set-face-attribute 'org-done nil :strike-through t)
+(set-face-attribute 'org-headline-done nil :strike-through t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fix bindings
+
+(add-hook 'org-mode-hook
+          (lambda ()
+           (local-set-key '[M-up] 'sacha/search-word-backward)
+           (local-set-key '[M-down] 'sacha/search-word-forward)
+           (local-set-key (kbd "C-'") 'goto-match-paren)
+           (local-set-key (kbd "M-e") 'rs-macro/mark-line)
+           (local-set-key '[f7] 'org-store-link)
+           (local-set-key '[M-f7] 'org-insert-link)
+          ))
+
+

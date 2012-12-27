@@ -1035,6 +1035,7 @@ Example:
 (key-chord-define-global "]'"     "}")
 
 ;; (key-chord-define-global "qw" 'rs-macro/mark-line)
+;; (key-chord-define-global "qw" '"_")
 
 ;; mode specific maps can't be in bindings because they require
 ;; preloaded libs
