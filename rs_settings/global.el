@@ -744,3 +744,34 @@ the dired buffer."
 
 ;; (global-set-key (kbd "C-o") 'vi-open-line-below)
 ;; ;; (global-set-key (kbd "C-S-o") 'vi-open-line-above)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sum-column
+
+(defun sum-column()
+  "Sums a column of numbers starting at point. Needs at least one
+   empty line at the end of the column to insert result"
+  (interactive)
+  (save-excursion
+    (if (and (not (= (current-column) 0))
+	     (re-search-backward "[ \t]" 0 t ))
+	(forward-char))
+    (let ((retn 0)
+	  (old-column (current-column))
+	  (old-next-line-add-newlines))
+      (setq next-line-add-newlines nil)
+      (while (not
+	      (looking-at "^[ \t]*$"))
+	(move-to-column old-column t)
+	(if (and (looking-at "-?[0123456789]+")
+		 (eq (current-column) old-column))
+		(setq retn (+ retn (string-to-number (current-word)))))
+	(next-line)
+	(beginning-of-line))
+      (next-line)
+      (next-line)
+      (move-end-of-line 0)
+      (insert (make-string (- old-column (current-column)) 32))
+      (insert (number-to-string retn))
+      (setq next-line-add-newlines old-next-line-add-newlines)
+      retn)))

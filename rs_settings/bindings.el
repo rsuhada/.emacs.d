@@ -160,6 +160,13 @@ This is useful when followed by an immediate kill."
 (define-key isearch-mode-map [(return)] 'isearch-exit-other-end)
 (define-key isearch-mode-map [(control return)] 'isearch-exit-normal-end)
 
+
+(defun underscore ()
+  (interactive)
+  (isearch-unread-key-sequence (list ?_)))
+
+(define-key isearch-mode-map (kbd "M-u") 'underscore)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; defmacro cmd - some sort of simplified macro wrapping?
 
@@ -210,12 +217,11 @@ This is useful when followed by an immediate kill."
     (let ((case-fold-search isearch-case-fold-search))
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 
-(define-key isearch-mode-map (kbd "M-u") 'protect-underscore)
-
-(add-hook 'isearch-mode-hook
-          (lambda ()
-           (local-set-key (kbd "M-u") 'protect-underscore)
-          ))
+;; (define-key isearch-mode-map (kbd "M-u") 'protect-underscore)
+;; (add-hook 'isearch-mode-hook
+;;           (lambda ()
+;;            (local-set-key (kbd "M-u") 'protect-underscore)
+;;           ))
 
 ;; Jump to a definition in the current file. (Protip: this is awesome.)
 (global-set-key (kbd "C-x C-i") 'imenu)
@@ -535,36 +541,58 @@ If LINE is non-nil, duplicate that line instead."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; open line
 
-;; Behave like vi's o command
-(defun open-next-line (arg)
-  "Move to the next line and then opens a line.
-    See also `newline-and-indent'."
-  (interactive "p")
-  (end-of-line)
-  (open-line arg)
-  (next-line 1)
-  (when newline-and-indent
-    (indent-according-to-mode)))
 
-;; Behave like vi's O command
-(defun open-previous-line (arg)
-  "Open a new line before the current one.
-     See also `newline-and-indent'."
-  (interactive "p")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; open lines
+(defun open-line-below ()
+  (interactive)
+  (if (eolp)
+      (newline)
+    (end-of-line)
+    (newline))
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
   (beginning-of-line)
-  (open-line arg)
-  (when newline-and-indent
-    (indent-according-to-mode)))
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
 
-;; Autoindent open-*-lines
-(defvar newline-and-indent t
-  "Modify the behavior of the open-*-line functions to cause them to autoindent.")
+(global-set-key (kbd "<M-return>") 'open-line-below)
+(global-set-key (kbd "<M-S-return>") 'open-line-above)
 
-;; (global-set-key (kbd "M-o") 'open-previous-line)
-;; (global-set-key (kbd "C-o") 'open-next-line)
+;; ;; Behave like vi's o command
+;; (defun open-next-line (arg)
+;;   "Move to the next line and then opens a line.
+;;     See also `newline-and-indent'."
+;;   (interactive "p")
+;;   (end-of-line)
+;;   (open-line arg)
+;;   (next-line 1)
+;;   (when newline-and-indent
+;;     (indent-according-to-mode)))
 
-(global-set-key [S-return]   'open-next-line)
-(global-set-key [M-S-return] 'open-previous-line)
+;; ;; Behave like vi's O command
+;; (defun open-previous-line (arg)
+;;   "Open a new line before the current one.
+;;      See also `newline-and-indent'."
+;;   (interactive "p")
+;;   (beginning-of-line)
+;;   (open-line arg)
+;;   (when newline-and-indent
+;;     (indent-according-to-mode)))
+
+;; ;; Autoindent open-*-lines
+;; (defvar newline-and-indent t
+;;   "Modify the behavior of the open-*-line functions to cause them to autoindent.")
+
+;; ;; (global-set-key (kbd "M-o") 'open-previous-line)
+;; ;; (global-set-key (kbd "C-o") 'open-next-line)
+
+;; (global-set-key [S-return]   'open-next-line)
+;; (global-set-key [M-S-return] 'open-previous-line)
 
 
 ;; mark line

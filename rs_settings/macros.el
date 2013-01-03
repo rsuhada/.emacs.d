@@ -76,7 +76,7 @@
 ;; mark line (temporary solution)
 
 (fset 'rs-macro/mark-line
-   [?\C-a ?\C-a M-escape ?\C-e])
+   [?\C-a ?\C-a M-escape ?\C-e ?\C-e ?\C-e ?\C-e ?\C-e]) ;multiple end line for long line bug
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; macro for book list
@@ -109,9 +109,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; have an empty buffer with a single column of numbers, return it's
 ;; sum (see modeline + result in clipboard)
+;; replaced by proper function
 
-(fset 'rs-macro/sum-column
-   [?\C-\; ?\M-x ?o ?r ?g ?t ?b ?l ?- ?m ?o ?d ?e return ?\M-x ?o ?r ?g ?t ?b ?l ?o backspace ?- ?c ?r ?e ?a ?t ?e ?- ?o ?r ?- ?e ?x ?p ?r backspace ?o ?r ?t backspace backspace backspace backspace backspace backspace ?c ?o ?n ?v ?e ?r ?t ?- ?f ?r ?o ?m ?- ?r ?e ?g ?i ?o ?n return ?\C-c ?+])
+;; (fset 'rs-macro/sum-column
+;;    [?\C-\; ?\M-x ?o ?r ?g ?t ?b ?l ?- ?m ?o ?d ?e return ?\M-x ?o ?r ?g ?t ?b ?l ?o backspace ?- ?c ?r ?e ?a ?t ?e ?- ?o ?r ?- ?e ?x ?p ?r backspace ?o ?r ?t backspace backspace backspace backspace backspace backspace ?c ?o ?n ?v ?e ?r ?t ?- ?f ?r ?o ?m ?- ?r ?e ?g ?i ?o ?n return ?\C-c ?+])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; remove tex markup
@@ -119,3 +120,10 @@
 
 (fset 'rs-macro/detexify
    [?\M-< f2 ?^ backspace ?& return ?  return ?\M-< f2 ?/ backspace ?\\ ?\\ return return ?\M-< f2 ?$ return return ?\M-< f2 ?\\ ?p ?m return ?  ?  ?  return ?\M-< f2 ?^ ?\{ ?\M-l backspace return ?  ?  return ?\M-< f2 ?\} return return ?\M-< f2 ?_ ?\{ ?\C-d return return ?\M-<])
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; transfor selected region to anki cloze form
+
+(fset 'rs-macro/clozeify
+   [?\{ ?\M-  ?\C-\' ?\{ ?\C-\' ?\M-l ?\M-l ?c ?1 ?: ?: ?\M-s])
