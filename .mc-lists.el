@@ -45,7 +45,9 @@
                                orgtbl-self-insert-command
                                skeleton-pair-insert-maybe))
 
-(setq mc/cmds-to-run-once '(use-emacs-keys
+(setq mc/cmds-to-run-once '(cua-clear-rectangle-mark
+                            cua-set-rectangle-mark
+                            use-emacs-keys
                             copy-rectangle-to-register
                             org-cycle
                             sh-maybe-here-document

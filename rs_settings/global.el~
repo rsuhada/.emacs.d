@@ -8,11 +8,35 @@
 (setq column-number-mode  t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; current line in the left border - from stackowerflow
+;; highlight current line
+(global-hl-line-mode 1)
+
+;; undelrine instead of highlighting
+;; (set-face-attribute hl-line-face nil :underline t)
+
+;; ;; To customize the background color
+;; (set-face-background 'hl-line "#330")   ; original yellow
+;; (set-face-background 'hl-line "#0a2832")  ; original blue for solarized
+(set-face-background 'hl-line "#0d3340") ; brighter blue for solarized
+(set-face-foreground 'highlight nil)
+(set-face-foreground 'hl-line nil)
+
+;; alternative
+;; (require 'hl-line+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; color current line in the left border - from stackowerflow
 
 ;; FIXME: could be refactored wo hl-line for my purposes
+
+;; If the foreground and background don't match nicely, you can assign a
+;; foreground colour explicitly with M-x customize-face RET my-linum-hl
+;; RET
+
+(require 'hl-line)
 (defface my-linum-hl
-  `((t :inherit linum :background ,(face-background "#dca3a3" nil t)))
+  `((t :inherit linum :background ,(face-background 'hl-line nil t)))
   "Face for the current line number."
   :group 'linum)
 
@@ -26,7 +50,7 @@
          (format (concat "%" (number-to-string width) "d")))
     (setq my-linum-format-string format)))
 
-(defvar my-linum-current-line-number 0)
+(defvar my-linum-current-line-number 1)
 
 (setq linum-format 'my-linum-format)
 
@@ -69,34 +93,23 @@
 (add-hook 'before-save-hook (lambda () (delete-trailing-whitespace)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; highlight current line
-(global-hl-line-mode 1)
-
-;; undelrine instead of highlighting
-(set-face-attribute hl-line-face nil :underline t)
-
-;; ;; To customize the background color
-;; (set-face-background 'hl-line "#330")
-;; (set-face-foreground 'highlight nil)
-;; (set-face-foreground 'hl-line nil)
-
-;; alternative
-;; (require 'hl-line+)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no menu
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+;; (menu-bar-mode -1)
+;; (tool-bar-mode -1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; no scratch blurb
 
 ;; Disable startup message in scratch buffer
 (setq-default initial-scratch-message nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auto-revert
+;; (global-auto-revert-mode nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; zsh mode
@@ -113,21 +126,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; isearch tweaks
-(add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
-(defun my-goto-match-beginning ()
-  (when isearch-forward (goto-char isearch-other-end)))
-(defadvice isearch-exit (after my-goto-match-beginning activate)
-  "Go to beginning of match."
-  (when isearch-forward (goto-char isearch-other-end)))
+
+;; (add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
+;; (defun my-goto-match-beginning ()
+;;   (when isearch-forward (goto-char isearch-other-end)))
+;; (defadvice isearch-exit (after my-goto-match-beginning activate)
+;;   "Go to beginning of match."
+;;   (when isearch-forward (goto-char isearch-other-end)))
 
 
-(defadvice isearch-search (after isearch-no-fail activate)
-  (unless isearch-success
-    (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
-    (ad-activate 'isearch-search)
-    (isearch-repeat (if isearch-forward 'forward))
-    (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
-    (ad-activate 'isearch-search)))
+;; (defadvice isearch-search (after isearch-no-fail activate)
+;;   (unless isearch-success
+;;     (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
+;;     (ad-activate 'isearch-search)
+;;     (isearch-repeat (if isearch-forward 'forward))
+;;     (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
+;;     (ad-activate 'isearch-search)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -136,15 +150,22 @@
 ;; this didn't quite work
 ;; (add-to-list 'load-path
 ;;               "~/.emacs.d/plugins/")
-
 ;; (require 'smooth-scroll)
 ;; (smooth-scroll-mode t)
+
 
 (setq redisplay-dont-pause t
   scroll-margin 1
   scroll-step 1
   scroll-conservatively 10000
   scroll-preserve-screen-position 1)
+
+;; mouse scrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed t)
+
+;; faster scrolling?
+;; (setq jit-lock-defer-time 0.05)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; kill the bell
@@ -180,7 +201,7 @@
 ;; cursor shape
 
 (setq-default cursor-type 'bar)         ; defult: box
-(set-cursor-color "brown3")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; emerge setting
@@ -414,14 +435,80 @@
 (global-set-key (kbd "{")  'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
 (global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+;; (global-set-key (kbd "*") 'skeleton-pair-insert-maybe)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired settings
+
+;; How to make dired use the same buffer for viewing directory,
+;; instead of spawning many?
+
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "<return>")
+    'dired-find-alternate-file) ; was dired-advertised-find-file
+  (define-key dired-mode-map (kbd "^")
+    (lambda () (interactive) (find-alternate-file "..")))
+  ; was dired-up-directory
+ ))
+
+
+(defun open-in-external-app ()
+  "Open the current file or dired marked files in external app.
+Works in Microsoft Windows, Mac OS X, Linux."
+  (interactive)
+  (let ( doIt
+         (myFileList
+          (cond
+           ((string-equal major-mode "dired-mode") (dired-get-marked-files))
+           (t (list (buffer-file-name))) ) ) )
+
+    (setq doIt (if (<= (length myFileList) 5)
+                   t
+                 (y-or-n-p "Open more than 5 files?") ) )
+
+    (when doIt
+      (cond
+       ((string-equal system-type "windows-nt")
+        (mapc (lambda (fPath) (w32-shell-execute "open" (replace-regexp-in-string "/" "\\" fPath t t)) ) myFileList)
+        )
+       ((string-equal system-type "darwin")
+        (mapc (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "open" fPath)) )  myFileList) )
+       ((string-equal system-type "gnu/linux")
+        (mapc (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath)) ) myFileList) ) ) ) ) )
 
 (eval-after-load "dired-aux"
   '(add-to-list 'dired-compress-file-suffixes
                 '("\\.zip\\'" ".zip" "unzip")))
 
+(defun dired-mouse-find-alternate-file (event)
+  "In dired, visit the file or directory you click on instead of
+the dired buffer."
+  (interactive "e")
+  (let (file)
+    (save-excursion
+      (set-buffer (window-buffer (posn-window (event-end event))))
+      (save-excursion
+        (goto-char (posn-point (event-end event)))
+        (setq file (dired-get-filename))))
+    (select-window (posn-window (event-end event)))
+    (find-alternate-file (file-name-sans-versions file t))))
+
+;; (require 'dired-isearch)
+;; (eval-after-load "dired"
+;;   '(progn
+;;      (define-key dired-mode-map (kbd "C-s") 'dired-isearch-forward)
+;;      (define-key dired-mode-map (kbd "C-r") 'dired-isearch-backward)
+;;      (define-key dired-mode-map (kbd "ESC C-s") 'dired-isearch-forward-regexp)
+;;      (define-key dired-mode-map (kbd "ESC C-r")
+;;        'dired-isearch-backward-regexp)))
+
+;; e no longer does RET, instead does C-c C-x or whatever
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (define-key dired-mode-map (kbd "C-s") 'dired-isearch-filenames)
+             (define-key dired-mode-map "e" 'wdired-change-to-wdired-mode)
+             (define-key dired-mode-map "/" 'dired-isearch-filenames)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; send buffer path to kill ring
@@ -484,6 +571,7 @@
   ("Google" .
      [simple-query "www.google.com"
 		   "www.google.com/search?q=" ""])
+  ("gm google maps" . [simple-query "maps.google.com" "https://maps.google.com/maps?q=" ""])
   ("gi Google Image Search" .
    [simple-query "images.google.com" "images.google.com/images?hl=en&q=" ""])
   ("Flickr Search" .
@@ -494,8 +582,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python path
 
-(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:")
-
+(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/sb/:/Users/rs/data1/sw/esaspi/py/test/:")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc
@@ -523,3 +610,177 @@
      (format " %S/%S/%S" ops voices members))))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; builtin winner mode
+
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+
+(windmove-default-keybindings)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; setup windows
+
+(defun rs/window-setup-debuging ()
+  "Prepare windows for debuging"
+  (interactive)
+  (split-window-vertically)
+  (enlarge-window (round (/ (window-height (next-window)) 2.7))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; time in modeline
+
+(display-time-mode 1)
+
+(defface egoge-display-time
+  '((((type x w32 mac))
+     ;; #060525 is the background colour of my default face.
+     (:foreground "#060525" :inherit bold))
+    (((type tty))
+     (:foreground "blue")))
+  "Face used to display the time in the mode line.")
+;; This causes the current time in the mode line to be displayed in
+;; `egoge-display-time-face' to make it stand out visually.
+(setq display-time-string-forms
+      '((propertize (concat " " 24-hours ":" minutes " ")
+                    'face 'egoge-display-time)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; tramp settings
+
+(setq tramp-verbose 1)                  ; 0 - silent, 1 - errors, 3 -
+                                        ; default, 10 - debug
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ctags / etags
+
+(setq tags-revert-without-query t)
+
+(setq path-to-pytags "/Users/rs/data1/sw/scripts/buildpytags") ;; wrapper that fixes problem w import
+(defun create-pytags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (shell-command
+   (format "%s %s" path-to-pytags dir-name (directory-file-name dir-name)))
+  )
+
+;; auto refresh tags
+(defadvice find-tag (around refresh-etags activate)
+  "Rerun etags and reload tags if tag not found and redo find-tag.
+   If buffer is modified, ask about save before running etags."
+  (let ((extension (file-name-extension (buffer-file-name))))
+    (condition-case err
+        ad-do-it
+      (error (and (buffer-modified-p)
+                  (not (ding))
+                  (y-or-n-p "Buffer is modified, save it? ")
+                  (save-buffer))
+             (er-refresh-etags extension)
+             ad-do-it))))
+(defun er-refresh-etags (&optional extension)
+  "Run etags on all peer files in current dir and reload them silently."
+  (interactive)
+  (shell-command
+   (format "%s" path-to-pytags))
+  (let ((tags-revert-without-query t))  ; don't query, revert silently
+    (visit-tags-table default-directory nil)))
+
+;; auto jump
+(global-set-key (kbd "C-x C-M-1") 'find-tag) ; bind to some unused placeholder
+(global-set-key (kbd "C-x C-M-2") 'find-tag-other-window) ; bind to some unused placeholder
+(global-set-key (kbd "M-.") (kbd "C-x C-M-1 <return>"))
+(global-set-key (kbd "C-c M-.") (kbd "C-x C-M-2 <return>"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; latex
+
+;; (defun my-tex-mode-hook ()
+;; (local-set-key (kbd "C-c C-c") 'compile))
+;; (add-hook 'LaTeX-mode-hook 'my-tex-mode-hook)
+
+;;  (add-hook 'LaTeX-mode-common-hook
+;;             (lambda ()
+;;               (message "OK")
+;;               (local-set-key (kbd "C-c C-c") 'compile))
+;; )
+
+;; (add-hook 'LaTeX-mode-common-hook
+;;   (lambda ()
+;;     (set (make-local-variable 'compile-command) "./compile_osx.sh")))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; lowcase (builtin doesn't work?)
+
+(defun lowcase ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward ".+" nil t)
+      (replace-match (downcase (match-string 0)) t))))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; vim open line
+
+;; (defun vi-open-line-above ()
+;;   "Insert a newline above the current line and put point at beginning."
+;;   (interactive)
+;;   (unless (bolp)
+;;     (beginning-of-line))
+;;   (newline)
+;;   (forward-line -1)
+;;   (indent-according-to-mode))
+
+;; (defun vi-open-line-below ()
+;;   "Insert a newline below the current line and put point at beginning."
+;;   (interactive)
+;;   (unless (eolp)
+;;     (end-of-line))
+;;   (newline-and-indent))
+
+;; (global-set-key (kbd "C-o") 'vi-open-line-below)
+;; ;; (global-set-key (kbd "C-S-o") 'vi-open-line-above)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sum-column
+
+(defun sum-column()
+  "Sums a column of numbers starting at point. Needs at least one
+   empty line at the end of the column to insert result"
+  (interactive)
+  (save-excursion
+    (if (and (not (= (current-column) 0))
+	     (re-search-backward "[ \t]" 0 t ))
+	(forward-char))
+    (let ((retn 0)
+	  (old-column (current-column))
+	  (old-next-line-add-newlines))
+      (setq next-line-add-newlines nil)
+      (while (not
+	      (looking-at "^[ \t]*$"))
+	(move-to-column old-column t)
+	(if (and (looking-at "-?[0123456789]+")
+		 (eq (current-column) old-column))
+		(setq retn (+ retn (string-to-number (current-word)))))
+	(next-line)
+	(beginning-of-line))
+      (next-line)
+      (next-line)
+      (move-end-of-line 0)
+      (insert (make-string (- old-column (current-column)) 32))
+      (insert (number-to-string retn))
+      (setq next-line-add-newlines old-next-line-add-newlines)
+      retn)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; commonly used register files
+
+(dolist (r `((?i (file . ,("/Users/rs/documents/E-Books/self-hack/howtogetmotivated-2560x1440.png")))
+
+             ))
+(set-register (car r) (cadr r)))

@@ -12,6 +12,7 @@ ac-comphist.dat
 *.tar
 *.gzip
 *.zip
+*.*~
 # ignore personal info snippets:
 sig.yasnippet
 vizitka.yasnippet

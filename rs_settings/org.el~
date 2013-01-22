@@ -176,6 +176,8 @@
 ;; syntax highlighting in code blocks
 (setq org-src-fontify-natively t)
 
+(setq org-imenu-depth 4)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; velocity
 
@@ -185,9 +187,21 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; org strike-through
-(set-face-attribute ‘org-done nil :strike-through t)
-(set-face-attribute ‘org-headline-done nil :strike-through t)
+;; (set-face-attribute 'org-done nil :strike-through t)
+;; (set-face-attribute 'org-headline-done nil :strike-through t)
 
+(setq org-fontify-done-headline t)
+(custom-set-faces
+ '(org-done (t (:strike-through t)))
+ '(org-headline-done
+  (t  (:strike-through t))))
+
+(defun modify-org-done-face ()
+(setq org-fontify-done-headline t)
+(set-face-attribute 'org-done nil :strike-through t)
+(set-face-attribute 'org-headline-done nil :strike-through t))
+(eval-after-load "org"
+(add-hook 'org-add-hook 'modify-org-done-face))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fix bindings
@@ -198,4 +212,8 @@
            (local-set-key '[M-down] 'sacha/search-word-forward)
            (local-set-key (kbd "C-'") 'goto-match-paren)
            (local-set-key (kbd "M-e") 'rs-macro/mark-line)
+           (local-set-key '[f7] 'org-store-link)
+           (local-set-key '[M-f7] 'org-insert-link)
           ))
+
+

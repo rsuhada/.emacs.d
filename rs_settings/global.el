@@ -775,3 +775,13 @@ the dired buffer."
       (insert (number-to-string retn))
       (setq next-line-add-newlines old-next-line-add-newlines)
       retn)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; commonly used register files
+
+;; (defun pe ()
+;;  "Open a file containing frequently used Unicode chars"
+;;  (interactive)
+;;  (find-file "/Users/rs/example.txt"))
+

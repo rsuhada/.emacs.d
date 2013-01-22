@@ -186,11 +186,6 @@
 ;; (global-set-key (kbd "C-c n") 'org-velocity)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; org strike-through
-(set-face-attribute 'org-done nil :strike-through t)
-(set-face-attribute 'org-headline-done nil :strike-through t)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; fix bindings
 
 (add-hook 'org-mode-hook
