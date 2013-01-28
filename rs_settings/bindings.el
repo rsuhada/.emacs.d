@@ -799,3 +799,8 @@ call function ansi-term interactively."
 ;;           (local-set-key (kbd "C-'") 'goto-match-paren)
 ;;           (local-set-key (kbd "M-e") 'rs-macro/mark-line)
 ;;           ))
+
+(global-set-key (kbd "C-M-u")           ;was backward-sexp
+            (lambda ()
+                  (interactive)
+                  (join-line -1)))
