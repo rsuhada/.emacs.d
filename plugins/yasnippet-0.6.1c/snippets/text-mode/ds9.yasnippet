@@ -3,9 +3,19 @@
 # name: ds9
 # contributor: Robert Suhada
 # --
-$1# Region file format: DS9 version 4.1
+# Region file format: DS9 version 4.1
 # Filename: dummy.fits
 global color=green font="helvetica 10 normal" select=1 highlite=1 edit=1 move=1 delete=1 include=1 fixed=0 source=1
 fk5
-circle( $2, $3, $4") \# color=green width=2 font="helvetica 24 normal" text={$5}
-\# text( $6, $7) color=green font="helvetica 14 normal" text={$8}
+circle( $1, $2, $3") # color=green width=2 font="helvetica 24 normal" text={$4}
+$0
+annulus( , , ", ")
+box( , , ", ", )
+
+# text( , ) color=green font="helvetica 14 normal" text={}
+point( , ) # point=x color=white width=4
+point( , ) # point=cross
+point( , ) # point=circle
+
+line( , , , , ) # line=0 0
+# vector( , , ", ) vector=1

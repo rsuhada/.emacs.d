@@ -126,8 +126,7 @@
 ;; transfor selected region to anki cloze form
 
 (fset 'rs-macro/clozeify
-   [?\{ ?\M-  ?\C-\' ?\{ ?\C-\' ?\M-l ?\M-l ?c ?1 ?: ?: ?\M-s])
-
+   [?\{ ?\M-  ?\C-\' ?\{ ?\C-\' ?\M-l ?\M-l ?c ?: ?: ?\M-j ?\M-j ?\M-s])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; jclub macro

@@ -453,6 +453,7 @@ If LINE is non-nil, duplicate that line instead."
 
 (global-set-key [M-f11]   'eval-region)
 
+
 ;; (global-set-key [f12] 'deft)
 ;; (global-set-key [f12] 'sunrise)
 (global-set-key [S-f12] 'help)
@@ -788,10 +789,8 @@ call function ansi-term interactively."
 
 (setq ns-function-modifier 'hyper)
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fix biinds for org
+;; fix binds for org
 
 ;; (add-hook 'org-mode-hook
 ;;           (local-set-key '[M-up] 'sacha/search-word-backward)
@@ -804,3 +803,9 @@ call function ansi-term interactively."
             (lambda ()
                   (interactive)
                   (join-line -1)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; C-c bindings to Emacs native functions
+
+(global-set-key (kbd "C-c C-s") 'python-send-string)      ; in org mode clases w schedule

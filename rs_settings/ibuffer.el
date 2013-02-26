@@ -17,11 +17,15 @@
                ("python" (or
                           (name . "^\\*Python\\*")
                           (mode . python-mode)))
+               ("html" (mode . xhtml-mode))
                ("c" (mode . c-mode))
                ("r" (mode . ess-mode))
                ("fortran" (mode . fortran-mode))
                ("idl" (mode . idlwave-mode))
-               ("tex" (mode . latex-mode))
+               ("tex" (or
+                       (name . ".bib$")
+                       (name . ".bbl$")
+                       (mode . latex-mode)))
                ("org" (or
                            (name . "^\\*Calendar\\*$")
                            (name . "^diary$")

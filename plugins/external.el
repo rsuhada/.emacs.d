@@ -267,6 +267,7 @@ ac-source-abbrev
      anything-c-source-imenu
      anything-c-source-etags-select
      anything-c-source-bm
+     anything-c-source-register
      anything-c-source-recentf
      anything-c-source-file-name-history
      anything-c-source-file-cache
@@ -1054,6 +1055,9 @@ Example:
 (key-chord-define-global "[;"     "{")
 (key-chord-define-global "]'"     "}")
 
+(key-chord-define-global "--"     "->")
+(key-chord-define-global ",."     "<>")
+
 ;; (key-chord-define-global "qw" 'rs-macro/mark-line)
 ;; (key-chord-define-global "qw" '"_")
 
@@ -1149,3 +1153,11 @@ Example:
 ;; wgrep - editable grep buffer
 
 (require 'wgrep)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; yank line
+
+(require 'yank-line)
+
+(global-set-key (kbd "C-M-y") 'yl/yank-line)      ; in org mode clases w schedule
+(global-set-key (kbd "C-M-S-y") 'yl/copy-line)      ; in org mode clases w schedule

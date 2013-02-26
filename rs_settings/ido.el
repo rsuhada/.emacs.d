@@ -42,3 +42,22 @@
 (define-key ido-completion-map (kbd "C-@") nil)
 (define-key ido-completion-map (kbd "C-0") 'ido-restrict-to-matches)
 )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; quick access to home
+
+(add-hook 'ido-setup-hook
+ (lambda ()
+   ;; Go straight home
+   (define-key ido-file-completion-map
+     (kbd "`")
+     (lambda ()
+       (interactive)
+       (if (looking-back "/")
+           (insert "~/")
+         (call-interactively 'self-insert-command))))))
+
+
+;; (if (looking-back "~/")
+;; (insert ".emacs.d/")
+;; (if PREVIOUS-IF))
