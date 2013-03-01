@@ -173,8 +173,11 @@
 (add-hook 'latex-mode-hook 'my-org-paragraph-overrides)
 (add-hook 'idlwave-mode-hook 'my-org-paragraph-overrides)
 
-;; syntax highlighting in code blocks
-(setq org-src-fontify-natively t)
+;; syntax highlighting in code blocks - seems to slow things down
+;; more speedup possible if you turn off linum
+(setq org-src-fontify-natively nil)
+
+
 
 (setq org-imenu-depth 4)
 

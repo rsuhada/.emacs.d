@@ -55,7 +55,8 @@
                                orgtbl-self-insert-command
                                skeleton-pair-insert-maybe))
 
-(setq mc/cmds-to-run-once '(cua-clear-rectangle-mark
+(setq mc/cmds-to-run-once '(python-send-buffer
+                            cua-clear-rectangle-mark
                             cua-set-rectangle-mark
                             use-emacs-keys
                             copy-rectangle-to-register

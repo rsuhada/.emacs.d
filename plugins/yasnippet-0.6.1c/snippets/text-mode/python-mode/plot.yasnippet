@@ -11,7 +11,7 @@
 # start figure
 rc('axes', linewidth=1.5)
 fig_obj = plt.figure()
-fig_name='$1'
+figname='$1'
 headline_text = fig_obj.text(0.5, 0.95, '',
            horizontalalignment='center',
            fontproperties=matplotlib.font_manager.FontProperties(size=16))
@@ -64,7 +64,7 @@ for label in ax1.yaxis.get_ticklabels():
     label.set_fontweight("normal")          # normal/heavy/light/ultranormal/ultralight
 
 # save figure
-plt.savefig(fig_name)
+plt.savefig(figname)
 
 ######################################################################
 # stop plot enviroment
