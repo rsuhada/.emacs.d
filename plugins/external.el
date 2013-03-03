@@ -1161,3 +1161,15 @@ Example:
 
 (global-set-key (kbd "C-M-y") 'yl/yank-line)      ; in org mode clases w schedule
 (global-set-key (kbd "C-M-S-y") 'yl/copy-line)      ; in org mode clases w schedule
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; x-dict (formerly know as leo) - german dictionary
+
+;; xdict-query
+;; xdict-query-with-word-at-point
+
+(require 'x-dict)
+(add-to-list 'process-coding-system-alist '("x-dict" . latin-9))
+(global-set-key (kbd "C-c C-g C-q") 'xdict-query)
+(global-set-key (kbd "C-c C-g C-a") 'xdict-query-with-word-at-point)

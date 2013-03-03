@@ -775,15 +775,6 @@ If `case-replace' is nil, do not alter case of replacement text."
 (global-set-key (kbd "C-x r <M-f2>") 'my-replace-regexp-rectangle)
 
 
-(defun rs/switch-to-python-shell ()
-  "Show an existing buffer called \"*ansi-term*\" if one exists, otherwise
-call function ansi-term interactively."
-  (interactive)
-  (let ((existing-buffer (get-buffer "*Python*")))
-         (switch-to-buffer existing-buffer)))
-(global-set-key [M-f12] 'rs/switch-to-python-shell)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hyper-key
 
@@ -809,3 +800,26 @@ call function ansi-term interactively."
 ;; C-c bindings to Emacs native functions
 
 (global-set-key (kbd "C-c C-s") 'python-send-string)      ; in org mode clases w schedule
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python binings
+
+(defun rs/switch-to-python-shell ()
+  "Show an existing buffer called \"*ansi-term*\" if one exists, otherwise
+call function ansi-term interactively."
+  (interactive)
+  (let ((existing-buffer (get-buffer "*Python*")))
+         (switch-to-buffer existing-buffer)))
+(global-set-key [M-f12] 'rs/switch-to-python-shell)
+
+;; hooks
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (add-hook 'abbrev-expand-functions
+                        'hash-comment-mode-abbrev-expand-function
+                        nil t)))
+
+(add-hook 'python-mode-hook
+          (lambda () (define-key python-mode-map (kbd "C-m") 'newline-and-indent)))
+
