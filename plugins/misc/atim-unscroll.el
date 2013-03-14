@@ -112,7 +112,10 @@
         scroll-right
         beginning-of-buffer
         end-of-buffer
-        scroll-bar-toolkit-scroll))
+        scroll-bar-toolkit-scroll
+        ace-jump-char-mode
+        isearch-forward-regexp
+        isearch-backward-regexp))
 
 ;; these commands invoke the basic scrolling commands;
 ;; they will have `unscrollable' property

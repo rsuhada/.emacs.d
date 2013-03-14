@@ -242,16 +242,15 @@ ac-source-abbrev
 ;; A default list of constants to insert when none are specified
 (setq constants-default-list "cc,bk,hp,Mpc,Msun")
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dot-mode (repeat complex commands)
 
-:; (autoload 'dot-mode "dot-mode" nil t) ; vi `.' command emulation
-;; (global-set-key [(control ?.)] (lambda () (interactive) (dot-mode 1)
-                                 ;; (message "Dot mode activated.")))
+(autoload 'dot-mode "dot-mode" nil t) ; vi `.' command emulation
+(global-set-key [(control ?,)] (lambda () (interactive) (dot-mode 1)
+                                 (message "Dot mode activated.")))
 
-;; (require 'dot-mode)
-;; (add-hook 'find-file-hooks 'dot-mode-on)
+(require 'dot-mode)
+(add-hook 'find-file-hooks 'dot-mode-on)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; anything
@@ -730,10 +729,12 @@ ac-source-abbrev
 
 (require 'goto-last-change)
 (global-set-key "\C-p" 'goto-last-change)
-(global-set-key "\C-\M-p" 'pop-global-mark)
+;; (global-set-key "\C-\M-p" 'pop-global-mark)
+(global-set-key "\C-\M-p" 'rs-macro/jump-to-last-mark)
 
 ;; ;; npt very useful atm
 ;; ;; (global-set-key "\C-p" 'mark-set-command)
+
 ;; (require 'marker-visit)
 ;; (global-set-key "\C-\M-p" 'marker-visit-prev)
 ;; (global-set-key "\C-\M-n" 'marker-visit-next) ;was forward-list
@@ -1007,12 +1008,11 @@ Example:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; unscroll
 
-(require 'atim-unscroll)
-(atim-unscroll-global-mode)
+;; (require 'atim-unscroll)
+;; (atim-unscroll-global-mode)
 
-(global-set-key (kbd "C-M-p") 'atim-unscroll-up)
-(global-set-key (kbd "C-M-n") 'atim-unscroll-down)
-
+;; (global-set-key (kbd "C-M-p") 'atim-unscroll-up)
+;; (global-set-key (kbd "C-M-n") 'atim-unscroll-down)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; chords
@@ -1170,3 +1170,21 @@ Example:
 (add-to-list 'process-coding-system-alist '("x-dict" . latin-9))
 (global-set-key (kbd "C-c C-g C-q") 'xdict-query)
 (global-set-key (kbd "C-c C-g C-a") 'xdict-query-with-word-at-point)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; automark
+
+(require 'auto-mark)
+(when (require 'auto-mark nil t)
+  (setq auto-mark-command-class-alist
+        '((anything . anything)
+          (goto-line . jump)
+          (indent-for-tab-command . ignore)
+          (undo . ignore)))
+  (setq auto-mark-command-classifiers
+        (list (lambda (command)
+                (if (and (eq command 'self-insert-command)
+                         (eq last-command-char ? ))
+                    'ignore))))
+  (global-auto-mark-mode 1))

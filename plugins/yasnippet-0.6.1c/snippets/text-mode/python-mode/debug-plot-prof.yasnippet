@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: debug-plot-prof
+# contributor: Robert Suhada
+# --
+r        = $0r
+tmp1     = sb_src
+tmp1_err = sb_src_err
+tmp2     = sb_src
+tmp2_err = sb_src_err
+
+from sb_plotting_utils import plot_sb_profile
+plot_sb_profile(r, tmp1, tmp1_err, tmp2, tmp2_err, outfig)

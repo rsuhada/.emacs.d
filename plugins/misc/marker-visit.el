@@ -74,14 +74,14 @@
   (marker-visit-remove-dupes
    (sort
     (append (cons current-point-mark
-		  (if (mark-marker) (list (mark-marker)) nil))
-	    (mapcar (lambda (id) id) mark-ring))
+      (if (mark-marker) (list (mark-marker)) nil))
+      (mapcar (lambda (id) id) mark-ring))
     (lambda (a b) (< a b)))))
 
 (defun marker-visit-no-markers-p ()
   (and (null mark-ring)
        (or (not (mark-marker))
-	   (not (marker-position (mark-marker))))))
+     (not (marker-position (mark-marker))))))
 
 (defun marker-visit-warn (error-message)
   (message error-message)
@@ -93,14 +93,14 @@
   (if (marker-visit-no-markers-p)
       (marker-visit-warn "Mark does not point anywhere")
     (let* ((current-point-mark (point-marker))
-	   (sorted-marks (marker-visit-get-sorted-mark-set current-point-mark))
-	   (dest-mark nil))
+     (sorted-marks (marker-visit-get-sorted-mark-set current-point-mark))
+     (dest-mark nil))
       (while (not (equal current-point-mark (car sorted-marks)))
-	(setq dest-mark (car sorted-marks))
-	(setq sorted-marks (cdr sorted-marks)))
+  (setq dest-mark (car sorted-marks))
+  (setq sorted-marks (cdr sorted-marks)))
       (if dest-mark
-	  (goto-char dest-mark)
-	(marker-visit-warn "No previous mark to visit")))))
+    (goto-char dest-mark)
+  (marker-visit-warn "No previous mark to visit")))))
 
 (defun marker-visit-next ()
   "From point, visit the nearest mark later in the buffer."
@@ -108,18 +108,18 @@
   (if (marker-visit-no-markers-p)
       (marker-visit-warn "Mark does not point anywhere")
     (let* ((current-point-mark (point-marker))
-	   (sorted-marks (marker-visit-get-sorted-mark-set current-point-mark))
-	   (dest-mark nil)
-	   (done nil))
+     (sorted-marks (marker-visit-get-sorted-mark-set current-point-mark))
+     (dest-mark nil)
+     (done nil))
       (while (not done)
-	(if (equal current-point-mark (car sorted-marks))
-	    (progn
-	      (setq dest-mark (cadr sorted-marks))
-	      (setq done t))
-	  (setq sorted-marks (cdr sorted-marks))))
+  (if (equal current-point-mark (car sorted-marks))
+      (progn
+        (setq dest-mark (cadr sorted-marks))
+        (setq done t))
+    (setq sorted-marks (cdr sorted-marks))))
       (if dest-mark
-	  (goto-char dest-mark)
-	(marker-visit-warn "No next mark to visit")))))
+    (goto-char dest-mark)
+  (marker-visit-warn "No next mark to visit")))))
 
 (defun marker-visit-truncate-mark-ring ()
   "Truncate the `mark-ring'."
