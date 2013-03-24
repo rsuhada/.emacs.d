@@ -11,6 +11,12 @@
                            (name . ".csv$")
                            (name . ".table$")
                            ))
+               ("pics" (or
+                           (name . ".jpg$")
+                           (name . ".jpeg$")
+                           (name . ".gif$")
+                           (name . ".png$")
+                           ))
                ("kapi" (filename . "/kapi/"))
                ("esaspi" (filename . "/esaspi/"))
                ("sh" (mode . sh-mode))

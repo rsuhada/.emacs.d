@@ -144,3 +144,9 @@
 ;; exchanges point ana mark and switches of selection
 (fset 'rs-macro/jump-to-last-mark
    "\C-x\C-x\240")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; force compile python
+
+(fset 'rs-macro/pycompile
+   [?\M-o ?\M-> return return ?\M-o ?\C-c ?\C-c])

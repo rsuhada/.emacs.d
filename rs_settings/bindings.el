@@ -823,3 +823,11 @@ call function ansi-term interactively."
 (add-hook 'python-mode-hook
           (lambda () (define-key python-mode-map (kbd "C-m") 'newline-and-indent)))
 
+(add-hook 'python-mode-hook
+          (lambda () (define-key python-mode-map (kbd "C-<f7>") 'rs-macro/pycompile)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; unset keys needed for system
+
+(global-unset-key (kbd "M-`")) ;; was tmm-menubar

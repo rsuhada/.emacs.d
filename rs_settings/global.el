@@ -387,7 +387,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; comments
 
-(setq comment-start "#")
+(setq-default comment-start "#")
+
+(add-hook 'text-mode-hook (lambda () (setq comment-start "#")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrevs for comments

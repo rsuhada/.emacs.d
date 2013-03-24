@@ -3,9 +3,11 @@
 # name: read
 # contributor: Robert Suhada
 # --
-filename='$0'
-data = atab.read(filename)
+fname='$1'
+data = asciitable.read(table=fname,
+                  data_start=0, data_end=None, header_start=9,
+                  delimiter=' ', comment='#', quotechar='"')
 
-# col1=data['col1']
+${2:column}=data['{$2}']$0
 
 
