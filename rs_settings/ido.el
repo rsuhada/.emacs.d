@@ -44,6 +44,27 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sort by time
+;; - 2013-03-26 - shouldn't be used - conflicts w tramp
+;; ssh connecting
+
+;; ; sort ido filelist by mtime instead of alphabetically
+;; (add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
+;; (add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
+;; (defun ido-sort-mtime ()
+;;   (setq ido-temp-list
+;;         (sort ido-temp-list
+;;               (lambda (a b)
+;;                 (time-less-p
+;;                  (sixth (file-attributes (concat ido-current-directory b)))
+;;                  (sixth (file-attributes (concat ido-current-directory a)))))))
+;;   (ido-to-end  ;; move . files to end (again)
+;;    (delq nil (mapcar
+;;               (lambda (x) (and (string-match-p "^\\.." x) x))
+;;               ;; (lambda (x) (and (char-equal (string-to-char x) ?.) x))
+;;               ido-temp-list))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; quick access to home
 
 (add-hook 'ido-setup-hook
@@ -55,6 +76,41 @@
        (interactive)
        (if (looking-back "/")
            (insert "~/")
+         (call-interactively 'self-insert-command))))))
+
+;; not quite working but ok - need a newline or delete everything in the start
+
+(add-hook 'ido-setup-hook
+ (lambda ()
+   ;; Go straight home
+   (define-key ido-file-completion-map
+     (kbd "<f1>")
+     (lambda ()
+       (interactive)
+       (if (looking-back "/")
+           (insert "~/w/")
+         (call-interactively 'self-insert-command))))))
+
+(add-hook 'ido-setup-hook
+ (lambda ()
+   ;; Go straight home
+   (define-key ido-file-completion-map
+     (kbd "<f2>")
+     (lambda ()
+       (interactive)
+       (if (looking-back "/")
+           (insert "~/w/xspt/")
+         (call-interactively 'self-insert-command))))))
+
+(add-hook 'ido-setup-hook
+ (lambda ()
+   ;; Go straight home
+   (define-key ido-file-completion-map
+     (kbd "<f3>")
+     (lambda ()
+       (interactive)
+       (if (looking-back "/")
+           (insert "~/data1/sw/")
          (call-interactively 'self-insert-command))))))
 
 
