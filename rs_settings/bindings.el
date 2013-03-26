@@ -401,7 +401,7 @@ If LINE is non-nil, duplicate that line instead."
 ;; more movement improvement
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-(global-set-key (kbd "M-Z") 'zap-copy-up-to-char)
+;; (global-set-key (kbd "M-Z") 'zap-copy-up-to-char)
 
 (global-unset-key (kbd "M-u")) ; upcase-word
 (global-set-key (kbd "C-c M-u") 'upcase-word)
@@ -831,3 +831,13 @@ call function ansi-term interactively."
 ;; unset keys needed for system
 
 (global-unset-key (kbd "M-`")) ;; was tmm-menubar
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; switch bindings for undo
+
+(global-set-key (kbd "M-z") 'undo)
+(global-set-key (kbd "M-Z") 'undo-tree-redo) ; was: zap-copy-up-to-char
+(global-set-key (kbd "C-z") 'undo-tree-visualize) ; was: repeat
+(global-unset-key (kbd "C-/"))          ; learning
+;; (global-set-key (kbd "C-/") 'zap-to-char)
+
