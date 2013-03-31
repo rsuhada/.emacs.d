@@ -1129,7 +1129,7 @@ in visualizer."
     (define-key map [remap undo] 'undo-tree-undo)
     (define-key map [remap undo-only] 'undo-tree-undo)
     ;; bind standard undo bindings (since these match redo counterparts)
-    (define-key map (kbd "C-/") 'undo-tree-undo)
+    (define-key map (kbd "M-z") 'undo-tree-undo) ; RS: was C-/
     (define-key map "\C-_" 'undo-tree-undo)
     ;; redo doesn't exist normally, so define our own keybindings
     (define-key map (kbd "C-?") 'undo-tree-redo)

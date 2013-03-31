@@ -788,3 +788,23 @@ the dired buffer."
 ;;  (interactive)
 ;;  (find-file "/Users/rs/example.txt"))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; text mode fill paragrph
+
+(defun maybe-fill-paragraph (&optional justify region)
+  "Fill paragraph at or after point (see `fill-paragraph').
+
+Does nothing if `visual-line-mode' is on."
+  (interactive (progn
+    	 (barf-if-buffer-read-only)
+    	 (list (if current-prefix-arg 'full) t)))
+  (or visual-line-mode
+      (fill-paragraph justify region)))
+
+;; Replace M-q with new binding:
+
+(add-hook 'text-mode-hook
+  (defun cjm-fix-text-mode ()
+    (define-key text-mode-map "\M-q" 'maybe-fill-paragraph)
+    (remove-hook 'text-mode-hook 'cjm-fix-text-mode)))

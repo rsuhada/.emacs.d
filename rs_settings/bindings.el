@@ -4,7 +4,7 @@
 ;; (setq x-select-enable-clipboard t)
 
 ;; Repeat
-(global-set-key [(control z)] 'repeat) ; was suspend-frame
+;; (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
 ;; killing buffers
 (global-set-key (kbd "C-x C-k") 'kill-buffer) ; was kmacro-edit-macro
@@ -835,9 +835,11 @@ call function ansi-term interactively."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; switch bindings for undo
 
-(global-set-key (kbd "M-z") 'undo)
+(global-set-key (kbd "M-z") 'undo-tree-undo)
 (global-set-key (kbd "M-Z") 'undo-tree-redo) ; was: zap-copy-up-to-char
 (global-set-key (kbd "C-z") 'undo-tree-visualize) ; was: repeat
-(global-unset-key (kbd "C-/"))          ; learning
-;; (global-set-key (kbd "C-/") 'zap-to-char)
 
+;; rebinding c=/ doesn't seem to work - also it could brake some of the macros
+;; (global-unset-key (kbd "C-/"))          ; learning
+;; (global-set-key (kbd "C-/") 'zap-to-char)
+;; (global-set-key [(control /)] 'zap-to-char) ; was suspend-frame

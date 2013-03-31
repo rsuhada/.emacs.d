@@ -1188,3 +1188,4 @@ Example:
                          (eq last-command-char ? ))
                     'ignore))))
   (global-auto-mark-mode 1))
+
