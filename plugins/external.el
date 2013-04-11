@@ -1189,3 +1189,13 @@ Example:
                     'ignore))))
   (global-auto-mark-mode 1))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; visual regexp
+;; not working on Emacs 23 -  (require 'cl-lib)
+;; recommend  using melpa
+;; https://github.com/benma/visual-regexp.el/issues
+
+;; (require 'visual-regexp)
+;; (define-key global-map (kbd "C-c r") 'vr/replace)
+;; (define-key global-map (kbd "C-c q") 'vr/query-replace)

@@ -119,7 +119,7 @@
 ;; FIXME: work on this
 
 (fset 'rs-macro/detexify
-   [?\M-< f2 ?^ backspace ?& return ?  return ?\M-< f2 ?/ backspace ?\\ ?\\ return return ?\M-< f2 ?$ return return ?\M-< f2 ?\\ ?p ?m return ?  ?  ?  return ?\M-< f2 ?^ ?\{ ?\M-l backspace return ?  ?  return ?\M-< f2 ?\} return return ?\M-< f2 ?_ ?\{ ?\C-d return return ?\M-<])
+   [?\M-< f2 ?^ backspace ?& return ?  return ?\M-< f2 ?/ backspace ?\\ ?\\ return return ?\M-< f2 ?$ return return ?\M-< f2 ?\\ ?p ?m return ?  ?  ?  return ?\M-< f2 ?^ ?\{ ?\M-l backspace return ?  ?  return ?\M-< f2 ?\} return return ?\M-< f2 ?_ ?\{ ?\C-d return ?  return ?\M-<])
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -150,3 +150,12 @@
 
 (fset 'rs-macro/pycompile
    [?\M-o ?\M-> return return ?\M-o ?\C-c ?\C-c])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; macros for desktop recover
+
+(fset 'rs-macro/recover1
+   [?\C-s ?\" ?/ ?s ?s ?h ?2 return ?\M-m ?\C-d ?\C-d])
+
+(fset 'rs-macro/recover2
+   [?\C-s ?s ?s ?h ?2 ?: return ?\C-\; ?\C-d ?\C-d])

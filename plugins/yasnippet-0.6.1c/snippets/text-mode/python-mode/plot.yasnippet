@@ -10,7 +10,7 @@
 ######################################################################
 # start figure
 rc('axes', linewidth=1.5)
-fig_obj = plt.figure()
+fig_obj = plt.figure()          # figsize=(6, 6)
 figname='$1'
 headline_text = fig_obj.text(0.5, 0.95, '',
            horizontalalignment='center',
@@ -32,13 +32,16 @@ ax1.set_yscale('linear')           # linear/log nonposx='clip' /symlog
 # ax1.set_ylim(ymin=20.0,ymax=50.0)
 
 # subplot text sets
-# ax1.set_title('plot title', fontsize=16, fontweight="normal")  # fontsize=16
+# ax1.set_title('plot title', fontsize=14, fontweight="normal")  # fontsize=16
 ax1.set_xlabel('x', fontsize=14, fontweight="normal")          # fontsize=12
 ax1.set_ylabel('y', fontsize=14, fontweight="normal")          # fontsize=12
 
 # legend
-prop = matplotlib.font_manager.FontProperties(size=16)  # size=16
+prop = matplotlib.font_manager.FontProperties(size=14)  # size=16
 ax1.legend(loc=0, prop=prop, numpoints=1)
+
+# add margin plot if cut-off label
+# plt.gcf().subplots_adjust(left=0.15)    # bottom
 
 # adding minor ticks
 # xminorLocator = plt.MultipleLocator(0.01)           # minor ticks location in abs units
