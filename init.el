@@ -10,6 +10,7 @@
 ;; load in setups from files
 (load "~/.emacs.d/rs_settings/bindings")
 (load "~/.emacs.d/rs_settings/global")
+
 (load "~/.emacs.d/rs_settings/defun")
 (load "~/.emacs.d/rs_settings/env")
 (load "~/.emacs.d/rs_settings/macros")
@@ -20,6 +21,9 @@
 (load "~/.emacs.d/rs_settings/ibuffer")
 (load "~/.emacs.d/rs_settings/abbrev.el")
 (load "~/.emacs.d/rs_settings/modes.el")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; non-active
 
 ;; (load "~/.emacs.d/rs_settings/python_stuff")
 ;; (load "~/.emacs.d/rs_settings/scratch")
@@ -143,6 +147,3 @@
 ;; (setq ipython-command "/usr/local/bin/ipython")
 ;; (setq python-command "ipython")
 ;; (setq py-shell-name "ipython")
-
-
-

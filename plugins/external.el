@@ -1199,3 +1199,18 @@ Example:
 ;; (require 'visual-regexp)
 ;; (define-key global-map (kbd "C-c r") 'vr/replace)
 ;; (define-key global-map (kbd "C-c q") 'vr/query-replace)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; skeleton complete
+
+(require 'skeleton-complete)
+
+;; (global-set-key [(meta s) (return)] 'skeleton-easy-regexp-display-abbrev) ; M-a was backward sentence
+(global-set-key [(meta g) ?x] 'skeleton-easy-regexp-display-abbrev)
+;; (global-set-key [(meta a)] 'skeleton-easy-regexp-display-abbrev)
+
+
+
+
+
+
