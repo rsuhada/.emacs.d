@@ -113,9 +113,13 @@
 (define-key global-map "\C-ct"
         (lambda () (interactive) (org-capture nil "t")))
 
-;; quick todo
+;; quick wiki
 (define-key global-map "\C-cw"
         (lambda () (interactive) (org-capture nil "w")))
+
+;; quick personal note
+(define-key global-map "\C-ce"
+        (lambda () (interactive) (org-capture nil "e")))
 
 ;; Capture templates
 (setq org-capture-templates
@@ -129,6 +133,7 @@
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
             ("p" "personal" entry (file "~/org/personal.org") "* %?\n%U" :empty-lines 1)
             ("w" "wiki" entry (file "~/org/wiki.org") "* %? \n%U\n######################################################################")
+            ("e" "epi" entry (file "~/org/ttmf.org") "* %? \n\n\n\n\n\n\n%U\n######################################################################")
             )))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

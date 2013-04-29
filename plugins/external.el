@@ -1159,6 +1159,7 @@ Example:
 
 (require 'yank-line)
 
+;; C-u <line number>
 (global-set-key (kbd "C-M-y") 'yl/yank-line)      ; in org mode clases w schedule
 (global-set-key (kbd "C-M-S-y") 'yl/copy-line)      ; in org mode clases w schedule
 
