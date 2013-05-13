@@ -47,8 +47,8 @@
 
 ;; my agendas
 (setq org-agenda-files (list
-                        "~/org/work.org"
-                        "~/org/job.org"
+                        "~/org/personal-agenda.org"
+                        ;; "~/org/job.org"
                         ;; "~/org/personal.org"
                         ;; "~/org/refile.org"
                         ;; "~/org/emacs.org"
