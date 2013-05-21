@@ -47,7 +47,7 @@
 
 ;; my agendas
 (setq org-agenda-files (list
-                        "~/org/personal-agenda.org"
+                        "~/org/personal/personal-agenda.org"
                         ;; "~/org/job.org"
                         ;; "~/org/personal.org"
                         ;; "~/org/refile.org"
@@ -131,8 +131,8 @@
              "* %? :note:\n%U" :empty-lines 1)
             ("i" "idea" entry (file "~/org/refile.org")
              "* %? :idea:\n%U\n%a\n" :empty-lines 1)
-            ("p" "personal" entry (file "~/org/personal.org") "* %?\n%U" :empty-lines 1)
-            ("w" "wiki" entry (file "~/org/wiki.org") "* %? \n%U\n######################################################################")
+            ("p" "personal" entry (file "~/org/personal/personal.org") "* %?\n%U" :empty-lines 1)
+            ("w" "wiki" entry (file "~/org/wiki/wiki.org") "* %? \n%U\n######################################################################")
             ("e" "epi" entry (file "~/org/ttmf.org") "* %? \n\n\n\n\n\n\n%U\n######################################################################")
             )))
 

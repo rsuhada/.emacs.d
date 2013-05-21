@@ -728,11 +728,11 @@ ac-source-abbrev
 ;; jump to last edit place
 
 (require 'goto-last-change)
-;; (global-set-key "\C-p" 'goto-last-change)
+(global-set-key "\C-p" 'goto-last-change)
 ;; (global-set-key "\C-\M-p" 'pop-global-mark)
-;; (global-set-key "\C-\M-p" 'rs-macro/jump-to-last-mark)
+(global-set-key "\C-\M-p" 'rs-macro/jump-to-last-mark)
 
-;; ;; npt very useful atm
+;; ;; not very useful atm
 ;; ;; (global-set-key "\C-p" 'mark-set-command)
 
 ;; (require 'marker-visit)
@@ -740,15 +740,14 @@ ac-source-abbrev
 ;; (global-set-key "\C-\M-n" 'marker-visit-next) ;was forward-list
 
 
-(require 'jumpc)
-(jumpc)
+;; (require 'jumpc)
+;; (jumpc)
 
 ;; Then either:
 ;; (jumpc-bind-vim-key)
 ;; Or:
-
-(global-set-key (kbd "C-p") 'jumpc-jump-backward)
-(global-set-key (kbd "C-M-p") 'jumpc-jump-forward)
+;; (global-set-key (kbd "C-p") 'jumpc-jump-backward)
+;; (global-set-key (kbd "C-M-p") 'jumpc-jump-forward)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; extend-region
