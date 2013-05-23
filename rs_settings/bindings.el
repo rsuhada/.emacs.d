@@ -835,9 +835,10 @@ call function ansi-term interactively."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; switch bindings for undo
 
-(global-set-key (kbd "M-z") 'undo-tree-undo)
-(global-set-key (kbd "M-Z") 'undo-tree-redo) ; was: zap-copy-up-to-char
+;; (global-set-key (kbd "M-z") 'undo-tree-undo)
+;; (global-set-key (kbd "M-Z") 'undo-tree-redo) ; was: zap-copy-up-to-char
 (global-set-key (kbd "C-z") 'undo-tree-visualize) ; was: repeat
+(global-set-key (kbd "M-z") 'zap-to-char)
 
 ;; rebinding c=/ doesn't seem to work - also it could brake some of the macros
 ;; (global-unset-key (kbd "C-/"))          ; learning
