@@ -206,4 +206,9 @@
            (local-set-key '[M-f7] 'org-insert-link)
           ))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; links
+
+
+;; (setq org-link-frame-setup )
 

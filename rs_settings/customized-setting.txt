@@ -1,0 +1,15 @@
+######################################################################
+# gather here customization not in config but via customize-variable
+# and similar
+######################################################################
+
+
+1. opening org-link in a maximized window
+
+You need to customize org-link-frame-setup to use find-file instead of
+the default find-file-other-window.
+
+You can do this by typing M-x customize-variable <ENTER>
+org-link-frame-setup <ENTER>. Click the Value Menu next to
+find-file-other-window and select find-file, then click Save for
+future sessions.

@@ -71,6 +71,7 @@
  '(longlines-wrap-follows-window-size t)
  '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample"))))
  '(minimap-window-location (quote left))
+ '(org-link-frame-setup (quote ((vm . vm-visit-folder-other-frame) (gnus . org-gnus-no-new-news) (file . find-file) (wl . wl-other-frame))))
  '(pomodoro-break-cycle "b "))
 
 

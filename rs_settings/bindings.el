@@ -40,8 +40,27 @@
 (global-set-key (kbd "M-s") 'save-buffer) ;; was save-some-buffers
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
-(global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
-(global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
+
+(defun vsplit-last-buffer ()
+  (interactive)
+  (split-window-vertically)
+  (other-window 1 nil)
+  (switch-to-previous-buffer)
+  )
+(defun hsplit-last-buffer ()
+  (interactive)
+  (split-window-horizontally)
+  (other-window 1 nil)
+  (switch-to-previous-buffer)
+  )
+
+(global-set-key (kbd "M-3") 'hsplit-last-buffer) ; was digit-argument
+(global-set-key (kbd "M-2") 'vsplit-last-buffer) ; was digit-argument
+
+;; using the stock Emacs splitting (stay in same buffer)
+;; (global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
+;; (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
+
 (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
 (global-set-key (kbd "M-o") 'other-window) ; was facemenu-keymap
@@ -425,10 +444,16 @@ If LINE is non-nil, duplicate that line instead."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 
-(global-set-key (kbd "<M-f1>") 'bm-toggle)
-(global-set-key (kbd "<f1>")   'bm-next)
+;; (global-set-key (kbd "<M-f1>") 'bm-toggle)
+;; (global-set-key (kbd "<f1>")   'bm-next)
+;; (global-set-key (kbd "<S-f1>") 'bm-previous)
+;; (global-set-key (kbd "<M-S-f1>") 'bm-show-all)
+
+; leave f1 for emterm switch
+(global-set-key (kbd "<M-S-f1>") 'bm-toggle)
+(global-set-key (kbd "<M-f1>")   'bm-next)
 (global-set-key (kbd "<S-f1>") 'bm-previous)
-(global-set-key (kbd "<M-S-f1>") 'bm-show-all)
+;; (global-set-key (kbd "<M-S-f1>") 'bm-show-all)
 
 (global-set-key (kbd "M-m")   'er/expand-region)
 (global-set-key (kbd "M-M")   'er/contract-region)

@@ -631,6 +631,10 @@ the dired buffer."
   (split-window-vertically)
   (enlarge-window (round (/ (window-height (next-window)) 2.7))))
 
+;; prevent window automatic window splitting
+;; (setq same-window-regexps '("."))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; time in modeline
 
