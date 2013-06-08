@@ -10,7 +10,6 @@
 ;; load in setups from files
 (load "~/.emacs.d/rs_settings/bindings")
 (load "~/.emacs.d/rs_settings/global")
-
 (load "~/.emacs.d/rs_settings/defun")
 (load "~/.emacs.d/rs_settings/env")
 (load "~/.emacs.d/rs_settings/macros")
@@ -72,7 +71,9 @@
  '(mediawiki-site-alist (quote (("spt-chan" "https://pole.uchicago.edu/spt-chandra/" "Rsuhada" "" "The XMM-Newton sample"))))
  '(minimap-window-location (quote left))
  '(org-link-frame-setup (quote ((vm . vm-visit-folder-other-frame) (gnus . org-gnus-no-new-news) (file . find-file) (wl . wl-other-frame))))
- '(pomodoro-break-cycle "b "))
+ '(pomodoro-break-cycle "b ")
+ '(which-func-modes (quote (emacs-lisp-mode c-mode c++-mode perl-mode cperl-mode python-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode diff-mode org-mode)))
+ '(which-function-mode t))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -93,7 +94,8 @@
  '(default ((t (:inherit nil :stipple nil :background "#121212" :foreground "#dcdccc" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "apple" :family "Andale Mono"))))
  '(bm-fringe-persistent-face ((((class color) (background dark)) (:background "#d0bf8f" :foreground "#d0bf8f"))))
  '(my-linum-hl ((t (:inherit background :linum "#259185"))))
- '(org-level-1 ((t (:foreground "#dfaf8f")))))
+ '(org-level-1 ((t (:foreground "#dfaf8f"))))
+ '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "#859900")))))
 (put 'ido-exit-minibuffer 'disabled nil)
 
 
@@ -103,6 +105,9 @@
 
 (setq default-frame-alist
   '((cursor-color . "brown3")))
+
+;; mode-line settings to override
+(load "~/.emacs.d/rs_settings/mode-line-set")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; recursive minibuffer

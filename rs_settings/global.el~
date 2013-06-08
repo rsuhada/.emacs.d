@@ -387,7 +387,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; comments
 
-(setq comment-start "#")
+(setq-default comment-start "#")
+
+(add-hook 'text-mode-hook (lambda () (setq comment-start "#")))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; abbrevs for comments
@@ -582,7 +585,7 @@ the dired buffer."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; python path
 
-(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/sb/:/Users/rs/data1/sw/esaspi/py/test/:")
+(setenv "PYTHONPATH" "/usr/local/lib/python2.6/site-packages/:/Users/rs/data1/sw/pythonlibs/rs:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/py/:/Users/rs/data1/sw/kapi:/Users/rs/data1/sw/esaspi/sb/:/Users/rs/data1/sw/esaspi/py/test/:/Users/rs/data1/sw/esaspi/sb/:")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; irc
@@ -627,6 +630,10 @@ the dired buffer."
   (interactive)
   (split-window-vertically)
   (enlarge-window (round (/ (window-height (next-window)) 2.7))))
+
+;; prevent window automatic window splitting
+;; (setq same-window-regexps '("."))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; time in modeline
@@ -780,7 +787,95 @@ the dired buffer."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; commonly used register files
 
-(dolist (r `((?i (file . ,("/Users/rs/documents/E-Books/self-hack/howtogetmotivated-2560x1440.png")))
+;; (defun pe ()
+;;  "Open a file containing frequently used Unicode chars"
+;;  (interactive)
+;;  (find-file "/Users/rs/example.txt"))
 
-             ))
-(set-register (car r) (cadr r)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; text mode fill paragrph
+
+(defun maybe-fill-paragraph (&optional justify region)
+  "Fill paragraph at or after point (see `fill-paragraph').
+
+Does nothing if `visual-line-mode' is on."
+  (interactive (progn
+    	 (barf-if-buffer-read-only)
+    	 (list (if current-prefix-arg 'full) t)))
+  (or visual-line-mode
+      (fill-paragraph justify region)))
+
+;; Replace M-q with new binding:
+
+(add-hook 'text-mode-hook
+  (defun cjm-fix-text-mode ()
+    (define-key text-mode-map "\M-q" 'maybe-fill-paragraph)
+    (remove-hook 'text-mode-hook 'cjm-fix-text-mode)))
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; customize mode-line (status line)
+
+;; http://emacs-fu.blogspot.de/2011/08/customizing-mode-line.html
+;; move to separate file and call from init
+:: add defun
+:: add shortener
+
+;; ;; use setq-default to set it for /all/ modes
+;; (setq mode-line-format
+;;   (list
+;;     ;; the buffer name; the file name as a tool tip
+;;     '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+;;         'help-echo (buffer-file-name)))
+
+;;     ;; line and column
+;;     "(" ;; '%02' to set to 2 chars at least; prevents flickering
+;;       (propertize "%02l" 'face 'font-lock-type-face) ","
+;;       (propertize "%02c" 'face 'font-lock-type-face)
+;;     ") "
+
+;;     ;; relative position, size of file
+;;     "["
+;;     (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+;;     "/"
+;;     (propertize "%I" 'face 'font-lock-constant-face) ;; size
+;;     "] "
+
+;;     ;; the current major mode for the buffer.
+;;     "["
+
+;;     '(:eval (propertize "%m" 'face 'font-lock-string-face
+;;               'help-echo buffer-file-coding-system))
+;;     "] "
+
+
+;;     "[" ;; insert vs overwrite mode, input-method in a tooltip
+;;     '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+;;               'face 'font-lock-preprocessor-face
+;;               'help-echo (concat "Buffer is in "
+;;                            (if overwrite-mode "overwrite" "insert") " mode")))
+
+;;     ;; was this buffer modified since the last save?
+;;     '(:eval (when (buffer-modified-p)
+;;               (concat ","  (propertize "Mod"
+;;                              'face 'font-lock-warning-face
+;;                              'help-echo "Buffer has been modified"))))
+
+;;     ;; is this buffer read-only?
+;;     '(:eval (when buffer-read-only
+;;               (concat ","  (propertize "RO"
+;;                              'face 'font-lock-type-face
+;;                              'help-echo "Buffer is read-only"))))
+;;     "] "
+
+;;     ;; add the time, with the date and the emacs uptime in the tooltip
+;;     '(:eval (propertize (format-time-string "%H:%M")
+;;               'help-echo
+;;               (concat (format-time-string "%c; ")
+;;                       (emacs-uptime "Uptime:%hh"))))
+;;     " --"
+;;     ;; i don't want to see minor-modes; but if you want, uncomment this:
+;;     minor-mode-alist  ;; list of minor modes
+;;     "%-" ;; fill with '-'
+;;     ))

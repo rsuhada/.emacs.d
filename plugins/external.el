@@ -347,13 +347,25 @@ ac-source-abbrev
 ;; (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; replace scroll bar
-(if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
-  (progn
-    (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
-    (scroll-bar-mode -1))                   ;; turn off the scrollbar
-  (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar
-  (set-scroll-bar-mode 'right))             ;; ... on the right
+;; mode line tweaks
+
+;; powerline:  https://github.com/milkypostman/powerline
+
+;; (add-to-list 'load-path "~/.emacs.d/plugins/powerline/")
+;; (require 'powerline)
+
+;; (custom-set-faces
+;;  '(mode-line ((t (:foreground "#030303" :background "#202020" :box nil))))
+;;  '(mode-line-inactive ((t (:foreground "#202020" :background "#666666" :box nil)))))
+
+;; replace scroll bar in the mode-line
+
+;; (if (require 'sml-modeline nil 'noerror)    ;; use sml-modeline if available
+;;   (progn
+;;     (sml-modeline-mode 1)                   ;; show buffer pos in the mode line
+;;     (scroll-bar-mode -1))                   ;; turn off the scrollbar
+;;   (scroll-bar-mode 1)                       ;; otherwise, show a scrollbar
+;;   (set-scroll-bar-mode 'right))             ;; ... on the right
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ace-jump
@@ -787,6 +799,7 @@ ac-source-abbrev
     ("left" "top" "right" "bottom")
     ("start" "end")
     ("red" "orange" "yellow" "green" "blue" "indigo" "violet")
+    ("Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
     ("zero" "one" "two"))
   "List of text rotation sets.")
 
@@ -1219,9 +1232,5 @@ Example:
 ;; (global-set-key [(meta s) (return)] 'skeleton-easy-regexp-display-abbrev) ; M-a was backward sentence
 (global-set-key [(meta g) ?x] 'skeleton-easy-regexp-display-abbrev)
 ;; (global-set-key [(meta a)] 'skeleton-easy-regexp-display-abbrev)
-
-
-
-
 
 

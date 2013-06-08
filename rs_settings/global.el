@@ -812,3 +812,9 @@ Does nothing if `visual-line-mode' is on."
   (defun cjm-fix-text-mode ()
     (define-key text-mode-map "\M-q" 'maybe-fill-paragraph)
     (remove-hook 'text-mode-hook 'cjm-fix-text-mode)))
+
+
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;; customize mode-line (status line)
+
+

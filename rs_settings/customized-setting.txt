@@ -4,6 +4,7 @@
 ######################################################################
 
 
+######################################################################
 1. opening org-link in a maximized window
 
 You need to customize org-link-frame-setup to use find-file instead of
@@ -13,3 +14,15 @@ You can do this by typing M-x customize-variable <ENTER>
 org-link-frame-setup <ENTER>. Click the Value Menu next to
 find-file-other-window and select find-file, then click Save for
 future sessions.
+
+
+######################################################################
+2. function name in mode-line
+
+(which-function-mode 1)
+
+
+Change colors and add major modes (e.g. org-mode is not enabled by
+default) with:
+
+M-x customize-group and selecting which-func
