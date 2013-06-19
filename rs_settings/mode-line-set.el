@@ -29,7 +29,7 @@
     (cond (buffer-read-only
            (propertize " RO " 'face 'mode-line-read-only-face))
           ((buffer-modified-p)
-           (propertize " " 'face 'mode-line-modified-face))
+           (propertize " * " 'face 'mode-line-modified-face))
           (t " ")))
    " "
    ; directory and buffer/file name
@@ -53,6 +53,7 @@
    "%] "
    (:eval (propertize (format-mode-line minor-mode-alist)
                       'face 'mode-line-minor-mode-face))
+   " "
    ;; time
    (:propertize mode-line-process
                 face mode-line-process-face)

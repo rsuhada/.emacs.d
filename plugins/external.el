@@ -346,17 +346,9 @@ ac-source-abbrev
 ;;   )
 ;; (add-hook 'LaTeX-mode-hook 'ac-latex-mode-setup)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mode line tweaks
-
-;; powerline:  https://github.com/milkypostman/powerline
-
-;; (add-to-list 'load-path "~/.emacs.d/plugins/powerline/")
-;; (require 'powerline)
-
-;; (custom-set-faces
-;;  '(mode-line ((t (:foreground "#030303" :background "#202020" :box nil))))
-;;  '(mode-line-inactive ((t (:foreground "#202020" :background "#666666" :box nil)))))
 
 ;; replace scroll bar in the mode-line
 

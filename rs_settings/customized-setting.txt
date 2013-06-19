@@ -26,3 +26,7 @@ Change colors and add major modes (e.g. org-mode is not enabled by
 default) with:
 
 M-x customize-group and selecting which-func
+
+- change color
+- remove elisp
+- add org

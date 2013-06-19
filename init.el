@@ -72,7 +72,7 @@
  '(minimap-window-location (quote left))
  '(org-link-frame-setup (quote ((vm . vm-visit-folder-other-frame) (gnus . org-gnus-no-new-news) (file . find-file) (wl . wl-other-frame))))
  '(pomodoro-break-cycle "b ")
- '(which-func-modes (quote (emacs-lisp-mode c-mode c++-mode perl-mode cperl-mode python-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode diff-mode org-mode)))
+ '(which-func-modes (quote (c-mode c++-mode perl-mode cperl-mode python-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode diff-mode org-mode)))
  '(which-function-mode t))
 
 

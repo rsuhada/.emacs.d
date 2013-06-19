@@ -41,25 +41,27 @@
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
 
-(defun vsplit-last-buffer ()
-  (interactive)
-  (split-window-vertically)
-  (other-window 1 nil)
-  (switch-to-previous-buffer)
-  )
-(defun hsplit-last-buffer ()
-  (interactive)
-  (split-window-horizontally)
-  (other-window 1 nil)
-  (switch-to-previous-buffer)
-  )
+;; these funcitons mess up the buffer order, good idea, wrong execution
 
-(global-set-key (kbd "M-3") 'hsplit-last-buffer) ; was digit-argument
-(global-set-key (kbd "M-2") 'vsplit-last-buffer) ; was digit-argument
+;; (defun vsplit-last-buffer ()
+;;   (interactive)
+;;   (split-window-vertically)
+;;   (other-window 1 nil)
+;;   (switch-to-previous-buffer)
+;;   )
+;; (defun hsplit-last-buffer ()
+;;   (interactive)
+;;   (split-window-horizontally)
+;;   (other-window 1 nil)
+;;   (switch-to-previous-buffer)
+;;   )
+
+;; (global-set-key (kbd "M-3") 'hsplit-last-buffer) ; was digit-argument
+;; (global-set-key (kbd "M-2") 'vsplit-last-buffer) ; was digit-argument
 
 ;; using the stock Emacs splitting (stay in same buffer)
-;; (global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
-;; (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
+(global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
+(global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
 
 (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument

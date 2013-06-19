@@ -194,6 +194,7 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
 
               (fmt-none `(:weight normal :slant normal  :underline nil        :inverse-video nil))
               (fmt-bold `(:weight ,bold  :slant normal  :underline nil        :inverse-video nil))
+              (fmt-strike `(:weight ,bold :slant normal :underline nil      :inverse-video nil :strike-through t))
               (fmt-bldi `(:weight ,bold                 :underline nil        :inverse-video nil))
               (fmt-undr `(:weight normal :slant normal  :underline ,underline :inverse-video nil))
               (fmt-undb `(:weight ,bold  :slant normal  :underline ,underline :inverse-video nil))
@@ -344,8 +345,10 @@ the \"Gen RGB\" column in solarized-definitions.el to improve them further."
              (info-xref-visited ((t (,@fg-magenta :inherit info-xref))))
              ;; org
              (org-hide ((t (,@fg-base03))))
-             (org-todo ((t (,@fmt-bold ,@fg-base03 ,@bg-red))))
-             (org-done ((t (,@fmt-bold ,@fg-green))))
+             ;; ORIG: red background: (org-todo ((t (,@fmt-bold ,@fg-base03 ,@bg-red))))
+             (org-todo ((t (,@fmt-bold ,@fg-red))))
+             ;; (org-done ((t (,@fmt-bold ,@fg-green))))
+             (org-done ((t (,@fmt-strike ,@fg-green))))
              (org-todo-kwd-face ((t (,@fg-red ,@bg-base03))))
              (org-done-kwd-face ((t (,@fg-green ,@bg-base03))))
              (org-project-kwd-face ((t (,@fg-violet ,@bg-base03))))

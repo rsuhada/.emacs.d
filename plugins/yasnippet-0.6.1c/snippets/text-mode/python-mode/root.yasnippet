@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: root
+# contributor: Robert Suhada
+# -
+from scipy.optimize import newton
+
+def func(x):
+    ez_b=ez_func(z=z, h_0=h_0_b, omega_m_0=x, omega_de_0=omega_de_0_b, omega_k_0=omega_k_0_b, w=w_b)
+    return ez_a - ez_b
+
+x0=0.3
+res=newton(func, x0, fprime=None, args=(), tol=1.48e-08, maxiter=1e4, fprime2=None)
+print res
