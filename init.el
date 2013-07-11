@@ -153,3 +153,4 @@
 ;; (setq ipython-command "/usr/local/bin/ipython")
 ;; (setq python-command "ipython")
 ;; (setq py-shell-name "ipython")
+(put 'narrow-to-region 'disabled nil)

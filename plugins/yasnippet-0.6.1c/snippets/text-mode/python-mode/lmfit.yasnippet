@@ -1,0 +1,92 @@
+# -*- mode: snippet -*-
+# -*- coding: utf-8 -*-
+# name: lmfit
+# contributor: Robert Suhada
+# --
+import lmfit as lm
+from scipy.stats import norm
+
+def lin_model(pars, x, data=None, errors=None):
+    """
+    Linear model in lmfit compatible format.
+    """
+
+    # unpack parameters
+    a = pars['a'].value
+    b = pars['b'].value
+
+    model = a*x + b
+
+    if data == None:
+        return model
+    else:
+        resid = data - model
+        if not(errors==None): resid = resid / errors; print resid.sum()
+        return resid
+
+def plt_results():
+    plt.ion()
+    plt.errorbar(x, y, y_err, fmt='o')
+    plt.plot(x, c,
+             color='green',
+             linestyle='-',
+             linewidth=1,
+             marker='',
+             markerfacecolor='black',
+             markersize=0,
+             label=r"true"
+             )
+    plt.plot(x, fitted_model,
+             color='red',
+             linestyle='-',
+             linewidth=1,
+             marker='',
+             markerfacecolor='black',
+             markersize=0,
+             label=r"fit"
+             )
+    plt.legend()
+    plt.show()
+
+
+# settings for mock data
+a_true = 2.0
+b_true = 4.5
+scatter = 0.2
+
+true_pars = lm.Parameters()
+true_pars.add('a', value=a_true)
+true_pars.add('b', value=b_true)
+
+# generate mock data
+x = linspace(0.0, 1.0, 10)
+c = lin_model(true_pars, x)
+y = array([norm.rvs(loc=cc, scale=scatter) for cc in c])
+y_err = 0.05*y
+
+# set up the fitter
+leastsq_kws={'xtol': 1.0e-7, 'ftol': 1.0e-7, 'maxfev': 1.0e+7}
+
+pars = lm.Parameters()
+pars.add('a', value=23.0, vary=True, min=0.01, max=100.0)
+pars.add('b', value=2.5, vary=True, min=-1.0, max=100.0)
+
+nonfit_args=(x, y, y_err)
+
+# fit model
+result = lm.minimize(lin_model,
+                     pars,
+                     args=nonfit_args,
+                     method='leastsq',
+                     **leastsq_kws)
+
+# write report
+lm.printfuncs.report_errors(result.params)
+print "true a = ", true_pars['a'].value
+print "true b = ", true_pars['b'].value
+
+# the final fitted model
+fitted_model = lin_model(pars, x)
+
+# show final fit
+plt_results()

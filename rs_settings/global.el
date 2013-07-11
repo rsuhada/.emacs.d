@@ -814,7 +814,59 @@ Does nothing if `visual-line-mode' is on."
     (remove-hook 'text-mode-hook 'cjm-fix-text-mode)))
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;; customize mode-line (status line)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; incrementing and renumbering
+
+;; renumber region
+(defun renumber (start end &optional num)
+  "Renumber the list items in the current START..END region.
+    If optional prefix arg NUM is given, start numbering from that number
+    instead of 1."
+  (interactive "*r\np")
+  (save-excursion
+    (goto-char start)
+    (setq num (or num 1))
+    (save-match-data
+      (while (re-search-forward "[0-9]+]" end t)
+        (replace-match (number-to-string num))
+        (setq num (1+ num))))))
+
+(defun renumber-array-index (start end &optional num)
+  "renumber for array indexe [i]"
+  (interactive "*r\np")
+  (save-excursion
+    (goto-char start)
+    (setq num (or num 1))
+    (save-match-data
+      (while (re-search-forward "[[0-9]+]" end t)
+        (replace-match (format "%s%s%s" "[" (number-to-string num) "]"))
+        (setq num (1+ num))))))
 
 
+;;  these funcntions are useful in macros
+(defun increment-number-at-point ()
+  (interactive)
+  (skip-chars-backward "0123456789")
+  (or (looking-at "[0123456789]+")
+      (error "No number at point"))
+  (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+
+(defun increment-number-decimal (&optional arg)
+  "Increment the number forward from point by 'arg'."
+  (interactive "p*")
+  (save-excursion
+    (save-match-data
+      (let (inc-by field-width answer)
+        (setq inc-by (if arg arg 1))
+        (skip-chars-backward "0123456789")
+        (when (re-search-forward "[0-9]+" nil t)
+          (setq field-width (- (match-end 0) (match-beginning 0)))
+          (setq answer (+ (string-to-number (match-string 0) 10) inc-by))
+          (when (< answer 0)
+            (setq answer (+ (expt 10 field-width) answer)))
+          (replace-match (format (concat "%0" (int-to-string field-width) "d")
+                                 answer)))))))
+
+(defun decrement-number-decimal (&optional arg)
+  (interactive "p*")
+  (my-increment-number-decimal (if arg (- arg) -1)))

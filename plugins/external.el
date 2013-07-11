@@ -537,6 +537,12 @@ ac-source-abbrev
 ;; Rectangular region mode
 (global-set-key (kbd "S-SPC") 'set-rectangular-region-anchor)
 
+;; switch newline and exit
+(eval-after-load "multiple-cursors-core"
+  '(progn
+     (define-key mc/keymap (kbd "<return>") nil)
+     (define-key mc/keymap (kbd "C-j") 'multiple-cursors-mode)))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ess
 
@@ -1224,5 +1230,3 @@ Example:
 ;; (global-set-key [(meta s) (return)] 'skeleton-easy-regexp-display-abbrev) ; M-a was backward sentence
 (global-set-key [(meta g) ?x] 'skeleton-easy-regexp-display-abbrev)
 ;; (global-set-key [(meta a)] 'skeleton-easy-regexp-display-abbrev)
-
-

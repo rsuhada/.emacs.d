@@ -3,5 +3,7 @@
 # name: spawn
 # contributor: Robert Suhada
 # --
-import os
-os.system("touch jaaa$0")
+# import os
+# os.system("touch jaaa$0")
+import subprocess
+subprocess.call(["ls", "-1"], stdin=None, stdout=None, stderr=None, shell=False)
