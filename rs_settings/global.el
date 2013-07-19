@@ -526,6 +526,8 @@ the dired buffer."
       (kill-new filename)
       (message "Copied buffer file name: %s" filename))))
 
+(global-set-key [f12] 'filename-to-clipboard)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; google stuff - there ius also a hel module but this is
 ;; faster/slimmer

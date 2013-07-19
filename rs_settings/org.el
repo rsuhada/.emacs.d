@@ -183,8 +183,6 @@
 ;; more speedup possible if you turn off linum
 (setq org-src-fontify-natively nil)
 
-
-
 (setq org-imenu-depth 4)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -210,6 +208,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; links
 
-
 ;; (setq org-link-frame-setup )
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; dissable super/subscripts in latex export
+
+(setq org-export-with-sub-superscripts nil)

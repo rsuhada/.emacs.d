@@ -227,10 +227,12 @@ This is useful when followed by an immediate kill."
 ;; search
 
 ;; Use regex searches by default.
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "\C-r") 'isearch-backward-regexp)
+;; (global-set-key (kbd "C-s") 'isearch-forward-regexp)
+;; (global-set-key (kbd "\C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 ;; (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+(global-set-key (kbd "C-M-s") 'isearch-forward-regexp)
 
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
@@ -250,7 +252,7 @@ This is useful when followed by an immediate kill."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; occur
 
-(defun occur-mode-clean-buffer ()
+(defun occur-clean-buffer ()
   "Removes all commentary from the *Occur* buffer, leaving the
  unadorned lines."
   (interactive)
@@ -268,7 +270,7 @@ This is useful when followed by an immediate kill."
           (forward-line 1)))
     (message "There is no buffer named \"*Occur*\".")))
 
-(define-key occur-mode-map (kbd "C-c C-o") 'occur-mode-clean-buffer)
+(define-key occur-mode-map (kbd "C-c C-o") 'occur-clean-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; commenting a single line
@@ -471,7 +473,7 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [f7]   'next-error)
 (global-set-key [M-f7] 'previous-error)
 
-;; (global-set-key [f8] 'deft)
+;; (global-set-key [f8] 'occur)
 (global-set-key [f9]   'switch-to-previous-buffer)
 (global-set-key [C-f9]   'next-user-buffer)
 (global-set-key [C-M-f9]   'previous-user-buffer)
