@@ -474,6 +474,8 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [M-f7] 'previous-error)
 
 ;; (global-set-key [f8] 'occur)
+;; (global-set-key (quote [f8]) 'occur)
+
 (global-set-key [f9]   'switch-to-previous-buffer)
 (global-set-key [C-f9]   'next-user-buffer)
 (global-set-key [C-M-f9]   'previous-user-buffer)

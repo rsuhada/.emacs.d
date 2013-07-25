@@ -678,60 +678,60 @@ ac-source-abbrev
 ;; (add-hook 'python-mode-hook
 ;;           (tm/minor-mode 1))            ; "enable" to make it work
 
-;       ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;       ;; sunrise commander
-;
-;       (add-to-list 'load-path "~/.emacs.d/plugins/sunrise-commander/")
-;       (require 'sunrise-commander)
-;       (require 'sunrise-x-buttons)
-;       (require 'sunrise-x-mirror)
-;       (require 'sunrise-x-modeline)
-;
-;       (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
-;
-;       (defun sr-browse-file (&optional file)
-;         "Display the selected file with the default appication."
-;         (interactive)
-;         (setq file (or file (dired-get-filename)))
-;         (save-selected-window
-;           (sr-select-viewer-window)
-;           (let ((buff (current-buffer))
-;       	  (fname (if (file-directory-p file)
-;       		     file
-;       		   (file-name-nondirectory file)))
-;       	  (app (cond
-;       		((eq system-type 'darwin)	"open %s")
-;       		((eq system-type 'windows-nt)	"open %s")
-;       		(t				"xdg-open %s"))))
-;             (start-process-shell-command "open" nil (format app file))
-;             (unless (eq buff (current-buffer))
-;               (sr-scrollable-viewer (current-buffer)))
-;             (message "Opening \"%s\" ..." fname))))
-;
-;       ;; variables
-;       (setq sr-right-directory "~/")
-;       (setq sr-left-directory "~/Downloads/")
-;
-;       (setq sr-attributes-display-mask '(nil nil nil nil t t t))
-;       (add-hook 'sr-init-hook 'sr-toggle-attributes)
-;
-;       ;; keys
-;
-;       (define-key sr-mode-map "n"           'sr-goto-dir)
-;       (define-key sr-mode-map "\C-n"           'sr-fuzzy-narrow)
-;       (define-key sr-mode-map "j"           'sr-dired-prev-subdir)
-;       ;; (define-key sr-mode-map "k"           'sr-scroll-up)
-;       (define-key sr-mode-map "k"           'next-line)
-;       ;; (define-key sr-mode-map "i"           'sr-scroll-down) ; originally : dired-do-kill-line
-;       (define-key sr-mode-map "i"           'previous-line) ; originally : dired-do-kill-lines
-;       (define-key sr-mode-map "l"           'sr-advertised-find-file)
-;       (define-key sr-mode-map "\C-j"        'sr-advertised-find-file)
-;       (define-key sr-mode-map "\C-s"        'sr-sticky-isearch-forward)
-;       (define-key sr-mode-map "\C-cs"        'sr-interactive-sort)
-;       (define-key sr-mode-map "f"           'sr-fuzzy-narrow)
-;
-;       ;; (add-hook 'sr-start-hook 'sr-toggle-attributes)
-;       ;; (add-hook 'sr-refresh-hook 'sr-sticky-isearch-forward)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sunrise commander
+
+           (add-to-list 'load-path "~/.emacs.d/plugins/sunrise-commander/")
+           (require 'sunrise-commander)
+           (require 'sunrise-x-buttons)
+           (require 'sunrise-x-mirror)
+           (require 'sunrise-x-modeline)
+
+           (add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
+
+           (defun sr-browse-file (&optional file)
+             "Display the selected file with the default appication."
+             (interactive)
+             (setq file (or file (dired-get-filename)))
+             (save-selected-window
+               (sr-select-viewer-window)
+               (let ((buff (current-buffer))
+           	  (fname (if (file-directory-p file)
+           		     file
+           		   (file-name-nondirectory file)))
+           	  (app (cond
+           		((eq system-type 'darwin)	"open %s")
+           		((eq system-type 'windows-nt)	"open %s")
+           		(t				"xdg-open %s"))))
+                 (start-process-shell-command "open" nil (format app file))
+                 (unless (eq buff (current-buffer))
+                   (sr-scrollable-viewer (current-buffer)))
+                 (message "Opening \"%s\" ..." fname))))
+
+           ;; variables
+           (setq sr-right-directory "~/")
+           (setq sr-left-directory "~/Downloads/")
+
+           (setq sr-attributes-display-mask '(nil nil nil nil t t t))
+           (add-hook 'sr-init-hook 'sr-toggle-attributes)
+
+           ;; keys
+
+           (define-key sr-mode-map "n"           'sr-goto-dir)
+           (define-key sr-mode-map "\C-n"           'sr-fuzzy-narrow)
+           (define-key sr-mode-map "j"           'sr-dired-prev-subdir)
+           ;; (define-key sr-mode-map "k"           'sr-scroll-up)
+           (define-key sr-mode-map "k"           'next-line)
+           ;; (define-key sr-mode-map "i"           'sr-scroll-down) ; originally : dired-do-kill-line
+           (define-key sr-mode-map "i"           'previous-line) ; originally : dired-do-kill-lines
+           (define-key sr-mode-map "l"           'sr-advertised-find-file)
+           (define-key sr-mode-map "\C-j"        'sr-advertised-find-file)
+           (define-key sr-mode-map "\C-s"        'sr-sticky-isearch-forward)
+           (define-key sr-mode-map "\C-cs"        'sr-interactive-sort)
+           (define-key sr-mode-map "f"           'sr-fuzzy-narrow)
+
+           ;; (add-hook 'sr-start-hook 'sr-toggle-attributes)
+           ;; (add-hook 'sr-refresh-hook 'sr-sticky-isearch-forward)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1168,8 +1168,6 @@ Example:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; awk-it
 
-;; http://www.emacswiki.org/emacs/AWK_Itz
-
 (require 'awk-it)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1225,13 +1223,10 @@ Example:
 ;; (define-key global-map (kbd "C-c q") 'vr/query-replace)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; skeleton complete - it works but i don't really use it...
+;; skeleton complete
 
 ;; (require 'skeleton-complete)
 
 ;; (global-set-key [(meta s) (return)] 'skeleton-easy-regexp-display-abbrev) ; M-a was backward sentence
 ;; (global-set-key [(meta g) ?x] 'skeleton-easy-regexp-display-abbrev)
 ;; (global-set-key [(meta a)] 'skeleton-easy-regexp-display-abbrev)
-
-
-

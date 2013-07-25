@@ -4,7 +4,7 @@
 ;; (setq x-select-enable-clipboard t)
 
 ;; Repeat
-(global-set-key [(control z)] 'repeat) ; was suspend-frame
+;; (global-set-key [(control z)] 'repeat) ; was suspend-frame
 
 ;; killing buffers
 (global-set-key (kbd "C-x C-k") 'kill-buffer) ; was kmacro-edit-macro
@@ -40,8 +40,29 @@
 (global-set-key (kbd "M-s") 'save-buffer) ;; was save-some-buffers
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
+
+;; these funcitons mess up the buffer order, good idea, wrong execution
+
+;; (defun vsplit-last-buffer ()
+;;   (interactive)
+;;   (split-window-vertically)
+;;   (other-window 1 nil)
+;;   (switch-to-previous-buffer)
+;;   )
+;; (defun hsplit-last-buffer ()
+;;   (interactive)
+;;   (split-window-horizontally)
+;;   (other-window 1 nil)
+;;   (switch-to-previous-buffer)
+;;   )
+
+;; (global-set-key (kbd "M-3") 'hsplit-last-buffer) ; was digit-argument
+;; (global-set-key (kbd "M-2") 'vsplit-last-buffer) ; was digit-argument
+
+;; using the stock Emacs splitting (stay in same buffer)
 (global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
 (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
+
 (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
 (global-set-key (kbd "M-o") 'other-window) ; was facemenu-keymap
@@ -160,6 +181,13 @@ This is useful when followed by an immediate kill."
 (define-key isearch-mode-map [(return)] 'isearch-exit-other-end)
 (define-key isearch-mode-map [(control return)] 'isearch-exit-normal-end)
 
+
+(defun underscore ()
+  (interactive)
+  (isearch-unread-key-sequence (list ?_)))
+
+(define-key isearch-mode-map (kbd "M-u") 'underscore)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; defmacro cmd - some sort of simplified macro wrapping?
 
@@ -199,10 +227,12 @@ This is useful when followed by an immediate kill."
 ;; search
 
 ;; Use regex searches by default.
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "\C-r") 'isearch-backward-regexp)
+;; (global-set-key (kbd "C-s") 'isearch-forward-regexp)
+;; (global-set-key (kbd "\C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 ;; (global-set-key (kbd "C-M-r") 'isearch-backward)
+
+(global-set-key (kbd "C-M-s") 'isearch-forward-regexp)
 
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o")
@@ -210,13 +240,19 @@ This is useful when followed by an immediate kill."
     (let ((case-fold-search isearch-case-fold-search))
       (occur (if isearch-regexp isearch-string (regexp-quote isearch-string))))))
 
+;; (define-key isearch-mode-map (kbd "M-u") 'protect-underscore)
+;; (add-hook 'isearch-mode-hook
+;;           (lambda ()
+;;            (local-set-key (kbd "M-u") 'protect-underscore)
+;;           ))
+
 ;; Jump to a definition in the current file. (Protip: this is awesome.)
 (global-set-key (kbd "C-x C-i") 'imenu)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; occur
 
-(defun occur-mode-clean-buffer ()
+(defun occur-clean-buffer ()
   "Removes all commentary from the *Occur* buffer, leaving the
  unadorned lines."
   (interactive)
@@ -234,7 +270,7 @@ This is useful when followed by an immediate kill."
           (forward-line 1)))
     (message "There is no buffer named \"*Occur*\".")))
 
-(define-key occur-mode-map (kbd "C-c C-o") 'occur-mode-clean-buffer)
+(define-key occur-mode-map (kbd "C-c C-o") 'occur-clean-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; commenting a single line
@@ -388,7 +424,7 @@ If LINE is non-nil, duplicate that line instead."
 ;; more movement improvement
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-(global-set-key (kbd "M-Z") 'zap-copy-up-to-char)
+;; (global-set-key (kbd "M-Z") 'zap-copy-up-to-char)
 
 (global-unset-key (kbd "M-u")) ; upcase-word
 (global-set-key (kbd "C-c M-u") 'upcase-word)
@@ -412,10 +448,16 @@ If LINE is non-nil, duplicate that line instead."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; function keys
 
-(global-set-key (kbd "<M-f1>") 'bm-toggle)
-(global-set-key (kbd "<f1>")   'bm-next)
+;; (global-set-key (kbd "<M-f1>") 'bm-toggle)
+;; (global-set-key (kbd "<f1>")   'bm-next)
+;; (global-set-key (kbd "<S-f1>") 'bm-previous)
+;; (global-set-key (kbd "<M-S-f1>") 'bm-show-all)
+
+; leave f1 for emterm switch
+(global-set-key (kbd "<M-S-f1>") 'bm-toggle)
+(global-set-key (kbd "<M-f1>")   'bm-next)
 (global-set-key (kbd "<S-f1>") 'bm-previous)
-(global-set-key (kbd "<M-S-f1>") 'bm-show-all)
+;; (global-set-key (kbd "<M-S-f1>") 'bm-show-all)
 
 (global-set-key (kbd "M-m")   'er/expand-region)
 (global-set-key (kbd "M-M")   'er/contract-region)
@@ -431,7 +473,9 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [f7]   'next-error)
 (global-set-key [M-f7] 'previous-error)
 
-;; (global-set-key [f8] 'deft)
+;; (global-set-key [f8] 'occur)
+(global-set-key (quote [f8]) 'occur)
+
 (global-set-key [f9]   'switch-to-previous-buffer)
 (global-set-key [C-f9]   'next-user-buffer)
 (global-set-key [C-M-f9]   'previous-user-buffer)
@@ -439,6 +483,7 @@ If LINE is non-nil, duplicate that line instead."
 (global-set-key [f10]   'unexpand-abbrev)
 
 (global-set-key [M-f11]   'eval-region)
+
 
 ;; (global-set-key [f12] 'deft)
 ;; (global-set-key [f12] 'sunrise)
@@ -528,36 +573,58 @@ If LINE is non-nil, duplicate that line instead."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; open line
 
-;; Behave like vi's o command
-(defun open-next-line (arg)
-  "Move to the next line and then opens a line.
-    See also `newline-and-indent'."
-  (interactive "p")
-  (end-of-line)
-  (open-line arg)
-  (next-line 1)
-  (when newline-and-indent
-    (indent-according-to-mode)))
 
-;; Behave like vi's O command
-(defun open-previous-line (arg)
-  "Open a new line before the current one.
-     See also `newline-and-indent'."
-  (interactive "p")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; open lines
+(defun open-line-below ()
+  (interactive)
+  (if (eolp)
+      (newline)
+    (end-of-line)
+    (newline))
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
   (beginning-of-line)
-  (open-line arg)
-  (when newline-and-indent
-    (indent-according-to-mode)))
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
 
-;; Autoindent open-*-lines
-(defvar newline-and-indent t
-  "Modify the behavior of the open-*-line functions to cause them to autoindent.")
+(global-set-key (kbd "<M-return>") 'open-line-below)
+(global-set-key (kbd "<M-S-return>") 'open-line-above)
 
-;; (global-set-key (kbd "M-o") 'open-previous-line)
-;; (global-set-key (kbd "C-o") 'open-next-line)
+;; ;; Behave like vi's o command
+;; (defun open-next-line (arg)
+;;   "Move to the next line and then opens a line.
+;;     See also `newline-and-indent'."
+;;   (interactive "p")
+;;   (end-of-line)
+;;   (open-line arg)
+;;   (next-line 1)
+;;   (when newline-and-indent
+;;     (indent-according-to-mode)))
 
-(global-set-key [S-return]   'open-next-line)
-(global-set-key [M-S-return] 'open-previous-line)
+;; ;; Behave like vi's O command
+;; (defun open-previous-line (arg)
+;;   "Open a new line before the current one.
+;;      See also `newline-and-indent'."
+;;   (interactive "p")
+;;   (beginning-of-line)
+;;   (open-line arg)
+;;   (when newline-and-indent
+;;     (indent-according-to-mode)))
+
+;; ;; Autoindent open-*-lines
+;; (defvar newline-and-indent t
+;;   "Modify the behavior of the open-*-line functions to cause them to autoindent.")
+
+;; ;; (global-set-key (kbd "M-o") 'open-previous-line)
+;; ;; (global-set-key (kbd "C-o") 'open-next-line)
+
+;; (global-set-key [S-return]   'open-next-line)
+;; (global-set-key [M-S-return] 'open-previous-line)
 
 
 ;; mark line
@@ -739,6 +806,36 @@ If `case-replace' is nil, do not alter case of replacement text."
 (global-set-key (kbd "C-x r <M-f2>") 'my-replace-regexp-rectangle)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; hyper-key
+
+(setq ns-function-modifier 'hyper)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; fix binds for org
+
+;; (add-hook 'org-mode-hook
+;;           (local-set-key '[M-up] 'sacha/search-word-backward)
+;;           (local-set-key '[M-down] 'sacha/search-word-forward)
+;;           (local-set-key (kbd "C-'") 'goto-match-paren)
+;;           (local-set-key (kbd "M-e") 'rs-macro/mark-line)
+;;           ))
+
+(global-set-key (kbd "C-M-u")           ;was backward-sexp
+            (lambda ()
+                  (interactive)
+                  (join-line -1)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; C-c bindings to Emacs native functions
+
+(global-set-key (kbd "C-c C-s") 'python-send-string)      ; in org mode clases w schedule
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; python binings
+
 (defun rs/switch-to-python-shell ()
   "Show an existing buffer called \"*ansi-term*\" if one exists, otherwise
 call function ansi-term interactively."
@@ -747,20 +844,34 @@ call function ansi-term interactively."
          (switch-to-buffer existing-buffer)))
 (global-set-key [M-f12] 'rs/switch-to-python-shell)
 
+;; hooks
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (add-hook 'abbrev-expand-functions
+                        'hash-comment-mode-abbrev-expand-function
+                        nil t)))
+
+(add-hook 'python-mode-hook
+          (lambda () (define-key python-mode-map (kbd "C-m") 'newline-and-indent)))
+
+(add-hook 'python-mode-hook
+          (lambda () (define-key python-mode-map (kbd "C-<f7>") 'rs-macro/pycompile)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; hyper-key
+;; unset keys needed for system
 
-(setq ns-function-modifier 'hyper)
-
-
+(global-unset-key (kbd "M-`")) ;; was tmm-menubar
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; fix biinds for org
+;; switch bindings for undo
 
-(add-hook 'org-mode-hook
-          (local-set-key '[M-up] 'sacha/search-word-backward)
-          (local-set-key '[M-down] 'sacha/search-word-forward)
-          (local-set-key (kbd "C-'") 'goto-match-paren)
-          (local-set-key (kbd "M-e") 'rs-macro/mark-line)
-          ))
+;; (global-set-key (kbd "M-z") 'undo-tree-undo)
+;; (global-set-key (kbd "M-Z") 'undo-tree-redo) ; was: zap-copy-up-to-char
+(global-set-key (kbd "C-z") 'undo-tree-visualize) ; was: repeat
+(global-set-key (kbd "M-z") 'zap-to-char)
+
+;; rebinding c=/ doesn't seem to work - also it could brake some of the macros
+;; (global-unset-key (kbd "C-/"))          ; learning
+;; (global-set-key (kbd "C-/") 'zap-to-char)
+;; (global-set-key [(control /)] 'zap-to-char) ; was suspend-frame

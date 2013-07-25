@@ -33,6 +33,9 @@
                                     (f11 . "\^[[23~")
                                     (f12 . "\^[[24~")))
 
+
+; this requires sunrise to be loaded - for some reason term-raw-map
+; gives error otherwise...
 (dolist (spec term-function-key-alist)
   (define-key term-raw-map
     (read-kbd-macro (format "<%s>" (car spec)))
